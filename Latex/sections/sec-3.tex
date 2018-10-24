@@ -1,0 +1,12 @@
+\section{Parallele und verteilte Datenbanksysteme}
+\label{sec-3}
+
+
+\begin{lstlisting}[caption={DUMMY TEXT.},captionpos=b,label={src:neighbourhood}]
+
+	SELECT DISTINCT l2.NodeID 
+	FROM Link l1, Link l2 
+	WHERE l1.EdgeID = l2.EdgeID 
+		AND l1.NodeID != l2.NodeID
+		AND l1.NodeID = '123';
+\end{lstlisting}		

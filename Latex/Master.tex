@@ -1,0 +1,94 @@
+\documentclass[10pt, titlepage, german, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+%\usepackage{wrapfig}
+\usepackage{rotating}
+%\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+%\usepackage{marvosym}
+%\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage[hidelinks]{hyperref}
+\tolerance=1000
+\usepackage[normalem]{ulem}
+\usepackage[ngerman, germanb]{babel}
+%\usepackage{csquotes}
+%\usepackage[square,sort,comma,numbers]{natbib}
+\usepackage[style=alphabetic,sortlocale=de_DE,url=false,natbib=true,backend=bibtex]{biblatex}
+
+%\usepackage{showkeys}
+\usepackage{xpatch}
+
+% patch macro used in bibliography
+%\xpretobibmacro{bib+doi+url}
+%{\iffieldundef{doi}
+%	{}
+%	{\clearfield{url}}}
+%{}{}
+\setlength{\parindent}{0cm}
+%\usepackage[section]{placeins}
+\usepackage{fancyhdr}
+%\usepackage{subfig}
+\usepackage{xcolor}
+\usepackage{url}
+%\usepackage[backend=biber,style=ieee,sortlocale=de_DE,
+%url=false,doi=true,eprint=false]{biblatex}
+\usepackage{standalone}
+\usepackage{array,multirow,multicol}
+\usepackage{enumerate}
+%\usepackage{tikz}
+%\usepackage{tkz-berge}
+%\usetikzlibrary{arrows, petri, topaths}
+\usepackage{titlesec}
+\usepackage{listings}
+\titleformat{\section}[block]
+{\fontsize{12}{15}\bfseries\rmfamily\filcenter}
+{\thesection}
+{1em}
+{\MakeUppercase}
+\titleformat{\subsection}[block]
+{\fontsize{12}{15}\bfseries\rmfamily}
+{\thesubsection}
+{1em}
+{}
+\titleformat{\subsubsection}[block]
+{\bfseries\rmfamily}
+{\thesubsubsection}
+{1em}
+{}
+\addbibresource{bibliography.bib}
+\newcommand{\sectionbreak}{\clearpage}
+\renewcommand{\lstlistingname}{Codeausschnitt}% Listing -> Algorithm
+\input{include/titelseite}
+\pagenumbering{roman}
+\usepackage{setspace}
+\onehalfspacing
+\author{Matthias Kuhr}
+\date{Entwurf vom \today}
+\title{Parallelisierte Verarbeitung von Hypergraphstrukturen}
+
+\begin{document}
+	\maketitle
+	\include{sections/abstract}
+	\tableofcontents
+	\clearpage
+	%\bibliographystyle{alphadin}
+	\newcounter{savepage}
+	\setcounter{savepage}{\arabic{page}}
+	\pagenumbering{arabic}
+	\include{sections/sec-1}
+	\include{sections/sec-2}
+	\include{sections/sec-3}
+	\include{sections/sec-4}
+	\include{sections/sec-5}
+	\include{sections/sec-6}
+	\addcontentsline{toc}{section}{Literatur}
+	\printbibliography
+	\include{sections/finish}
+	
+\end{document}
