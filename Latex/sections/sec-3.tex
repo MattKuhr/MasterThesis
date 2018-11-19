@@ -3,24 +3,38 @@
 \fbox{
 	\parbox{\linewidth}{
 		\textit{Ziel des Kapitels:}\\
-		Problemstellung formulieren und eingrenzen, Anforderungen herausarbeiten.\\[6px]
-		\textit{Inhalte:}
-		\begin{itemize}
-			\item Problem
-			\item Einschränkungen und Designempfehlungen vorstellen
-			\item Anforderungen
-		\end{itemize}
-		
-	\textit{(Optional) Literatur:}	
-	%\begin{itemize}
-	%\end{itemize}
+		Problemstellung formulieren und eingrenzen, Anforderungen herausarbeiten.
 }}
 
 \subsection{Problemstellung}
 \label{sec-3-1}
-HoloLens als neue Technik und Plattform mit eigenen Capabilities und Requirements \\
-Offenes Potential im Einsatz von MR Technik im Bereich Physik, besonders bei Experiment XYZ\\
+\begin{itemize}
+	\item HoloLens Technik und Plattform mit eigenen Capabilities und Requirements
+	\item Problem: Wie kann HoloLens beim Versuch Helmholtzspulen eingesetzt werden?
+	\subitem Was soll dargestellt werden?
+	\subitem Wie soll es dargestellt werden?
+	\subitem Wie soll damit interagiert werden?
+\end{itemize}
 
 \subsection{Anforderungen}
 \label{sec-3-2}
-Frage: Requirements an die Anwendung in Richtung Lasten/Pflichten heft?\\
+Anforderungen an die Anwendung
+\begin{itemize}
+	\item Homogenen Teil des Magnetfeldes schematisch darstellen
+	\subitem der Erde
+	\subitem der Spule
+	\item Stromfluss darstellen
+	\item Kräftevektoren darstellen
+	\item Einzelne Darstellungen durch Interaktion ein/ausblenden
+\end{itemize}
+
+Technische Randbedingungen durch die Brille im Zusammenhang mit Anwendungsfall
+\begin{itemize}
+	\item Distanz, Größe und Geschwindigkeit der virtuellen Objekte, passt hier aufgrund Größe der Spulen
+	\item Keine Störung der Brillen-Hardware (z.B. durch zusätzliches Infrarotlicht)
+	\item Performance Limitierung, also z.B. keine Echtzeit-Berechnung der Magnetfelder
+	\item FoV Limitierung muss beachtet werden
+	\item Transparenz hängt von Farbe und Hintergrund ab
+	\item ....
+\end{itemize}
+

@@ -3,19 +3,30 @@
 \fbox{
 \parbox{\linewidth}{
 	\textit{Ziel des Kapitels:}\\
-	Umsetzung erläutern: Wie wurde die Lösungsidee umgesetzt?\\[6px]
-	\textit{Inhalte:}
-	\begin{itemize}
-		\item Welche Darstellungen wurden gewählt?
-		\item Wie wurde die Interaktion gestaltet?
-	\end{itemize}
-	
-	\textit{(Optional) Literatur:}	
-	%\begin{itemize}
-	%\end{itemize}
+	Umsetzung erläutern: Wie wurde die Lösungsidee umgesetzt?
 }}
 
+\begin{itemize}
+	\item Tracking mit Vuforia
+	\item Handgesten, Sprache und Bluetooth Tastatur für Eingabe
+	\item Magnetfeld Vorberechnung durch XYZ
+\end{itemize}
+
 \subsection{Darstellung}
+\begin{itemize}
+	\item Magnetfeld Darstellung mit Vorberechnung durch XYZ
+	\item Depth Cues für 3D-Objekte
+	\subitem Spulen virtuell nachmodelliert und für Occlusion Berechnung eingefügt
+	\subitem Drop Shadows für 3D Pfeile entwickelt
+	\item Informationen zum Versuchsaufbau via ToolTips, optional einblendbar
+	\item ...
+\end{itemize}
 
 \subsection{Interaktion}
-
+\begin{itemize}
+	\item Per Doppelklick Geste zwischen verschiedenen Modi umschalten
+	\item Per Tastatur Eingabe von numerischen Werten
+	\item Per Keywords "Power on" und "Power off" Steuerung des Stromkreises
+	\item Klick-Feedback durch Sound
+	\item ...
+\end{itemize}
