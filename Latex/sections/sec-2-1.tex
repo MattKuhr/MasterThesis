@@ -6,7 +6,18 @@
 \fbox{
 	\parbox{\linewidth}{
 		\textit{Ziel des Kapitels:}\\
-		Begriffsklärung und Einordnung von AR,MR,VR in das Virtual Continuum. Wichtig für die Einordnung von MR in Education in Kap. \ref{sec-2-2}.\\
+		Begriffsklärung und Einordnung von AR,MR,VR in das Virtual Continuum. Wichtig für die Einordnung von MR in Education in Kap. \ref{sec-2-2}.\\[6px]
+		\textit{Inhalte:}	
+		\begin{itemize}
+			\item Virtual Continuum erklären und AR, AV, VR einordnen
+		\end{itemize}
+		
+		\textit{Wichtige Literatur:}	
+		\begin{itemize}
+			\item A taxonomy of mixed reality visual displays \cite{Milgram94}
+			\item A survey of augmented reality \cite{Azuma97}
+			\item Augmented Reality: Where we will all live \cite{Peddie17}
+		\end{itemize}
 }}
 
 \begin{figure}[h!]
@@ -32,7 +43,7 @@
 	HoloLens und Mixed Reality Toolkit mit ihrer Technik und Interaktionsweise vorstellen.
 }}\\
 
-Die HoloLens ist eine von Microsoft entwickeltes \textit{Head-Mounted Display} (HMD), das seit 2016 auf dem Markt ist. Das Gerät ist in der Lage, virtuelle Darstellungen in der Umgebung des Trägers zu verankern und anzuzeigen. Abbildung \ref{img:hololens} zeigt die Brille in der Standardausführung. Die technischen Eigenschaften und genutzten Techniken des HMDs bringen verschiedene Implikationen und Einschränkungen für Anwendungen auf der HoloLens mit sich. Daher soll im Folgenden auf die technischen Aspekte näher eingegangen werden.\\
+Die HoloLens ist ein von Microsoft entwickeltes \textit{Head-Mounted Display} (HMD), das seit 2016 auf dem Markt ist. Das Gerät ist in der Lage, virtuelle Darstellungen in der Umgebung des Trägers zu verankern und anzuzeigen. Abbildung \ref{img:hololens} zeigt die Brille in der Standardausführung. Die technischen Eigenschaften und genutzten Techniken des HMDs bringen verschiedene Implikationen und Einschränkungen für Anwendungen auf der HoloLens mit sich. Daher soll im Folgenden auf die technischen Aspekte näher eingegangen werden.\\
 
 \begin{figure}[h!]
 	\centering
@@ -47,7 +58,7 @@ Bei dem Device handelt es sich um einen eigenständigen Computer, auf dem eine s
 \textbf{Die Hardware}\\
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.9\textwidth]{images/hololens_tech.jpg}
+	\includegraphics[width=0.9\textwidth]{images/hololens_tech.png}
 	\caption{Die Sensorik der HoloLens (Quelle: Microsoft)}
 	%https://docs.microsoft.com/en-us/windows/mixed-reality/hololens-hardware-details
 	\label{img:hololens_tech}
@@ -102,16 +113,35 @@ Um die exakte Position und Ausrichtung der HoloLens nachzuverfolgen kommt außer
 
 
 \textbf{Die Software und Interaktion}\\
+Auf der HoloLens läuft eine spezielle Version von Windows 10: Windows 10 Holographic. Diese benötigt weniger Resourcen im Vergleich zu einem herkömmlichen PC und hat daher auch einen eingeschränkten Funktionsumfang. Anwendungen werden in Form von UWP Apps bereitgestellt. Hier unterstützt Microsoft die Entwicklung mit Unity und stellt entsprechende Toolkits zur Verfügung.\\
+
+Die Steuerung durch den Nutzer erfolgt auf drei verschiedene Arten:
 \begin{itemize}
-	\item Windows 10 Holographic und UWP Apps
-	\item Gesten- und Spracherkennung von einigen Handgesten bzw. englischen Wörtern inbegriffen
-	\item Raumerkennung und räumliches Verständnis vorhanden
-	\item Mixed Reality Toolkit mit wichtigen Funktionen und Beispielen
-	\item Entwicklung mit Unity unterstützt
+	\item Handgesten
+	\item Sprachbefehle
+	\item Externe Eingabegeräte (Controller, Maus, Tastatur, etc.)
 \end{itemize}
 
+Erstere werden von der HoloLens automatisch erkannt und an die Anwendung in Form von Events weitergegeben, auf welche dann reagiert werden kann. Hier sind aktuell verschiedene Klick-Gesten zu nennen, durch die bekannte Mausfunktionen wie Klick, Click-and-Hold, Doppelklick und Drag-and-Drop abgebildet werden. Der Cursor orientiert sich dabei an der aktuellen Blickrichtung: Es wird automatisch das Objekt angeklickt, das als erstes von einer zentralen, vorwärts gerichteten Linie getroffen würde. Außerdem gibt es eine spezifische Handgeste zum aufrufen des Hauptmenüs.\\
 
-\textbf{Implikationen für Anwendungsdesign (kurz)}\\
+Darüber hinaus nimmt die HoloLens englische Wörter als Sprachbefehle an, die sich auch kombinieren lassen. So kann eine Anwendung die Phrase "Hello World" als Keyword registrieren und dann darauf reagieren. Über Bluetooht lassen sich weitere Eingabegeräte anschließen: Den mit der HoloLens mitgelieferten Klicker, der die Klick-Geste ersetzen kann, aber auch eine Tastatur oder ein Controller lassen sich nutzen.\\
+
+\textit{Das Mixed Reality Toolkit}\\
+Das \textit{Mixed Reality Toolkit} (MRTK) ist ein quelloffenes Toolkit, das elementare Funktionen für die Entwicklung von Mixed Reality Anwendungen, insbesondere auch für die HoloLens, bereitstellt. Dazu gehört beispielsweise ein Objekt, das den zuvor genannten Cursor implementiert, aber auch Funktionen, die das Spatial Mapping auswerten. Für die Entwicklung mit Unity gibt es das Toolkit als Unitypackage, das unter anderem folgende Features bereitstellt:
+
+\begin{itemize}
+	\item Kameraobjekt mit den korrekten Einstellungen für die HoloLens
+	\item Stabilisiertes Cursorobjekt mit Animationen für verschiedene Klicks
+	\item Manager-Objekte, die Steuerung von Inputs und des Spatial Mappings erlauben
+	\item Skripte für Standard Interaktionen wie Drag-and-Drop und Skalierung
+	\item Für HoloLens angepasste Materialien und Shader
+	\item Hilfsfunktionen wie z.B. eine FPS Anzeige oder mathematische Funktionen
+\end{itemize}
+
+Für die Entwicklung mit dem Toolkit und der HoloLens existiert ein umfassendes Repertoire aus Dokumentation, Beispielen, Guidelines, Einführungen und Hinweisen.\\
+
+
+\textbf{Implikationen für Anwendungsdesign}\\
 Genannte technische Details haben Auswirkung auf Nutzung und Design von Anwendungen
 \begin{itemize}
 	\item Stark spiegelnde oder transparente Materialien ungünstig für das Tracking
