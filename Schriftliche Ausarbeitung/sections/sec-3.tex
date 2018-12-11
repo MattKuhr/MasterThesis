@@ -16,35 +16,51 @@
 		%\end{itemize}
 }}
 
-\subsection{Problemstellung}
+\subsection{Anforderungen}
 \label{sec-3-1}
+Anforderungen an die Anwendung\\
+
+\textit{Darzustellende Informationen:}
 \begin{itemize}
-	\item HoloLens Technik und Plattform mit eigenen Capabilities und Requirements
-	\item Problem: Wie kann HoloLens beim Versuch Helmholtzspulen eingesetzt werden?
-	\subitem Was soll dargestellt werden?
-	\subitem Wie soll es dargestellt werden?
-	\subitem Wie soll damit interagiert werden?
+	\item Magnetfeld von Erde und Spule
+	\subitem Stärke
+	\subitem Richtung
+	\subitem Homogenität
+	\subitem Inhomogenität am Rand der Spule andeuten (Optional)
+	\item Stromfluss durch die Spule
+	\subitem Richtung
+	\subitem Kennzeichnung von Plus und Minus
+	\subitem Stärke (Optional)
+	\item Kompass
+	\item Weitere Informationen zum Versuchsaufbau
 \end{itemize}
 
-\subsection{Anforderungen}
-\label{sec-3-2}
-Anforderungen an die Anwendung
+\textit{Anforderungen:}
 \begin{itemize}
-	\item Homogenen Teil des Magnetfeldes schematisch darstellen
-	\subitem der Erde
-	\subitem der Spule
-	\item Stromfluss darstellen
-	\item Kräftevektoren darstellen
-	\item Einzelne Darstellungen durch Interaktion ein/ausblenden
+	\item Darstellungen müssen physikalisch korrekt und interpretierbar sein
+	\item Nutzer darf nicht in seiner Interaktion mit dem Versuchsaufbau und relevanten Materialien eingeschränkt werden
+	\item Sicherheitsrelevante Aspekte beachten
 \end{itemize}
 
 Technische Randbedingungen durch die Brille im Zusammenhang mit Anwendungsfall
 \begin{itemize}
 	\item Distanz, Größe und Geschwindigkeit der virtuellen Objekte, passt hier aufgrund Größe der Spulen
-	\item Keine Störung der Brillen-Hardware (z.B. durch zusätzliches Infrarotlicht)
-	\item Performance Limitierung, also z.B. keine Echtzeit-Berechnung der Magnetfelder
+	\item Keine Störung der Brillen-Hardware (z.B. durch starkes Magnetfeld)
+	\item Performance Limitierung, also z.B. keine Echtzeit-Berechnung komplexer Magnetfelder
 	\item FoV Limitierung muss beachtet werden
+	\item Clutter
 	\item Transparenz hängt von Farbe und Hintergrund ab
 	\item ....
+\end{itemize}
+
+\subsection{Problemstellung}
+\label{sec-3-2}
+Zwei Aspekte: Anforderungen von der physikalischen und der technischen Seite
+
+Problem: Anforderungen und technische Möglichkeiten sowie Einschränkungen zusammenbringen und eine Lösung entwickeln
+\begin{itemize}
+	\item Was soll dargestellt werden? (Was soll nicht dargestellt werden?)
+	\item Wie soll es dargestellt werden?
+	\item Wie soll damit interagiert werden?
 \end{itemize}
 

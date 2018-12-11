@@ -1,4 +1,4 @@
-\section{Konzept Prinzipieller Lösungsansatz}
+\section{Design}
 \label{sec-4}
 \fbox{
 	\parbox{\linewidth}{
@@ -16,13 +16,18 @@
 
 Idee:
 \begin{itemize}
-	\item Position der Spulen mit optischem Marker bestimmen
-	\item Homogenen Teil des Magnetfeldes durch Pfeile repräsentieren
-	\item Pfeile räumlich in die Spulen einbetten
-	\item Stromfluss durch sich bewegende 2D Elektronen-Icons auf Spulen darstellen
-	\item Mehrere Modi mit jeweils unterschiedlichen dargestellten Objekten
-	\item Menu per Click-and-Hold Geste aufrufbar
-	\item Optional auch Sprachsteuerung möglich
-	\item Kurze, optionale Einführung in Gesten
+	\item Magnetfeld als räumlich in die Spule eingebettete, dreidimensionale Geometrie anzeigen
+	\item Einbettung durch Verdeckungsberechnung von realer Spule und virtueller Geometrie verbessern
+	\item Zwei verschiedene schematische Darstellungen für Magnetfeld anbieten: Vektor-Modell und Feldlinien-Modell
+	\item Sensordaten in Echtzeit an HoloLens übermitteln und Geometrie ad-hoc berechnen
+	\item Statusinformationen als Text-UI Elemente anzeigen
+	\item Stromfluss durch 2D Geometrie, verankert an den beiden Spulen-Teilen, visualisieren
+	\item Eingebetteter 3D-Kompass mit Markierungen anzeigen
+\end{itemize}
+
+Beschreiben: 
+\begin{itemize}
+	\item Wie nutzt das Konzept die Möglichkeiten der HoloLens und wie navigiert es um technische Einschränkungen herum?
+	\item Wie bedient das Design die Anforderungen?
 \end{itemize}
 
