@@ -1,0 +1,69 @@
+\documentclass{beamer}
+\providecommand\insertframetitle{}
+
+\usepackage{ngerman}
+\usepackage{environ}
+\usepackage{graphicx}
+\usepackage[tikz]{bclogo}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{multimedia}
+\usepackage{hyperref}
+\usepackage{array,multirow,multicol}
+\usetikzlibrary{calc}
+\usepackage[utf8]{inputenc}
+\usepackage[overlay,absolute]{textpos}
+\usepackage{xpatch}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{wrapfig}
+\usepackage[font=scriptsize,labelfont=bf]{caption}
+
+
+\usepackage[style=alphabetic,sortlocale=de_DE,url=false,natbib=true,backend=bibtex]{biblatex}
+\beamertemplatenavigationsymbolsempty
+\makeatletter
+\xpatchcmd{\beamer@part}{\Hy@writebookmark{\the\c@section}{#1}{Outline\the\c@part}{1}{toc}}{}{}{}
+\newcommand{\srcsize}{\@setfontsize{\srcsize}{5pt}{5pt}}
+\usepackage[uni, footuni, headframelogo]{./unirostock/beamerthemeRostock}
+\usepackage{graphicx}
+\usepackage{multimedia}
+\footinstitute{Institut für Informatik}
+
+\addbibresource{bibliography.bib}
+
+\title{Entwicklung von 3D-Darstellungen mit der HoloLens zur Unterstützung der Vermittlung physikalischer Inhalte}
+\subtitle{Zwischenverteidigung der Masterarbeit}
+\author{Matthias Kuhr}
+\date{\today}
+
+\makeatletter
+\makeatother
+\headLogoTop{standard} % Main-Logo (``hafen'' or ``standard'')
+%\secondHeadLogoTop{20}{dbis_logo.jpg} % Optional: Image for a second logo in the header
+%\showNaviSymbols % show Navi-symbols in the footer
+\showNaviDots %show Navi-Dots in the header
+\withParts %toogle Pagenumbering with parts on
+%\printmode{handout} % Remove decoration
+\begin{document}
+{
+	\setbeamertemplate{footline}[titlewithoutnumber] %hg%no numbers on first page
+	\maketitle
+}
+
+%{ 
+%\setbeamertemplate{footline}[titlewithoutnumber] %hg%no numbers on first page
+%\begin{frame}{Gliederung}
+%\begin{enumerate}
+%	\item Einleitung und Zielstellung
+%	\item Technischer Hintergrund
+%	\item Strategien und Lösungsansätze für das Verteilungsproblem
+%	\item Ergebnisse einer praktischen Umsetzung
+%	\item Zusammenfassung und Ausblick
+%\end{enumerate}
+%\end{frame}
+%}
+
+\input{section/main.tex}
+
+\end{document}
