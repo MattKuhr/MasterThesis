@@ -18,6 +18,14 @@
 \usepackage{array}
 \usepackage{wrapfig}
 \usepackage[font=scriptsize,labelfont=bf]{caption}
+\usepackage{fancyhdr}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{gensymb}
+
+\setlist[itemize,1]{label=$\bullet$, itemsep=-1mm}
+\setlist[itemize,2]{label=$\diamond$, topsep=0pt, itemsep=-1mm}
+
 
 
 \usepackage[style=alphabetic,sortlocale=de_DE,url=false,natbib=true,backend=bibtex]{biblatex}
@@ -64,6 +72,9 @@
 %\end{frame}
 %}
 
-\input{section/main.tex}
+%\input{section/main.tex}
+\input{section/background.tex}
+\input{section/requirements.tex}
+\input{section/design.tex}
 
 \end{document}
