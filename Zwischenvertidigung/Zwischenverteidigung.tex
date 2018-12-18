@@ -22,6 +22,7 @@
 \usepackage{enumerate}
 \usepackage{enumitem}
 \usepackage{gensymb}
+\usepackage{setspace}
 
 \setlist[itemize,1]{label=$\bullet$, itemsep=-1mm}
 \setlist[itemize,2]{label=$\diamond$, topsep=0pt, itemsep=-1mm}
@@ -53,10 +54,14 @@
 \showNaviDots %show Navi-Dots in the header
 \withParts %toogle Pagenumbering with parts on
 %\printmode{handout} % Remove decoration
+\bibliography{bibliography.bib}
+
 \begin{document}
 {
 	\setbeamertemplate{footline}[titlewithoutnumber] %hg%no numbers on first page
 	\maketitle
+	
+	\nocite{Zimmer17,Milgram94}
 }
 
 %{ 

@@ -21,16 +21,26 @@ Einleitung!
 	\item Nutzer bewegt sich simultan durch reale und virtuelle Szene
 	\pause
 	\item Genaue Bestimmung von Position und Ausrichtung im Raum durch Sensoren: \textit{Inside-Out-Tracking}
+	\pause
+	\item Interaktion über Gesten und Sprache
 \end{itemize}	
 \end{frame}
 
 \begin{frame}[fragile]{}
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.75\textwidth]{images/HoloLens_Motorcycle.jpg}
-	\setlength{\abovecaptionskip}{5pt plus 5pt minus 2pt}
-	\caption*{Quelle: Digitaltrends}
+	\includegraphics[width=0.5\textwidth]{images/hololens.jpg}
 \end{figure}
+\begin{itemize}
+	\pause
+	\item \textit{See-Through, Color Sequential} Display, stereoskopisch, Zwei 16:9 HD Bilder, 32\degree Field of View, 60 Hz Bildwiederholrate hochskaliert auf 240 Hz, Akkomodation der Augen fest bei 2 m
+	\pause
+	\item \textit{Inside-Out Tracking} über Tiefenkamera (Infrarot), Stereo-Kameras und Inertialmesssystem (IMU)
+	\pause
+	\item Stand-Alone Device, 1 GHz CPU, 1 GHz HPU, 2 GB RAM, 1 GB HPU RAM, passiv gekühlt, Bluetooth, WiFi
+	\pause
+	\item Interaktion über Handgesten und englische Sprachkommandos, Cursor = vorwärtsgerichteter Raycast im Zentrum des Sichtfeldes
+\end{itemize}	
 \end{frame}
 
 \part{State of the Art}
@@ -67,8 +77,20 @@ Einleitung!
 
 \part{Anwendungsfall: Helmholtz-Spulen}
 \label{part:physics}
-\begin{frame}[fragile]{}
-\begin{center}
-	\includegraphics[width=0.5\textwidth]{images/Helmholtz.jpg}	
-\end{center}
+\begin{frame}[fragile]{Experiment: Bestimmung des Erdmagnetfeldes}
+\begin{minipage}{0.5\textwidth}
+	{\setstretch{1.0}
+\begin{itemize}[itemsep=1mm]
+	\item[$1.$] Kompass ausrichten lassen
+	\item[$2.$] Spule orthogonal zur Nord-Süd-Achse aufstellen
+	\item[$3.$] Stromfluss erhöhen, bis Kompassnadel um 45\degree ausgelenkt ist
+	\item[$4.$] Flussdichte mit Formel aus Stromstärke und Spuleneigenschaften berechnen
+\end{itemize}
+}
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{images/Magnetfeld-Helmholtzspule.jpg}
+	\tiny Magnetfeld einer Helmholtz-Spule in der X-Z-Ebene. Überlagerte Darstellung von Vektorfeld und Feldlinien. Quelle: Wikipedia.
+\end{minipage}
 \end{frame}

@@ -55,35 +55,35 @@
 
 \part{Technische Seite}
 \label{part:tech}
-
-\begin{frame}[fragile]{Eigenschaften der HoloLens}
-\begin{itemize}
-\item \textit{See-Through Display}, stereoskopisch, Zwei 16:9 HD Bilder, 32\degree Field of View, \textit{Color Sequential Display}, 60 Hz Bildwiederholrate hochskaliert auf 240 Hz, Akkomodation der Augen fest bei 2 m
-\pause
-\begin{itemize}
-\item Für Objekte: Größe, Geschwindigkeit, Farbe, Distanz zur Kamera
-\pause
-\item Schwarz = Transparent, kein fester Hintergrund, Darstellungen überdecken Hintergrund, Helligkeit im Raum beeinflusst Darstellung
-\end{itemize}
-\pause
-\item \textit{Inside-Out Tracking} über Tiefenkamera (Infrarot), Stereo-Kameras und Inertialmesssystem (IMU)
-\begin{itemize}
-\pause
-\item 60 FPS stabil halten, stark spiegelnde oder transparente Oberflächen vermeiden, mögliche Einflüsse auf die Sensoren beachten
-\end{itemize}
-\end{itemize}
+\begin{frame}[fragile]{Möglichkeiten der HoloLens}
+\begin{minipage}{0.5\textwidth}
+	{\setstretch{1.0}
+		\begin{itemize}[itemsep=1mm]
+			\item Holografische Darstellungen
+			\item Raumverständnis
+			\item Raumklang
+			\item Interaktion
+			\item Softwareunterstützung
+		\end{itemize}
+	}
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+	\includegraphics[width=0.9\textwidth]{images/Spatial_Understanding.png}
+	\includegraphics[width=0.9\textwidth]{images/HoloLens_Factory_Floor.jpg}
+\end{minipage}
 \end{frame}
 
-\begin{frame}[fragile]{Eigenschaften der HoloLens}
+\begin{frame}[fragile]{Anforderungen aus technischen Gegebenheiten}
 \begin{itemize}
-\item Stand-Alone Device, 1 GHz CPU, 1 GHz HPU, 2 GB RAM, 1 GB HPU RAM, passiv gekühlt
-\begin{itemize}
+\item Größe, Geschwindigkeit, Farbe, Distanz zur Kamera von Objekten
 \pause
-\item Strenges Performance Limit, keine rechenintensiven Anwendungen möglich, Akkulaufzeit, Qualitätseinschränkungen bei Mixed Reality Capture, etc.
-\end{itemize}
+\item Zusammenspiel der Darstellungen mit der Umgebung beachten
 \pause
-\item Interaktion über Handgesten und Sprache, Cursor = vorwärtsgerichteter Raycast im Zentrum des Sichtfeldes
-\item Usability und UX Einschränkungen bzw. Empfehlungen
+\item Stabilität der Hologramme gewährleisten
+\pause
+\item 60 FPS stabil halten, stark spiegelnde oder transparente Oberflächen vermeiden, mögliche Einflüsse auf die Sensoren beachten
+\pause
+\item Usability und UX Empfehlungen beachten
 \end{itemize}
 \end{frame}
 
