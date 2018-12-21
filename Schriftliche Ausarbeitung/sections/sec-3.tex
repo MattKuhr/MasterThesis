@@ -20,19 +20,35 @@
 \label{sec-3-1}
 Anforderungen an die Anwendung\\
 
+\subsubsection{Was - Physik}
+
 \textit{Darzustellende Informationen:}
 \begin{itemize}
 	\item Magnetfeld von Erde und Spule
-	\subitem Stärke
-	\subitem Richtung
-	\subitem Homogenität
-	\subitem Inhomogenität am Rand der Spule andeuten (Optional)
+	\begin{itemize}
+		\item Stärke
+		\item Richtung
+		\item Homogenität
+		\item Inhomogenität am Rand der Spule andeuten (Optional) 
+	\end{itemize}
 	\item Stromfluss durch die Spule
-	\subitem Richtung
-	\subitem Kennzeichnung von Plus und Minus
-	\subitem Stärke (Optional)
+	\begin{itemize}
+		\item Richtung
+		\item Kennzeichnung von Plus und Minus
+		\item Stärke (Optional) 
+	\end{itemize}
 	\item Kompass
-	\item Weitere Informationen zum Versuchsaufbau
+	\begin{itemize}
+		\setlength{\itemsep}{-0.25em}
+		\item Nordrichtung
+		\item Grobe Auslenkung der Nadel
+	\end{itemize}
+	\item Weitere Informationen (Optional)
+	\begin{itemize}
+		\item Windungszahl der Spule
+		\item Durchmesser und Abstand der Spulen
+		\item Numerische Werte und Informationen (z.B. Fließt aktuell Strom, angelegte Stromstärke, angenommene Stärke des Erdmagnetfeldes, systematischer und zufälliger Fehler, etc.)
+	\end{itemize}
 \end{itemize}
 
 \textit{Anforderungen:}
@@ -42,15 +58,15 @@ Anforderungen an die Anwendung\\
 	\item Sicherheitsrelevante Aspekte beachten
 \end{itemize}
 
+\subsubsection{Wie - Technische Seite}
+
 Technische Randbedingungen durch die Brille im Zusammenhang mit Anwendungsfall
 \begin{itemize}
-	\item Distanz, Größe und Geschwindigkeit der virtuellen Objekte, passt hier aufgrund Größe der Spulen
-	\item Keine Störung der Brillen-Hardware (z.B. durch starkes Magnetfeld)
-	\item Performance Limitierung, also z.B. keine Echtzeit-Berechnung komplexer Magnetfelder
-	\item FoV Limitierung muss beachtet werden
-	\item Clutter
-	\item Transparenz hängt von Farbe und Hintergrund ab
-	\item ....
+	\item Größe, Geschwindigkeit, Farbe, Distanz zur Kamera von Objekten
+	\item Zusammenspiel der Darstellungen mit der Umgebung beachten
+	\item Stabilität der Hologramme gewährleisten
+	\item 60 FPS stabil halten, stark spiegelnde oder transparente Oberflächen vermeiden, mögliche Einflüsse auf die Sensoren beachten
+	\item Usability und UX Empfehlungen beachten
 \end{itemize}
 
 \subsection{Problemstellung}
