@@ -6,6 +6,7 @@
 \usepackage{graphicx}
 \usepackage{longtable}
 \usepackage{float}
+\usepackage{bigfoot}
 %\usepackage{wrapfig}
 \usepackage{rotating}
 %\usepackage[normalem]{ulem}
@@ -66,6 +67,10 @@
 \addbibresource{bibliography.bib}
 \newcommand{\sectionbreak}{\clearpage}
 \renewcommand{\lstlistingname}{Codeausschnitt}% Listing -> Algorithm
+
+\let\OLDitemize\itemize
+\renewcommand\itemize{\OLDitemize\addtolength{\itemsep}{-5pt}}
+
 \input{include/titelseite}
 \pagenumbering{roman}
 \usepackage{setspace}

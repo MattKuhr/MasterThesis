@@ -9,14 +9,8 @@
 		Begriffsklärung und Einordnung von AR,MR,VR in das Virtual Continuum. Wichtig für die Einordnung von MR in Education in Kap. \ref{sec-2-2}.\\[6px]
 		\textit{Inhalte:}	
 		\begin{itemize}
+			\setlength{\itemsep}{-5pt}
 			\item Virtual Continuum erklären und AR, AV, VR einordnen
-		\end{itemize}
-		
-		\textit{Wichtige Literatur:}	
-		\begin{itemize}
-			\item A taxonomy of mixed reality visual displays \cite{Milgram94}
-			\item A survey of augmented reality \cite{Azuma97}
-			\item Augmented Reality: Where we will all live \cite{Peddie17}
 		\end{itemize}
 }}
 
@@ -33,12 +27,13 @@ An dieser Stelle sei erwähnt, dass sich auch andere Interpretationen des MR-Beg
 
 Beim Begriff der \textit{Augmented Reality} (AR), der ebenfalls kurz definiert werden soll, folgt diese Arbeit der gängigen Definition von Ronald T. Azuma \cite{Azuma97}. Dabei werden unter AR Techniken zusammengefasst, die es dem Nutzer erlauben, die reale Welt zu sehen, welche überlagerte oder eingebettete virtuelle Objekte enthält. Dafür hat eine Technik drei Charakteristiken aufzuweisen, sie:
 \begin{enumerate}
+	\setlength{\itemsep}{-5pt}
 	\item Kombiniert reales und virtuelles
 	\item Ist interaktiv (in Echtzeit)
 	\item Steht in einem dreidimensionalem, räumlichen Zusammenhang
 \end{enumerate}
 
-Entsprechend der zuvor angesprochenen Variationen im Verständnis von Mixed Reality gibt es Diskussionen darüber, wie die HoloLens zu klassifizieren ist. Microsoft selbst ordnet sie als MR Gerät ein. Andere argumentieren, die Möglichkeiten der Brille seinen mit dem Begriff der Augmented Reality bereits abgedeckt. Peddie beispielsweise schreibt, dass ``Microsoft jedoch, möglicherweise aus Gründen des Marketing und der besseren Produktabgrenzung, darauf besteht, sie sei als MR Device einzuordnen''\footnote{Zitat frei aus dem Englischen übersetzt.} \cite{Peddie17}.\\
+Entsprechend der zuvor angesprochenen Variationen im Verständnis von Mixed Reality gibt es Diskussionen darüber, wie die HoloLens zu klassifizieren ist. Microsoft selbst ordnet sie als MR Gerät ein. Andere argumentieren, die Möglichkeiten der Brille seinen mit dem Begriff der Augmented Reality bereits abgedeckt. Peddie beispielsweise schreibt, dass ``Microsoft jedoch, möglicherweise aus Gründen des Marketing und der besseren Produktabgrenzung, darauf besteht, sie sei als MR Device einzuordnen'' \footnote{Zitat frei aus dem Englischen übersetzt.} \cite{Peddie17}.\\
 
 Da diese Arbeit sich am MR Begriff von Milgram orientiert und mit der HoloLens unterschiedlich stark immersive Anwendungen möglich sich, wird die HoloLens im Folgenden allgemein als MR Device bezeichnet.
 
@@ -128,6 +123,7 @@ Auf der HoloLens läuft eine spezielle Version von Windows 10: Windows 10 Hologr
 
 Die Steuerung durch den Nutzer erfolgt auf drei verschiedene Arten:
 \begin{itemize}
+	\setlength{\itemsep}{-5pt}
 	\item Handgesten
 	\item Sprachbefehle
 	\item Externe Eingabegeräte (Controller, Maus, Tastatur, etc.)
@@ -142,6 +138,7 @@ Darüber hinaus nimmt die HoloLens englische Wörter als Sprachbefehle an, die s
 Das \textit{Mixed Reality Toolkit} (MRTK) ist ein quelloffenes Toolkit, das elementare Funktionen für die Entwicklung von Mixed Reality Anwendungen, insbesondere auch für die HoloLens, bereitstellt. Dazu gehört beispielsweise ein Objekt, das den zuvor genannten Cursor implementiert, aber auch Funktionen, die das Spatial Mapping auswerten. Für die Entwicklung mit Unity gibt es das Toolkit als Unitypackage, das unter anderem folgende Features bereitstellt:
 
 \begin{itemize}
+	\setlength{\itemsep}{-5pt}
 	\item Kameraobjekt mit den korrekten Einstellungen für die HoloLens
 	\item Stabilisiertes Cursorobjekt mit Animationen für verschiedene Klicks
 	\item Manager-Objekte, die Steuerung von Inputs und des Spatial Mappings erlauben
@@ -154,25 +151,17 @@ Für die Entwicklung mit dem Toolkit und der HoloLens existiert ein umfassendes 
 
 
 \textbf{Implikationen für Anwendungsdesign}\\
-Die technischen Eigenschaften der HoloLens haben Auswirkung auf Design und Nutzung von Anwendungen. Dazu gehören technisch bedingte Einschränkungen für Anwendungsszenarien, auf die hier kurz eingegangen werden soll.\\
+Die technischen Eigenschaften der HoloLens haben Auswirkung auf Design und Nutzung von Anwendungen. Dazu gehören technisch sowohl bedingte Einschränkungen als auch zu berücksichtigende Aspekte für die Usability und Nutzererfahrung. Im Folgenden soll exemplarisch auf ausgewählte solcher Zusammenhänge hingewiesen werden.
 
 \vspace{4px}
 \textit{Einschränkungen durch das Tracking}\\
-Damit das Tracking nicht behindert wird, gilt es vor allem folgendes zu vermeiden:
-\begin{itemize}
-	\item Große Mengen von stark spiegelnden oder transparenten Materialien in der Umgebung wie z.B. Glashaus
-	\item Sehr große Räume, bei denen die Brille zu weit weg von einer Wand oder anderen Orientierungspunkten genutzt wird, z.B. Turnhalle
-	\item Anwendung im Freien oder in einem Fahrzeug
-	\item Quellen von Infrarot-Licht und Magnetfeldern
-	\item Sehr stark oder sehr schlecht beleuchtete Räume
-\end{itemize}
+Ein wichtiger Punkt ist, das Tracking nicht zu behindern, da die Darstellungen andernfalls nicht korrekt im Raum positioniert werden können. Für die Stereo- und Tiefenkamera sind sehr dunkle und transparente Materialien problematisch, da hier kaum (Infrarot-) Licht reflektiert wird und so entsprechende Gegenstände nicht erkannt werden. Spiegelnde Materialien sind daher ebenfalls ungünstig. Darüber hinaus ist es wichtig, dass die Kamerasensoren genügend feste Ankerpunkte im Raum ausmachen können. Ungünstig sind daher z.B. zu viele sich bewegende Personen im unmittelbaren Umfeld der HoloLens.\\
 
-\vspace{4px}
+
 \textit{Einschränkungen durch die Hardware}\\
 Die Hardwareressourcen der HoloLens stellen eine weitere Limitierung für Anwendungen dar. Im Gegensatz zu aktuellen VR-Brillen (z.B. Oculus Rift, HTC Vice, PlayStation VR) nutzt die HoloLens keine externen, leistungsfähigen CPU- und Grafikeinheiten für die Bildberechnung. Dennoch sind zwei HD-Bilder mit 60 Hz auszugeben. Anwendungen sollten daher möglichst ressourcenschonend sein. Auf rechenintensive Operationen wie z.B. Schattenberechnungen oder Kantenglättung sollte meist verzichtet werden.\\
 
-Dabei ist es von besonderer Bedeutung, dass die Anwendung möglichst konstant 60 Bilder pro Sekunde ausgibt. Um die Hologramme im Raum stabil und ohne Ruckler oder Zittern anzuzeigen, müssen selbst feinste Kopfbewegungen ausgeglichen werden. Dazu nutzt die HoloLens spezielle, KI basierte Verfahren.\\
-
-Bevor eine Szene in die Render-Pipeline geht, trifft die Brille anhand der Sensordaten eine Vorhersage darüber, in welcher Position und Ausrichtung sich die Brille befinden wird, wenn das zu errechnende Bild dargestellt wird. Anhand dieser Schätzung wird die Kamera-Position und -Ausrichtung für die Szene festgelegt und anschließend gerendert.\\
-
-Eine längere oder variierende Renderzeit bedeutet damit auch eine unzuverlässigere Schätzung. Das kann zu instabil wirkenden Darstellungen führen, z.B. in Form von Zittern oder Ruckeln. Deshalb empfiehlt Microsoft, die Framerate von 60 FPS stets aufrecht zu erhalten.
+Dabei ist es von besonderer Bedeutung, dass die Anwendung möglichst konstant 60 Bilder pro Sekunde ausgibt. Um die Hologramme im Raum stabil und ohne Ruckler oder Zittern anzuzeigen, müssen selbst feinste Kopfbewegungen ausgeglichen werden. Dazu nutzt die HoloLens ein spezielles Verfahren:
+\par
+\noindent\hspace*{5mm}
+Bevor eine Szene in die Render-Pipeline geht, trifft die Brille anhand der Sensordaten eine Vorhersage darüber, in welcher Position und Ausrichtung sich die Brille befinden wird, wenn das zu errechnende Bild dargestellt wird. Anhand dieser Schätzung wird die Kamera-Position und -Ausrichtung für die Szene festgelegt und anschließend gerendert. Eine längere oder variierende Renderzeit bedeutet damit auch eine unzuverlässigere Schätzung. Das kann zu instabil wirkenden Darstellungen führen, z.B. in Form von Zittern oder Ruckeln. Deshalb empfiehlt Microsoft, die Framerate von 60 FPS stets aufrecht zu erhalten.
