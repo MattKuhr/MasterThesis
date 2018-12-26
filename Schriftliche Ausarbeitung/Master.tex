@@ -42,7 +42,8 @@
 %url=false,doi=true,eprint=false]{biblatex}
 \usepackage{standalone}
 \usepackage{array,multirow,multicol}
-\usepackage{enumerate}
+%\usepackage{enumerate}
+\usepackage{enumitem}
 %\usepackage{tikz}
 %\usepackage{tkz-berge}
 %\usetikzlibrary{arrows, petri, topaths}
@@ -68,8 +69,8 @@
 \newcommand{\sectionbreak}{\clearpage}
 \renewcommand{\lstlistingname}{Codeausschnitt}% Listing -> Algorithm
 
-\let\OLDitemize\itemize
-\renewcommand\itemize{\OLDitemize\addtolength{\itemsep}{-5pt}}
+%\let\OLDitemize\itemize
+%\renewcommand\itemize{\OLDitemize\addtolength{\itemsep}{-5pt}}
 
 \input{include/titelseite}
 \pagenumbering{roman}

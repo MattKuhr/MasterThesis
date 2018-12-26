@@ -1,71 +1,75 @@
 \section{Problemstellung und Requirements}
 \label{sec-3}
-\fbox{
-	\parbox{\linewidth}{
-		\textit{Ziel des Kapitels:}\\
-		Problemstellung formulieren und eingrenzen, Anforderungen herausarbeiten.\\[6px]
-		\textit{Inhalte:}
-		\begin{itemize}
-			\item Problem
-			\item Einschränkungen
-			\item Anforderungen
-		\end{itemize}
-		
-		\textit{(Optional) Literatur:}	
-		%\begin{itemize}
-		%\end{itemize}
-}}
+\begin{center}
+	\fbox{
+		\parbox{0.9\linewidth}{
+			\textit{Ziel des Kapitels:}\\
+			Anforderungen von technischer und anwendungsorientierter Seite darstellen und Problem formulieren.
+	}}\\
+\end{center}
+
+Ziel dieser Arbeit ist am konkreten Beispiel der Helmholtz-Spule zu untersuchen, wie die HoloLens in der Physik Lehre eingesetzt werden kann. Dazu betrachtet die Arbeit speziell, wie der zuvor beschriebene Versuchsaufbau mit Informationen angereichert werden kann. Aufbauend auf den im vorigen Kapiteln erarbeiteten Hintergründen formulieren die folgenden Abschnitte an die Anwendung zu stellende Anforderungen aus anwendungsorientierter sowie technischer Sicht.\\
+
+Wie kann die HoloLens für diesen Versuch konkret eingesetzt werden?\\
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\textwidth]{images/Informiertes_Design.png}
+	\caption{Informiertes Design}
+	\label{img:Informiertes_Design}
+\end{figure}
 
 \subsection{Anforderungen}
 \label{sec-3-1}
-Anforderungen an die Anwendung\\
+Die Anforderungen an eine Umsetzung kommen aus zwei Bereichen: Zum einen aus der Physik und zum anderen aus den technischen Modalitäten der HoloLens. Ein Design muss beide berücksichtigen und zusammenführen zu einer Lösung. Dabei bestimmt das Anwendungsszenario vor allem die inhaltlichen Anforderungen während die technischen Gegebenheiten eher auf das ''Wie'' der Umsetzung Einfluss nehmen. Zunächst sollen die inhaltlichen Anforderungen aufgestellt werden.
 
 \subsubsection{Was - Physik}
 
 \textit{Darzustellende Informationen:}
 \begin{itemize}
+	\setlength{\itemsep}{-5pt}
 	\item Magnetfeld von Erde und Spule
-	\begin{itemize}
+	\begin{itemize}[topsep=-0.25em]
+		\setlength{\itemsep}{-0.25em}
 		\item Stärke
 		\item Richtung
 		\item Homogenität
 		\item Inhomogenität am Rand der Spule andeuten (Optional) 
 	\end{itemize}
 	\item Stromfluss durch die Spule
-	\begin{itemize}
+	\begin{itemize}[topsep=-0.25em]
+		\setlength{\itemsep}{-0.25em}
 		\item Richtung
 		\item Kennzeichnung von Plus und Minus
 		\item Stärke (Optional) 
 	\end{itemize}
 	\item Kompass
-	\begin{itemize}
+	\begin{itemize}[topsep=-0.25em]
 		\setlength{\itemsep}{-0.25em}
 		\item Nordrichtung
 		\item Grobe Auslenkung der Nadel
 	\end{itemize}
 	\item Weitere Informationen (Optional)
-	\begin{itemize}
+	\begin{itemize}[topsep=-0.25em]
+		\setlength{\itemsep}{-0.25em}
 		\item Windungszahl der Spule
 		\item Durchmesser und Abstand der Spulen
 		\item Numerische Werte und Informationen (z.B. Fließt aktuell Strom, angelegte Stromstärke, angenommene Stärke des Erdmagnetfeldes, systematischer und zufälliger Fehler, etc.)
 	\end{itemize}
 \end{itemize}
 
-\textit{Anforderungen:}
+\textit{Nicht-funktionale Anforderungen:}
 \begin{itemize}
+	\setlength{\itemsep}{-5pt}
 	\item Darstellungen müssen physikalisch korrekt und interpretierbar sein
 	\item Nutzer darf nicht in seiner Interaktion mit dem Versuchsaufbau und relevanten Materialien eingeschränkt werden
 	\item Sicherheitsrelevante Aspekte beachten
 \end{itemize}
 
-We suggest developing MR applications that enable learners to actually see and understand the fundamental facts. Specialized sensors can measure environmental data or the current status of an experiment. Voltage and current could be directly displayed within the wires during electrical engineering classes (Beheshti et al., 2017) or heat propagation in metals within physic classes (M. P. Strzys et al., 2018). MR displays in combination with sensors allows us to extend the human vision and visualize in-depth details of learning material in place of occurrence.
-
-Once deployed, MR systems can overcome this limitation and enhance learning. In addition, interactive learning and exploring environments can be created that extend the current body of learning material. We envision interactive experiments that were not possible to realize before because of time, financial, or security constraints. For example, chemistry students could safely explore chemical reactions with hazardous elements or biology students can examine samples under an augmented micro- scope that are usually not accessible.
-
 \subsubsection{Wie - Technische Seite}
-
 Technische Randbedingungen durch die Brille im Zusammenhang mit Anwendungsfall
 \begin{itemize}
+	\setlength{\itemsep}{-5pt}
 	\item Größe, Geschwindigkeit, Farbe, Distanz zur Kamera von Objekten
 	\item Zusammenspiel der Darstellungen mit der Umgebung beachten
 	\item Stabilität der Hologramme gewährleisten

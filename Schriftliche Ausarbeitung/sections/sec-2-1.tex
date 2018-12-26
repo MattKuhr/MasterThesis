@@ -3,16 +3,19 @@
 
 \subsubsection{Mixed Reality}
 \label{sec-2-1-1}
-\fbox{
-	\parbox{\linewidth}{
-		\textit{Ziel des Kapitels:}\\
-		Begriffsklärung und Einordnung von AR,MR,VR in das Virtual Continuum. Wichtig für die Einordnung von MR in Education in Kap. \ref{sec-2-2}.\\[6px]
-		\textit{Inhalte:}	
-		\begin{itemize}
-			\setlength{\itemsep}{-5pt}
-			\item Virtual Continuum erklären und AR, AV, VR einordnen
-		\end{itemize}
-}}
+\begin{center}
+	\fbox{
+		\parbox{0.9\linewidth}{
+			\textit{Ziel des Kapitels:}\\
+			Begriffsklärung und Einordnung von AR,MR,VR in das Virtual Continuum. Wichtig für die Einordnung von MR in Education in Kap. \ref{sec-2-2}.\\[6px]
+			\textit{Inhalte:}	
+			\begin{itemize}
+				\setlength{\itemsep}{-5pt}
+				\item Virtual Continuum erklären und AR, AV, VR einordnen
+			\end{itemize}
+	}}	
+\end{center}
+
 
 \begin{figure}[h!]
 	\centering
@@ -113,7 +116,16 @@ Es handelt sich dabei um ein stereoskopisches Display, bei dem pro Auge separat 
 Um die Hologramme im Raum verankern zu können, benötigt die HoloLens Informationen über ihre exakte Position und Orientierung im Raum. Beides erarbeitet das Gerät allein aus einem Zusammenspiel der verschiedenen internen Sensoren und ist nicht auf externe Markierungen angewiesen, es handelt sich um sogenanntes \textit{Inside-Out Tracking}. Das Vorgehen lässt sich dabei in zwei Bereiche unterteilen: Erfassen der unmittelbaren Umgebung sowie Orientierung anhand der Inertialmesssysteme.\\
 
 Zum einen erstellt die HoloLens ein internes Modell der Oberflächenstruktur der Umgebung. Als Grundlage dazu dienen zum einen eine Tiefenkamera, die anhand der Time-of-Flight von ausgestrahltem Infrarotlicht die Entfernung zu nahegelegenen Oberflächen, die das Licht reflektieren, bestimmt. Zum anderen unterstützen die beiden Stereo-Kameras diese Informationen durch Triangulation von Objekten. Auf diese Weise erarbeitet die Brille ein 3D-Gitternetz, das nach und nach aktualisiert und vervollständigt wird, wenn sich der Träger im Raum bewegt. Anhand dieses sogenannten \textit{Spatial Mapping} wird ein Ankerpunkt für ein im Raum festes Koordinatensystem ausgewählt, dass der Brille als Referenzsystem dient.\\
-%TODO SPatial Mapping Screenshot einfügen
+
+%TODO
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=0.9\textwidth]{images/Spatial_Understanding.png}
+\end{minipage}\begin{minipage}{0.48\textwidth}
+\centering
+\includegraphics[width=0.9\textwidth]{images/Spatial_Understanding.png}
+\end{minipage}\\
+
 
 Um die exakte Position und Ausrichtung der HoloLens nachzuverfolgen kommt außerdem die inertiale Messeinheit zum Einsatz. Die Beschleunigungs-, Rotations- und Magnetflusssensoren ermöglichen Schlussfolgerungen zu Änderungen in Position und Orientierung über eine Zeitdifferenz. Zusammen mit den Informationen aus den optischen Verfahren leitet die Brille so ihre genaue Position und Ausrichtung ab. Darüber hinaus speichert und unterscheidet das Gerät verschiedene Räume anhand der unterschiedlichen Struktur und den dort vorhandenen WLAN Signalen.\\
 
