@@ -19,7 +19,7 @@ Ausbildung und Training sind ein wichtiges Anwendungsgebiet für Mixed Reality T
 Im ersten Schritt beleuchtet das Kapitel kurz allgemeine Erkenntnisse aus der Forschung und stellt dann bestehende Arbeiten zum Einsatz von AR in der Physik vor.
 
 \subsubsection{Einsatz von AR in der Lehre}
-In der gängigen Literatur gibt es ein zunehmendes Maß an Arbeiten zur Nutzung von erweiterter Realität in Lernanwendungen \cite{Bacca14, Ibanez18}. Gerade in den Bereichen von Naturwissenschaften und Medizin finden sich hier Beispiele. Oft wurden Anwendungen für Schüler auf Mittel- und Oberstufenniveau sowie angehende Studierende konzipiert. Dabei geht es meist darum, einen Sachverhalt zu erklären und zusätzliche Informationen anzuzeigen. In diesem Zusammenhang finden werden unter anderem Simulation und Gameification eingesetzt.\\
+In der gängigen Literatur gibt es ein zunehmendes Maß an Arbeiten zur Nutzung von erweiterter Realität in Lernanwendungen \cite{Bacca14, Ibanez18}. Gerade in den Bereichen von Naturwissenschaften und Medizin finden sich hier Beispiele. Oft wurden Anwendungen für Schüler auf Mittel- und Oberstufenniveau sowie angehende Studierende konzipiert. Dabei geht es meist darum, einen Sachverhalt zu erklären und zusätzliche Informationen anzuzeigen. In diesem Zusammenhang werden unter anderem Simulation und Gameification eingesetzt.\\
 
 Die verwendete Hard- und Software variiert dabei. Einige Arbeiten setzen auf Lösungen, die eine Webcam und einen Laptop nutzen. Mit der zunehmenden Verfügbarkeit von Smartphones und Tablets finden sich auch viele Ansätze, die ein solches Gerät nutzen. In der Kategorie der Head Mounted Displays finden sich aufgrund der mangelnden Verfügbarkeit entsprechender Devices vor allem aktuelle Arbeiten auf Basis der HoloLens. Um Darstellung im Raum zu positionieren werden typischerweise Marker-basierte Verfahren genutzt,  aber auch ortsbezogene Informationen wie z.B. eine GPS-Position finden Anwendung.\\
 
@@ -57,8 +57,9 @@ Vision-haptic visualization improves elaboration based on embodied imaging. It p
 \textit{design strategies such as enabling exploration, promoting collaboration, and ensuring immersion to create compelling learning experiences.}\cite{Knierim18}
 \end{comment}
 
+%TODO Erst aktuell, dann ältere paper oder andersherum?\\
 \subsubsection{In der Physik}
-Erst aktuell, dann ältere paper oder andersherum?\\
+Auch in der Physik finden sich in der gängigen Literatur bereits einige Ansätze, die MR-Technologie nutzen.\\
 
 \vspace{4px}
 \textit{holo.lab}\\
@@ -78,21 +79,52 @@ Die Messdaten der Infrarotkamera werden nun in Echtzeit an die HoloLens übertra
 	\item Temperaturverlauf als Graph (zweidimensionale Darstellung)
 	\item Falschfarbendarstellung über ein eingebettetes 3D-Modell, das den Metallstab überlagert
 \end{enumerate}
-Dabei hat der Nutzer die Möglichkeit, einzelne Darstellungsformen ein- und auszublenden. Die Autoren konstatieren zum Design der Anwendung:
+Dabei hat der Nutzer die Möglichkeit, einzelne Darstellungsformen ein- und auszublenden. Die Autoren schildern den Hintergrund des Designs der Anwendung wie folgt:
 \begin{quote}
 	\textit{``The main focus of this design is to visualize the invisible and thus to extend human perception to new regimes, e.g., temperature and heat, thereby strengthening the connection between theory and experiment.\\ 
 	In this realization the MR setting not only has the advantage of intrinsic contextuality, but also spatial and time contiguity which is supposed to support the learning process of the students. Moreover, the just-in-time evaluation of the data yields the possibility for the students to directly examine the process itself and the parameter involved, and immediately compare the outcome to theoretical predictions which we believe to enhance the links between theory and experiment.''}
 \end{quote}
-WO ZITIEREN? AN WELCHER STELLE?
+\begin{comment}
+%TODO WO ZITIEREN? AN WELCHER STELLE?
 \begin{quote}
 	\textit{``Under that perspective the effort to achieve possibly more exact numerical values for quantities like the thermal conductivity therefore seem to be less important in this setting. Instead, the technical support during the experimental phase will give students the possibility to thoroughly examine the relationship between cause and effect and thus deepen their physical understanding.''}
 \end{quote}
-
 \vspace{4px}
 \textit{Demo: Electrical Theories}\\
+\end{comment}
 
 \vspace{4px}
 \textit{AR in Elektrodynamik}\\
+Buchau et. al. stellen eine Arbeit vor, in der ein Verbund aus optischen Markern, Webcam, Laptop und Server genutzt wird, um Magnetfeldlinien für einen Stabmagneten und eine Helmholtz-Spule anzuzeigen. Über die optischen Marker wird die genaue Position und Ausrichtung der Objekte relativ zur Kamera bestimmt. Die Feldlinien werden dann entsprechend in das Bild der WebCam eingebettet und auf dem Laptop angezeigt. Abbildung \ref{img:paper-collection} zeigt zwei Screenshots der Anwendung.\\
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.45\textwidth]{images/Buchau09.jpg}
+	\hspace{0.05cm}
+	\includegraphics[width=0.45\textwidth]{images/Buchau09_Magnet_2.jpg}
+	\caption{\cite{Matsutomo13}}
+\end{figure}
+
+Die Berechnung der Feldlinien erfolgt mittels der Finite Elemente Methode auf einem Server. Die Feldstärke ist dabei zusätzlich über die Farbe der Feldlinien codiert. Die Einbettung der errechneten Geometrie in die realen Objekte wird neben der perspektivisch korrekten Darstellung über Verdeckung erzielt. Das geschieht mittels den realen Objekten nachmodellierten, virtuellen Objekten, die anhand der Marker mit den realen Gegenständen überlagert und ausschließlich in den Z-Buffer gerendert werden. Dadurch werden Feldlinien, die sich hinter einem Magneten oder Spulenteil befinden, nicht dargestellt.\\
+
+Die Autoren halten fest, dass Augmented Reality \textit{``eine anschauliche Methode zur Visualisierung elektromagnetischer Felder ist''}. Sowohl Lernende als auch Experten können dabei \textit{``leicht die Charakteristiken der Felder mit den realen Objekten verknüpfen''}. Die vorgestellte Anwendung zielt dabei vor allem auf den Einsatz in einem Unterrichtsraum ab, indem das Bild vom Laptop über einen Beamer für alle Teilnehmer sichtbar gemacht wird.\\
+
+\vspace{4px}
+\textit{Weitere Arbeiten}\\
+\cite{Amiraslanov18} und \cite{Javaheri18} und \cite{Matsutomo13} und \cite{Mannuss11} und \cite{Jerry10} und \cite{Kaufmann08} und \cite{Techakosit15}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.45\textwidth]{images/Amiraslanov18.png}
+	\hspace{0.05cm}
+	\includegraphics[width=0.45\textwidth]{images/Javaheri18.png}
+	\vspace{0.05cm}
+	\includegraphics[width=0.45\textwidth]{images/Matsutomo13.jpg}
+	\hspace{0.05cm}
+	\includegraphics[width=0.45\textwidth]{images/Mannuss11.jpg}
+	\caption{\cite{Amiraslanov18} und \cite{Javaheri18} und \cite{Matsutomo13} und \cite{Mannuss11}}
+	\label{img:paper-collection}
+\end{figure}
 
 \vspace{4px}
 \textit{Übersicht über ausgewählte Arbeiten}\\
@@ -112,17 +144,4 @@ WO ZITIEREN? AN WELCHER STELLE?
 		Matsutomo et. al. & WebCam & Magnetismus & Anwendung\\
 	\end{tabular}\caption{\label{tab:comparioson} Übersicht}
 \end{table}
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.45\textwidth]{images/Amiraslanov18.png}
-	\hspace{0.05cm}
-	\includegraphics[width=0.45\textwidth]{images/Javaheri18.png}
-	\vspace{0.05cm}
-	\includegraphics[width=0.45\textwidth]{images/Matsutomo13.jpg}
-	\hspace{0.05cm}
-	\includegraphics[width=0.45\textwidth]{images/Buchau09.jpg}
-	\caption{\cite{Amiraslanov18} und \cite{Javaheri18} und \cite{Matsutomo13} und \cite{Buchau09}}
-	\label{img:paper-collection}
-\end{figure}
 
