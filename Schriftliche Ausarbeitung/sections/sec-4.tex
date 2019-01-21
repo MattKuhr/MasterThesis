@@ -42,6 +42,7 @@ Löst:
 \begin{itemize}
 	\item Interaktivität und Erforschbarkeit
 	\item Einbettung
+	\item Ermöglicht überlagerung von theoretischen Ergebnissen mit realen
 \end{itemize}
 
 \textbf{Zwei MFeld Darstellungen}
@@ -49,15 +50,7 @@ Löst:
 \begin{itemize}
 	\item Nutzt Vor- und Nachteile der beiden Varianten
 	\item Anpassbarkeit
-\end{itemize}
-
-\textbf{Near Plane Fading}
-Löst: 
-\begin{itemize}
-	\item Minnimum Distanz
-	\item Behinderung bei Interaktion mit Versuchsaufbau
-	\item Ermöglicht ''Eintauchen'', reduziert Clutter
-	\item Bessere UX als Clipping
+	\item Vergleichbarkeit Theoretische vs. Experimentelle Ergebnisse
 \end{itemize}
 
 \textbf{Statusinformationen}
@@ -70,9 +63,53 @@ Löst:
 \textbf{Kompass}
 Löst: 
 \begin{itemize}
-	\item Cognitive Load
+	\item Nordrichtung ist direkt ablesbar
+	\item Theoretische Auslenken direkt ablesbar
+	\item Durch Markierungen auch 45° direkt ablesbar
+	\item Differenz zwischen theoretischer Linie und realem Kompass sehr gut zu sehen
+	\item Durch Ring außen weniger Clutter (Quelle unbekannt)
 \end{itemize}
 
+\textbf{Stromfluss-Indikatoren}
+Löst: 
+\begin{itemize}
+	\item Stromrichtung ist aus allen Perspektiven ablesbar
+	\item Richtung ist 3dimensional eingebettet
+	\item Indikatoren vermeiden Clutter, da sie auf der Spule aufliegen, und so nur Teile des Sichtfeldes einnehmenm, die von der Spule ohnehin verdeckt sind
+	\item Durch Ein/Ausblenden bei Perspektivwechsel wird die Information immer nur an dem gerade relevanten Punkt angezeigt
+\end{itemize}
+
+\textbf{Plus-Minus-Labels}
+Löst: 
+\begin{itemize}
+	\item Zeigt Plus- und Minuspole an und ergänzt so die Fluss-Indikatoren um wichtige Information
+	\item Tooltip-Style ermöglicht Lesbarkeit aus verschiedenen Positionen
+	\item Verankerung unten, außerhalb der Spule vermeidet, dass die Labels die Darstellungen des MFeldes behindern
+	\item Farbe passend zur realen Farbe gewählt für Kontinuität und Zusammenhang
+	\item Ständige Sichtbarkeit der Information nicht unbedingt notwendig, daher Verdeckung durch Spule ok, das unterstützt noch die Einbettung
+	\item Vorhandenen ToolTip-Style verwendet für Consistency
+\end{itemize}
+eher technische Richtung:
+
+\textbf{Near Plane Fading}
+Löst: 
+\begin{itemize}
+	\item Minnimum Distanz
+	\item Behinderung bei Interaktion mit Versuchsaufbau
+	\item Ermöglicht ''Eintauchen'', reduziert Clutter
+	\item Bessere UX als Clipping
+\end{itemize}
+
+\textbf{Minimum Value Fading}
+Löst: 
+\begin{itemize}
+	\item Darstellungen sind erst ab minimal Werten sinnvoll
+	\item Übergang zwischen keiner Darstellung und der Darstellung von minimal Werten über Transparenz
+	\item Dadurch erkennbarer, fließender Übergang
+	\item Konsistent für alle betroffenen Darstellungen
+	\item Transparenz wird nicht für die Abbildung von Informationen verwendet, damit es hier keine Konflikte gibt
+	\item Bessere UX als hard cut
+\end{itemize}
 
 
 
