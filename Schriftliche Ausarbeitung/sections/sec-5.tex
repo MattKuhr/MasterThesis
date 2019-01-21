@@ -29,16 +29,14 @@
 	\item Das spart Ressourcen
 \end{itemize}
 
+\textbf{Berechnungen}
+\begin{itemize}
+	\item Formel für Feldstärke, Flussdichte, Spannung
+	\item Formel für Intervall-Mapping und Abstandsberechnung
+\end{itemize}
+
 
 \subsection{Darstellung}
-\begin{itemize}
-	\item Magnetfeld Darstellung mit Vorberechnung durch XYZ
-	\item Depth Cues für 3D-Objekte
-	\subitem Spulen virtuell nachmodelliert und für Occlusion Berechnung eingefügt
-	\subitem Drop Shadows für 3D Pfeile entwickelt
-	\item Informationen zum Versuchsaufbau via ToolTips, optional einblendbar
-	\item ...
-\end{itemize}
 
 \textbf{Occlusion Berechnung}
 \begin{itemize}
@@ -47,6 +45,35 @@
 	\item Objekte werden möglichst genau über reale gelegt
 	\item Rendering erfolgt ausschließlich in den Z-Puffer, dadurch sind die realen Objekte sichtbar, die virtuellen verdecken jedoch dahinterliegende, vrituelle Objekte
 	\item Das Near Clipping Plane muss dafür jedoch sehr nah am Kameraursprung liegen, andernfalls würden weiter entfernte, virtuelle Objekte plötzlich doch vor realen Objekten angezeigt werden, sobald letztere zu nah sind und das Clipping die Objekte zur Verdeckungsberechnung vom Rendering ausschließt
+\end{itemize}
+
+\textbf{Near Plane Fading}
+\begin{itemize}
+	\item MRTK Standard Shader implementiert Fade To Black
+	\item Shader auf Fade to transparent abgeändert
+	\item Lineares Fading überall genutzt
+\end{itemize}
+
+\textbf{Kompass-Linien und Strom-Pfeile}
+\begin{itemize}
+	\item Darstellungen über 2D-Linien mit Unity's LineRenderer
+	\item Für gestrichelte Linien eine Textur mit einem weißen Kreis und transparentem Hintergrund, dabei wird die Skalierung mit Tiling auf die Länge der Linie angepasst
+	\item Strom-Pfeile haben Bilboard-Verhalten, Maßgebend ist dabei die Vorwärtsrichtung ihres Transform.
+	\item Fade-Away-Effekt verhindert zu steile Winkel, so sind immer die relevanten Pfeile sichtbar
+\end{itemize}
+
+\textbf{Textboxen}
+\begin{itemize}
+	\item Verwendung der im MRTK vorhandenen Schriftsätze
+	\item Dunkelgrauer Hintergrund verbessert Lesbarkeit, da Text vor transparentem Grund vor einigen Hintergründen schwer zu lesen ist
+	\item Dank leicht transparenter Hintergrund ist die Textbox nicht so dominant im Bild und die dahinterliegenden Objekte sind für den Nutzer noch sichtbar
+	\item Umsetzung als 3D Objekt, damit wird Stabilisierung genutzt
+\end{itemize}
+
+\textbf{Weiteres}
+\begin{itemize}
+	\item Spracherkennung über eigens gewählte, englische Keywords, Erkennung durch Microsoft's built-in Spracherkennung
+	\item Drag-and-Drop über MS HandDraggable 
 \end{itemize}
 
 \subsection{Interaktion}
