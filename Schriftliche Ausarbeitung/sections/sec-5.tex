@@ -18,7 +18,6 @@
 \end{itemize}
 
 \textbf{Client-Server Datenübertragung}
-%TODO Sequenzdiagramm erstellen
 \begin{itemize}
 	\item HoloLens erfragt Daten vom Server über HTTP GET-Requests
 	\item Asynchrone Anfragen, so wird Render-Prozess nicht blockiert
@@ -28,6 +27,13 @@
 	\item Dabei wird jedoch kein unnötiger Traffic erzeugt, wenn es keine Änderungen gibt
 	\item Das spart Ressourcen
 \end{itemize}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\textwidth]{images/Sequenzdiagramm.png}
+	\caption{Sequenzdiagramm Kommunikation}
+	\label{img:Sequenzdiagramm}
+\end{figure}
+
 
 \textbf{Berechnungen}
 \begin{itemize}
@@ -73,7 +79,7 @@
 \textbf{Weiteres}
 \begin{itemize}
 	\item Spracherkennung über eigens gewählte, englische Keywords, Erkennung durch Microsoft's built-in Spracherkennung
-	\item Drag-and-Drop über MS HandDraggable 
+	\item Drag-and-Drop über MRTK HandDraggable 
 \end{itemize}
 
 \subsection{Interaktion}

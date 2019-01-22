@@ -1,0 +1,32 @@
+title Übermittlung der Messwerte
+participant Arduino
+participant ArduinoListener-Thread
+participant Server-Thread
+participant HoloLens
+
+parallel 
+Arduino->ArduinoListener-Thread:Schreibt Wert '0.0' in serielle Schnittstelle
+ArduinoListener-Thread->Server-Thread:Notify(0.0)
+parallel off
+HoloLens->(1)Server-Thread:Request
+activate Server-Thread
+Server-Thread-->(1)HoloLens:Response(0.0)
+deactivate Server-Thread
+
+parallel
+Arduino->ArduinoListener-Thread:Schreibt Wert '0.0' in serielle Schnittstelle
+HoloLens->(1)Server-Thread:Request
+activate Server-Thread
+parallel off
+Arduino->ArduinoListener-Thread:Schreibt Wert '0.0' in serielle Schnittstelle
+
+
+parallel
+Arduino->ArduinoListener-Thread:Schreibt Wert '5.0' in serielle Schnittstelle
+ArduinoListener-Thread->Server-Thread:Notify(5.0)
+parallel off
+Server-Thread-->(1)HoloLens:Response(5.0)
+deactivate Server-Thread
+
+HoloLens->(1)Server-Thread:Request
+activate Server-Thread
