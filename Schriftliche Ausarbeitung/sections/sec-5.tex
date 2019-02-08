@@ -43,6 +43,27 @@
 
 
 \subsection{Darstellung}
+\textbf{Felddarstellung}
+\begin{itemize}
+	\item Min Force 3, Max 80, konsistent bei allen Darstellungen
+	\item Fading von 3-10
+	\item Pfeile und Linien mit ca. 3,5 cm Durchmesser
+\end{itemize}
+Feldlinien
+\begin{itemize}
+	\item Mindestens 4 (2x2) (notwendig um Homogenität zu erkennen)
+	\item Maximal 16 (4x4)
+	\item Zylindrischer Ausschnitt gewählt mit $r=2/3 * R = 10 cm$
+	\item Abstandsformel: 
+	\item Dargestellte Größe: Flussdichte
+\end{itemize}
+Vektoren
+\begin{itemize}
+	\item Mindestens 8 (2x2x2) (notwendig um Homogenität zu erkennen)
+	\item Maximal ???
+	\item Gewählte Rasterisierung:
+	\item Längenformel:
+\end{itemize}
 
 \textbf{Occlusion Berechnung}
 \begin{itemize}
@@ -50,7 +71,7 @@
 	\item 3D Mesh in Blender erstellt, 2mm größer als echte Objekte für Spielraum
 	\item Objekte werden möglichst genau über reale gelegt
 	\item Rendering erfolgt ausschließlich in den Z-Puffer, dadurch sind die realen Objekte sichtbar, die virtuellen verdecken jedoch dahinterliegende, vrituelle Objekte
-	\item Das Near Clipping Plane muss dafür jedoch sehr nah am Kameraursprung liegen, andernfalls würden weiter entfernte, virtuelle Objekte plötzlich doch vor realen Objekten angezeigt werden, sobald letztere zu nah sind und das Clipping die Objekte zur Verdeckungsberechnung vom Rendering ausschließt
+	\item Das Near Clipping Plane muss dafür jedoch sehr nah am Kameraursprung liegen, andernfalls würden weiter entfernte, virtuelle Objekte plötzlich doch vor realen Objekten angezeigt werden, sobald letztere zu nah sind und das Clipping die Objekte vom Rendering ausschließt
 \end{itemize}
 
 \textbf{Near Plane Fading}
