@@ -25,9 +25,12 @@ Wie kann die HoloLens für diesen Versuch konkret eingesetzt werden?\\
 Die Anforderungen an eine Umsetzung kommen aus zwei Bereichen: Zum einen aus der Physik und zum anderen aus den technischen Modalitäten der HoloLens. Ein Design muss beide berücksichtigen und zusammenführen zu einer Lösung. Dabei bestimmt das Anwendungsszenario vor allem die inhaltlichen Anforderungen während die technischen Gegebenheiten eher auf das ''Wie'' der Umsetzung Einfluss nehmen. Zunächst sollen die inhaltlichen Anforderungen aufgestellt werden.
 
 \subsubsection{Was - Physik}
-Bla bla bla
+Zunächst stellt sich die Frage, welche Informationen zum Versuchsaufbau über die Anwendung integriert werden sollen. Von besonderem Interesse sind hier natürlich vor allem Informationen, die für den Nutzer nicht direkt beobachtbar sind. Das betrifft in erster Linie die beiden sich überlagernden Magnetfelder von Erde und Spule mit deren Eigenschaften. Das Zusammenspiel beider Felder ist elementar für den Versuch und soll für den Anwender sichtbar gemacht werden. Weitere, nicht direkt erkennbare Eigenschaften  des Versuches sind außerdem wie die Richtung des Stromflusses durch die Spule und die physikalischen Parameter des Versuchsaufbaus.\\
 
-\textit{Darzustellende Informationen:}
+Ein weiterer interessanter Aspekt ist die Einbindung theoretischer Ergebnisse. Das ermöglicht dem Anwender direkt am Versuchsaufbau sowohl gemessene als auch berechnete Werte zu erfassen und beide miteinander zu vergleichen. Bei der Bestimmung des Erdmagnetfeldes betrifft das vor allem die Auslenkung des Kompasses, die sich in Abhängigkeit der anliegenden Stromstärke verändert. Die Magnetnadel des Kompass unterliegt dabei Faktoren wie Reibung und Trägheit, die zu Abweichungen führen können. Ein berechneter, virtueller Kompass unterliegt solchen Einschränkungen nicht und kann ergänzend zum realen Konterpart das angenommene Verhalten des Systems unter Idealbedingungen aufzeigen.\\
+
+Unter diesen Gesichtspunkten und für den Rahmen dieser Arbeit wurden in Zusammenarbeit mit Physikern die folgenden Anforderungen im Hinblick auf die darzustellenden Elemente aufgestellt:\\
+\textbf{Funktionale Anforderungen}
 \begin{enumerate}
 	\setlength{\itemsep}{-5pt}
 	\item Magnetfeld von Erde und Spule
@@ -60,14 +63,18 @@ Bla bla bla
 	\end{itemize}
 \end{enumerate}
 
-\textit{Nicht-funktionale Anforderungen:}
+Diese Anforderung verlangen dabei nicht notwendigerweise (rein) virtuelle Repräsentationen für die genannten Elemente. Auch wenn der Fokus auf über die HoloLens visualisierten Daten liegt, so könnte es für manche Elemente sinnvoller sein auf andere Optionen zurückzugreifen. Das können reale statt virtueller Objekte sein aber auch akustische Informationen, die über die integrierten Lautsprecher der HoloLens wiedergegeben werden. Die Frage, was visualisiert und auch was nicht visualisiert wird, ist also durch ein Design zu beantworten.\\
+
+Neben diesen eher funktionalen Anforderungen sind von Seiten der Physik auch nicht-funktionale Anforderungen an die Anwendung zu stellen. Hier wurden die Folgenden herausgearbeitet:\\
+\textbf{Nicht-funktionale Anfoderungen}
 \begin{itemize}
 	\setlength{\itemsep}{-5pt}
 	\item Darstellungen müssen physikalisch korrekt und interpretierbar sein
 	\item Nutzer darf nicht in seiner Interaktion mit dem Versuchsaufbau und relevanten Materialien eingeschränkt werden
-	\item Anwendung soll benutzerfreundlich gestaltet sein
-	\item Dazu sollen bestehende Empfehlungen und Hinweise zur Verbesserung der Nutzererfahrung einbezogen werden
+	\item Anwendung sollte auch für Nutzer ohne Erfahrung mit der HoloLens nutzbar sein
+	\item Die vorhandenen Lehrmittel sollten genutzt werden
 \end{itemize}
+Der erste Punkt soll hier kurz näher beleuchtet werden. Dabei geht es nicht um möglichst exakte Werte und Darstellungen. Vielmehr sollen sie physikalisch interpretierbar sein, indem auf etablierte Modelle zurückgegriffen wird. Außerdem sollen sie keine falschen Eindrücke vermitteln und die physikalischen Zusammenhänge korrekt widerspiegeln.
 
 \subsubsection{Wie - Technische Seite}
 Technische Randbedingungen durch die Brille im Zusammenhang mit Anwendungsfall
