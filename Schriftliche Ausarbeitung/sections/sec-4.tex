@@ -7,22 +7,83 @@
 }}\\
 
 \subsection{Grundidee}
-\textbf{Mixed Reality: Einbettung und Zusammenspiel von realen und virtuellen Objekten}
+\textbf{Mixed Reality: Einbettung und Zusammenspiel von realen und virtuellen Objekten}\\
 Grundidee, motiviert aus bestehenden Arbeiten\\
 
-\begin{itemize}
-	\item Magnetfeld als räumlich in die Spule eingebettete, dreidimensionale Geometrie anzeigen
-	\item Einbettung durch Verdeckungsberechnung von realer Spule und virtueller Geometrie verbessern
-	\item Zwei verschiedene schematische Darstellungen für Magnetfeld anbieten: Vektor-Modell und Feldlinien-Modell
-	\item Sensordaten in Echtzeit an HoloLens übermitteln und Geometrie ad-hoc berechnen
-	\item Statusinformationen als Text-UI Elemente anzeigen
-	\item Stromfluss durch 2D Geometrie, verankert an den beiden Spulen-Teilen, visualisieren
-	\item Eingebetteter 3D-Kompass mit Markierungen anzeigen
+\begin{itemize}[topsep=-2px]
+	\setlength{\itemsep}{-5pt}
+	\item Integration von realen und virtuellen Objekten in eine Mixed Reality Anwendung
+	\item Virtuelle Objekte werden in den Versuchsaufbau eingebettet und interagieren mit diesem in Echtzeit
+	\item Gemessene, berechnete und beobachtete physikalische Vorgänge werden somit in einer Anwendung integriert
+	\item Nutzer kann sich mit der HoloLens frei im Raum bewegen und mit der Anwendung sowie den Gerätschaften interagieren
+	\item Zentral ist dabei die Darstellung der entstehenden Magnetfelder
 \end{itemize}
 
 \subsection{Darstellungen}
+\textbf{Magnetfeld}
+\begin{itemize}[topsep=-2px]
+	\setlength{\itemsep}{-5pt}
+	\item Magnetfeld von Erde und Spule dreidimensional darstellen und räumlich in die Spule einbetten
+	\item Einbettung durch Verdeckungsberechnung von realer Spule und virtueller Geometrie verbessern
+	\item Sowohl die Darstellung über Feldlinien als auch die über Vektoren anbieten
+	\item Für beide Varianten wird 3D-Geometrie genutzt
+	\item Objekte verändern sich dynamisch anhand von Messwerten
+	\item Darstellung beschränkt sich auf das Zentrum der Spule
+	\item Eine davon unabhängige, eigene Darstellung von Simulationsdaten zeigt eine numerische Lösung für das gesamte Feld in einer ausgewählten Ebene
+\end{itemize}
+\vspace{8px}
+
+\textbf{Stromfluss}
+\begin{itemize}[topsep=-2px]
+	\setlength{\itemsep}{-5pt}
+	\item Direkt an den Spulen verankerte Indikatoren zeigen die Flussrichtung im Raum an
+	\item Indikatoren nur sichtbar, wenn Strom fließt, zeigen so also auch an, ob die Spule unter Strom steht
+	\item Kennzeichnung der Konnektoren mit Plus und Minus anhand von Labeln
+\end{itemize}
+\vspace{8px}
+
+\textbf{Kompass}
+\begin{itemize}[topsep=-2px]
+	\setlength{\itemsep}{-5pt}
+	\item Kompass entsteht aus Kombination von realer Magnetnadel und virtueller Skala
+	\item Nadel wird mittig in der Spule aufgestellt
+	\item Virtueller Ring mit Markierungen im 45° Abstand um die Spule herum dient als Skala	
+	\item Virtuelle Nord-Süd sowie 45° Linie als Sehnen im Kreis durch das Zentrum der Spule
+	\item Weitere Linie für theoretische Auslenkung, ebenfalls durchs Zentrum
+	\item Die drei Diagonalen sind jeweils in der Mitte ausgeschnitten, damit der Kompass sichtbar bleibt
+	\item Gradzahl der theoretischen Nadel wird am Kreis angezeigt
+\end{itemize}
+\vspace{8px}
+
+\textbf{Weitere Informationen}
+\begin{itemize}[topsep=-2px]
+	\setlength{\itemsep}{-5pt}
+	\item Numerische Werte (gemessen oder berechnet) werden auf einem Datenpanel dargestellt
+	\item Physikalische Parameter werden als Labels an die entsprechenden Elemente angehängt
+\end{itemize}
+\vspace{4px}
 
 \subsection{Interaktion}
+\textbf{Hauptteil der Anwendung - Durchführung des Versuches}\\
+Die Interaktion ist einfach gehalten. Während der Durchführung des Versuches sind vor allem zwei Aktionen möglich:
+\begin{enumerate}[topsep=-2px]
+	\setlength{\itemsep}{-5pt}
+	\item Veränderung des Stromflusses über den Regler der Spannungsquelle
+	\item Wechsel zwischen den beiden Darstellungsmodellen
+\end{enumerate}
+\vspace{4px}
+
+Die Anwendung passt sich automatisch an den sich ändernden Stromfluss an. Außerdem reagiert die Applikation auf Bewegungen des Nutzers und passt ggf. Darstellungen entsprechend der Position und Blickrichtung des Nutzers an.\\[4px]
+
+\textbf{Drumherum der Anwendung - Start/Stopp/Restart und Setup}
+\begin{itemize}[topsep=-2px]
+	\setlength{\itemsep}{-5pt}
+	\item Menu mit Start der Hauptanwendung und Optionen
+	\item Über Optionen können wichtige Parameter des Versuches angepasst werden
+	\item Das betrifft in erster Linie die IP-Adresse des Servers sowie angenommene Werte für die Flussdichte des Erdmagnetfeldes
+	\item Optionen werden persistent auf der HoloLens gespeichert und lassen sich ggf. auf Default-Werte zurücksetzen
+	\item Menu lässt sich jederzeit wieder aufrufen
+\end{itemize}
 
 \subsection{Zusammenhang: Problem \& Design}
 Beschreiben: 

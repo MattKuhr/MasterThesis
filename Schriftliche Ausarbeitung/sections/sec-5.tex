@@ -103,3 +103,15 @@ Vektoren
 	\item Klick-Feedback durch Sound
 	\item ...
 \end{itemize}
+
+\subsection{Performance}
+Vorgenommene Optimierungen:
+\begin{itemize}
+	\item Single Pass Instanced rendering
+	\item 16 bit depth buffer (min available)
+	\item Vuforia nur für den Vorgang der Positionsbestimmung aktiv
+	\item Physics Enginge deaktiviert
+	\item Frustum Culling
+	\item Occlusion Mesh wird auschließlich in Z-Puffer gerendert
+	\item Texture MipMaps
+\end{itemize}
