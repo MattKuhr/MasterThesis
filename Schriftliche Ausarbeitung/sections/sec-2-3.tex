@@ -26,13 +26,21 @@ Im Weiteren meint diese Arbeit mit der ''Stärke'' des Magnetfeldes stets die ma
 
 \vspace{4px}
 \textit{Darstellungsformen von Magnetfeldern}\\
-Zur Visualisierung von Magnetfeldern haben sich zwei Darstellungsmodelle etabliert: Feldlinien und Vektoren. Beide stellen das Feld mit Richtung und Stärke im Raum dar, unterscheiden sich aber in der Art und Weise. Abbildung \ref{img:Magnetfeld-Helmholtzspule} zeigt eine gemeinsame Darstellung beider Ansätze für eine Helmholtz-Spule.\\
+Zur Visualisierung von Magnetfeldern gibt es unterschiedliche Darstellungsmodelle. Im Bereich der Lehre haben sich davon vor allem zwei etabliert: Feldlinien und Vektoren. Beide stellen das Feld mit Richtung und Stärke im Raum dar, unterscheiden sich aber in der Art und Weise. Abbildung \ref{img:Magnetfeld-Helmholtzspule} zeigt eine gemeinsame Darstellung beider Ansätze für eine Helmholtz-Spule.\\
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.65\textwidth]{images/Magnetfeld-Helmholtzspule.jpg}
+	\caption{HH Spule MFeld Wikipedia}
+	\label{img:Magnetfeld-Helmholtzspule}
+\end{figure}
 
 \textit{Das Feldlinienmodell}\\
 Die Feldliniendarstellung ist wohl die häufiger anzutreffende Darstellungsform. Hier werden geschlossene, kontinuierliche Linien genutzt, um den magnetischen Fluss darzustellen. Die Richtung des Feldes an einem Punkt auf einer Feldlinie entspricht der Tangente an diesem Punkt und die Stärke des Feldes wird über den Abstand der Feldlinien dargestellt.\\
 
 Diese Darstellung macht den Unterschied zwischen homogenen und inhomogenen Feldern besonders gut sichtbar, da bei einem homogenen Feld die Feldlinien parallel verlaufen, bei einem inhomogenen hingegen nicht. Außerdem ist die Darstellung über die Dichte der Feldlinien eng verbunden mit der magnetischen Flussdichte.\\
-Allerdings bedeutet diese Darstellungsform auch, dass um so stärker das Feld ist, desto mehr Feldlinien auf gleichem Raum dargestellt werden müssen. Bei einer dreidimensionalen Darstellung steigt die Anzahl dabei quadratisch mit der Flussdichte. Außerdem ist bei sich ändernden Feldern schwer zu erkennen, ob sich nur die Beträge der Feldstärkevektoren ändern, oder auch die Richtungen. Denn in beiden Fällen verändern sich Form und Abstand der Feldlinien.\\
+% TODO verifizieren
+Allerdings bedeutet diese Darstellungsform auch, dass um so stärker das Feld ist, desto mehr Feldlinien auf gleichem Raum dargestellt werden müssen. Bei einer dreidimensionalen Darstellung steigt die Anzahl dabei linear mit der Flussdichte. Außerdem ist bei sich ändernden Feldern schwer zu erkennen, ob sich nur die Beträge der Feldstärkevektoren ändern, oder auch die Richtungen. Denn in beiden Fällen verändern sich Form und Abstand der Feldlinien.\\
 
 \textit{Vektorfeld}\\
 Im Gegensatz dazu wird in der Vektor-Darstellung das Feld über einzelne Vektoren repräsentiert. Dabei geben Richtung und Betrag eines Vektors den Feldstärkevektor des Magnetfeldes für genau einen Punkt an.\\
@@ -48,16 +56,10 @@ Bei einer Helmholtz-Spule handelt es sich im Prinzip um zum zwei zusammengeschal
 	\label{img:Helmholtz}
 \end{figure}
 
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.65\textwidth]{images/Magnetfeld-Helmholtzspule.jpg}
-	\caption{HH Spule MFeld Wikipedia}
-	\label{img:Magnetfeld-Helmholtzspule}
-\end{figure}
+Durch diese spezielle Eigenschaft des Aufbaus überlagern sich die beiden, durch die einzelnen Spulen entstehenden Magnetfelder genau so, dass im Raum zwischen den Spulen ebenfalls ein (nahezu) homogenes Magnetfeld entsteht. Abbildung \ref{img:Magnetfeld-Helmholtzspule} zeichnet das Vektorfeld schematisch für die X-Z-Ebene ($Y=0$) in der Draufsicht von oben auf eine Helmholtz-Spule. Dabei ist zu erkennen, dass das Feld in weiten Teilen des durch die zwei Spulen aufgespannten Zylinders homogen ist. Lediglich am Rand und in unmittelbarer Nähe zu den Spulen wird das Feld zunehmend inhomogen.\\
 
-Durch diese spezielle Eigenschaft des Aufbaus überlagern sich die beiden, durch die einzelnen Spulen entstehenden Magnetfelder genau so, dass im Raum zwischen den Spulen ebenfalls ein homogenes Magnetfeld entsteht. Abbildung \ref{img:Magnetfeld-Helmholtzspule} zeichnet das Vektorfeld schematisch für die X-Z-Ebene ($Y=0$) in der Draufsicht von oben auf eine Helmholtz-Spule. Dabei ist zu erkennen, dass das Feld in weiten Teilen des durch die zwei Spulen aufgespannten Zylinders homogen ist. Lediglich am Rand und in unmittelbarer Nähe zu den Spulen wird das Feld zunehmend inhomogen.\\
-
-Die magnetische Flussdichte einer Helmholtz-Spule im Mittelpunkt zwischen den Spulen vereinfacht sich zu folgender Gleichung:
+Das Feld wird durch elliptische Integrale beschrieben, die nur numerisch zu lösen sind.
+Die magnetische Flussdichte einer Helmholtz-Spule im Mittelpunkt zwischen den Spulen vereinfacht sich jedoch zu folgender Gleichung:
 \begin{equation}
 	\label{eq:mfield}
 	B = \mu_{0} \cdot \frac{8 \cdot I \cdot N}{\sqrt{125} \cdot R}
