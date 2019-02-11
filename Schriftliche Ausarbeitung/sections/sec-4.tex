@@ -64,6 +64,7 @@ Grundidee, motiviert aus bestehenden Arbeiten\\
 \vspace{4px}
 
 \subsection{Interaktion}
+Interaktion mit Klicker - keine Gesten notwendig. Vertraute Aktionen: Klick sowie Hold-Klick.\\
 \textbf{Hauptteil der Anwendung - Durchführung des Versuches}\\
 Die Interaktion ist einfach gehalten. Während der Durchführung des Versuches sind vor allem zwei Aktionen möglich:
 \begin{enumerate}[topsep=-2px]
@@ -73,16 +74,26 @@ Die Interaktion ist einfach gehalten. Während der Durchführung des Versuches s
 \end{enumerate}
 \vspace{4px}
 
-Die Anwendung passt sich automatisch an den sich ändernden Stromfluss an. Außerdem reagiert die Applikation auf Bewegungen des Nutzers und passt ggf. Darstellungen entsprechend der Position und Blickrichtung des Nutzers an.\\[4px]
+Die Anwendung passt sich automatisch an den sich ändernden Stromfluss an. Außerdem reagiert die Applikation auf Bewegungen des Nutzers und passt ggf. Darstellungen entsprechend der Position und Blickrichtung des Nutzers an. Auf Kommandos reagiert die Anwendung mit visuellem oder akustischem Feedback.\\[4px]
 
 \textbf{Drumherum der Anwendung - Start/Stopp/Restart und Setup}
 \begin{itemize}[topsep=-2px]
 	\setlength{\itemsep}{-5pt}
+	\item Interaktion mit Menu-Optionen über 3D-Buttons
+	\item Betätigung der Buttons über Gaze und Klicker
+	\item Eingabe von Werten (IP-Adresse, physikalische Parameter) über virtuelles Keyboard
+	\item Feedback für länger laufende Aktionen über visuellen Progress-Indikator
+\end{itemize}
+
+\subsection{Drum-Herum}
+\begin{itemize}[topsep=-2px]
+	\setlength{\itemsep}{-5pt}
+	\item Start-Logo und Sound
 	\item Menu mit Start der Hauptanwendung und Optionen
-	\item Über Optionen können wichtige Parameter des Versuches angepasst werden
-	\item Das betrifft in erster Linie die IP-Adresse des Servers sowie angenommene Werte für die Flussdichte des Erdmagnetfeldes
+	\item Einstellungsmenu für IP, Feldstärke der Erde und weiteren Parametern, Default-Werte vorhanden
 	\item Optionen werden persistent auf der HoloLens gespeichert und lassen sich ggf. auf Default-Werte zurücksetzen
 	\item Menu lässt sich jederzeit wieder aufrufen
+	\item Erklärungen per VO, lassen sich überspringen
 \end{itemize}
 
 \subsection{Zusammenhang: Problem \& Design}
