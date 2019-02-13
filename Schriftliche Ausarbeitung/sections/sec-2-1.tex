@@ -115,22 +115,31 @@ Es handelt sich dabei um ein stereoskopisches Display, bei dem pro Auge separat 
 
 \vspace{4px}
 \textit{Das Tracking}\\
-Um die Hologramme im Raum verankern zu können, benötigt die HoloLens Informationen über ihre exakte Position und Orientierung im Raum. Beides erarbeitet das Gerät allein aus einem Zusammenspiel der verschiedenen internen Sensoren und ist nicht auf externe Markierungen angewiesen, es handelt sich um sogenanntes \textit{Inside-Out Tracking}. Das Vorgehen lässt sich dabei in zwei Bereiche unterteilen: Erfassen der unmittelbaren Umgebung sowie Orientierung anhand der Inertialmesssysteme.\\
-
-Zum einen erstellt die HoloLens ein internes Modell der Oberflächenstruktur der Umgebung. Als Grundlage dazu dienen zum einen eine Tiefenkamera, die anhand der Time-of-Flight von ausgestrahltem Infrarotlicht die Entfernung zu nahegelegenen Oberflächen, die das Licht reflektieren, bestimmt. Zum anderen unterstützen die beiden Stereo-Kameras diese Informationen durch Triangulation von Objekten. Auf diese Weise erarbeitet die Brille ein 3D-Gitternetz, das nach und nach aktualisiert und vervollständigt wird, wenn sich der Träger im Raum bewegt. Anhand dieses sogenannten \textit{Spatial Mapping} wird ein Ankerpunkt für ein im Raum festes Koordinatensystem ausgewählt, dass der Brille als Referenzsystem dient.\\
+Um die Hologramme im Raum verankern zu können, benötigt die HoloLens Informationen über ihre exakte Position und Orientierung im Raum. Beides erarbeitet das Gerät allein aus einem Zusammenspiel der verschiedenen internen Sensoren und ist nicht auf externe Markierungen angewiesen, es handelt sich um sogenanntes \textit{Inside-Out Tracking}. Das Vorgehen basiert dabei auf zwei Strategien.
+\par
+\noindent\hspace*{5mm}
+Zum einen erfasst die HoloLens die Oberflächenstruktur der Umgebung über Tiefen- und Stereokameras. Während der Nutzer sich durch den Raum bewegt, wird dies immer weiter vervollständigt und verbessert. Dieses Vorgehen wird \textit{Spatial Mapping} genannt und kann auch von Anwendungen genutzt werden, um mit Objekten der realen Welt zu interagieren. Die Darstellung einer aufgenommenen Raumstruktur ist in Garfik \ref{img:spatial-mapping} zu sehen.
+\par
+\noindent\hspace*{5mm}
+Zum anderen kommt eine inertiale Messeinheit zum Einsatz. Über die Beschleunigungs-, Rotations- und Magnetflusssensoren können Änderungen in Position und Ausrichtung der Brille gemessen werden.
 
 %TODO
 \begin{minipage}{0.48\textwidth}
 	\centering
 	\includegraphics[width=0.9\textwidth]{images/Spatial_Understanding.png}
+	\label{img:spatial-mapping}
 \end{minipage}\begin{minipage}{0.48\textwidth}
-\centering
-\includegraphics[width=0.9\textwidth]{images/Spatial_Understanding.png}
+	\centering
+	\includegraphics[width=0.9\textwidth]{images/Spatial_Understanding.png}
 \end{minipage}\\
+
+\begin{comment}
+ Das Vorgehen lässt sich dabei in zwei Bereiche unterteilen:
+ Als Grundlage dazu dienen zum einen eine Tiefenkamera, die anhand der Time-of-Flight von ausgestrahltem Infrarotlicht die Entfernung zu nahegelegenen Oberflächen, die das Licht reflektieren, bestimmt. Zum anderen unterstützen die beiden Stereo-Kameras diese Informationen durch Triangulation von Objekten. Auf diese Weise erarbeitet die Brille ein 3D-Gitternetz, das nach und nach aktualisiert und vervollständigt wird, wenn sich der Träger im Raum bewegt. Anhand dieses sogenannten \textit{Spatial Mapping} wird ein Ankerpunkt für ein im Raum festes Koordinatensystem ausgewählt, dass der Brille als Referenzsystem dient.\\
 
 
 Um die exakte Position und Ausrichtung der HoloLens nachzuverfolgen kommt außerdem die inertiale Messeinheit zum Einsatz. Die Beschleunigungs-, Rotations- und Magnetflusssensoren ermöglichen Schlussfolgerungen zu Änderungen in Position und Orientierung über eine Zeitdifferenz. Zusammen mit den Informationen aus den optischen Verfahren leitet die Brille so ihre genaue Position und Ausrichtung ab. Darüber hinaus speichert und unterscheidet das Gerät verschiedene Räume anhand der unterschiedlichen Struktur und den dort vorhandenen WLAN Signalen.\\
-
+\end{comment}
 
 \textbf{Die Software und Interaktion}\\
 Auf der HoloLens läuft eine spezielle Version von Windows 10: Windows 10 Holographic. Diese benötigt weniger Resourcen im Vergleich zu einem herkömmlichen PC und hat daher auch einen eingeschränkten Funktionsumfang. Anwendungen werden in Form von UWP Apps bereitgestellt. Hier unterstützt Microsoft die Entwicklung mit Unity und stellt entsprechende Toolkits zur Verfügung.\\
@@ -159,24 +168,33 @@ Das \textit{Mixed Reality Toolkit} (MRTK) ist ein quelloffenes Toolkit, das elem
 	\item Manager-Objekte, die Steuerung von Inputs und des Spatial Mappings erlauben
 	\item Skripte für Standard Interaktionen wie Drag-and-Drop und Skalierung
 	\item Für HoloLens angepasste Materialien und Shader
-	\item Hilfsfunktionen wie z.B. eine FPS Anzeige oder mathematische Funktionen
+	\item Vorgefertigte und anpassbare UI-Elemente wie Buttons, Tooltips, Icons und Dialoge
 \end{itemize}
 
 Für die Entwicklung mit dem Toolkit und der HoloLens existiert ein umfassendes Repertoire aus Dokumentation, Beispielen, Guidelines, Einführungen und Hinweisen.\\
 
 
 \textbf{Implikationen für Anwendungsdesign}\\
-Die technischen Eigenschaften der HoloLens haben Auswirkung auf Design und Nutzung von Anwendungen. Dazu gehören technisch sowohl bedingte Einschränkungen als auch zu berücksichtigende Aspekte für die Usability und Nutzererfahrung. Im Folgenden soll exemplarisch auf ausgewählte solcher Zusammenhänge hingewiesen werden.
+Die technischen Eigenschaften der HoloLens haben Auswirkung auf Design und Nutzung von Anwendungen. Dazu gehören auch technisch bedingte Einschränkungen sowie zu berücksichtigende Aspekte für die Usability und Nutzererfahrung. Im Folgenden soll exemplarisch auf ausgewählte solcher Zusammenhänge hingewiesen werden.
 
 \vspace{4px}
-\textit{Einschränkungen durch das Tracking}\\
-Ein wichtiger Punkt ist, das Tracking nicht zu behindern, da die Darstellungen andernfalls nicht korrekt im Raum positioniert werden können. Für die Stereo- und Tiefenkamera sind sehr dunkle und transparente Materialien problematisch, da hier kaum (Infrarot-) Licht reflektiert wird und so entsprechende Gegenstände nicht erkannt werden. Spiegelnde Materialien sind daher ebenfalls ungünstig. Darüber hinaus ist es wichtig, dass die Kamerasensoren genügend feste Ankerpunkte im Raum ausmachen können. Ungünstig sind daher z.B. zu viele sich bewegende Personen im unmittelbaren Umfeld der HoloLens.\\
+\textit{Tracking}\\
+Ein wichtiger Punkt ist, das Tracking nicht zu behindern, da die Darstellungen andernfalls nicht korrekt im Raum positioniert werden können. Für die Stereo- und Tiefenkamera sind sehr dunkle und transparente Materialien problematisch, da hier kaum (Infrarot-) Licht reflektiert wird und so entsprechende Gegenstände nicht erkannt werden. Spiegelnde Materialien sind daher ebenfalls ungünstig.\\
 
+\textit{Display}\\
+Die Displays sind, vergleichbar mit einem Beamer, in der Lage den Hintergrund zu überblenden, nicht jedoch ihn abzudunkeln. Dementsprechend ist kein Schwarz darstellbar. Wie transparent Objekte auf der HoloLens erscheinen, hängt folglich auch vom Hintergrund und der Umgebungshelligkeit ab. Ein sehr heller Hintergrund kann von der HoloLens nicht vollständig überblendet werden.
+\par
+\noindent\hspace*{5mm}
+Außerdem hängt die Tranzparenz virtueller Objekten von ihrer Farbe ab. Ein blauer Pixel leuchtet nur in jedem dritten Frame auf, ein weißer hingegen in jedem Frame, da die Farben sequentiell dargestellt werden.\\
 
-\textit{Einschränkungen durch die Hardware}\\
-Die Hardwareressourcen der HoloLens stellen eine weitere Limitierung für Anwendungen dar. Im Gegensatz zu aktuellen VR-Brillen (z.B. Oculus Rift, HTC Vice, PlayStation VR) nutzt die HoloLens keine externen, leistungsfähigen CPU- und Grafikeinheiten für die Bildberechnung. Dennoch sind zwei HD-Bilder mit 60 Hz auszugeben. Anwendungen sollten daher möglichst ressourcenschonend sein. Auf rechenintensive Operationen wie z.B. Schattenberechnungen oder Kantenglättung sollte meist verzichtet werden.\\
+\textit{Hardwareressourcen}\\
+Die Hardwareressourcen der HoloLens sind mit einer CPU und GPU mit jeweils 1 GHz  und 1GB RAM stark limitiert. Anwendungen sollten daher möglichst ressourcenschonend sein. Auf rechenintensive Operationen wie z.B. Schattenberechnungen oder Kantenglättung muss meist verzichtet werden.\\
 
+\textit{Framerate}\\
 Dabei ist es von besonderer Bedeutung, dass die Anwendung möglichst konstant 60 Bilder pro Sekunde ausgibt. Um die Hologramme im Raum stabil und ohne Ruckler oder Zittern anzuzeigen, müssen selbst feinste Kopfbewegungen ausgeglichen werden. Dazu nutzt die HoloLens ein spezielles Verfahren:
 \par
 \noindent\hspace*{5mm}
-Bevor eine Szene in die Render-Pipeline geht, trifft die Brille anhand der Sensordaten eine Vorhersage darüber, in welcher Position und Ausrichtung sich die Brille befinden wird, wenn das zu errechnende Bild dargestellt wird. Anhand dieser Schätzung wird die Kamera-Position und -Ausrichtung für die Szene festgelegt und anschließend gerendert. Eine längere oder variierende Renderzeit bedeutet damit auch eine unzuverlässigere Schätzung. Das kann zu instabil wirkenden Darstellungen führen, z.B. in Form von Zittern oder Ruckeln. Deshalb empfiehlt Microsoft, die Framerate von 60 FPS stets aufrecht zu erhalten.
+Bevor eine Szene in die Render-Pipeline geht, trifft die Brille anhand der Sensordaten eine Vorhersage darüber, in welcher Position und Ausrichtung sich die Brille befinden wird, wenn das zu errechnende Bild dargestellt wird. Anhand dieser Schätzung wird die Kamera-Position und -Ausrichtung für die Szene festgelegt und anschließend gerendert. Eine längere oder variierende Renderzeit bedeutet damit auch eine unzuverlässigere Schätzung. Das kann zu instabil wirkenden Darstellungen führen, z.B. in Form von Zittern oder Ruckeln. Deshalb empfiehlt Microsoft, die Framerate von 60 FPS stets aufrecht zu erhalten.\\
+
+\textit{Menschliche Tiefenwahrnehmung}\\
+Der menschlichen Wahrnehmung dienen mehrere Informationsquellen für die Tiefenerkennung. Dazu zählen auch Akkomodation und Konvergenz der Augen. \\
