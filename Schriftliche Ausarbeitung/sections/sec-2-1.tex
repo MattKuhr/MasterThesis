@@ -1,17 +1,15 @@
-\subsection{Mixed Reality und HoloLens}
+\subsection{HoloLens}
 \label{sec-2-1}
-
-\subsubsection{Mixed Reality}
-\label{sec-2-1-1}
 \begin{center}
 	\fbox{
 		\parbox{0.9\linewidth}{
 			\textit{Ziel des Kapitels:}\\
-			Begriffsklärung und Einordnung von AR,MR,VR in das Virtual Continuum. Wichtig für die Einordnung von MR in Education in Kap. \ref{sec-2-2}.
-			
-	}}	
+			HoloLens und Mixed Reality Toolkit mit ihrer Technik und Interaktionsweise vorstellen.
+	}}
 \end{center}
 
+\subsubsection{Mixed und Augmented Reality}
+\label{sec-2-1-1}
 
 \begin{figure}[h!]
 	\centering
@@ -44,14 +42,6 @@ Da diese Arbeit sich am MR Begriff von Milgram orientiert und mit der HoloLens u
 
 Die HoloLens deckt mit ihren technischen Möglichkeiten vor allem den linken Bereich des Spektrums ab. Viele Anwendungen liegen deshalb im Teilbereich Augmented Reality.
 
-\subsubsection{HoloLens}
-\label{sec-2-1-2}
-\fbox{
-\parbox{\linewidth}{
-	\textit{Ziel des Kapitels:}\\
-	HoloLens und Mixed Reality Toolkit mit ihrer Technik und Interaktionsweise vorstellen.
-}}\\
-
 Die HoloLens ist ein von Microsoft entwickeltes \textit{Head-Mounted Display} (HMD), das seit 2016 auf dem Markt ist. Das Gerät ist in der Lage, virtuelle Darstellungen in der Umgebung des Trägers zu verankern und anzuzeigen. Abbildung \ref{img:hololens} zeigt die Brille in der Standardausführung. Die technischen Eigenschaften und genutzten Techniken des HMDs bringen verschiedene Implikationen und Einschränkungen für Anwendungen auf der HoloLens mit sich. Daher soll im Folgenden auf die technischen Aspekte näher eingegangen werden.\\
 
 \begin{figure}[h!]
@@ -64,7 +54,7 @@ Die HoloLens ist ein von Microsoft entwickeltes \textit{Head-Mounted Display} (H
 
 Bei dem Device handelt es sich um einen eigenständigen Computer, auf dem eine spezielle Version von Windows 10 läuft. Die Brille arbeitet also völlig autonom und ist nicht auf externe Hardware wie z.B. zusätzliche Rechen- und Batterieeinheiten angewiesen.\\
 
-\textbf{Die Hardware}\\
+\subsubsection{Die Hardware}
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.9\textwidth]{images/hololens_tech.png}
@@ -141,7 +131,7 @@ Zum anderen kommt eine inertiale Messeinheit zum Einsatz. Über die Beschleunigu
 Um die exakte Position und Ausrichtung der HoloLens nachzuverfolgen kommt außerdem die inertiale Messeinheit zum Einsatz. Die Beschleunigungs-, Rotations- und Magnetflusssensoren ermöglichen Schlussfolgerungen zu Änderungen in Position und Orientierung über eine Zeitdifferenz. Zusammen mit den Informationen aus den optischen Verfahren leitet die Brille so ihre genaue Position und Ausrichtung ab. Darüber hinaus speichert und unterscheidet das Gerät verschiedene Räume anhand der unterschiedlichen Struktur und den dort vorhandenen WLAN Signalen.\\
 \end{comment}
 
-\textbf{Die Software und Interaktion}\\
+\subsubsection{Die Software und Interaktion}
 Auf der HoloLens läuft eine spezielle Version von Windows 10: Windows 10 Holographic. Diese benötigt weniger Resourcen im Vergleich zu einem herkömmlichen PC und hat daher auch einen eingeschränkten Funktionsumfang. Anwendungen werden in Form von UWP Apps bereitgestellt. Hier unterstützt Microsoft die Entwicklung mit Unity und stellt entsprechende Toolkits zur Verfügung.\\
 
 Die Steuerung durch den Nutzer erfolgt auf vier verschiedene Arten:
@@ -174,27 +164,70 @@ Das \textit{Mixed Reality Toolkit} (MRTK) ist ein quelloffenes Toolkit, das elem
 Für die Entwicklung mit dem Toolkit und der HoloLens existiert ein umfassendes Repertoire aus Dokumentation, Beispielen, Guidelines, Einführungen und Hinweisen.\\
 
 
-\textbf{Implikationen für Anwendungsdesign}\\
-Die technischen Eigenschaften der HoloLens haben Auswirkung auf Design und Nutzung von Anwendungen. Dazu gehören auch technisch bedingte Einschränkungen sowie zu berücksichtigende Aspekte für die Usability und Nutzererfahrung. Im Folgenden soll exemplarisch auf ausgewählte solcher Zusammenhänge hingewiesen werden.
+\subsubsection{Implikationen für Anwendungsdesign}
+Die technischen Eigenschaften der HoloLens haben Auswirkung auf Design und Nutzung von Anwendungen. Dazu gehören auch technisch bedingte Einschränkungen sowie zu berücksichtigende Aspekte für die Usability und Nutzererfahrung. Im Folgenden soll auf ausgewählte solcher Zusammenhänge hingewiesen werden.\\
 
-\vspace{4px}
-\textit{Tracking}\\
+\textbf{\textit{Tracking}}\\
 Ein wichtiger Punkt ist, das Tracking nicht zu behindern, da die Darstellungen andernfalls nicht korrekt im Raum positioniert werden können. Für die Stereo- und Tiefenkamera sind sehr dunkle und transparente Materialien problematisch, da hier kaum (Infrarot-) Licht reflektiert wird und so entsprechende Gegenstände nicht erkannt werden. Spiegelnde Materialien sind daher ebenfalls ungünstig.\\
 
-\textit{Display}\\
+\textbf{\textit{Display}}\\
 Die Displays sind, vergleichbar mit einem Beamer, in der Lage den Hintergrund zu überblenden, nicht jedoch ihn abzudunkeln. Dementsprechend ist kein Schwarz darstellbar. Wie transparent Objekte auf der HoloLens erscheinen, hängt folglich auch vom Hintergrund und der Umgebungshelligkeit ab. Ein sehr heller Hintergrund kann von der HoloLens nicht vollständig überblendet werden.
 \par
 \noindent\hspace*{5mm}
-Außerdem hängt die Tranzparenz virtueller Objekten von ihrer Farbe ab. Ein blauer Pixel leuchtet nur in jedem dritten Frame auf, ein weißer hingegen in jedem Frame, da die Farben sequentiell dargestellt werden.\\
+Außerdem hängt die Transparenz virtueller Objekten von ihrer Farbe ab. Ein blauer Pixel leuchtet nur in jedem dritten Frame auf, ein weißer hingegen in jedem Frame, da die Farben sequentiell dargestellt werden.\\
 
-\textit{Hardwareressourcen}\\
-Die Hardwareressourcen der HoloLens sind mit einer CPU und GPU mit jeweils 1 GHz  und 1GB RAM stark limitiert. Anwendungen sollten daher möglichst ressourcenschonend sein. Auf rechenintensive Operationen wie z.B. Schattenberechnungen oder Kantenglättung muss meist verzichtet werden.\\
+Bedingt durch die Displaytechnik wirken Objekte scharf, wenn sich die Augen auf eine Distanz von zwei Metern einstellen (Akkommodation). Die Augen sind jedoch daran gewöhnt, dass nah liegende Objekte eine andere Akkommodation erfordern, als weiter entfernte. Dies kann vor allem bei sehr dicht liegenden Objekten dazu führen, dass Nutzer sich unwohl fühlen oder die Objekte nicht richtig erkennen können.
 
-\textit{Framerate}\\
+%TODO
+\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=0.9\textwidth]{images/Spatial_Understanding.png}
+	\label{img:acco-convergence}
+\end{minipage}\begin{minipage}{0.48\textwidth}
+	\centering
+	\includegraphics[width=0.9\textwidth]{images/Spatial_Understanding.png}
+\end{minipage}\\
+
+\par
+\noindent\hspace*{5mm}
+Im Zusammenhang der Akkommodation spielt hier auch die Konvergenz der Augen eine Rolle. Darunter versteht man die Bewegung der Augen aufeinander zu, sodass der Punkt, in dem sich die Gesichtslinien treffen, näher kommt. Eine Illustration des Zusammenhangs bietet Abbildung \ref{img:acco-convergence}. Dieser Vorgang ist wichtig, damit Objekte nicht doppelt gesehen werden. Akkommodation und Konvergenz sind auf natürliche Weise gekoppelt: Um ein dicht liegendes Objekt zu betrachten laufen die Augen weiter zusammen und erhöhen ihre Brechkraft. Dieser Effekt wird auch Akkommodation-Konvergenz-Reflex genannt. Beim Tragen der HoloLens kann es jedoch dazu kommen, dass dieses Zusammenspiel aufgebrochen wird.
+\par
+\noindent\hspace*{5mm}
+Angenommen ein Nutzer fokussiert ein reales Objekt in einer Entfernung unter zwei Metern. Jetzt wird ein virtuelles Objekt räumlich vor dem realen Objekt positioniert. Jetzt müssen Akkommodation und Konvergenz gegenläufig arbeiten: Die Augen müssen sich aufeinander zu bewegen, die Brechkraft dabei jedoch abnehmen, da sie sich auf zwei Meter anpassen muss. Dies steht im Gegensatz zum Akkommodation-Konvergenz-Reflex und kann die Nutzererfahrung negativ beeinflussen.\\
+
+Sowohl für Akkommodation als auch Konvergenz gilt jedoch, dass die Unterschiede mit zunehmender Distanz kleiner werden und die Probleme deshalb vor allem bei kurzen Distanzen auftreten.\\
+
+\textbf{\textit{Hardwareressourcen}}\\
+Die Hardwareressourcen der HoloLens sind mit einer CPU und GPU mit jeweils 1 GHz und 1GB RAM stark limitiert. Anwendungen sollten daher möglichst ressourcenschonend sein. Auf rechenintensive Operationen wie z.B. Schattenberechnungen oder Kantenglättung muss meist verzichtet werden.\\
+
+\textbf{\textit{Framerate}}\\
 Dabei ist es von besonderer Bedeutung, dass die Anwendung möglichst konstant 60 Bilder pro Sekunde ausgibt. Um die Hologramme im Raum stabil und ohne Ruckler oder Zittern anzuzeigen, müssen selbst feinste Kopfbewegungen ausgeglichen werden. Dazu nutzt die HoloLens ein spezielles Verfahren:
 \par
 \noindent\hspace*{5mm}
 Bevor eine Szene in die Render-Pipeline geht, trifft die Brille anhand der Sensordaten eine Vorhersage darüber, in welcher Position und Ausrichtung sich die Brille befinden wird, wenn das zu errechnende Bild dargestellt wird. Anhand dieser Schätzung wird die Kamera-Position und -Ausrichtung für die Szene festgelegt und anschließend gerendert. Eine längere oder variierende Renderzeit bedeutet damit auch eine unzuverlässigere Schätzung. Das kann zu instabil wirkenden Darstellungen führen, z.B. in Form von Zittern oder Ruckeln. Deshalb empfiehlt Microsoft, die Framerate von 60 FPS stets aufrecht zu erhalten.\\
 
-\textit{Menschliche Tiefenwahrnehmung}\\
-Der menschlichen Wahrnehmung dienen mehrere Informationsquellen für die Tiefenerkennung. Dazu zählen auch Akkomodation und Konvergenz der Augen. \\
+\subsubsection{Empfehlungen zu Design und Umsetzung}
+Damit Einschränkungen umgangen und negative Auswirkungen vermieden werden können gibt es bereits einige Designempfehlungen und Guide-Lines sowie Empfehlungen zur Implementierung. Die Dokumentation zu Windows Mixed Reality umfasst hier einige Vorschläge und Hinweise, von denen besonders relevante hier vorgestellt werden sollen.\\
+
+\textbf{\textit{Positionierung von Objekten}}\\
+Objekte sollten typischerweise aus einer Distanz zwischen einem und fünf Metern betrachtet werden, um die zuvor erläuterten Probleme mit der Wahrnehmung zu vermeiden. Deshalb sollten Objekte ausgeblendet werden, die zu nah kommen. Neben der Distanz spielt auch der Blickwinkel in der vertikalen eine Rolle. Damit ein Anwender die Darstellungen angenehm betrachten kann ist es wichtig, eine angenehme und natürliche Kopfposition zu ermöglichen. Hier wird ein Blickwinkel zwischen 0° und 35° unterhalb der Horizontlinie empfohlen.\\
+
+Weiterhin ist die Größe von Objekten von Bedeutung. Das gilt besonders dann, wenn sie mit dem an die Kopfbewegungen gekoppelten Cursor anvisiert werden müssen. Zu kleine Objekte wären für den Anwender schwer zu treffen. Ein Winkel zwischen 1,5° und 3° des Sichtfeldes dienen hier als Orientierung. Allerdings sollten die Darstellungen auch nicht zu groß sein, da sie sonst schon bei geringen Kopfbewegungen durch die Begrenzung des Displays abgeschnitten werden.\\
+
+Um Objekte wie z.B. Menus und Dialoge, die nicht fest im Raum verankert sind, anzupassen, stellt das Mixed Reality Toolkit verschiedene Funktionen wie z.B. Billboarding oder Tagalong zur Verfügung, die Abstand, Orientierung und Skalierung entsprechend der Nutzerbewegung automatisch anpassen.\\
+
+
+Die folgenden Empfehlungen geben Zimmer et. al. aus ihrer Erfahrung und dem Nutzerfeedback aus mehreren HoloLens-Applikationen \cite{Zimmer17}:
+\begin{itemize}
+	\item Einen sichtbaren Cursor in der Mitte des Blickfeldes für die Auswahl bzw. das Anklicken von Objekten nutzen
+	\item Begrenzungen des Field-of-View (FOV) beachten: Wenn möglich Objektegröße so anpassen, dass diese ganz dargestellt werden können, da andernfalls Objekte weniger präsent wirken
+	\item Die Einbettung von Objekten kann durch visuelle Anhaltspunkte wie Verdeckung oder Schatten unterstützt werden
+	\item Spatial Mesh für grobe Verdeckung nutzbar, für genauere Verdeckung können reale Objekte nachmodelliert werden 
+	\item Alternative Interaktionsmöglichkeiten (z.B. Klicker) können hilfreich sein, wenn Nutzer Probleme mit Gesten oder der Sprachsteuerung haben
+	\item Eine Einführung in die Anwendung und insbesondere die Steuerung kann hilfreich sein, da der Umgang mit der HoloLens oder ähnlichen Geräten für Anwender meist ungewohnt ist
+\end{itemize}
+
+% In der Dokumentation für Windows Mixed Reality finden sich weitere Empfehlungen und Guidelines.
+
+
+
