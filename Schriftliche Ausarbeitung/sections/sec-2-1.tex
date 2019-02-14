@@ -216,7 +216,20 @@ Weiterhin ist die Größe von Objekten von Bedeutung. Das gilt besonders dann, w
 
 Um Objekte wie z.B. Menus und Dialoge, die nicht fest im Raum verankert sind, anzupassen, stellt das Mixed Reality Toolkit verschiedene Funktionen wie z.B. Billboarding oder Tagalong zur Verfügung, die Abstand, Orientierung und Skalierung entsprechend der Nutzerbewegung automatisch anpassen.\\
 
+\textbf{\textit{Performance Optimierungen}}\\
+Da die Framerate maßgeblichen Einfluss auf die Stabilität von Hologrammen hat und die Hardwareressourcen limitiert sind, gibt es eine Reihe von empfohlenen Optimierungen und Hinweisen, um die Performance einer Anwendung zu verbessern. Diese umfassen unter anderem:
+\begin{itemize}
+	\setlength{\itemsep}{-5pt}
+	\item Singe Pass Instanced Rendering verwenden
+	\item Z-Puffer Größe auf 16 Bit setzen
+	\item Full-Screen Post Processing (z.B. FXAA) vermeiden
+	\item Shader anpassen / vereinfachen
+	\item Physics ausschalten
+	\item Overdraw reduzieren
+\end{itemize}
+Um die Performance bei der Entwicklung im Blick haben zu können gibt es einige Tools. Die HoloLens stellt über ein Webinterface einen Performance-Monitor zur Verfügung. Dieser gibt Auskunft über die Auslastung von Ressourcen wie CPU und GPU, ähnlich zum Windows Taskmanager. Außerdem verfügt Unity über einen Profiler, der detailliertere Informationen zum Renderingprozess liefert.\\
 
+\textbf{\textit{Weitere Empfehlungen}}\\
 Die folgenden Empfehlungen geben Zimmer et. al. aus ihrer Erfahrung und dem Nutzerfeedback aus mehreren HoloLens-Applikationen \cite{Zimmer17}:
 \begin{itemize}
 	\item Einen sichtbaren Cursor in der Mitte des Blickfeldes für die Auswahl bzw. das Anklicken von Objekten nutzen

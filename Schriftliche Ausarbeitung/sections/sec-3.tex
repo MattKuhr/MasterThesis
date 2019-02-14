@@ -8,10 +8,16 @@
 	}}\\
 \end{center}
 
+%Auf Basis der Hintergrundinformationen aus dem vorangegangenen Kapitel können nun konkrete Probleme identifiziert und formuliert werden. 
+
+Einleitung
+
 %TODO formulierungen überarbeiten
+\begin{comment}
 Ziel dieser Arbeit ist am konkreten Beispiel der Helmholtz-Spule zu untersuchen, wie die HoloLens in der Physik Lehre eingesetzt werden kann. Dazu betrachtet die Arbeit speziell, wie der zuvor beschriebene Versuchsaufbau mit Informationen angereichert werden kann. Aufbauend auf den im vorigen Kapiteln erarbeiteten Hintergründen formulieren die folgenden Abschnitte an die Anwendung zu stellende Anforderungen aus anwendungsorientierter sowie technischer Sicht.\\
 
 Wie kann die HoloLens für diesen Versuch konkret eingesetzt werden?\\
+\end{comment}
 
 \begin{figure}[h!]
 	\centering
@@ -79,8 +85,9 @@ Neben diesen eher funktionalen Anforderungen sind von Seiten der Physik auch nic
 Der erste Punkt soll hier kurz näher beleuchtet werden. Dabei geht es nicht um möglichst exakte Werte und Darstellungen. Vielmehr sollen sie physikalisch interpretierbar sein, indem auf etablierte Modelle zurückgegriffen wird. Außerdem sollen sie keine falschen Eindrücke vermitteln und die physikalischen Zusammenhänge korrekt widerspiegeln.\\
 
 \subsubsection{Wie - Technische Seite}
+In Kapitel \ref{sec-2-1} wurde die HoloLens mit ihren technischen Möglichkeiten aber auch Einschränkungen vorgestellt sowie Auswirkungen auf das Anwendungsdesign aufgezeigt. Die genannten Probleme sollen möglichst vermieden werden, indem die Anwendung an die speziellen Gegebenheiten der HoloLens angepasst wird. Dementsprechend sollen auch von technischer Seite Anforderungen aufgestellt werden.\\
 
-
+Die Dokumentation zu Windows Mixed Reality enthält auch eine Liste von Qualitätskriterien, anhand derer Anwendungen bewertet werden können. Diese deckt viele der zuvor erläuterten Probleme wie z.B. der Abstand zu Objekten ab. Jedes Kriterium ist mit einer Beschreibung versehen, unter welchen Umständen es als optimal erfüllt, erfüllt oder nicht erfüllt gilt. Eine Kurzfassung der Kriterien ist in Tabelle X. zusammengestellt, die ausführliche Version findet sich im Anhang.
 \textbf{Qualitätskriterien}
 \begin{itemize}
 	\setlength{\itemsep}{-5pt}
@@ -88,21 +95,15 @@ Der erste Punkt soll hier kurz näher beleuchtet werden. Dabei geht es nicht um 
 	\item Stabilität
 	\item Positionierung
 	\item Betrachtungs Komfort Zone
-	\item Tiefen Wechsel
+	\item Fokus Wechsel
 	\item FOV Grenezn
 	\item Anpassung an Nutzerposition
 	\item Input Interaction Clarity
 	\item Interaktive Objekte
 	\item Ladevorgänge
 \end{itemize}
-\begin{itemize}
-	\setlength{\itemsep}{-5pt}
-	\item Größe, Geschwindigkeit, Farbe, Distanz zur Kamera von Objekten
-	\item Zusammenspiel der Darstellungen mit der Umgebung beachten
-	\item Stabilität der Hologramme gewährleisten
-	\item 60 FPS stabil halten, stark spiegelnde oder transparente Oberflächen vermeiden, mögliche Einflüsse auf die Sensoren beachten
-	\item Usability und UX Empfehlungen beachten
-\end{itemize}
+
+Neben diesen Kriterien soll die Anwendung die genannten Hinweise und Empfehlungen zum Design mit einbeziehen und darauf aufbauen.
 
 \subsection{Problemstellung}
 \label{sec-3-2}
