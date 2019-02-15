@@ -87,7 +87,7 @@ Der erste Punkt soll hier kurz näher beleuchtet werden. Dabei geht es nicht um 
 \subsubsection{Wie - Technische Seite}
 In Kapitel \ref{sec-2-1} wurde die HoloLens mit ihren technischen Möglichkeiten aber auch Einschränkungen vorgestellt sowie Auswirkungen auf das Anwendungsdesign aufgezeigt. Die genannten Probleme sollen möglichst vermieden werden, indem die Anwendung an die speziellen Gegebenheiten der HoloLens angepasst wird. Dementsprechend sollen auch von technischer Seite Anforderungen aufgestellt werden.\\
 
-Die Dokumentation zu Windows Mixed Reality enthält auch eine Liste von Qualitätskriterien, anhand derer Anwendungen bewertet werden können. Diese deckt viele der zuvor erläuterten Probleme wie z.B. der Abstand zu Objekten ab. Jedes Kriterium ist mit einer Beschreibung versehen, unter welchen Umständen es als optimal erfüllt, erfüllt oder nicht erfüllt gilt. Eine Kurzfassung der Kriterien ist in Tabelle X. zusammengestellt, die ausführliche Version findet sich im Anhang.
+Die Dokumentation zu Windows Mixed Reality enthält auch eine Liste von Qualitätskriterien, anhand derer Anwendungen bewertet werden können. Diese deckt viele der zuvor erläuterten Probleme wie z.B. der Abstand zu Objekten ab. Jedes Kriterium ist mit einer Beschreibung versehen, unter welchen Umständen es als optimal erfüllt, erfüllt oder nicht erfüllt gilt. Eine Kurzfassung der Kriterien ist in Tabelle X. zusammengestellt, die ausführliche Version findet sich im Anhang.\\
 \textbf{Qualitätskriterien}
 \begin{itemize}
 	\setlength{\itemsep}{-5pt}
@@ -103,16 +103,27 @@ Die Dokumentation zu Windows Mixed Reality enthält auch eine Liste von Qualitä
 	\item Ladevorgänge
 \end{itemize}
 
-Neben diesen Kriterien soll die Anwendung die genannten Hinweise und Empfehlungen zum Design mit einbeziehen und darauf aufbauen.
+An diesen Kriterien soll sich die Lösung orientieren und diese bereits im Design berücksichtigen. Dafür sollen die genannten Hinweise und Empfehlungen zum Design mit einbezogen und darauf aufgebaut werden.\\
 
 \subsection{Problemstellung}
 \label{sec-3-2}
-Zwei Aspekte: Anforderungen von der physikalischen und der technischen Seite
+Die inhaltlichen und technischen Anforderungen stecken den Rahmen ab, für den eine Lösung zu erarbeiten ist. Dazu ist ein Design nötig, dass die inhaltlichen Anforderungen bedient, dabei die Möglichkeiten der HoloLens nutzt und gleichzeitig um technische Einschränkungen und Besonderheiten herum navigiert.\\
 
-Problem: Anforderungen und technische Möglichkeiten sowie Einschränkungen zusammenbringen und eine Lösung entwickeln
+Eine Lösung muss die folgenden Fragen beantworten:
 \begin{itemize}
 	\item Was soll dargestellt werden? (Was soll nicht dargestellt werden?)
 	\item Wie soll es dargestellt werden?
 	\item Wie soll damit interagiert werden?
 \end{itemize}
+
+\textbf{\textit{Was soll dargestellt werden?}}\\
+Zunächst stellt sich die Frage, welche Objekte die HoloLens zusätzlich anzeigen soll. Hier geben die funktionalen Anforderungen bereits einige Elemente vor, die weiter konkretisiert werden müssen. Hier stellt sich auch die Frage, welche Informationen über reale Objekte (wie z.B. digitales Amperemeter) transportiert und nicht über die HoloLens dargestellt werden sollen. Bei diesen und ggf. weiteren Objekten ist beim Design zu berücksichtigen, dass sie durch virtuelle Darstellungen nur bedingt überblendet werden sollten.\\
+
+Dazu kommen als optional eingestufte Elemente sowie Informationen, die den Ablauf und die Interaktion mit der Anwendung betreffen. Das betrifft z.B. Feedback für Nutzeraktionen, den Cursor oder Statusinformationen.\\
+
+\textbf{\textit{Wie soll es dargestellt werden?}}\\
+Die wohl umfassendste Frage besteht darin, wie die Informationen und Zusammenhänge visualisiert werden sollen. Was soll textuell, als 2D oder als 3D Geometrie dargestellt werden? \\
+
+\textbf{\textit{Wie soll damit interagiert werden?}}\\
+Nicht zuletzt ist ein Konzept für die Interaktion zu erstellen. Welche Eingabemethoden werden dem Nutzer angeboten und wie wird der Nutzer über diese informiert? Welche Aktionen soll die Anwendung zur Verfügung stellen?\\
 
