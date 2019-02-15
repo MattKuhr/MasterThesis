@@ -60,10 +60,26 @@ Vision-haptic visualization improves elaboration based on embodied imaging. It p
 
 %TODO Erst aktuell, dann ältere paper oder andersherum?\\
 \subsubsection{In der Physik}
-Auch in der Physik finden sich in der gängigen Literatur bereits einige Ansätze, die MR-Technologie nutzen.\\
+Auch in der Physik finden sich in der gängigen Literatur bereits einige Ansätze, die MR-Technologie nutzen. Die Idee, physikalische Experimente in MR durchzuführen, ist nicht neu und es finden sich für mehrere Bereiche der Physik Arbeiten. Davon sollen ausgewählte kurz vorgestellt werden.\\
 
 \vspace{4px}
-\textit{holo.lab}\\
+\textit{MR in Elektrodynamik}\\
+Im Themengebiet der Elektrodynamik finden sich mehrere Anwendungen von AR-Technologie, die auf eine Nutzung in der Lehre abzielen. Buchau et. al. stellen eine Arbeit vor, in der ein Verbund aus optischen Markern, Webcam, Laptop und Server genutzt wird, um Magnetfeldlinien für einen Stabmagneten und eine Helmholtz-Spule anzuzeigen \cite{Buchau09}. Über die optischen Marker wird die genaue Position und Ausrichtung der Objekte relativ zur Kamera bestimmt. Die Feldlinien werden dann entsprechend in das Bild der WebCam eingebettet und auf dem Laptop angezeigt. Abbildung \ref{img:paper-collection} zeigt zwei Screenshots der Anwendung.\\
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.45\textwidth]{images/Buchau09.jpg}
+	\hspace{0.05cm}
+	\includegraphics[width=0.45\textwidth]{images/Buchau09_Magnet_2.jpg}
+	\caption{\cite{Matsutomo13}}
+\end{figure}
+
+Die Berechnung der Feldlinien erfolgt mittels der Finite Elemente Methode auf einem Server. Die Feldstärke ist dabei zusätzlich über die Farbe der Feldlinien codiert. Die Einbettung der errechneten Geometrie in die realen Objekte wird neben der perspektivisch korrekten Darstellung über Verdeckung erzielt. Das geschieht mittels den realen Objekten nachmodellierten, virtuellen Objekten, die anhand der Marker mit den realen Gegenständen überlagert und ausschließlich in den Z-Buffer gerendert werden. Dadurch werden Feldlinien, die sich hinter einem Magneten oder Spulenteil befinden, nicht dargestellt.\\
+
+Die Autoren halten fest, dass Augmented Reality eine anschauliche Methode zur Visualisierung elektromagnetischer Felder ist. Sowohl Lernende als auch Experten könnten dabei leicht die Charakteristiken der Felder mit den realen Objekten verknüpfen. Die vorgestellte Anwendung zielt dabei vor allem auf den Einsatz in einem Unterrichtsraum ab, indem das Bild vom Laptop über einen Beamer für alle Teilnehmer sichtbar gemacht wird.\\
+
+\vspace{4px}
+\textit{MR in Thermodynamik}\\
 Strzys et. al. stellen eine Arbeit vor, in der eine Mixed Reality Anwendung mit der HoloLens im Kontext eines physikalischen Laborversuches genutzt wird \cite{Strzys17}. Dabei handelt es sich um ein Experiment aus der Thermodynamik, bei dem ein Metallstab gleichzeitig von der einen Seite erhitzt und von der anderen gekühlt wird. Nach kurzer Zeit ergibt sich über die Länge des Stabes ein Temperaturverlauf, der mit einer Infrarotkamera gemessen werden kann. Abbildung \ref{img:Strzys17} zeigt den Versuchsaufbau sowie die Szene aus Sicht eines Nutzers mit der HoloLens.\\
 
 \begin{figure}[h!]
@@ -90,25 +106,10 @@ Dabei hat der Nutzer die Möglichkeit, einzelne Darstellungsformen ein- und ausz
 \begin{quote}
 	\textit{``Under that perspective the effort to achieve possibly more exact numerical values for quantities like the thermal conductivity therefore seem to be less important in this setting. Instead, the technical support during the experimental phase will give students the possibility to thoroughly examine the relationship between cause and effect and thus deepen their physical understanding.''}
 \end{quote}
-\vspace{4px}
-\textit{Demo: Electrical Theories}\\
+
 \end{comment}
 
-\vspace{4px}
-\textit{AR in Elektrodynamik}\\
-Buchau et. al. stellen eine Arbeit vor, in der ein Verbund aus optischen Markern, Webcam, Laptop und Server genutzt wird, um Magnetfeldlinien für einen Stabmagneten und eine Helmholtz-Spule anzuzeigen \cite{Buchau09}. Über die optischen Marker wird die genaue Position und Ausrichtung der Objekte relativ zur Kamera bestimmt. Die Feldlinien werden dann entsprechend in das Bild der WebCam eingebettet und auf dem Laptop angezeigt. Abbildung \ref{img:paper-collection} zeigt zwei Screenshots der Anwendung.\\
 
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.45\textwidth]{images/Buchau09.jpg}
-	\hspace{0.05cm}
-	\includegraphics[width=0.45\textwidth]{images/Buchau09_Magnet_2.jpg}
-	\caption{\cite{Matsutomo13}}
-\end{figure}
-
-Die Berechnung der Feldlinien erfolgt mittels der Finite Elemente Methode auf einem Server. Die Feldstärke ist dabei zusätzlich über die Farbe der Feldlinien codiert. Die Einbettung der errechneten Geometrie in die realen Objekte wird neben der perspektivisch korrekten Darstellung über Verdeckung erzielt. Das geschieht mittels den realen Objekten nachmodellierten, virtuellen Objekten, die anhand der Marker mit den realen Gegenständen überlagert und ausschließlich in den Z-Buffer gerendert werden. Dadurch werden Feldlinien, die sich hinter einem Magneten oder Spulenteil befinden, nicht dargestellt.\\
-
-Die Autoren halten fest, dass Augmented Reality \textit{``eine anschauliche Methode zur Visualisierung elektromagnetischer Felder ist''}. Sowohl Lernende als auch Experten können dabei \textit{``leicht die Charakteristiken der Felder mit den realen Objekten verknüpfen''}. Die vorgestellte Anwendung zielt dabei vor allem auf den Einsatz in einem Unterrichtsraum ab, indem das Bild vom Laptop über einen Beamer für alle Teilnehmer sichtbar gemacht wird.\\
 
 \vspace{4px}
 \textit{Weitere Arbeiten}\\
