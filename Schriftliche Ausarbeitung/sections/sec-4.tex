@@ -10,49 +10,106 @@ Nachdem in den vorangegangenen Kapiteln die Hintergründe erläutert und Problem
 
 \subsection{Grundidee}
 % \textbf{Mixed Reality: Einbettung und Zusammenspiel von realen und virtuellen Objekten}\\
-Im Ausgangspunkt folgt das Design dem Ansatz von Strzys et. al. und überträgt die Idee auf den Versuch mit der Helmholtz-Spule. Der Ansatz besteht darin, die physikalischen Eigenschaften darzustellen, in ihren realen Kontext einzubetten und dadurch einen räumlichen und zeitlichen Zusammenhang zu schaffen.\\
+Im Kern besteht der Ansatz darin, die physikalischen Eigenschaften darzustellen, in ihren realen Kontext einzubetten und dadurch einen räumlichen und zeitlichen Zusammenhang zu schaffen. Die Versuchsaufbauten werden mit virtuellen Objekten angereichert und somit in eine gemeinsame Anwendung integriert. Die Nutzererfahrung entsteht also durch das Zusammenspiel von realer und virtueller Welt.\\
 
-\begin{itemize}[topsep=-2px]
-	\setlength{\itemsep}{-5pt}
-	\item Integration von realen und virtuellen Objekten in eine Mixed Reality Anwendung
-	\item Virtuelle Objekte werden in den Versuchsaufbau eingebettet und interagieren mit diesem in Echtzeit
-	\item Gemessene, berechnete und beobachtete physikalische Vorgänge werden somit in einer Anwendung integriert
-	\item Nutzer kann sich mit der HoloLens frei im Raum bewegen und mit der Anwendung sowie den Gerätschaften interagieren
-	\item Zentral ist dabei die Darstellung der entstehenden Magnetfelder
-\end{itemize}
+Das bedeutet also, dass die virtuellen Objekte in Relation zum Versuchsaufbau, vor allem zur Spule, platziert werden. Das betrifft vor allem die Darstellungen der Magnetfelder. Dementsprechend muss die genaue Position und Ausrichtung relevanter Geräte bestimmt und in das Koordinatensystem der Anwendung transformiert werden. Nachdem dies einmal erfolgt ist, muss der Vorgang im Laufe der Anwendung nicht wiederholt werden, denn der Aufbau wird im Laufe des Versuches nicht bewegt oder gedreht. Der Anwender kann sich dann frei um die Gerätschaften herum bewegen, sie aus verschiedenen Perspektiven betrachten und damit interagieren. Die Interaktion erfolgt dabei sowohl mit den realen als auch den virtuellen Objekten.\\
+
+Neben dem räumlichen Zusammenhang wird auch ein zeitlicher hergestellt. Dies geschieht, indem die Brille in Echtzeit Messwerte von Geräten des Versuches erhält. Diese werden dann verarbeitet und dazu in Zusammenhang stehende Darstellungen angepasst. Das betrifft in erster Linie die Visualisierungen des Magnetfeldes der Spule, die sich automatisch an die gemessenen Werte anpassen. Das bedeutet, dass der Nutzer beim Einstellen des Stromflusses an der Spannungsquelle die Änderungen an den physikalischen Eigenschaften gleichsam in der Realität als auch der virtuellen Realität in Echtzeit beobachten kann. \\
+
+Dieses Konzept macht dabei von den zentralen Stärken der HoloLens Gebrauch. Als Head Mounted Display mit transparenter, stereoskopischer Anzeige und dem Raumverständnis sind solch immersive Anwendungsszenarien die Kernkompetenz der Brille. Dazu trägt auch die Bewegungsfreiheit sowie der Punkt, dass der Träger die Hände frei hat, bei.
+
+\begin{center}
+	\fbox{
+		\parbox{0.9\linewidth}{
+		\vspace{4px}
+		\textbf{Überblick}
+		\begin{itemize}[rightmargin=12px, topsep=-12px]
+			\setlength{\itemsep}{-1pt}
+			\singlespacing
+			\item Integration von realen und virtuellen Objekten in eine Mixed Reality Anwendung
+			\item Virtuelle Objekte werden in den Versuchsaufbau eingebettet und interagieren mit diesem in Echtzeit
+			\item Gemessene, berechnete und beobachtete physikalische Vorgänge werden somit in einer Anwendung integriert
+			\item Nutzer kann sich mit der HoloLens frei im Raum bewegen und mit der Anwendung sowie den Gerätschaften interagieren
+			\item Zentral ist dabei die Darstellung der entstehenden Magnetfelder
+		\end{itemize}
+	\vspace{18px}
+	}}\\
+\end{center}
+
+
+Unter diesem grundsätzlichen Ansatz soll die Lösung nun weiter konkretisiert werden. Dazu erläutert die Arbeit zunächst das Design der Darstellungen und darauf folgend die Interaktion. Das Kapitel schließt mit einer kurzen Betrachtung der Einbettung dieser Elemente in den Rahmen einer Anwendung.
 
 \subsection{Darstellungen}
-\textbf{Magnetfeld}
-\begin{itemize}[topsep=-2px]
-	\setlength{\itemsep}{-5pt}
-	\item Magnetfeld von Erde und Spule dreidimensional darstellen und räumlich in die Spule einbetten
-	\item Einbettung durch Verdeckungsberechnung von realer Spule und virtueller Geometrie verbessern
-	\item Sowohl die Darstellung über Feldlinien als auch die über Vektoren anbieten
-	\item Für beide Varianten wird 3D-Geometrie genutzt
-	\item Objekte verändern sich dynamisch anhand von Messwerten
-	\item Darstellung beschränkt sich auf das Zentrum der Spule
-	\item Eine davon unabhängige, eigene Darstellung von Simulationsdaten zeigt eine numerische Lösung für das gesamte Feld in einer ausgewählten Ebene
-\end{itemize}
-\vspace{8px}
+Der folgende Abschnitt stellt die gewählten Visualisierungen im Einzelnen entsprechend der funktionalen Anforderungen vor. Zuvor sollen kurz Designentscheidungen festgehalten werden, die alle Darstellungen betreffen.\\
 
-\textbf{Stromfluss}
-\begin{itemize}[topsep=-2px]
-	\setlength{\itemsep}{-5pt}
-	\item Direkt an den Spulen verankerte Indikatoren zeigen die Flussrichtung im Raum an
-	\item Indikatoren nur sichtbar, wenn Strom fließt, zeigen so also auch an, ob die Spule unter Strom steht
-	\item Kennzeichnung der Konnektoren mit Plus und Minus anhand von Labeln
-\end{itemize}
-\vspace{8px}
+\textbf{\textit{Allgemeines}}\\
+Viele Darstellungen sollen am Versuchsaufbau, also vor allem an der Spule, verankert werden. Das bedeutet, dass der Anwender Abstand und Blickwinkel zu diesen Objekten durch seine Bewegungen und Blickrichtung selbst steuert. Um dennoch stets eine komfortable Nutzung zu ermöglichen, und die zuvor erläuterten Probleme im Hinblick auf Distanz und Blickrichtung zu vermeiden, werden mehrere Maßnahmen getroffen.\\
 
-\textbf{Kompass}
+Um zu geringe Distanzen zwischen Nutzer und den virtuellen Objekten zu vermeiden, werden fest verankerte Darstellung unterhalb einer gewissen Distanz ausgeblendet. Hier folgt das Design den entsprechenden, zuvor aufgeführten Empfehlungen. Das ermöglicht dem Nutzer zugleich das Eintauchen in die Darstellungen. Frei bewegliche Elemente hingegen werden durch entsprechende Skripte den Bewegungen des Nutzers angepasst, so dass sie stets in einer komfortablen Zone des Sichtfeldes verbleiben.\\
+
+Weiterhin soll eine Nutzung im Abstand von ca. 1,2m bis 1,5m begünstigt werden. Das hat mehrere Gründe. Zum einen passt bei diesem Abstand die Spule vollständig in das Sichtfeld der HoloLens. Darin eingebettete Darstellungen werden also nicht durch die Grenzen des Field of View abgeschnitten. Dabei bleibt auch noch etwas Spielraum für Kopfbewegungen, so dass die Darstellungen nicht schon bei kleinen Bewegungen an die Grenzen des Displays stoßen. Gleichzeitig bleiben nicht so große Teile des Sichtfeldes ungenutzt. Außerdem reduzieren sich so die Effekte durch die Diskrepanz zwischen Konvergenz und Akkommodation der Augen im Vergleich zu kleineren Abständen. Hier findet also ein Kompromiss zwischen Ausnutzung des Sichtfeldes und Komfort statt. Der genannte Bereich wurde dabei aus der praktischen Erfahrung festgelegt.\\
+
+Für die Darstellungen bedeutet das, dass die Größe der Objekte für diesen Bereich geeignet sein sollte. Darüber hinaus kann die Auswahl eines geeigneten Tisches die Nutzung begünstigen. Das Design geht davon aus, dass der Nutzer die Anwendung im Stehen verwendet, damit er in der Lage ist, sich frei um den Versuchsaufbau herum zu bewegen. Ein entsprechend hoher Tisch führt dazu, dass der vertikale Blickwinkel im empfohlenen Bereich zwischen 0° und -35° liegt. Weiterhin kann die Spule mit etwas Abstand zur Tischkante positioniert werden, um so auf natürliche Weise die Nutzung in der geeigneten Distanz zu begünstigen.\\
+
+Weiterhin sind für alle Objekte, die in Abhängigkeit des sich ändernden Feldes stehen, Parameter für die Darstellung definiert. Diese legen für alle Elemente einen gemeinsamen Wertebereich fest, für den die Darstellung erfolgt. Außerdem werden ab dem minimalen Wert die Objekte über einen gewählten Bereich kontinuierlich eingeblendet. Dieses konsistente Verhalten dient dazu, das Verständnis der Darstellungen zu verbessern. Außerdem soll auf diese Weise transportiert werden, dass nur die Darstellungen verschwinden, nicht jedoch die physikalischen Sachverhalte, die repräsentiert werden.\\
+
+Nach diesen allgemeinen Festlegungen sollen die einzelnen Elemente erläutert werden.\\
+
+\textbf{\textit{Das Magnetfeld}}\\
+Die Darstellung des Magnetfeldes von Erde und Spule ist zentraler Bestandteil der Anwendung. Die wichtigsten Designentscheidungen lassen sich der Skizze in Abb. X. entnehmen und sind hier in Stichpunkten zusammengefasst:
+
+\begin{center}
+	\fbox{
+		\parbox{0.9\linewidth}{
+			\vspace{4px}
+			\textbf{Überblick}
+			\begin{itemize}[rightmargin=12px, topsep=-12px]
+				\setlength{\itemsep}{-1pt}
+				\singlespacing
+				\item Magnetfeld von Erde und Spule über 3D-Geometrie darstellen und räumlich in die Spule einbetten
+				\item Einbettung durch Verdeckungsberechnung von realer Spule und virtueller Geometrie verbessern	
+				\item Komponenten des Feldes (Erde, Spule) mit verschiedenen Farben darstellen anstelle des tatsächlichen, kombinierten Feldes
+				\item Sowohl die Darstellung über Feldlinien als auch die über Vektoren anbieten, Nutzer kann zwischen den Varianten umschalten
+				\item Darstellung beschränkt sich auf einen zylindrischen Ausschnitt der Spule	
+				\item Objekte verändern sich dynamisch anhand von Messwerten
+				\item Eine davon unabhängige, eigene Darstellung von Simulationsdaten zeigt eine numerische Lösung für das Feld sowohl innerhalb als auch außerhalb der Spule für eine ausgewählte Ebene
+			\end{itemize}
+			\vspace{18px}
+	}}\\
+\end{center}
+
+Die Repräsentation über dreidimensionale Objekte erlaubt die Betrachtung aus beliebigen Blickwinkeln. Zweidimensionale Linien oder Pfeile würden hier dazu führen, dass die Darstellung beim Blick in Richtung des Feldstärkevektors verschwindet. Außerdem stärkt ein 3D-Objekt das Präsenzgefühl und unterstützt so die Glaubhaftigkeit der Einbettung. Letztere wird dabei vor allem durch die Verdeckung der Feldlinien und Vektoren durch die Spule unterstützt. Die Überdeckung von weiter entfernten Objekten durch nähergelegende ist einer der wichtigsten Faktoren für die menschliche Tiefenwahrnehmung und ist hier daher unverzichtbar.\\
+
+Die Entscheidung, die einzelnen Komponenten des Feldes mit verschiedenen Farben darzustellen anstelle des tatsächlichen, überlagerten Feldes, wurde aus didaktischen Gründen getroffen. Für das Verständnis, wie das resultierende Feld entsteht, ist die Visualisierung der Komponenten entscheidend. Deshalb wurde auf Empfehlung der Didaktiker diese Variante gewählt. Damit jedoch nicht der falsche Eindruck entsteht, es würden sich um zwei unabhängige, eigene Magnetfelder handeln, sollte der Anwender darüber informiert werden. Dies kann z.B. durch ein Voice Over mit einem kurzen Erklärtext oder auch eine Fachkundige Person, z.B. eine Lehrkraft, erfolgen.\\
+
+Weiterhin werden die beiden in der Lehre üblichen Darstellungsmodelle angeboten. Der Nutzer kann im Laufe der Anwendung frei zwischen den Modellen wechseln. Beide Modelle beschränken sich zunächst auf einen zylindrischen Ausschnitt der Spule. Das ist ausreichend, da für den Versuch lediglich das Feld im Zentrum der Spule, in dem sich auch der Kompass befindet, relevant ist. Das inhomogene Feld außerhalb der Spule wirkt sich nicht auf den Versuch aus. Dies wird daher in einer eigenen Darstellung auf Basis von vorberechneten Simulationsdaten dargestellt. So wird zum einen vermittelt, wie das gesamte Feld aussieht, und zum anderen, warum der Kompass gerade in die Mitte der Spule gestellt wird.\\
+
+Die Darstellungen verändern sich dabei dynamisch, entsprechend ihrer Modelle, anhand der aus den Messwerten berechneten Flussdichte. Beim Feldlinienmodell verändern sich Anzahl, Position und Abstand der Linen, bei den Vektoren variiert die Länge. Für die Flussdichte des Erdmagnetfeldes wird ein zuvor gemessener Wert angenommen.\\
+
+
+\textbf{\textit{Der Stromfluss}}\\
+Beim Stromfluss ist in erster Linie die Flussrichtung durch die Spulen von Interesse, denn hiervon hängt die Ausrichtung des entstehenden Magnetfeldes ab. Diese wird über pfeil-ähnliche Indikatoren an den Spulen angezeigt. Außerdem werden die Anschlüsse mit Labels versehen, die Plus und Minus kennzeichnen. Das Konzept ist in Grafik X dargestellt.\\
+
+Die Indikatoren werden abhängig von Position und Blickwinkel des Betrachters angezeigt, wie in der Abbildung zu sehen. Auf diese Weise ist die Richtung aus allen Perspektiven zu erkennen. Beim Wechsel der Darstellungen gibt es einen kontinuierlichen Übergang. In dieser Umsetzung ist die 2D-Geometrie ausreichend. Die Positionierung direkt auf bzw. an den Spulen führt dazu, dass kein zusätzlicher Screenspace, der für die Felddarstellung genutzt wird, in Anspruch genommen werden muss, da das Feld hier ohnehin von den Spulen verdeckt wird. Die Spulen bleiben weiterhin gut sichtbar, da nur ein Teil und nur eine Seite überdeckt wird. Hier haushaltet die Anwendung also mit dem ihr zur Verfügung stehenden Platz.\\
+
+Ein Nachteil dieser Lösung ist jedoch, dass das zuvor erläuterte Problem mit der Akkommodation auftritt. Die Kante zwischen virtuellem Pfeil und realer Spule kann bei einer Entfernung unter 2m zu Irritationen führen, da sich das Auge auf eine Akkommodation festlegen muss und dementsprechend das andere Objekt nicht als scharf wahrnimmt. Allerdings stehen beide Objekte selten im Fokus und die Spule muss nicht detailreich betrachtet werden, deshalb überwiegen hier die Vorteile dieser Lösung.\\
+
+Damit die Stromrichtung auch als technische Stromrichtung interpretiert und in die Schaltung eingeordnet werden kann, sind die Konnektoren mit Labels in Form von Tooltips mit Bezeichnung, entsprechender Farbe und Icon ausgestattet. Die Lables orientieren sich dabei an der Kamera, damit sie aus allen Winkeln lesbar sind.\\
+
+\textbf{\textit{Der Kompass}}
 \begin{itemize}[topsep=-2px]
-	\setlength{\itemsep}{-5pt}
+	\setlength{\itemsep}{-1pt}
+	\singlespacing
 	\item Kompass entsteht aus Kombination von realer Magnetnadel und virtueller Skala
-	\item Nadel wird mittig in der Spule aufgestellt
+	\item Reale Nadel wird mittig in der Spule aufgestellt
 	\item Virtueller Ring mit Markierungen im 45° Abstand um die Spule herum dient als Skala	
-	\item Virtuelle Nord-Süd sowie 45° Linie als Sehnen im Kreis durch das Zentrum der Spule
-	\item Weitere Linie für theoretische Auslenkung, ebenfalls durchs Zentrum
-	\item Die drei Diagonalen sind jeweils in der Mitte ausgeschnitten, damit der Kompass sichtbar bleibt
+	\item Virtuelle Kreissehnen durch den Mittelpunkt mit Ausschnitt im Mittelpunkt für den Kompass 
+	\begin{itemize}[topsep=0px, label=\textbullet]
+		\setlength{\itemsep}{-1pt}
+		\item Feste Nord-Süd Linie
+		\item Feste 45° Linie
+		\item Virtueller Kompass, der die theoretisch berechnete Auslenkung eines idealen Kompasses anzeigt
+	\end{itemize}
 	\item Gradzahl der theoretischen Nadel wird am Kreis angezeigt
 \end{itemize}
 \vspace{8px}
