@@ -58,7 +58,14 @@ Weiterhin sind für alle Objekte, die in Abhängigkeit des sich ändernden Felde
 Nach diesen allgemeinen Festlegungen sollen die einzelnen Elemente erläutert werden.\\
 
 \textbf{\textit{Das Magnetfeld}}\\
-Die Darstellung des Magnetfeldes von Erde und Spule ist zentraler Bestandteil der Anwendung. Die wichtigsten Designentscheidungen lassen sich der Skizze in Abb. X. entnehmen und sind hier in Stichpunkten zusammengefasst.
+Die Darstellung des Magnetfeldes von Erde und Spule ist zentraler Bestandteil der Anwendung. Die wichtigsten Designentscheidungen lassen sich der Skizze in Abb. \ref{img:magnetic-design} entnehmen und sind hier in Stichpunkten zusammengefasst.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{images/todo.jpg}
+	\caption{Magnetfeld Design}
+	\label{img:magnetic-design}
+\end{figure}
 
 \vspace{8px}
 \begin{center}
@@ -92,7 +99,15 @@ Die Darstellungen verändern sich dabei dynamisch, entsprechend ihrer Modelle, a
 
 
 \textbf{\textit{Der Stromfluss}}\\
-Beim Stromfluss ist in erster Linie die Flussrichtung durch die Spulen von Interesse, denn hiervon hängt die Ausrichtung des entstehenden Magnetfeldes ab. Diese wird über pfeil-ähnliche Indikatoren an den Spulen angezeigt. Außerdem werden die Anschlüsse mit Labels versehen, die Plus und Minus kennzeichnen. Das Konzept ist in Grafik X dargestellt.
+Beim Stromfluss ist in erster Linie die Flussrichtung durch die Spulen von Interesse, denn hiervon hängt die Ausrichtung des entstehenden Magnetfeldes ab. Diese wird über pfeil-ähnliche Indikatoren an den Spulen angezeigt. Außerdem werden die Anschlüsse mit Labels versehen, die Plus und Minus kennzeichnen. Das Konzept ist in Grafik \ref{img:current-design} dargestellt.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{images/todo.jpg}
+	\caption{Stromfluss Design}
+	\label{img:current-design}
+\end{figure}
+
 
 \vspace{8px}
 \begin{center}
@@ -119,7 +134,14 @@ Ein Nachteil dieser Lösung ist jedoch, dass das zuvor erläuterte Problem mit d
 Damit die Stromrichtung auch als technische Stromrichtung interpretiert und in die Schaltung eingeordnet werden kann, sind die Konnektoren mit Labels in Form von Tooltips mit Bezeichnung, entsprechender Farbe und Icon ausgestattet. Die Lables orientieren sich dabei an der Kamera, damit sie aus allen Winkeln lesbar sind.\\
 
 \textbf{\textit{Der Kompass}}\\
-Der Kompass bildet sich aus dem Zusammenspiel einer realen Magnetnadel, einer virtuellen Skala sowie virtuellen Hilfslinien. Die Idee ist in Abbildung X festgehalten.
+Der Kompass bildet sich aus dem Zusammenspiel einer realen Magnetnadel, einer virtuellen Skala sowie virtuellen Hilfslinien. Die Idee ist in Abbildung \ref{img:compass-design} festgehalten.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{images/todo.jpg}
+	\caption{Kompass Design}
+	\label{img:compass-design}
+\end{figure}
 
 \vspace{8px}
 \begin{center}
@@ -151,17 +173,44 @@ Der Fokus dieses Designs liegt nicht darin, die Auslenkung des Kompasses möglic
 
 Die Nutzung einer virtuellen Skala erlaubt letzteres auf natürliche Weise. Dazu kommen zwei weitere, wesentliche Gründe, warum nicht eine reale Skala zum Einsatz kommt. Erstens wäre eine herkömmliche, unter der Nadel angebrachte Skala nur schwer lesbar. Das liegt an der gewünschten Entfernung, da hierfür die Skalen oft zu klein sind, aber auch am Blickwinkel. Letzterer ist viel geringer als die steilen Winkel, die normalerweise zum Ablesen der Richtung benötigt werden. Die Nadel hingegen ist mit $12 cm$ Länge bewusst groß genug gewählt, damit sie gut zu sehen ist. Zweitens würde sie Platz im inneren der Spule einnehmen. Dieser Platz wird jedoch für die Felddarstellungen benötigt.\\
 
-Die virtuelle Skala umgeht dieses Problem, da sie als Ring unmittelbar außerhalb der Spule umgesetzt ist. Lediglich die Hilfslinien bei 0° und 45° sowie die Linie des virtuellen Kompasses kommen zusätzlich in den Bereich der Felddarstellung. Die ersten beiden werden außerdem etwas abgeschwächt, indem ihre Transparenz erhöht wird. Alle drei sind jedoch in der Mitte ausgeschnitten, um die Kompassnadel nicht zu überblenden. Dieses Design erlaubt es dem Betrachter genau festzustellen, ob die Linie der Nadel durch eine der virtuellen Linien fortgesetzt wird. Außerdem entsteht so die Vergleichbarkeit mit der theoretischen Nadel, da diese entweder stärker, schwächer oder genauso stark ausgelenkt ist.\\
+Die virtuelle Skala umgeht dieses Problem, da sie als Ring unmittelbar außerhalb der Spule umgesetzt ist. Lediglich die Hilfslinien bei 0° und 45° sowie die Linie des virtuellen Kompasses kommen zusätzlich in den Bereich der Felddarstellung. Die ersten beiden werden außerdem etwas abgeschwächt, indem ihre Transparenz erhöht wird. Alle drei sind jedoch in der Mitte ausgeschnitten, um die Kompassnadel nicht zu überblenden.\\
 
-Diese Lösung setzt jedoch auf eine sehr genaue Positionsbestimmung der Spule sowie eine hohe Stabilität der Hologramme. Wenn das Modell verrutscht oder zittert schränkt das die Nutzung des Kompasses ein.\\
+Dieses Design erlaubt es dem Betrachter genau festzustellen, ob die Linie der Nadel durch eine der virtuellen Linien fortgesetzt wird. Außerdem entsteht so die Vergleichbarkeit mit der theoretischen Nadel, da diese entweder stärker, schwächer oder genauso stark ausgelenkt ist. Für letztere wird außerdem die Gradzahl als Text angegeben.\\
+
+Diese Lösung setzt jedoch auf eine genaue Positionsbestimmung der Spule sowie eine hohe Stabilität der Hologramme. Wenn das Modell verrutscht oder zittert schränkt das die Nutzung des Kompasses ein.\\
 
 \textbf{\textit{Weitere Informationen}}\\
-\begin{itemize}[topsep=-2px]
-	\setlength{\itemsep}{-5pt}
-	\item Numerische Werte (gemessen oder berechnet) werden auf einem Datenpanel dargestellt
-	\item Physikalische Parameter werden als Labels an die entsprechenden Elemente angehängt
-\end{itemize}
-\vspace{4px}
+Die Darstellung weiterer Informationen sind zwei Lösungen vorgesehen: Ein Datenpanel zur Darstellung numerischer Werte in Textform sowie optional aktivierbare Labels am Versuchsaufbau. Beides ist in Abbildung \ref{img:info-design} skizziert.
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{images/todo.jpg}
+	\caption{Info Design}
+	\label{img:info-design}
+\end{figure}
+
+\vspace{8px}
+\begin{center}
+	\fbox{
+		\parbox{0.9\linewidth}{
+			\vspace{4px}
+			\textbf{Überblick}
+			\begin{itemize}[rightmargin=12px, topsep=-12px]
+				\setlength{\itemsep}{-1pt}
+				\singlespacing
+				\item Stromstärke (gemessen) und Flussdichte (berechnet) werden auf einem Datenpanel dargestellt
+				\item Panel hat einen dunklen Hintergrund, damit der Text besser lesbar ist
+				\item Weitere physikalische Parameter werden über Labels an die entsprechenden Elemente angehängt (Windungszahl, Radius und Abstand der Spulen, Widerstand etc.)
+			\end{itemize}
+			\vspace{18px}
+	}}\\
+\end{center}
+\vspace{6px}
+
+Das Datenpanel dient als Informationsboard für die Echtzeitdaten. Der graue Hintergrund stellt dabei sicher, dass die Schrift gut zu lesen ist. Die Positionierung am mittleren Verbindungsstück liegt, wie auch bei den Indikatoren für die Stromrichtung, im Ausnutzen von Platz begründet. Hier ist die ständige Sichtbarkeit jedoch sekundär.\\
+
+Man könnte auch eine Lösung über ein Heads-Up Display in Erwägung ziehen, da es sich um numerische Werte handelt ohne einen natürlichen Ankerpunkt in der Szene. Allerdings sind HUDs aus verschiedenen Gründen auf der HoloLens ungünstig. Deshalb rät die Dokumentation explizit vom Gebrauch solcher ab. Daher wurde hier die Variante eines fest stehenden Objektes gewählt.\\
 
 \subsection{Interaktion}
 Interaktion mit Klicker - keine Gesten notwendig. Vertraute Aktionen: Klick sowie Hold-Klick.\\
