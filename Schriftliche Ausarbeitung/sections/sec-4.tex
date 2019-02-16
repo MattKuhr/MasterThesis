@@ -18,6 +18,7 @@ Neben dem räumlichen Zusammenhang wird auch ein zeitlicher hergestellt. Dies ge
 
 Dieses Konzept macht dabei von den zentralen Stärken der HoloLens Gebrauch. Als Head Mounted Display mit transparenter, stereoskopischer Anzeige und dem Raumverständnis sind solch immersive Anwendungsszenarien die Kernkompetenz der Brille. Dazu trägt auch die Bewegungsfreiheit sowie der Punkt, dass der Träger die Hände frei hat, bei.
 
+\vspace{8px}
 \begin{center}
 	\fbox{
 		\parbox{0.9\linewidth}{
@@ -35,6 +36,7 @@ Dieses Konzept macht dabei von den zentralen Stärken der HoloLens Gebrauch. Als
 	\vspace{18px}
 	}}\\
 \end{center}
+\vspace{6px}
 
 
 Unter diesem grundsätzlichen Ansatz soll die Lösung nun weiter konkretisiert werden. Dazu erläutert die Arbeit zunächst das Design der Darstellungen und darauf folgend die Interaktion. Das Kapitel schließt mit einer kurzen Betrachtung der Einbettung dieser Elemente in den Rahmen einer Anwendung.
@@ -56,8 +58,9 @@ Weiterhin sind für alle Objekte, die in Abhängigkeit des sich ändernden Felde
 Nach diesen allgemeinen Festlegungen sollen die einzelnen Elemente erläutert werden.\\
 
 \textbf{\textit{Das Magnetfeld}}\\
-Die Darstellung des Magnetfeldes von Erde und Spule ist zentraler Bestandteil der Anwendung. Die wichtigsten Designentscheidungen lassen sich der Skizze in Abb. X. entnehmen und sind hier in Stichpunkten zusammengefasst:
+Die Darstellung des Magnetfeldes von Erde und Spule ist zentraler Bestandteil der Anwendung. Die wichtigsten Designentscheidungen lassen sich der Skizze in Abb. X. entnehmen und sind hier in Stichpunkten zusammengefasst.
 
+\vspace{8px}
 \begin{center}
 	\fbox{
 		\parbox{0.9\linewidth}{
@@ -77,6 +80,7 @@ Die Darstellung des Magnetfeldes von Erde und Spule ist zentraler Bestandteil de
 			\vspace{18px}
 	}}\\
 \end{center}
+\vspace{6px}
 
 Die Repräsentation über dreidimensionale Objekte erlaubt die Betrachtung aus beliebigen Blickwinkeln. Zweidimensionale Linien oder Pfeile würden hier dazu führen, dass die Darstellung beim Blick in Richtung des Feldstärkevektors verschwindet. Außerdem stärkt ein 3D-Objekt das Präsenzgefühl und unterstützt so die Glaubhaftigkeit der Einbettung. Letztere wird dabei vor allem durch die Verdeckung der Feldlinien und Vektoren durch die Spule unterstützt. Die Überdeckung von weiter entfernten Objekten durch nähergelegende ist einer der wichtigsten Faktoren für die menschliche Tiefenwahrnehmung und ist hier daher unverzichtbar.\\
 
@@ -88,7 +92,25 @@ Die Darstellungen verändern sich dabei dynamisch, entsprechend ihrer Modelle, a
 
 
 \textbf{\textit{Der Stromfluss}}\\
-Beim Stromfluss ist in erster Linie die Flussrichtung durch die Spulen von Interesse, denn hiervon hängt die Ausrichtung des entstehenden Magnetfeldes ab. Diese wird über pfeil-ähnliche Indikatoren an den Spulen angezeigt. Außerdem werden die Anschlüsse mit Labels versehen, die Plus und Minus kennzeichnen. Das Konzept ist in Grafik X dargestellt.\\
+Beim Stromfluss ist in erster Linie die Flussrichtung durch die Spulen von Interesse, denn hiervon hängt die Ausrichtung des entstehenden Magnetfeldes ab. Diese wird über pfeil-ähnliche Indikatoren an den Spulen angezeigt. Außerdem werden die Anschlüsse mit Labels versehen, die Plus und Minus kennzeichnen. Das Konzept ist in Grafik X dargestellt.
+
+\vspace{8px}
+\begin{center}
+	\fbox{
+		\parbox{0.9\linewidth}{
+			\vspace{4px}
+			\textbf{Überblick}
+			\begin{itemize}[rightmargin=12px, topsep=-12px]
+				\setlength{\itemsep}{-1pt}
+				\singlespacing
+				\item Direkt an den Spulen verankerte Indikatoren zeigen die Flussrichtung an
+				\item Indikatoren passen sich der Position des Nutzers an
+				\item Kennzeichnung der Konnektoren mit Plus und Minus anhand von Labels
+			\end{itemize}
+			\vspace{18px}
+	}}\\
+\end{center}
+\vspace{6px}
 
 Die Indikatoren werden abhängig von Position und Blickwinkel des Betrachters angezeigt, wie in der Abbildung zu sehen. Auf diese Weise ist die Richtung aus allen Perspektiven zu erkennen. Beim Wechsel der Darstellungen gibt es einen kontinuierlichen Übergang. In dieser Umsetzung ist die 2D-Geometrie ausreichend. Die Positionierung direkt auf bzw. an den Spulen führt dazu, dass kein zusätzlicher Screenspace, der für die Felddarstellung genutzt wird, in Anspruch genommen werden muss, da das Feld hier ohnehin von den Spulen verdeckt wird. Die Spulen bleiben weiterhin gut sichtbar, da nur ein Teil und nur eine Seite überdeckt wird. Hier haushaltet die Anwendung also mit dem ihr zur Verfügung stehenden Platz.\\
 
@@ -96,25 +118,44 @@ Ein Nachteil dieser Lösung ist jedoch, dass das zuvor erläuterte Problem mit d
 
 Damit die Stromrichtung auch als technische Stromrichtung interpretiert und in die Schaltung eingeordnet werden kann, sind die Konnektoren mit Labels in Form von Tooltips mit Bezeichnung, entsprechender Farbe und Icon ausgestattet. Die Lables orientieren sich dabei an der Kamera, damit sie aus allen Winkeln lesbar sind.\\
 
-\textbf{\textit{Der Kompass}}
-\begin{itemize}[topsep=-2px]
-	\setlength{\itemsep}{-1pt}
-	\singlespacing
-	\item Kompass entsteht aus Kombination von realer Magnetnadel und virtueller Skala
-	\item Reale Nadel wird mittig in der Spule aufgestellt
-	\item Virtueller Ring mit Markierungen im 45° Abstand um die Spule herum dient als Skala	
-	\item Virtuelle Kreissehnen durch den Mittelpunkt mit Ausschnitt im Mittelpunkt für den Kompass 
-	\begin{itemize}[topsep=0px, label=\textbullet]
-		\setlength{\itemsep}{-1pt}
-		\item Feste Nord-Süd Linie
-		\item Feste 45° Linie
-		\item Virtueller Kompass, der die theoretisch berechnete Auslenkung eines idealen Kompasses anzeigt
-	\end{itemize}
-	\item Gradzahl der theoretischen Nadel wird am Kreis angezeigt
-\end{itemize}
-\vspace{8px}
+\textbf{\textit{Der Kompass}}\\
+Der Kompass bildet sich aus dem Zusammenspiel einer realen Magnetnadel, einer virtuellen Skala sowie virtuellen Hilfslinien. Die Idee ist in Abbildung X festgehalten.
 
-\textbf{Weitere Informationen}
+\vspace{8px}
+\begin{center}
+	\fbox{
+		\parbox{0.9\linewidth}{
+			\vspace{4px}
+			\textbf{Überblick}
+			\begin{itemize}[rightmargin=12px, topsep=-12px]
+				\setlength{\itemsep}{-1pt}
+				\singlespacing
+				\item Kompass entsteht aus Kombination von realer Magnetnadel und virtueller Skala
+				\item Reale Nadel wird mittig in der Spule aufgestellt
+				\item Virtueller Ring mit Markierungen im 45° Abstand um die Spule herum dient als Skala	
+				\item Virtuelle Kreissehnen durch den Mittelpunkt mit Ausschnitt im Mittelpunkt für den Kompass 
+				\begin{itemize}[topsep=0px, label=\textbullet]
+					\setlength{\itemsep}{-1pt}
+					\item Feste Nord-Süd Linie
+					\item Feste 45° Linie
+					\item Virtueller Kompass, der die theoretisch berechnete Auslenkung eines idealen Kompasses anzeigt
+				\end{itemize}
+				\item Gradzahl der theoretischen Nadel wird am Kreis angezeigt
+			\end{itemize}
+			\vspace{18px}
+	}}\\
+\end{center}
+\vspace{6px}
+
+Der Fokus dieses Designs liegt nicht darin, die Auslenkung des Kompasses möglichst genau ablesen zu können. Vielmehr geht es darum die besonders wichtigen Auslenkungen, nämlich 0° und 45°, sichtbar zu machen. Denn Ziel des Versuches ist es, die Nadel von 0° auf 45° auszulenken. Zwischen diesen Werten genügt eine grobe Orientierung. Außerdem sollen die theoretischen Werte mit in den Kompass integriert werden.\\
+
+Die Nutzung einer virtuellen Skala erlaubt letzteres auf natürliche Weise. Dazu kommen zwei weitere, wesentliche Gründe, warum nicht eine reale Skala zum Einsatz kommt. Erstens wäre eine herkömmliche, unter der Nadel angebrachte Skala nur schwer lesbar. Das liegt an der gewünschten Entfernung, da hierfür die Skalen oft zu klein sind, aber auch am Blickwinkel. Letzterer ist viel geringer als die steilen Winkel, die normalerweise zum Ablesen der Richtung benötigt werden. Die Nadel hingegen ist mit $12 cm$ Länge bewusst groß genug gewählt, damit sie gut zu sehen ist. Zweitens würde sie Platz im inneren der Spule einnehmen. Dieser Platz wird jedoch für die Felddarstellungen benötigt.\\
+
+Die virtuelle Skala umgeht dieses Problem, da sie als Ring unmittelbar außerhalb der Spule umgesetzt ist. Lediglich die Hilfslinien bei 0° und 45° sowie die Linie des virtuellen Kompasses kommen zusätzlich in den Bereich der Felddarstellung. Die ersten beiden werden außerdem etwas abgeschwächt, indem ihre Transparenz erhöht wird. Alle drei sind jedoch in der Mitte ausgeschnitten, um die Kompassnadel nicht zu überblenden. Dieses Design erlaubt es dem Betrachter genau festzustellen, ob die Linie der Nadel durch eine der virtuellen Linien fortgesetzt wird. Außerdem entsteht so die Vergleichbarkeit mit der theoretischen Nadel, da diese entweder stärker, schwächer oder genauso stark ausgelenkt ist.\\
+
+Diese Lösung setzt jedoch auf eine sehr genaue Positionsbestimmung der Spule sowie eine hohe Stabilität der Hologramme. Wenn das Modell verrutscht oder zittert schränkt das die Nutzung des Kompasses ein.\\
+
+\textbf{\textit{Weitere Informationen}}\\
 \begin{itemize}[topsep=-2px]
 	\setlength{\itemsep}{-5pt}
 	\item Numerische Werte (gemessen oder berechnet) werden auf einem Datenpanel dargestellt
