@@ -44,7 +44,7 @@ Unter diesem grundsätzlichen Ansatz soll die Lösung nun weiter konkretisiert w
 \subsection{Darstellungen}
 Der folgende Abschnitt stellt die gewählten Visualisierungen im Einzelnen entsprechend der funktionalen Anforderungen vor. Zuvor sollen kurz Designentscheidungen festgehalten werden, die alle Darstellungen betreffen.\\
 
-\textbf{\textit{Allgemeines}}\\
+\subsubsection{Allgemeines} % \textbf{\textit{Allgemeines}}\\
 Viele Darstellungen sollen am Versuchsaufbau, also vor allem an der Spule, verankert werden. Das bedeutet, dass der Anwender Abstand und Blickwinkel zu diesen Objekten durch seine Bewegungen und Blickrichtung selbst steuert. Um dennoch stets eine komfortable Nutzung zu ermöglichen, und die zuvor erläuterten Probleme im Hinblick auf Distanz und Blickrichtung zu vermeiden, werden mehrere Maßnahmen getroffen.\\
 
 Um zu geringe Distanzen zwischen Nutzer und den virtuellen Objekten zu vermeiden, werden fest verankerte Darstellung unterhalb einer gewissen Distanz ausgeblendet. Hier folgt das Design den entsprechenden, zuvor aufgeführten Empfehlungen. Das ermöglicht dem Nutzer zugleich das Eintauchen in die Darstellungen. Frei bewegliche Elemente hingegen werden durch entsprechende Skripte den Bewegungen des Nutzers angepasst, so dass sie stets in einer komfortablen Zone des Sichtfeldes verbleiben.\\
@@ -57,7 +57,7 @@ Weiterhin sind für alle Objekte, die in Abhängigkeit des sich ändernden Felde
 
 Nach diesen allgemeinen Festlegungen sollen die einzelnen Elemente erläutert werden.\\
 
-\textbf{\textit{Das Magnetfeld}}\\
+\subsubsection{Das Magnetfeld} %\textbf{\textit{Das Magnetfeld}}\\
 Die Darstellung des Magnetfeldes von Erde und Spule ist zentraler Bestandteil der Anwendung. Die wichtigsten Designentscheidungen lassen sich der Skizze in Abb. \ref{img:magnetic-design} entnehmen und sind hier in Stichpunkten zusammengefasst.
 
 \begin{figure}[h!]
@@ -98,7 +98,7 @@ Weiterhin werden die beiden in der Lehre üblichen Darstellungsmodelle angeboten
 Die Darstellungen verändern sich dabei dynamisch, entsprechend ihrer Modelle, anhand der aus den Messwerten berechneten Flussdichte. Beim Feldlinienmodell verändern sich Anzahl, Position und Abstand der Linen, bei den Vektoren variiert die Länge. Für die Flussdichte des Erdmagnetfeldes wird ein zuvor gemessener Wert angenommen.\\
 
 
-\textbf{\textit{Der Stromfluss}}\\
+\subsubsection{Der Stromfluss} %\textbf{\textit{Der Stromfluss}}\\
 Beim Stromfluss ist in erster Linie die Flussrichtung durch die Spulen von Interesse, denn hiervon hängt die Ausrichtung des entstehenden Magnetfeldes ab. Diese wird über pfeil-ähnliche Indikatoren an den Spulen angezeigt. Außerdem werden die Anschlüsse mit Labels versehen, die Plus und Minus kennzeichnen. Das Konzept ist in Grafik \ref{img:current-design} dargestellt.
 
 \begin{figure}[h!]
@@ -133,7 +133,7 @@ Ein Nachteil dieser Lösung ist jedoch, dass das zuvor erläuterte Problem mit d
 
 Damit die Stromrichtung auch als technische Stromrichtung interpretiert und in die Schaltung eingeordnet werden kann, sind die Konnektoren mit Labels in Form von Tooltips mit Bezeichnung, entsprechender Farbe und Icon ausgestattet. Die Lables orientieren sich dabei an der Kamera, damit sie aus allen Winkeln lesbar sind.\\
 
-\textbf{\textit{Der Kompass}}\\
+\subsubsection{Der Kompass} %\textbf{\textit{Der Kompass}}\\
 Der Kompass bildet sich aus dem Zusammenspiel einer realen Magnetnadel, einer virtuellen Skala sowie virtuellen Hilfslinien. Die Idee ist in Abbildung \ref{img:compass-design} festgehalten.
 
 \begin{figure}[h!]
@@ -179,7 +179,7 @@ Dieses Design erlaubt es dem Betrachter genau festzustellen, ob die Linie der Na
 
 Diese Lösung setzt jedoch auf eine genaue Positionsbestimmung der Spule sowie eine hohe Stabilität der Hologramme. Wenn das Modell verrutscht oder zittert schränkt das die Nutzung des Kompasses ein.\\
 
-\textbf{\textit{Weitere Informationen}}\\
+\subsubsection{Weitere Informationen} %\textbf{\textit{Weitere Informationen}}\\
 Die Darstellung weiterer Informationen sind zwei Lösungen vorgesehen: Ein Datenpanel zur Darstellung numerischer Werte in Textform sowie optional aktivierbare Labels am Versuchsaufbau. Beides ist in Abbildung \ref{img:info-design} skizziert.
 
 
@@ -212,18 +212,47 @@ Das Datenpanel dient als Informationsboard für die Echtzeitdaten. Der graue Hin
 
 Man könnte auch eine Lösung über ein Heads-Up Display in Erwägung ziehen, da es sich um numerische Werte handelt ohne einen natürlichen Ankerpunkt in der Szene. Allerdings sind HUDs aus verschiedenen Gründen auf der HoloLens ungünstig. Deshalb rät die Dokumentation explizit vom Gebrauch solcher ab. Daher wurde hier die Variante eines fest stehenden Objektes gewählt.\\
 
+Schließlich lassen sich verschiedene weitere Parameter des Versuches anzeigen. Diese müssen nicht immer sichtbar sein und können deshalb optional eingeblendet werden. Die Umsetzung erfolgt wie bei den Markierungen für Plus und Minus im ToolTip-Stil.\\
+
+Nachdem eine Lösung für die inhaltlichen Aspekte erarbeitet wurde soll dafür auch ein grober Rahmen entworfen werden.
+
+\subsection{Rahmen der Anwendung}
+
+\begin{itemize}[topsep=-2px]
+	\setlength{\itemsep}{-5pt}
+	\item Start-Logo und Sound
+	\item Menu mit Start der Hauptanwendung und Optionen
+	\item Einstellungsmenu für IP, Feldstärke der Erde und weiteren Parametern, Default-Werte vorhanden
+	\item Optionen werden persistent auf der HoloLens gespeichert und lassen sich ggf. auf Default-Werte zurücksetzen
+	\item Menu lässt sich jederzeit wieder aufrufen
+	\item Erklärungen per VO, lassen sich überspringen
+\end{itemize}
+
 \subsection{Interaktion}
-Interaktion mit Klicker - keine Gesten notwendig. Vertraute Aktionen: Klick sowie Hold-Klick.\\
-\textbf{Hauptteil der Anwendung - Durchführung des Versuches}\\
-Die Interaktion ist einfach gehalten. Während der Durchführung des Versuches sind vor allem zwei Aktionen möglich:
+Die Interaktion soll möglichst einfach gehalten werden und auch für Nutzer ohne Erfahrung mit der HoloLens geeignet sein. Daher folgt das Design der Empfehlung, alternative Interaktionsmöglichkeiten zur Verfügung zu stellen. Diese Lösung bietet dem Anwender drei Eingabemethoden an:
+\begin{enumerate}
+	\setlength{\itemsep}{-5pt}
+	\item Klicker
+	\item Handgesten
+	\item Sprachbefehle
+\end{enumerate}
+
+Der Klicker ist ein kleiner, in der Hand gehaltener Taster, der sich wie eine Maustaste verhält. Ein mal drücken wird als Klick erkannt, aber auch gedrückt halten ist möglich.
+Die dazu korrespondierende Handgeste ist der AirTap, der auf der HoloLens als Klick-Geste dient. Als Klick erkennt das Gerät außerdem den reservierten Sprachbefehl ''Select''. Weitere Sprachbefehle werden von der Anwendung selbst definiert.\\
+
+Die Lösung stellt dem Anwender die drei Eingabemethoden frei zur Verfügung. Das bedeutet, der Nutzer kann selbst entscheiden, auf welche Methoden er zurückgreift. Jede Interaktionsmöglichkeit kann jederzeit genutzt werden. Anwender, die keine Erfahrung mit der HoloLens haben, sind nicht gezwungen, zunächst die Gestensteuerung der HoloLens zu erlernen. Außerdem ist die Interaktion so auf natürliche Weise konsistent: Ein Klick mit dem Klicker ist äquivalent zu einem Klick durch den AirTap.\\
+
+\textit{Hauptteil der Anwendung - Durchführung des Versuches}\\
+Während der Durchführung des Versuches sind drei Aktionen möglich:
 \begin{enumerate}[topsep=-2px]
 	\setlength{\itemsep}{-5pt}
 	\item Veränderung des Stromflusses über den Regler der Spannungsquelle
 	\item Wechsel zwischen den beiden Darstellungsmodellen
+	\item Rückkehr zum Hauptmenu
 \end{enumerate}
 \vspace{4px}
 
-Die Anwendung passt sich automatisch an den sich ändernden Stromfluss an. Außerdem reagiert die Applikation auf Bewegungen des Nutzers und passt ggf. Darstellungen entsprechend der Position und Blickrichtung des Nutzers an. Auf Kommandos reagiert die Anwendung mit visuellem oder akustischem Feedback.\\[4px]
+Bei ersterer interagiert der Nutzer mit dem Versuchsaufbau, die Anwendung passt sich dabei automatisch an den sich ändernden Stromfluss anhand der Messwerte an. Für den Wechsel zwischen den Darstellungen sowie die Rückkehr zum Menu werden die zuvor beschriebenen Möglichkeiten angeboten. In jedem Fall reagiert die Anwendung mit visuellem oder akustischem Feedback auf ein Kommando.\\
 
 \textbf{Drumherum der Anwendung - Start/Stopp/Restart und Setup}
 \begin{itemize}[topsep=-2px]
@@ -234,16 +263,6 @@ Die Anwendung passt sich automatisch an den sich ändernden Stromfluss an. Auße
 	\item Feedback für länger laufende Aktionen über visuellen Progress-Indikator
 \end{itemize}
 
-\subsection{Drum-Herum}
-\begin{itemize}[topsep=-2px]
-	\setlength{\itemsep}{-5pt}
-	\item Start-Logo und Sound
-	\item Menu mit Start der Hauptanwendung und Optionen
-	\item Einstellungsmenu für IP, Feldstärke der Erde und weiteren Parametern, Default-Werte vorhanden
-	\item Optionen werden persistent auf der HoloLens gespeichert und lassen sich ggf. auf Default-Werte zurücksetzen
-	\item Menu lässt sich jederzeit wieder aufrufen
-	\item Erklärungen per VO, lassen sich überspringen
-\end{itemize}
 
 \subsection{Zusammenhang: Problem \& Design}
 Beschreiben: 
