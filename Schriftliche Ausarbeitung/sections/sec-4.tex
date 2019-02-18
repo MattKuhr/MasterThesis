@@ -97,7 +97,6 @@ Weiterhin werden die beiden in der Lehre üblichen Darstellungsmodelle angeboten
 
 Die Darstellungen verändern sich dabei dynamisch, entsprechend ihrer Modelle, anhand der aus den Messwerten berechneten Flussdichte. Beim Feldlinienmodell verändern sich Anzahl, Position und Abstand der Linen, bei den Vektoren variiert die Länge. Für die Flussdichte des Erdmagnetfeldes wird ein zuvor gemessener Wert angenommen.\\
 
-
 \subsubsection{Der Stromfluss} %\textbf{\textit{Der Stromfluss}}\\
 Beim Stromfluss ist in erster Linie die Flussrichtung durch die Spulen von Interesse, denn hiervon hängt die Ausrichtung des entstehenden Magnetfeldes ab. Diese wird über pfeil-ähnliche Indikatoren an den Spulen angezeigt. Außerdem werden die Anschlüsse mit Labels versehen, die Plus und Minus kennzeichnen. Das Konzept ist in Grafik \ref{img:current-design} dargestellt.
 
@@ -214,19 +213,49 @@ Man könnte auch eine Lösung über ein Heads-Up Display in Erwägung ziehen, da
 
 Schließlich lassen sich verschiedene weitere Parameter des Versuches anzeigen. Diese müssen nicht immer sichtbar sein und können deshalb optional eingeblendet werden. Die Umsetzung erfolgt wie bei den Markierungen für Plus und Minus im ToolTip-Stil.\\
 
-Nachdem eine Lösung für die inhaltlichen Aspekte erarbeitet wurde soll dafür auch ein grober Rahmen entworfen werden.
+Nachdem eine Lösung für die inhaltlichen Aspekte erarbeitet wurde soll diese auch in den Rahmen einer Anwendung mit einem Ablauf integriert werden.
 
 \subsection{Rahmen der Anwendung}
+Die Lösung sieht neben der Durchführung des Versuches weitere Komponenten vor, die der Nutzbarkeit der Anwendung dienen. Das betrifft drei Bereiche: Die Steuerung des Ablaufes, die Bestimmung von Position und Ausrichtung der Spule sowie Einstellungen.
 
-\begin{itemize}[topsep=-2px]
-	\setlength{\itemsep}{-5pt}
-	\item Start-Logo und Sound
-	\item Menu mit Start der Hauptanwendung und Optionen
-	\item Einstellungsmenu für IP, Feldstärke der Erde und weiteren Parametern, Default-Werte vorhanden
-	\item Optionen werden persistent auf der HoloLens gespeichert und lassen sich ggf. auf Default-Werte zurücksetzen
-	\item Menu lässt sich jederzeit wieder aufrufen
-	\item Erklärungen per VO, lassen sich überspringen
-\end{itemize}
+\vspace{8px}
+\begin{center}
+	\fbox{
+		\parbox{0.9\linewidth}{
+			\vspace{4px}
+			\textbf{Überblick}
+			\begin{itemize}[rightmargin=12px, topsep=-12px]
+				\setlength{\itemsep}{-1pt}
+				\singlespacing
+				\item Start-Logo und Sound
+				\item Menu mit Start der Hauptanwendung und Optionen
+				\item Einstellungsmenu für IP, Feldstärke der Erde und weitere Parametern, Default-Werte vorhanden
+				\item Einstellungen werden persistent auf der HoloLens gespeichert und lassen sich ggf. auf Default-Werte zurücksetzen
+				\item Menu lässt sich jederzeit wieder aufrufen
+				\item Erklärungen per VO (optional)
+				\item Tracking-Sequenz
+			\end{itemize}
+			\vspace{18px}
+	}}\\
+\end{center}
+\vspace{6px}
+
+\textit{Das Hauptmenu}\\
+Das Hauptmenu steuert den Ablauf der Anwendung. Hier kann der eigentliche Versuch (erneut) gestartet, die Positionsbestimmung (erneut) angestoßen oder die Einstellungen aufgerufen werden. Die Umsetzung erfolgt über Buttons, die sich automatisch der Kamera anpassen, so dass der Anwender keine Probleme hat, sie zu finden.\\
+
+\textit{Die Einstellungen}\\
+Die Einstellungen bieten die Konfiguration wichtiger Parameter an. Das betrifft vor allem die gemessene Flussdichte des Erdmagnetfeldes, die sich von Raum zu Raum unterscheiden kann. Aber auch der gewählte Widerstand lässt sich einstellen, da hier ein Austausch in der Schaltung leicht möglich und beim Wechsel auf eine andere Spannungsquelle unter Umständen sogar nötig ist. Auch die Einstellung der Adresse des Servers, von dem die Messwerte abgefragt werden, wird angeboten. Die Eingabe der Werte erfolgt dabei über die vom Mixed Reality Toolkit zur Verfügung gestellte, virtuelle Tastatur.\\
+
+Damit die Einstellungen nicht nach jedem Neustart der Anwendung vorgenommen werden müssen, sieht die Lösung eine Speicherung auf dem lokalen Speicher der HoloLens vor. Bei der erstmaligen Verwendung werden Default-Werte geladen, auf die die Applikation auch wieder zurückgesetzt werden kann. Die Einstellungen tragen somit wesentlich zur Nutzbarkeit der Anwendung bei. Ohne diese Optionen müsste die App für jede Änderung in diesen Parametern mit der geänderten Konfiguration neu deployt werden. Insbesondere bei der Adresse des Servers wäre dies problematisch, da diese, je nach technischer Umsetzung, ggf. zum Zeitpunkt des Deployments noch gar nicht bekannt ist.\\
+
+\textit{Das Tracking}\\
+Nicht zuletzt soll die Anwendung den Nutzer durch den Prozess der Positionsbestimmung der Spule führen. Die Bestimmung soll über einen optischen Marker erfolgen, der über die integrierte Kamera eingelesen wird. Die Verwendung eines hinreichend großen, optischen Markers erlaubt die Genauigkeiten im Bereich unter einem Zentimeter, die von der Anwendung benötigt werden. Letztere instruiert den Nutzer dabei und informiert über den Fortschritt des Vorgangs.\\
+
+Die Idee dahinter besteht darin diesen, hier als ''Tracking'' bezeichneten Vorgang, nur einmalig erfolgen zu lassen. Wurden Position und Ausrichtung einmal ermittelt, werden diese gespeichert und verwendet. Hier bietet die HoloLens den sogenannten \textit{World Anchor Store} an, in dem die Position von Objekten in Relation zum Raumverständnis dauerhaft gespeichert werden kann. Dieser Speicher ist persistent und kann die Position nicht nur über mehrere Anwendungssessions hinweg, sondern auch über einen Neustart der Brille hinweg speichern.\\ 
+
+Das Design nutzt hier gezielt die Funktionalitäten der HoloLens sowie den Umstand aus, dass Spule und Magnetnadel, nachdem sie einmal aufgestellt wurden, nicht weiter bewegt werden müssen. Allerdings bedeutet dieser Ansatz auch, dass die Qualität der Positionierung über mehrere Sessions hinweg abhängig vom Raumverständnis der HoloLens ist. Deshalb lässt sich das Tracking jederzeit manuell neu anstoßen, wenn die Überlagerung als nicht gut genug empfunden wird.\\
+
+Solange also der Versuchsaufbau nicht bewegt wird, kann die einmalig gespeicherte Position verwendet werden. Die Anwendung erkennt automatisch, ob die gespeicherten Daten vorliegen. Dadurch verkürzt sich die Setup-Zeit und es trägt dazu bei, dass auch unerfahrene Nutzer die Applikation verwenden können.\\
 
 \subsection{Interaktion}
 Die Interaktion soll möglichst einfach gehalten werden und auch für Nutzer ohne Erfahrung mit der HoloLens geeignet sein. Daher folgt das Design der Empfehlung, alternative Interaktionsmöglichkeiten zur Verfügung zu stellen. Diese Lösung bietet dem Anwender drei Eingabemethoden an:
