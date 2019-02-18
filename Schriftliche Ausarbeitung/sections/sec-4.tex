@@ -93,7 +93,9 @@ Die Repräsentation über dreidimensionale Objekte erlaubt die Betrachtung aus b
 
 Die Entscheidung, die einzelnen Komponenten des Feldes mit verschiedenen Farben darzustellen anstelle des tatsächlichen, überlagerten Feldes, wurde aus didaktischen Gründen getroffen. Für das Verständnis, wie das resultierende Feld entsteht, ist die Visualisierung der Komponenten entscheidend. Deshalb wurde auf Empfehlung der Didaktiker diese Variante gewählt. Damit jedoch nicht der falsche Eindruck entsteht, es würden sich um zwei unabhängige, eigene Magnetfelder handeln, sollte der Anwender darüber informiert werden. Dies kann z.B. durch ein Voice Over mit einem kurzen Erklärtext oder auch eine Fachkundige Person, z.B. eine Lehrkraft, erfolgen.\\
 
-Weiterhin werden die beiden in der Lehre üblichen Darstellungsmodelle angeboten. Der Nutzer kann im Laufe der Anwendung frei zwischen den Modellen wechseln. Beide Modelle beschränken sich zunächst auf einen zylindrischen Ausschnitt der Spule. Das ist ausreichend, da für den Versuch lediglich das Feld im Zentrum der Spule, in dem sich auch der Kompass befindet, relevant ist. Das inhomogene Feld außerhalb der Spule wirkt sich nicht auf den Versuch aus. Dies wird daher in einer eigenen Darstellung auf Basis von vorberechneten Simulationsdaten dargestellt. So wird zum einen vermittelt, wie das gesamte Feld aussieht, und zum anderen, warum der Kompass gerade in die Mitte der Spule gestellt wird.\\
+Weiterhin werden die beiden, in der Lehre üblichen Darstellungsmodelle angeboten. Beide Modelle bringen Vor- und Nachteile mit sich. Der Nutzer kann im Laufe der Anwendung frei zwischen den Modellen wechseln. Dadurch können beide Modelle ihre individuellen Stärken ausspielen. Außerdem ist so ein besseres Verständnis davon möglich, wie die Modelle zusammenhängen.\\
+
+Beide Modelle beschränken sich zunächst auf einen zylindrischen Ausschnitt der Spule. Das ist ausreichend, da für den Versuch lediglich das Feld im Zentrum der Spule, in dem sich auch der Kompass befindet, relevant ist. Das inhomogene Feld außerhalb der Spule wirkt sich nicht auf den Versuch aus. Dies wird daher in einer eigenen Darstellung auf Basis von vorberechneten Simulationsdaten dargestellt. So wird zum einen vermittelt, wie das gesamte Feld aussieht, und zum anderen, warum der Kompass gerade in die Mitte der Spule gestellt wird.\\
 
 Die Darstellungen verändern sich dabei dynamisch, entsprechend ihrer Modelle, anhand der aus den Messwerten berechneten Flussdichte. Beim Feldlinienmodell verändern sich Anzahl, Position und Abstand der Linen, bei den Vektoren variiert die Länge. Für die Flussdichte des Erdmagnetfeldes wird ein zuvor gemessener Wert angenommen.\\
 
@@ -228,11 +230,11 @@ Die Lösung sieht neben der Durchführung des Versuches weitere Komponenten vor,
 				\setlength{\itemsep}{-1pt}
 				\singlespacing
 				\item Start-Logo und Sound
-				\item Menu mit Start der Hauptanwendung und Optionen
-				\item Einstellungsmenu für IP, Feldstärke der Erde und weitere Parametern, Default-Werte vorhanden
+				\item Menü mit Start der Hauptanwendung und Optionen
+				\item Einstellungsmenü für IP, Feldstärke der Erde und weitere Parametern, Default-Werte vorhanden
 				\item Einstellungen werden persistent auf der HoloLens gespeichert und lassen sich ggf. auf Default-Werte zurücksetzen
-				\item Menu lässt sich jederzeit wieder aufrufen
-				\item Erklärungen per VO (optional)
+				\item Menü lässt sich jederzeit wieder aufrufen
+				\item Erklärungen per Voice Over
 				\item Tracking-Sequenz
 			\end{itemize}
 			\vspace{18px}
@@ -240,8 +242,8 @@ Die Lösung sieht neben der Durchführung des Versuches weitere Komponenten vor,
 \end{center}
 \vspace{6px}
 
-\textit{Das Hauptmenu}\\
-Das Hauptmenu steuert den Ablauf der Anwendung. Hier kann der eigentliche Versuch (erneut) gestartet, die Positionsbestimmung (erneut) angestoßen oder die Einstellungen aufgerufen werden. Die Umsetzung erfolgt über Buttons, die sich automatisch der Kamera anpassen, so dass der Anwender keine Probleme hat, sie zu finden.\\
+\textit{Das Hauptmenü}\\
+Das HauptMenü steuert den Ablauf der Anwendung. Hier kann der eigentliche Versuch (erneut) gestartet, die Positionsbestimmung (erneut) angestoßen oder die Einstellungen aufgerufen werden. Die Umsetzung erfolgt über Buttons, die sich automatisch der Kamera anpassen, so dass der Anwender keine Probleme hat, sie zu finden.\\
 
 \textit{Die Einstellungen}\\
 Die Einstellungen bieten die Konfiguration wichtiger Parameter an. Das betrifft vor allem die gemessene Flussdichte des Erdmagnetfeldes, die sich von Raum zu Raum unterscheiden kann. Aber auch der gewählte Widerstand lässt sich einstellen, da hier ein Austausch in der Schaltung leicht möglich und beim Wechsel auf eine andere Spannungsquelle unter Umständen sogar nötig ist. Auch die Einstellung der Adresse des Servers, von dem die Messwerte abgefragt werden, wird angeboten. Die Eingabe der Werte erfolgt dabei über die vom Mixed Reality Toolkit zur Verfügung gestellte, virtuelle Tastatur.\\
@@ -266,6 +268,25 @@ Die Interaktion soll möglichst einfach gehalten werden und auch für Nutzer ohn
 	\item Sprachbefehle
 \end{enumerate}
 
+\vspace{8px}
+\begin{center}
+	\fbox{
+		\parbox{0.9\linewidth}{
+			\vspace{4px}
+			\textbf{Überblick}
+			\begin{itemize}[rightmargin=12px, topsep=-12px]
+				\setlength{\itemsep}{-1pt}
+				\singlespacing
+				\item Interaktion mittels Klicker, Handgesten und Sprache
+				\item Jede Methode kann jederzeit genutzt werden
+				\item Visuelles oder akustisches Feedback für Nutzereingaben
+				\item Verwendung vorgefertigter, für die HoloLens designeter Objekte
+			\end{itemize}
+			\vspace{18px}
+	}}\\
+\end{center}
+\vspace{6px}
+
 Der Klicker ist ein kleiner, in der Hand gehaltener Taster, der sich wie eine Maustaste verhält. Ein mal drücken wird als Klick erkannt, aber auch gedrückt halten ist möglich.
 Die dazu korrespondierende Handgeste ist der AirTap, der auf der HoloLens als Klick-Geste dient. Als Klick erkennt das Gerät außerdem den reservierten Sprachbefehl ''Select''. Weitere Sprachbefehle werden von der Anwendung selbst definiert.\\
 
@@ -277,142 +298,19 @@ Während der Durchführung des Versuches sind drei Aktionen möglich:
 	\setlength{\itemsep}{-5pt}
 	\item Veränderung des Stromflusses über den Regler der Spannungsquelle
 	\item Wechsel zwischen den beiden Darstellungsmodellen
-	\item Rückkehr zum Hauptmenu
+	\item Rückkehr zum HauptMenü
 \end{enumerate}
-\vspace{4px}
+\vspace{8px}
 
-Bei ersterer interagiert der Nutzer mit dem Versuchsaufbau, die Anwendung passt sich dabei automatisch an den sich ändernden Stromfluss anhand der Messwerte an. Für den Wechsel zwischen den Darstellungen sowie die Rückkehr zum Menu werden die zuvor beschriebenen Möglichkeiten angeboten. In jedem Fall reagiert die Anwendung mit visuellem oder akustischem Feedback auf ein Kommando.\\
+Bei ersterer interagiert der Nutzer mit dem Versuchsaufbau, die Anwendung passt sich dabei automatisch an den sich ändernden Stromfluss anhand der Messwerte an. Für den Wechsel zwischen den Darstellungen sowie die Rückkehr zum Menü werden die zuvor beschriebenen Möglichkeiten angeboten. In jedem Fall reagiert die Anwendung mit visuellem oder akustischem Feedback auf ein Kommando.\\
 
-\textbf{Drumherum der Anwendung - Start/Stopp/Restart und Setup}
-\begin{itemize}[topsep=-2px]
-	\setlength{\itemsep}{-5pt}
-	\item Interaktion mit Menu-Optionen über 3D-Buttons
-	\item Betätigung der Buttons über Gaze und Klicker
-	\item Eingabe von Werten (IP-Adresse, physikalische Parameter) über virtuelles Keyboard
-	\item Feedback für länger laufende Aktionen über visuellen Progress-Indikator
-\end{itemize}
+\textbf{Menü, Einstellungen und Tracking}\\
+Das Menü und die Einstellungen werden über Buttons gesteuert. Diese lassen sich über den standardmäßigen Cursor in der Mitte des Sichtfeldes anvisieren und dann mit einem Klick betätigen. Der Cursor ist jedoch nur während der Nutzung des Menüs oder der Einstellungen sichtbar, da sonst keine Objekte ausgewählt werden müssen und der Cursor zwischen den anderen Hologrammen nur stören würde. Länger laufende Operationen wie z.B. das Laden von Objekten werden außerdem durch einen Progress Indikator mit einem kurzen Text angezeigt.\\
 
+Die Lösung baut hier auf den vorhandenen Elementen des MRTK auf und nutzt vorgefertigte Objekte. Dazu gehören Cursor, Progress Indikator, das virtuelle Keyboard und Buttons. Dadurch entsteht zum einen eine konsistente Interaktionsweise. Zum anderen sind die Komponenten speziell für die HoloLens designet und bringen bereits gewünschtes Verhalten wie z.B. Feedback bei Aktionen bereits mit.\\
 
-\subsection{Zusammenhang: Problem \& Design}
-Beschreiben: 
-\begin{itemize}
-	\item Wie nutzt das Konzept die Möglichkeiten der HoloLens und wie navigiert es um technische Einschränkungen herum?
-	\item Wie bedient das Design die Anforderungen?
-\end{itemize}
+\subsection{Zusammenfassung Design}
+Die vorgestellte Lösung zielt darauf ab, die physikalischen Zusammenhänge erkennbar zu machen, indem die Möglichkeiten der HoloLens genutzt, technische Einschränkungen berücksichtigt und Designempfehlungen eingearbeitet werden. Dazu wird, wenn möglich, auf bestehende, bereits für Mixed Reality designete Objekte und Verhaltensweisen zurückgegriffen. Durch die räumliche und zeitliche Integration der Hologramme in den Versuchsaufbau werden die physikalischen Eigenschaften des Systems direkt in ihrem tatsächlichen Kontext dargestellt. Dabei hat der Nutzer die Kontrolle über das Verhalten des Systems, wodurch es auf natürliche Weise erforschbar wird.\\
 
-\textbf{Positionierung und Verdeckung}
-Löst:
-\begin{itemize}
-	\item Ermöglicht die gewünschte Einbettung
-\end{itemize}
-
-\textbf{Echtzeitdaten}
-Löst:
-\begin{itemize}
-	\item Interaktivität und Erforschbarkeit
-	\item Einbettung
-	\item Ermöglicht überlagerung von theoretischen Ergebnissen mit realen
-\end{itemize}
-
-\textbf{Zwei MFeld Darstellungen}
-Löst: 
-\begin{itemize}
-	\item Nutzt Vor- und Nachteile der beiden Varianten
-	\item Anpassbarkeit
-	\item Vergleichbarkeit Theoretische vs. Experimentelle Ergebnisse
-\end{itemize}
-
-\textbf{Statusinformationen}
-Löst: 
-\begin{itemize}
-	\item Zentralisiert wichtige Infos und ermöglicht Bewegungsfreiheit
-	\item Direkte Vergleichbarkeit theoretischer Ergebnisse mit tatsächlichen Ergebnissen
-\end{itemize}
-
-\textbf{Kompass}
-Löst: 
-\begin{itemize}
-	\item Nordrichtung ist direkt ablesbar
-	\item Theoretische Auslenken direkt ablesbar
-	\item Durch Markierungen auch 45° direkt ablesbar
-	\item Differenz zwischen theoretischer Linie und realem Kompass sehr gut zu sehen
-	\item Durch Ring außen weniger Clutter (Quelle unbekannt)
-\end{itemize}
-
-\textbf{Stromfluss-Indikatoren}
-Löst: 
-\begin{itemize}
-	\item Stromrichtung ist aus allen Perspektiven ablesbar
-	\item Richtung ist 3dimensional eingebettet
-	\item Indikatoren vermeiden Clutter, da sie auf der Spule aufliegen, und so nur Teile des Sichtfeldes einnehmenm, die von der Spule ohnehin verdeckt sind
-	\item Durch Ein/Ausblenden bei Perspektivwechsel wird die Information immer nur an dem gerade relevanten Punkt angezeigt
-\end{itemize}
-
-\textbf{Plus-Minus-Labels}
-Löst: 
-\begin{itemize}
-	\item Zeigt Plus- und Minuspole an und ergänzt so die Fluss-Indikatoren um wichtige Information
-	\item Tooltip-Style ermöglicht Lesbarkeit aus verschiedenen Positionen
-	\item Verankerung unten, außerhalb der Spule vermeidet, dass die Labels die Darstellungen des MFeldes behindern
-	\item Farbe passend zur realen Farbe gewählt für Kontinuität und Zusammenhang
-	\item Ständige Sichtbarkeit der Information nicht unbedingt notwendig, daher Verdeckung durch Spule ok, das unterstützt noch die Einbettung
-	\item Vorhandenen ToolTip-Style verwendet für Consistency
-\end{itemize}
-
-\textbf{Sprachkommandos}
-Löst: 
-\begin{itemize}
-	\item Nutzer muss nicht zunächst Handgesten lernen
-	\item Nur wenige Kommandos notwendig
-	\item Kein Cursor notwendig
-	\item Einfach auszusprechende Begriffe sind auch für Nutzer geeignet, die nicht so gut im Englischen zu Hause sind
-\end{itemize}
-
-\subsection{eher technische Richtung}
-
-\textbf{Near Plane Fading}
-Löst: 
-\begin{itemize}
-	\item Minnimum Distanz
-	\item Behinderung bei Interaktion mit Versuchsaufbau
-	\item Ermöglicht ''Eintauchen'', reduziert Clutter
-	\item Bessere UX als Clipping
-\end{itemize}
-
-\textbf{Minimum Value Fading}
-Löst: 
-\begin{itemize}
-	\item Darstellungen sind erst ab minimal Werten sinnvoll
-	\item Übergang zwischen keiner Darstellung und der Darstellung von minimal Werten über Transparenz
-	\item Dadurch erkennbarer, fließender Übergang
-	\item Konsistent für alle betroffenen Darstellungen
-	\item Transparenz wird nicht für die Abbildung von Informationen verwendet, damit es hier keine Konflikte gibt
-	\item Bessere UX als hard cut
-\end{itemize}
-
-\textbf{Kein sichtbarer Cursor während des Hauptteils der Anwendung}
-\begin{itemize}
-	\item Kaum Objekte auszuwählen
-	\item Klicks werden akustisch bestätigt
-\end{itemize}
-
-\textbf{Erkennung der Position über eigene Szene in Zusammenarbeit mit dem Nutzer}
-\begin{itemize}
-	\item Nutzer versteht die Funktionsweise der Anwendung
-	\item Nutzer erhält Feedback über den Prozess der Positionsbestimmung von der Anwendung
-	\item Nutzer kann sein Verhalten anpassen und so den Prozess unterstützen
-	\item Bessere Kalibrierung möglich
-	\item Tracking nur für kurze Zeit erforderlich, das spart viel Ressourcen
-	\item Marker verdeckt kein Teil des Sichtfeldes, kann nach Positionierung auch entfernt werden
-\end{itemize}
-
-\textbf{Künstliche Beleuchtung}
-\begin{itemize}
-	\item Virtuelle Beleuchtung von Oben bildet echte Lichtverhältnisse grob nach
-	\item Unterstützt die Einbettung der 3D Objekte im Raum
-\end{itemize}
-
-
-
-
+Das folgende Kapitel erläutert nun die Details einer konkreten Umsetzung dieses Designs.
 

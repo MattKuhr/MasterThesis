@@ -1,32 +1,48 @@
-\section{Das Wie der Umsetzung}
+\section{Umsetzung}
 \label{sec-5}
 \fbox{
 \parbox{\linewidth}{
 	\textit{Ziel des Kapitels:}\\
-	Umsetzung erläutern: Wie wurde die Lösungsidee umgesetzt?\\[6px]
-	\textit{Inhalte:}
-	\begin{itemize}
-		\item Welche Darstellungen wurden gewählt?
-		\item Wie wurde die Interaktion gestaltet?
-	\end{itemize}
-}}
-\subsection{Architektur der Anwendung}
-%TODO Komponentendiagramm erstellen
-\begin{itemize}
-	\item Blender, Unity, Vuforia
-	\item Übersicht Komponenten und Zusammenspiel
-\end{itemize}
+	Umsetzung erläutern: Wie wurde die Lösungsidee umgesetzt?
+}}\\
 
-\textbf{Client-Server Datenübertragung}
-\begin{itemize}
-	\item HoloLens erfragt Daten vom Server über HTTP GET-Requests
-	\item Asynchrone Anfragen, so wird Render-Prozess nicht blockiert
-	\item Server nimmt Request entgegen und hält eine Antwort solange zurück, bis er einen neuen Wert vom Arduino erhält, der der HoloLens noch nicht bekannt ist und von vorherigen Werten signifikant abweicht
-	\item Dadurch kommen neue Daten sehr schnell bei der HoloLens an, der Nutzer sieht die Änderungen auf der Brille sofort, wenn er Änderungen an der Spannungsquelle vornimmt
-	\item Dadurch wird zeitliche Einbettung und Kontinuität erreicht
-	\item Dabei wird jedoch kein unnötiger Traffic erzeugt, wenn es keine Änderungen gibt
-	\item Das spart Ressourcen
-\end{itemize}
+Im folgenden soll erläutert werden, wie der zuvor erarbeitete Lösungsansatz umgesetzt wurde. Dazu gibt das Kapitel zunächst einen Überblick über die Architektur der Anwendung. Nach einer kurzen Erläuterung zu ''Screen-Captures'' von der HoloLens folgt eine nähere Betrachtung dessen, wie die Hologramme umgesetzt wurden. Schließlich werden Details zur Interaktion und Performance genannt.
+
+\subsection{Architektur der Anwendung}
+Das System ist als Client-Server-Architektur realisiert, einen Überblick gibt das Schema in Abb. \ref{img:communication-schema}. Ein Server erfasst und verarbeitet die in der Schaltung gemessenen Werte für die Stromstärke. Diese stammen von einem Arduino, der in den Stromkreislauf eingekoppelt ist. Die Applikation auf der HoloLens tritt als Client auf und erfragt die aktuellen Werte vom Server. 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\textwidth]{images/todo.jpg}
+	\caption{Schema Kommunikation Schaltung Arduino Server HoloLens}
+	\label{img:communication-schema}
+\end{figure}
+
+\textit{Client-Server Datenübertragung}\\
+Die Übertragung der Messwerte vom Arduino zur Anwendung ist so konzipiert, dass Änderungen in Echtzeit übermittelt werden, ohne das unnötiger Netzwerktraffic entsteht. Der Client betreibt ein Polling gegen den Server, der jedoch Antworten solange zurückhält, bis ein neuer, vom vorigen abweichender Wert gemessen wurde. Dieses Verhalten veranschaulicht das Sequenzdiagramm in Abbildung \ref{img:Sequenzdiagramm}.
+
+\vspace{8px}
+\begin{center}
+	\fbox{
+		\parbox{0.9\linewidth}{
+			\vspace{4px}
+			\textbf{Überblick}
+			\begin{itemize}[rightmargin=12px, topsep=-12px]
+				\setlength{\itemsep}{-1pt}
+				\singlespacing
+				\item HoloLens erfragt Daten vom Server über HTTP GET-Requests
+				\item Anfragen erfolgen asynchron
+				\item Server nimmt den Request entgegen und hält eine Antwort solange zurück, bis ein neuer Wert vom Arduino vorliegt
+				\item Dadurch kommen neue Daten sehr schnell bei der HoloLens an, der Nutzer sieht die Änderungen auf der Brille sofort, wenn er Änderungen an der Spannungsquelle vornimmt
+				\item Dadurch wird zeitliche Einbettung und Kontinuität erreicht
+				\item Dabei wird jedoch kein unnötiger Traffic erzeugt, wenn es keine Änderungen gibt
+			\end{itemize}
+			\vspace{18px}
+	}}\\
+\end{center}
+\vspace{6px}
+
+
+
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=1\textwidth]{images/Sequenzdiagramm.png}
@@ -34,9 +50,23 @@
 	\label{img:Sequenzdiagramm}
 \end{figure}
 
-\subsection{Darstellung}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\textwidth]{images/todo.jpg}
+	\caption{Schema Komponenten}
+	\label{img:components-schema}
+\end{figure}
 
+
+
+
+
+\subsection{Darstellungen}
+
+\subsubsection{Aufnahmen mit der HoloLens}
 %TODO Vorwort zu Screenshots
+
+\subsubsection{Das Magnetfeld}
 
 \textbf{Felddarstellung}
 \begin{itemize}
@@ -69,12 +99,26 @@ Vektoren
 	\item Das Near Clipping Plane muss dafür jedoch sehr nah am Kameraursprung liegen, andernfalls würden weiter entfernte, virtuelle Objekte plötzlich doch vor realen Objekten angezeigt werden, sobald letztere zu nah sind und das Clipping die Objekte vom Rendering ausschließt
 \end{itemize}
 
+\subsubsection{Weitere Elemente}
 \textbf{Near Plane Fading}
+Löst: 
 \begin{itemize}
+	\item Minnimum Distanz
+	\item Behinderung bei Interaktion mit Versuchsaufbau
+	\item Bessere UX als Clipping
 	\item MRTK Standard Shader implementiert Fade To Black
 	\item Shader auf Fade to transparent abgeändert
 	\item Lineares Fading überall genutzt
 \end{itemize}
+
+
+
+\textbf{Künstliche Beleuchtung}
+\begin{itemize}
+	\item Virtuelle Beleuchtung von Oben bildet echte Lichtverhältnisse grob nach
+	\item Unterstützt die Einbettung der 3D Objekte im Raum
+\end{itemize}
+
 
 \textbf{Kompass-Linien und Strom-Pfeile}
 \begin{itemize}
@@ -99,12 +143,14 @@ Vektoren
 \end{itemize}
 
 \subsection{Interaktion}
+\textbf{Erkennung der Position über eigene Szene in Zusammenarbeit mit dem Nutzer}
 \begin{itemize}
-	\item Per Klick Geste zwischen verschiedenen Modi umschalten
-	\item Per virtueller Tastatur Eingabe von numerischen Werten
-	\item Per Keywords "Power on" und "Power off" Steuerung des Stromkreises
-	\item Klick-Feedback durch Sound
-	\item ...
+	\item Nutzer versteht die Funktionsweise der Anwendung
+	\item Nutzer erhält Feedback über den Prozess der Positionsbestimmung von der Anwendung
+	\item Nutzer kann sein Verhalten anpassen und so den Prozess unterstützen
+	\item Bessere Kalibrierung möglich
+	\item Tracking nur für kurze Zeit erforderlich, das spart viel Ressourcen
+	\item Marker verdeckt kein Teil des Sichtfeldes, kann nach Positionierung auch entfernt werden
 \end{itemize}
 
 \subsection{Performance}
