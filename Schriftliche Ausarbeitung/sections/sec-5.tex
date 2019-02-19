@@ -128,9 +128,80 @@ Darüber hinaus gibt es Faktoren, die durch ein Foto nicht abgedeckt werden kön
 
 Diese Faktoren gilt es beim Einsatz von solchen Screen-Captures zu berücksichtigen. Prinzipiell sind auch Aufnahmen möglich, die näher an die tatsächliche Nutzererfahrung heranreichen, diese erfordern aber weiteres Equipment, das im Rahmen dieser Arbeit nicht zur Verfügung steht.
 
-\subsubsection{Überblick}
+\subsubsection{Allgemeines}
+
+\vspace{8px}
+\begin{center}
+	\fbox{
+		\parbox{0.9\linewidth}{
+			\vspace{4px}
+			\textbf{Überblick}
+			\begin{itemize}[rightmargin=12px, topsep=-12px]
+				\setlength{\itemsep}{-1pt}
+				\singlespacing
+				\item Spule maßstabsgetreu modelliert mit ca. 2mm größerer Ausdehnung für Verdeckungsberechnung
+				\item Rendering der Spule ausschließlich in den Z-Puffer
+				\item Near Plane Fading verbirgt Objekte, die eine minimale Distanz zur Kamera unterschreiten
+			\end{itemize}
+			\vspace{18px}
+	}}\\
+\end{center}
+\vspace{6px}
+
+\textit{Occlusion Berechnung}\\
+Nachmodelliert besser als Mesh, denn Mesh zu ungenau, Rendering nur in z puffer verbessert Performance, folgt Hinweis der Doku, near plane clipping beachten \\
+\begin{comment}
+\begin{itemize}
+	\item Für Verdeckung werden maßstabsgetreu nachmodellierte, virtuelle Objekte verwendet
+	\item 3D Mesh in Blender erstellt, 2mm größer als echte Objekte für Spielraum
+	\item Objekte werden möglichst genau über reale gelegt
+	\item Rendering erfolgt ausschließlich in den Z-Puffer, dadurch sind die realen Objekte sichtbar, die virtuellen verdecken jedoch dahinterliegende, vrituelle Objekte
+	\item Das Near Clipping Plane muss dafür jedoch sehr nah am Kameraursprung liegen, andernfalls würden weiter entfernte, virtuelle Objekte plötzlich doch vor realen Objekten angezeigt werden, sobald letztere zu nah sind und das Clipping die Objekte vom Rendering ausschließt
+\end{itemize}
+\end{comment}
+
+\textit{Near Plane Fading}\\
+Minimale Distanz, angenehmer als Clipping, fade to transparent nicht umgesetzt\\
+\begin{comment}
+\begin{itemize}
+	\item Minnimum Distanz
+	\item Behinderung bei Interaktion mit Versuchsaufbau
+	\item Bessere UX als Clipping
+	\item MRTK Standard Shader implementiert Fade To Black
+	\item Shader auf Fade to transparent abgeändert
+	\item Lineares Fading überall genutzt
+\end{itemize}
+\end{comment}
+
+\textit{Künstliche Beleuchtung}\\
+Beleuchtung bildet grob erwartete Lichtverhältnisse nach, keine Schatten\\
+\begin{comment}
+\begin{itemize}
+	\item Virtuelle Beleuchtung von Oben bildet echte Lichtverhältnisse grob nach
+	\item Unterstützt die Einbettung der 3D Objekte im Raum
+\end{itemize}
+\end{comment}
 
 \subsubsection{Das Magnetfeld}
+
+\vspace{8px}
+\begin{center}
+	\fbox{
+		\parbox{0.9\linewidth}{
+			\vspace{4px}
+			\textbf{Überblick}
+			\begin{itemize}[rightmargin=12px, topsep=-12px]
+				\setlength{\itemsep}{-1pt}
+				\singlespacing
+				\item Feldlinien und Vektoren als 3D-Objekte modelliert
+				\item Feldlinien sind Zylinder mit integrierten Pfeilköpfen zur Richtungsangabe
+				\item Vektoren als Pfeile modelliert
+				\item Durchmesser Zylinder/Pfeilkopf ca. 1cm/2cm
+			\end{itemize}
+			\vspace{18px}
+	}}\\
+\end{center}
+\vspace{6px}
 
 \textbf{Felddarstellung}
 \begin{itemize}
@@ -158,6 +229,9 @@ Simulation
 	\item Farbskala
 \end{itemize}
 
+\subsubsection{Der Stromfluss}
+
+\subsubsection{Der Kompass}
 \textbf{Kompass-Linien und Strom-Pfeile}
 \begin{itemize}
 	\item Darstellungen über 2D-Linien mit Unity's LineRenderer
@@ -166,6 +240,7 @@ Simulation
 	\item Fade-Away-Effekt verhindert zu steile Winkel, so sind immer die relevanten Pfeile sichtbar
 \end{itemize}
 
+\subsubsection{Weitere Darstellungen}
 \textbf{Textboxen}
 \begin{itemize}
 	\item Verwendung der im MRTK vorhandenen Schriftsätze
@@ -173,36 +248,6 @@ Simulation
 	\item Dank leicht transparenter Hintergrund ist die Textbox nicht so dominant im Bild und die dahinterliegenden Objekte sind für den Nutzer noch sichtbar
 	\item Umsetzung als 3D Objekt, damit wird Stabilisierung genutzt
 \end{itemize}
-
-
-\subsubsection{Weitere Elemente}
-
-\textbf{Occlusion Berechnung}
-\begin{itemize}
-	\item Für Verdeckung werden maßstabsgetreu nachmodellierte, virtuelle Objekte verwendet
-	\item 3D Mesh in Blender erstellt, 2mm größer als echte Objekte für Spielraum
-	\item Objekte werden möglichst genau über reale gelegt
-	\item Rendering erfolgt ausschließlich in den Z-Puffer, dadurch sind die realen Objekte sichtbar, die virtuellen verdecken jedoch dahinterliegende, vrituelle Objekte
-	\item Das Near Clipping Plane muss dafür jedoch sehr nah am Kameraursprung liegen, andernfalls würden weiter entfernte, virtuelle Objekte plötzlich doch vor realen Objekten angezeigt werden, sobald letztere zu nah sind und das Clipping die Objekte vom Rendering ausschließt
-\end{itemize}
-
-\textbf{Near Plane Fading}
-Löst: 
-\begin{itemize}
-	\item Minnimum Distanz
-	\item Behinderung bei Interaktion mit Versuchsaufbau
-	\item Bessere UX als Clipping
-	\item MRTK Standard Shader implementiert Fade To Black
-	\item Shader auf Fade to transparent abgeändert
-	\item Lineares Fading überall genutzt
-\end{itemize}
-
-\textbf{Künstliche Beleuchtung}
-\begin{itemize}
-	\item Virtuelle Beleuchtung von Oben bildet echte Lichtverhältnisse grob nach
-	\item Unterstützt die Einbettung der 3D Objekte im Raum
-\end{itemize}
-
 
 
 \subsection{Interaktion}
