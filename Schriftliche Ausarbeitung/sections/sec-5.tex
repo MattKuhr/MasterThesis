@@ -10,7 +10,7 @@ Im folgenden soll erläutert werden, wie der zuvor erarbeitete Lösungsansatz um
 
 \subsection{Aufbau des Systems}
 Das System ist als Client-Server-Architektur realisiert, einen Überblick gibt das Schema in Abb. \ref{img:communication-schema}. Ein Server erfasst und verarbeitet die in der Schaltung gemessenen Werte für die Stromstärke. Diese stammen von einem Arduino, der in den Stromkreislauf eingekoppelt ist. Die Applikation auf der HoloLens tritt als Client auf und erfragt die aktuellen Werte vom Server. 
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{images/todo.jpg}
 	\caption{Schema Kommunikation Schaltung Arduino Server HoloLens}
@@ -41,7 +41,7 @@ Die Übertragung der Messwerte vom Arduino zur Anwendung ist so konzipiert, dass
 \end{center}
 %\vspace{6px}
 
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{images/Sequenzdiagramm.png}
 	\caption{Sequenzdiagramm Kommunikation}
@@ -57,17 +57,27 @@ Der Client stellt durch die Nutzung von asynchronen Anfragen sicher, dass die An
 \subsubsection{Architektur der HoloLens-Anwendung}
 Der Hauptteil des Systems besteht in der auf der HoloLens laufenden Applikation. Die Anwendung basiert auf der Unity Engine und wird als UWP App bereitgestellt. Das Schema in Abb. \ref{img:components-schema} gibt einen Überblick über die verschiedenen Komponenten der Anwendung. Deren Aufgaben sind in der darunter zu findenden Tabelle kurz zusammengefasst.
 
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{images/todo.jpg}
 	\caption{Schema Komponenten}
 	\label{img:components-schema}
 \end{figure}
 
-\setlength\extrarowheight{5pt}
-\begin{table}[htb]
+
+\vspace{8px}
+\begin{center}
+	\fbox{
+		\parbox{0.9\linewidth}{
+			\vspace{4px}
+			\textbf{Überblick}
+			
+\bgroup
+\setlength\extrarowheight{-2pt}
+\def\arraystretch{2}
+\begin{table}[H]
 	\centering
-	\begin{tabular}{m{3cm}|m{10cm}}
+	\begin{tabular}{m{2.5cm}|m{8cm}}
 		Komponente & Funktion\\
 		\hline
 		\hline
@@ -75,19 +85,24 @@ Der Hauptteil des Systems besteht in der auf der HoloLens laufenden Applikation.
 		\hline
 		Settings & Lädt und Speichert Einstellungen, bietet Zugang zu den Werten für andere Komponenten und steuert die Einstellungs-Oberfläche\\
 		\hline
-		Physics & Übernimmt die physikalischen Berechnungen\\
+		Physics & Übernimmt alle physikalischen Berechnungen. Alle relevanten physikalischen Parameter lassen sich dabei konfigurieren.\\
 		\hline
 		Tracking & Führt durch den Prozess der Positionsbestimmung und setzt den World Anchor\\
 		\hline
-		Model Anchor & Dient als Ankerobjekt für die einzelnen Darstellungen\\
+		Model Anchor & Dient als Anker- und Container-Objekt für die einzelnen Darstellungskomponenten. Dazu gehören: Verdeckungsmodell, Kompass, die Magnetfeldmodelle, die Stromrichtungsindikatoren und das Datenpanel.\\
 		\hline
-		Webservice & Sendet Web Requests an den Server und gibt Ergebnisse weiter\\
+		Webservice & Übernimmt die Kommunikation mit dem Server und gibt erhaltene Daten weiter\\
 		\hline
-		Interaction & Verarbeitet Input und Ablaufsteuerung, soweit diese nicht an einem konkreten Objekt abgewickelt werden\\
+		Interaction & Verarbeitet Input und Ablaufsteuerung, soweit dies nicht an einem konkreten Objekt abgewickelt wird wie z.B. Spracheingabe.\\
 	\end{tabular}\caption{\label{tab:components-details} Aufgaben der einzelnen Komponenten}
 \end{table}
+\egroup
+%\vspace{18px}
+}}\\
+\end{center}
+\vspace{6px}
 
-
+Eine Komponente besteht aus einer Hierarchie von Unity's GameObjects, die mit entsprechenden Skripten versehen sind. Die Komponenten kommunizieren auf unterschiedliche Weise miteinander. Die Behandlung von Events z.B. aufgrund von Nutzereingaben oder neuen Messwerten erfolgt über Callbacks. Manche Komponenten sind auch Singletons, auf die direkt zugegriffen werden kann wie z.B. die Einstellungen. 
 
 \subsection{Darstellungen}
 Nachdem die grundlegende Architektur der vorgestellt wurde folgt nun eine genauere Betrachtung der Umsetzung der Darstellungen. Die Ausführungen werden dabei durch Abbildungen in Form von Screenshots unterstützt. Damit die von der HoloLens stammenden Bilder richtig interpretiert werden können, sind jedoch einige Vorbemerkungen nötig.
@@ -102,10 +117,6 @@ Bei einem MRC-Foto ändert sich die Auflösung von 1268x720 (720p) zu 1408x792. 
 Darüber hinaus gibt es Faktoren, die durch ein Foto nicht abgedeckt werden können. Dazu gehören die schon erläuterten Eigenheiten der stereoskopischen Wahrnehmung. Auf einem Foto sieht ein Objekt immer scharf aus und es gibt keine Probleme mit der Akkommodation oder Konvergenz, auch wenn ein Nutzer diese möglicherweise erfährt. Außerdem nimmt ein Nutzer die Umgebung anders wahr als auf einem Foto, da das Sichtfeld (auf die Umgebung) kaum eingeschränkt wird und nicht in Farbe und Auflösung begrenzt ist, sondern direkt wahrgenommen wird.\\
 
 Diese Faktoren gilt es beim Einsatz von solchen Screen-Captures zu berücksichtigen. Prinzipiell sind auch Aufnahmen möglich, die näher an die tatsächliche Nutzererfahrung heranreichen, diese erfordern aber weiteres Equipment, das im Rahmen dieser Arbeit nicht zur Verfügung steht.
-
-
-
-%TODO Vorwort zu Screenshots
 
 \subsubsection{Das Magnetfeld}
 
