@@ -129,7 +129,7 @@ Darüber hinaus gibt es Faktoren, die durch ein Foto nicht abgedeckt werden kön
 Diese Faktoren gilt es beim Einsatz von solchen Screen-Captures zu berücksichtigen. Prinzipiell sind auch Aufnahmen möglich, die näher an die tatsächliche Nutzererfahrung heranreichen, diese erfordern aber weiteres Equipment, das im Rahmen dieser Arbeit nicht zur Verfügung steht.
 
 \subsubsection{Allgemeines}
-
+Spulenachse ist die Z-Achse.
 \vspace{8px}
 \begin{center}
 	\fbox{
@@ -150,6 +150,15 @@ Diese Faktoren gilt es beim Einsatz von solchen Screen-Captures zu berücksichti
 
 \textit{Occlusion Berechnung}\\
 Nachmodelliert besser als Mesh, denn Mesh zu ungenau, Rendering nur in z puffer verbessert Performance, folgt Hinweis der Doku, near plane clipping beachten \\
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
+	\hspace{0.05cm}	
+	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
+	\caption{HoloLens Mesh vs. Modell}
+	\label{img:mesh-vs-model}
+\end{figure}
+
 \begin{comment}
 \begin{itemize}
 	\item Für Verdeckung werden maßstabsgetreu nachmodellierte, virtuelle Objekte verwendet
@@ -183,8 +192,18 @@ Beleuchtung bildet grob erwartete Lichtverhältnisse nach, keine Schatten\\
 \end{comment}
 
 \subsubsection{Das Magnetfeld}
+Die Darstellung des Magnetfeldes erfolgt über 3D-Geometrie, außer im Falle der Simulationsdaten. Die Geometrie wurde mit Blender erstellt und in Unity importiert. Die Fotos in Abb. \ref{img:mfield-result} zeigen die beiden alternativen Darstellungsmodelle.
 
-\vspace{8px}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
+	\hspace{0.05cm}	
+	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
+	\caption{Links Feldlinien Rechts Vektoren}
+	\label{img:mfield-result}
+\end{figure}
+
+\vspace{4px}
 \begin{center}
 	\fbox{
 		\parbox{0.9\linewidth}{
@@ -196,20 +215,22 @@ Beleuchtung bildet grob erwartete Lichtverhältnisse nach, keine Schatten\\
 				\item Feldlinien und Vektoren als 3D-Objekte modelliert
 				\item Feldlinien sind Zylinder mit integrierten Pfeilköpfen zur Richtungsangabe
 				\item Vektoren als Pfeile modelliert
-				\item Durchmesser Zylinder/Pfeilkopf ca. 1cm/2cm
+				\item Durchmesser Zylinder/Pfeilkopf ca. 1cm/2cm, Länge der Objekte zwischen 3 und 15 cm
+				\item Rasterisierung ist parametrisiert, konkreten Parameter aus praktischer Erfahrung bestimmt
+				\item Form wird durch Schattierung betont
+				\item Simulationsdaten als farbige Linien, umgesetzt über Low-Level Draw Calls
+				\item Grün-Rot-Farbverlauf als Farbskala genutzt
 			\end{itemize}
 			\vspace{18px}
 	}}\\
 \end{center}
 \vspace{6px}
 
-\textbf{Felddarstellung}
-\begin{itemize}
-	\item Min Force 3, Max 80, konsistent bei allen Darstellungen
-	\item Fading von 3-10
-	\item Pfeile und Linien mit ca. 3,5 cm Durchmesser
-\end{itemize}
-Feldlinien
+\textit{Feldlinien}
+Die Feldlinien der Spule verlaufen orthogonal auf der X-Y in Richtung der Z-Achse. Damit die gewünschten Eigenschaften (Stärke, Homogenität und Richtung) des dreidimensionalen Feldes anhand des Feldlinienmodells erkennbar sind, bedarf es mindestens vier Linien. In einer 2x2 Anordnung um den Mittelpunkt der X-Y-Ebene ist so der Abstand in beiden Dimensionen sichtbar und die Linien sind symmetrisch zur Z-Achse. Anhand der Parallelität lässt sich die Homogenität erkennen und anhand des Abstandes (in der horizontalen oder vertikalen, beide sind gleich groß) die Stärke. Die Flussrichtung ist über eingebaute Pfeilspitzen abgebildet.\\
+
+Bei einem festen, für die Darstellungen zur Verfügung stehenden Volumen und kleiner werdenden Abständen müssen zunehmend mehr Linien gezeichnet werden. Zu viele Objekte würden jedoch die Sichtbarkeit anderer Elemente wie Magnetnadel und Kompass beeinträchtigen. Außerdem transportieren zusätzliche Feldlinien keine zusätzlichen Informationen. Allerdings unterstützt die Beobachtung, dass mit zunehmender Flussdichte die Anzahl der Feldlinien steigt, das Verständnis des Feldlinienmodells. Daher wurde für die Umsetzung das Interval von minimalem und maximalem Abstand so gewählt, dass mindestens 4 und höchstens zwölf Linien dargestellt werden. Als 
+
 \begin{itemize}
 	\item Mindestens 4 (2x2) (notwendig um Homogenität zu erkennen)
 	\item Maximal 16 (4x4)
