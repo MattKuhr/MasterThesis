@@ -70,8 +70,7 @@ Der Hauptteil des Systems besteht in der auf der HoloLens laufenden Applikation.
 	\fbox{
 		\parbox{0.9\linewidth}{
 			\vspace{4px}
-			\textbf{Überblick}
-			
+			\textbf{Überblick}	
 \bgroup
 \setlength\extrarowheight{-2pt}
 \def\arraystretch{2}
@@ -85,7 +84,7 @@ Der Hauptteil des Systems besteht in der auf der HoloLens laufenden Applikation.
 		\hline
 		Settings & Lädt und Speichert Einstellungen, bietet Zugang zu den Werten für andere Komponenten und steuert die Einstellungs-Oberfläche\\
 		\hline
-		Physics & Übernimmt alle physikalischen Berechnungen. Alle relevanten physikalischen Parameter lassen sich dabei konfigurieren.\\
+		Physics & Übernimmt alle physikalischen Berechnungen. Alle relevanten physikalischen Parameter lassen sich konfigurieren.\\
 		\hline
 		Tracking & Führt durch den Prozess der Positionsbestimmung und setzt den World Anchor\\
 		\hline
@@ -105,28 +104,133 @@ Der Hauptteil des Systems besteht in der auf der HoloLens laufenden Applikation.
 Eine Komponente besteht aus einer Hierarchie von Unity's GameObjects, die mit entsprechenden Skripten versehen sind. Die Komponenten kommunizieren auf unterschiedliche Weise miteinander. Die Behandlung von Events z.B. aufgrund von Nutzereingaben oder neuen Messwerten erfolgt über Callbacks. Manche Komponenten sind auch Singletons, auf die direkt zugegriffen werden kann wie z.B. die Einstellungen. 
 
 \subsection{Darstellungen}
-Nachdem die grundlegende Architektur der vorgestellt wurde folgt nun eine genauere Betrachtung der Umsetzung der Darstellungen. Die Ausführungen werden dabei durch Abbildungen in Form von Screenshots unterstützt. Damit die von der HoloLens stammenden Bilder richtig interpretiert werden können, sind jedoch einige Vorbemerkungen nötig.
+Nachdem die grundlegende Architektur der vorgestellt wurde folgt nun eine genauere Betrachtung der Umsetzung der Darstellungen. Die Ausführungen werden dabei durch Abbildungen in Form von Screenshots unterstützt. Einen ersten Eindruck vermitteln die Fotos in Abb. \ref{img:HL_SS_Intro}. Damit die von der HoloLens stammenden Bilder richtig interpretiert werden können, sind jedoch einige Vorbemerkungen nötig.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{images/HL_SS1.jpg}
+
+	\vspace{0.25cm}
+
+	\includegraphics[width=\textwidth]{images/HL_SS2.jpg}
+	\caption{Erster Eindruck HoloLens}
+	\label{img:HL_SS_Intro}
+\end{figure}
 
 \subsubsection{Aufnahmen mit der HoloLens}
-Zunächst ist festzuhalten, dass herkömmliche Screen-Captures auf der HoloLens nur eingeschränkt sinnvoll sind. Hier wären nämlich nur die gerenderten Objekte sichtbar, die so auch in einer Entwicklungsumgebung zu sehen sind. Die Nutzererfahrung entsteht jedoch durch das Zusammenspiel mit dem Hintergrund. Deshalb bietet die HoloLens eine angepasste Funktion, um möglichst das abzubilden, was der Nutzer tatsächlich sieht: Das \textit{Mixed Reality Capture (MRC)}.\\
+Zunächst ist festzuhalten, dass herkömmliche Screen-Captures auf der HoloLens nur eingeschränkt sinnvoll wären. Hier wären nämlich nur die gerenderten Objekte sichtbar, die so auch in einer Entwicklungsumgebung zu sehen sind. Die Nutzererfahrung entsteht jedoch durch das Zusammenspiel mit dem Hintergrund. Deshalb bietet die HoloLens eine angepasste Funktion, um möglichst das abzubilden, was der Nutzer tatsächlich sieht: Das \textit{Mixed Reality Capture (MRC)}.\\
 
 Mit dem Mixed Reality Capture lassen sich Screenshots und Screen-Videos aufnehmen. Dazu nutzt die Brille ihre integrierte Frontkamera und überlagert deren Bild mit dem gerenderten Bild. So lässt sich besser darstellen, was ein Nutzer sieht. Allerdings bringt dieses Vorgehen mehrere Einschränkungen mit sich, durch die die Resultate von den tatsächlich wahrgenommenen Bildern abweichen. Damit die folgenden Bilder richtig eingeordnet werden können, sollen die wichtigsten Faktoren hier genannt werden.\\
 
-Bei einem MRC-Foto ändert sich die Auflösung von 1268x720 (720p) zu 1408x792. Obwohl die Auflösung steigt ist damit dennoch ein wesentlicher Qualitätsverlust verbunden, da der Betrachter auf der HoloLens zwei HD-Bilder sieht (stereoskopisch), beim Foto aber natürlich nur ein Bild erzeugt wird. Außerdem geht die höhere Auflösung des Einzelbildes nicht mit einer höhren Pixeldichte einher, sondern mit einem größeren Sichtfeld. Ein Foto repräsentiert daher nicht die tatsächlichen Begrenzungen des FOV. Dazu kommt die Tranzparenz von Objekten. Diese hängt stark von der Farbe ab und entspricht nicht immer der Wahrnehmung des Nutzers. Einfarbige Objekte erscheinen auf Fotos stets etwas transparent, auch wenn sie den Hintergrund aus Sicht des Nutzers vollständig überdecken.\\
+Bei einem MRC-Foto ändert sich die Auflösung von 1268x720 (720p) zu 1408x792. Obwohl die Auflösung steigt ist damit dennoch ein wesentlicher Qualitätsverlust verbunden, da der Betrachter auf der HoloLens zwei HD-Bilder sieht (stereoskopisch), beim Foto aber nur ein Bild erzeugt wird. Außerdem geht die höhere Auflösung des Einzelbildes nicht mit einer höheren Pixeldichte einher, sondern mit einem größeren Sichtfeld. Ein Foto repräsentiert daher nicht die tatsächlichen Begrenzungen des FOV. Dazu kommt die Tranzparenz von Objekten. Diese hängt stark von der Farbe ab und entspricht nicht immer der Wahrnehmung des Nutzers. Farbige Objekte erscheinen auf Fotos stets etwas transparent, auch wenn sie den Hintergrund aus Sicht des Nutzers vollständig überdecken. Das trifft z.B. auf die blauen Objekte in den Fotos aus Abb. \ref{img:HL_SS_Intro} zu.\\
 
 Darüber hinaus gibt es Faktoren, die durch ein Foto nicht abgedeckt werden können. Dazu gehören die schon erläuterten Eigenheiten der stereoskopischen Wahrnehmung. Auf einem Foto sieht ein Objekt immer scharf aus und es gibt keine Probleme mit der Akkommodation oder Konvergenz, auch wenn ein Nutzer diese möglicherweise erfährt. Außerdem nimmt ein Nutzer die Umgebung anders wahr als auf einem Foto, da das Sichtfeld (auf die Umgebung) kaum eingeschränkt wird und nicht in Farbe und Auflösung begrenzt ist, sondern direkt wahrgenommen wird.\\
 
 Diese Faktoren gilt es beim Einsatz von solchen Screen-Captures zu berücksichtigen. Prinzipiell sind auch Aufnahmen möglich, die näher an die tatsächliche Nutzererfahrung heranreichen, diese erfordern aber weiteres Equipment, das im Rahmen dieser Arbeit nicht zur Verfügung steht.
 
-\subsubsection{Das Magnetfeld}
+\subsubsection{Allgemeines}
+Spulenachse ist die Z-Achse.
+\vspace{8px}
+\begin{center}
+	\fbox{
+		\parbox{0.9\linewidth}{
+			\vspace{4px}
+			\textbf{Überblick}
+			\begin{itemize}[rightmargin=12px, topsep=-12px]
+				\setlength{\itemsep}{-1pt}
+				\singlespacing
+				\item Spule maßstabsgetreu modelliert mit ca. 2mm größerer Ausdehnung für Verdeckungsberechnung
+				\item Rendering der Spule ausschließlich in den Z-Puffer
+				\item Near Plane Fading verbirgt Objekte, die eine minimale Distanz zur Kamera unterschreiten
+			\end{itemize}
+			\vspace{18px}
+	}}\\
+\end{center}
+\vspace{6px}
 
-\textbf{Felddarstellung}
+\textit{Occlusion Berechnung}\\
+Nachmodelliert besser als Mesh, denn Mesh zu ungenau, Rendering nur in z puffer verbessert Performance, folgt Hinweis der Doku, near plane clipping beachten \\
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
+	\hspace{0.05cm}	
+	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
+	\caption{HoloLens Mesh vs. Modell}
+	\label{img:mesh-vs-model}
+\end{figure}
+
+\begin{comment}
 \begin{itemize}
-	\item Min Force 3, Max 80, konsistent bei allen Darstellungen
-	\item Fading von 3-10
-	\item Pfeile und Linien mit ca. 3,5 cm Durchmesser
+	\item Für Verdeckung werden maßstabsgetreu nachmodellierte, virtuelle Objekte verwendet
+	\item 3D Mesh in Blender erstellt, 2mm größer als echte Objekte für Spielraum
+	\item Objekte werden möglichst genau über reale gelegt
+	\item Rendering erfolgt ausschließlich in den Z-Puffer, dadurch sind die realen Objekte sichtbar, die virtuellen verdecken jedoch dahinterliegende, vrituelle Objekte
+	\item Das Near Clipping Plane muss dafür jedoch sehr nah am Kameraursprung liegen, andernfalls würden weiter entfernte, virtuelle Objekte plötzlich doch vor realen Objekten angezeigt werden, sobald letztere zu nah sind und das Clipping die Objekte vom Rendering ausschließt
 \end{itemize}
-Feldlinien
+\end{comment}
+
+\textit{Near Plane Fading}\\
+Minimale Distanz, angenehmer als Clipping, fade to transparent nicht umgesetzt\\
+\begin{comment}
+\begin{itemize}
+	\item Minnimum Distanz
+	\item Behinderung bei Interaktion mit Versuchsaufbau
+	\item Bessere UX als Clipping
+	\item MRTK Standard Shader implementiert Fade To Black
+	\item Shader auf Fade to transparent abgeändert
+	\item Lineares Fading überall genutzt
+\end{itemize}
+\end{comment}
+
+\textit{Künstliche Beleuchtung}\\
+Beleuchtung bildet grob erwartete Lichtverhältnisse nach, keine Schatten\\
+\begin{comment}
+\begin{itemize}
+	\item Virtuelle Beleuchtung von Oben bildet echte Lichtverhältnisse grob nach
+	\item Unterstützt die Einbettung der 3D Objekte im Raum
+\end{itemize}
+\end{comment}
+
+\subsubsection{Das Magnetfeld}
+Die Darstellung des Magnetfeldes erfolgt über 3D-Geometrie, außer im Falle der Simulationsdaten. Die Geometrie wurde mit Blender erstellt und in Unity importiert. Die Fotos in Abb. \ref{img:mfield-result} zeigen die beiden alternativen Darstellungsmodelle.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
+	\hspace{0.05cm}	
+	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
+	\caption{Links Feldlinien Rechts Vektoren}
+	\label{img:mfield-result}
+\end{figure}
+
+\vspace{4px}
+\begin{center}
+	\fbox{
+		\parbox{0.9\linewidth}{
+			\vspace{4px}
+			\textbf{Überblick}
+			\begin{itemize}[rightmargin=12px, topsep=-12px]
+				\setlength{\itemsep}{-1pt}
+				\singlespacing
+				\item Feldlinien und Vektoren als 3D-Objekte modelliert
+				\item Feldlinien sind Zylinder mit integrierten Pfeilköpfen zur Richtungsangabe
+				\item Vektoren als Pfeile modelliert
+				\item Durchmesser Zylinder/Pfeilkopf ca. 1cm/2cm, Länge der Objekte zwischen 3 und 15 cm
+				\item Rasterisierung ist parametrisiert, konkreten Parameter aus praktischer Erfahrung bestimmt
+				\item Form wird durch Schattierung betont
+				\item Simulationsdaten als farbige Linien, umgesetzt über Low-Level Draw Calls
+				\item Grün-Rot-Farbverlauf als Farbskala genutzt
+			\end{itemize}
+			\vspace{18px}
+	}}\\
+\end{center}
+\vspace{6px}
+
+\textit{Feldlinien}
+Die Feldlinien der Spule verlaufen orthogonal auf der X-Y in Richtung der Z-Achse. Damit die gewünschten Eigenschaften (Stärke, Homogenität und Richtung) des dreidimensionalen Feldes anhand des Feldlinienmodells erkennbar sind, bedarf es mindestens vier Linien. In einer 2x2 Anordnung um den Mittelpunkt der X-Y-Ebene ist so der Abstand in beiden Dimensionen sichtbar und die Linien sind symmetrisch zur Z-Achse. Anhand der Parallelität lässt sich die Homogenität erkennen und anhand des Abstandes (in der horizontalen oder vertikalen, beide sind gleich groß) die Stärke. Die Flussrichtung ist über eingebaute Pfeilspitzen abgebildet.\\
+
+Bei einem festen, für die Darstellungen zur Verfügung stehenden Volumen und kleiner werdenden Abständen müssen zunehmend mehr Linien gezeichnet werden. Zu viele Objekte würden jedoch die Sichtbarkeit anderer Elemente wie Magnetnadel und Kompass beeinträchtigen. Außerdem transportieren zusätzliche Feldlinien keine zusätzlichen Informationen. Allerdings unterstützt die Beobachtung, dass mit zunehmender Flussdichte die Anzahl der Feldlinien steigt, das Verständnis des Feldlinienmodells. Daher wurde für die Umsetzung das Interval von minimalem und maximalem Abstand so gewählt, dass mindestens 4 und höchstens zwölf Linien dargestellt werden. Als 
+
 \begin{itemize}
 	\item Mindestens 4 (2x2) (notwendig um Homogenität zu erkennen)
 	\item Maximal 16 (4x4)
@@ -137,41 +241,18 @@ Feldlinien
 Vektoren
 \begin{itemize}
 	\item Mindestens 8 (2x2x2) (notwendig um Homogenität zu erkennen)
-	\item Maximal ???
-	\item Gewählte Rasterisierung:
-	\item Längenformel:
+	\item Gewählte Rasterisierung: 2x2x4
 \end{itemize}
-
-\textbf{Occlusion Berechnung}
+Simulation
 \begin{itemize}
-	\item Für Verdeckung werden maßstabsgetreu nachmodellierte, virtuelle Objekte verwendet
-	\item 3D Mesh in Blender erstellt, 2mm größer als echte Objekte für Spielraum
-	\item Objekte werden möglichst genau über reale gelegt
-	\item Rendering erfolgt ausschließlich in den Z-Puffer, dadurch sind die realen Objekte sichtbar, die virtuellen verdecken jedoch dahinterliegende, vrituelle Objekte
-	\item Das Near Clipping Plane muss dafür jedoch sehr nah am Kameraursprung liegen, andernfalls würden weiter entfernte, virtuelle Objekte plötzlich doch vor realen Objekten angezeigt werden, sobald letztere zu nah sind und das Clipping die Objekte vom Rendering ausschließt
+	\item Feldlinien
+	\item Anzahl, Ebene und Ausrichtung
+	\item Farbskala
 \end{itemize}
 
-\subsubsection{Weitere Elemente}
-\textbf{Near Plane Fading}
-Löst: 
-\begin{itemize}
-	\item Minnimum Distanz
-	\item Behinderung bei Interaktion mit Versuchsaufbau
-	\item Bessere UX als Clipping
-	\item MRTK Standard Shader implementiert Fade To Black
-	\item Shader auf Fade to transparent abgeändert
-	\item Lineares Fading überall genutzt
-\end{itemize}
+\subsubsection{Der Stromfluss}
 
-
-
-\textbf{Künstliche Beleuchtung}
-\begin{itemize}
-	\item Virtuelle Beleuchtung von Oben bildet echte Lichtverhältnisse grob nach
-	\item Unterstützt die Einbettung der 3D Objekte im Raum
-\end{itemize}
-
-
+\subsubsection{Der Kompass}
 \textbf{Kompass-Linien und Strom-Pfeile}
 \begin{itemize}
 	\item Darstellungen über 2D-Linien mit Unity's LineRenderer
@@ -180,6 +261,7 @@ Löst:
 	\item Fade-Away-Effekt verhindert zu steile Winkel, so sind immer die relevanten Pfeile sichtbar
 \end{itemize}
 
+\subsubsection{Weitere Darstellungen}
 \textbf{Textboxen}
 \begin{itemize}
 	\item Verwendung der im MRTK vorhandenen Schriftsätze
@@ -188,11 +270,6 @@ Löst:
 	\item Umsetzung als 3D Objekt, damit wird Stabilisierung genutzt
 \end{itemize}
 
-\textbf{Weiteres}
-\begin{itemize}
-	\item Spracherkennung über eigens gewählte, englische Keywords, Erkennung durch Microsoft's built-in Spracherkennung
-	\item Drag-and-Drop über MRTK HandDraggable 
-\end{itemize}
 
 \subsection{Interaktion}
 \textbf{Erkennung der Position über eigene Szene in Zusammenarbeit mit dem Nutzer}
