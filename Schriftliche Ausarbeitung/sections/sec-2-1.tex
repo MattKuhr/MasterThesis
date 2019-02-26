@@ -55,6 +55,7 @@ Die HoloLens ist ein von Microsoft entwickeltes \textit{Head-Mounted Display} (H
 Bei dem Device handelt es sich um einen eigenständigen Computer, auf dem eine spezielle Version von Windows 10 läuft. Die Brille arbeitet also völlig autonom und ist nicht auf externe Hardware wie z.B. zusätzliche Rechen- und Batterieeinheiten angewiesen.\\
 
 \subsubsection{Die Hardware}
+\label{sec-2-1-2}
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.9\textwidth]{images/hololens_tech.png}
@@ -135,6 +136,7 @@ Um die exakte Position und Ausrichtung der HoloLens nachzuverfolgen kommt außer
 \end{comment}
 
 \subsubsection{Die Software und Interaktion}
+\label{sec-2-1-3}
 Auf der HoloLens läuft eine spezielle Version von Windows 10: Windows 10 Holographic. Diese benötigt weniger Resourcen im Vergleich zu einem herkömmlichen PC und hat daher auch einen eingeschränkten Funktionsumfang. Anwendungen werden in Form von UWP Apps bereitgestellt. Hier unterstützt Microsoft die Entwicklung mit Unity und stellt entsprechende Toolkits zur Verfügung.\\
 
 Die Steuerung durch den Nutzer erfolgt auf vier verschiedene Arten:
@@ -168,6 +170,7 @@ Für die Entwicklung mit dem Toolkit und der HoloLens existiert ein umfassendes 
 
 
 \subsubsection{Implikationen für Anwendungsdesign}
+\label{sec-2-1-4}
 Die technischen Eigenschaften der HoloLens haben Auswirkung auf Design und Nutzung von Anwendungen. Dazu gehören auch technisch bedingte Einschränkungen sowie zu berücksichtigende Aspekte für die Usability und Nutzererfahrung. Im Folgenden soll auf ausgewählte solcher Zusammenhänge hingewiesen werden.\\
 
 \textbf{\textit{Tracking}}\\
@@ -210,6 +213,7 @@ Dabei ist es von besonderer Bedeutung, dass die Anwendung möglichst konstant 60
 Bevor eine Szene in die Render-Pipeline geht, trifft die Brille anhand der Sensordaten eine Vorhersage darüber, in welcher Position und Ausrichtung sich die Brille befinden wird, wenn das zu errechnende Bild dargestellt wird. Anhand dieser Schätzung wird die Kamera-Position und -Ausrichtung für die Szene festgelegt und anschließend gerendert. Eine längere oder variierende Renderzeit bedeutet damit auch eine unzuverlässigere Schätzung. Das kann zu instabil wirkenden Darstellungen führen, z.B. in Form von Zittern oder Ruckeln. Deshalb empfiehlt Microsoft, die Framerate von 60 FPS stets aufrecht zu erhalten.\\
 
 \subsubsection{Empfehlungen zu Design und Umsetzung}
+\label{sec-2-1-5}
 Damit Einschränkungen umgangen und negative Auswirkungen vermieden werden können gibt es bereits einige Designempfehlungen und Guide-Lines sowie Empfehlungen zur Implementierung. Die Dokumentation zu Windows Mixed Reality umfasst hier einige Vorschläge und Hinweise, von denen besonders relevante hier vorgestellt werden sollen.\\
 
 \textbf{\textit{Positionierung von Objekten}}\\
