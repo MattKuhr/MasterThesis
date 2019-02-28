@@ -101,7 +101,7 @@ Der Hauptteil des Systems besteht in der auf der HoloLens laufenden Applikation.
 \end{center}
 \vspace{6px}
 
-Eine Komponente besteht aus einer Hierarchie von Unity's GameObjects, die mit entsprechenden Skripten versehen sind. Die Komponenten kommunizieren auf unterschiedliche Weise miteinander. Die Behandlung von Events z.B. aufgrund von Nutzereingaben oder neuen Messwerten erfolgt über Callbacks. Manche Komponenten sind auch Singletons, auf die direkt zugegriffen werden kann wie z.B. die Einstellungen. 
+Eine Komponente besteht aus einer Hierarchie von Unity's GameObjects, die mit entsprechenden Skripten versehen sind. Die Komponenten kommunizieren auf unterschiedliche Weise miteinander. Die Behandlung von Events z.B. aufgrund von Nutzereingaben oder neuen Messwerten erfolgt über Callbacks. Manche Komponenten sind auch Singletons, auf die direkt zugegriffen werden kann wie z.B. die Einstellungen.\\
 
 \subsection{Darstellungen}
 Nachdem die grundlegende Architektur der vorgestellt wurde folgt nun eine genauere Betrachtung der Umsetzung der Darstellungen. Die Ausführungen werden dabei durch Abbildungen in Form von Screenshots unterstützt. Einen ersten Eindruck vermitteln die Fotos in Abb. \ref{img:HL_SS_Intro}. Damit die von der HoloLens stammenden Bilder richtig interpretiert werden können, sind jedoch einige Vorbemerkungen nötig.
@@ -218,7 +218,7 @@ Bei einem festen, für die Darstellungen zur Verfügung stehenden Volumen und kl
 \end{figure}
 
 \textit{Skalierung}\\
-Dabei wurde sich bewusst für die Abbildung der Flussdichte auf den Abstand der Feldlinien entschieden. Das bedeutet, Letzterer ändert sich proportional mit der Flussdichte. Oft wird statt des Abstandes die Anzahl der Feldlinien durch eine Einheitsfläche proportional zur Flussdichte gewählt. Das bedeutet bei einer symmetrischen Darstellung eines quadratischen Ausschnittes jedoch, dass die Anzahl in diskreten Stufen $n \geq 1$ mit $4^{n}$ steigt. Werden diese Stufen durch eine kontinuierliche Kontraktion der Linien zum Zentrum hin interpoliert, dann skaliert der Abstand $d$ der Feldlinien mit $1/(3n)$. Die Grafik \ref{img:mfield-lines-scaling} illustriert diesen Zusammenhang. Da für den Anwender in erster Linie jedoch der Abstand die sichtbare, sich ändernde Größe ist, könnte dies den falschen Eindruck erwecken, die Flussdichte ändere sich nicht linear mit der Stromstärke. Außerdem werden nur zwei Stufen dargestellt, daher wurde sich für die proportionale Änderung des Abstandes entschieden.\\
+Dabei wurde sich bewusst für die Abbildung der Flussdichte auf den Abstand der Feldlinien entschieden. Das bedeutet, Letzterer ändert sich proportional mit der Flussdichte. Oft wird statt des Abstandes die Anzahl der Feldlinien durch eine Einheitsfläche proportional zur Flussdichte gewählt [TODO: ZITATION LEXIKON]. Das bedeutet bei einer symmetrischen Darstellung eines quadratischen Ausschnittes jedoch, dass die Anzahl in diskreten Stufen $n \geq 1$ mit $4^{n}$ steigt. Werden diese Stufen durch eine kontinuierliche Kontraktion der Linien zum Zentrum hin interpoliert, dann skaliert der Abstand $d$ der Feldlinien mit $1/(3n)$. Die Grafik \ref{img:mfield-lines-scaling} illustriert diesen Zusammenhang. Da für den Anwender in erster Linie jedoch der Abstand die sichtbare, sich ändernde Größe ist, könnte dies den falschen Eindruck erwecken, die Flussdichte ändere sich nicht linear mit der Stromstärke. Außerdem werden nur zwei Stufen dargestellt, daher wurde sich für die proportionale Änderung des Abstandes entschieden.\\
 
 \textbf{Vektoren}\\
 Die Umsetzung der Vektordarstellung ist in Abb. \ref{img:mfield-vectors} näher zu sehen.
@@ -290,6 +290,8 @@ Eine Visualisierung der Simulationsdaten ist in Abb. \ref{img:mfield-simulation}
 
 Die numerische Lösung der Feldgleichungen erfolgte mittels der Simulationssoftware COMSOL Multiphysics. Diese Arbeit konnte hier auf eine bestehende Implementierung einer Helmholtzspule aufbauen. Hier wurden lediglich die folgenden Parameter für die Berechnung der Feldlinien gesetzt:
 \begin{itemize}
+	\setlength{\itemsep}{-1pt}
+	\singlespacing
 	\item Anzahl und Anordnung: 10, symmetrisch zur Z-Achse, Abstand entsprechend der Flussdichte
 	\item Beschränkung auf die X-Z-Ebene
 	\item Integrationsgenauigkeit?
@@ -309,6 +311,8 @@ Die Auswahl von 10 Feldlinien erfolgte aus praktischem Ermessen bezüglich der S
 \textit{Farbe}\\
 Die Wahl der Farbskala fiel aus mehreren Gründen auf eine Rot-Grün-Skala. Die Linien zeigen die kontinuierliche Änderung der Flussdichte, die durch einen Farbverlauf weiter hervorgehoben werden soll. Dabei kommt es nicht auf das Ablesen der numerischen Werte an, weshalb auch keine Skala mit Farbe und den dazugehörigen Werten angezeigt wird. Es geht viel mehr um das qualitative Verständnis der Darstellung. Mit der gewählten Skala unterscheiden sich die drei wesentlichen Regionen durch ihre Farbe klar voneinander:
 \begin{itemize}
+	\setlength{\itemsep}{-1pt}
+	\singlespacing
 	\item Inhomogenes, schwaches Feld außen: Grün
 	\item Homogenes, mittel-starkes Feld innen: Gelb
 	\item Inhomogenes, starkes Feld unmittelbar am Rand der Spule: Rot
@@ -317,53 +321,109 @@ Die Wahl der Farbskala fiel aus mehreren Gründen auf eine Rot-Grün-Skala. Die 
 Darüber hinaus sprechen technische Gründe für eine solche Farbskala. Damit die Linien in Helligkeit und Transparenz nicht variieren, sollten sich die Farbanteile im RGB-Raum stets zu einem konstanten Wert addieren. Die Rot-Grün-Skala erfüllt diese Eigenschaft, da hier der Blauanteil stets null ist und Rot und Grün über $R = 1 - G$ zusammenhängen. Möglich wären hier auch eine Regenbogenskala, die jedoch aus Gründen der Wahrnehmung nicht empfohlen wird.\\
 
 \subsubsection{Stromfluss, Kompass und weitere Darstellungen}
-\textbf{Strom-Pfeile}
-\begin{itemize}
-	\item Darstellungen über breite 2D-Linien mit Unity's LineRenderer, die an einem Ende zu einer Pfeilspitze zusammenlaufen
-	\item Liegen direkt auf der Spule auf und sind fest, richten sich also nicht zur Kamera aus
-	\item Es werden stets nur Pfeile an der Seite der Spule angezeigt, die der Nutzer gerade sehen kann
-	\item Dazwischen werden die Pfeile kontinuierlich ein- bzw. ausgeblendet
-\end{itemize}
+Nach den Erläuterungen zur Umsetzung der Magnetfelddarstellungen sollen auch die anderen Komponenten kurz beleuchtet werden.\\
 
-\textbf{Strom-Labels}
+\textbf{Stromfluss}
+\vspace{4px}
+\begin{center}
+	\fbox{
+		\parbox{0.9\linewidth}{
+			\vspace{4px}
+			\textit{Richtungsindikatoren}
+			\begin{itemize}[rightmargin=12px, topsep=-12px]
+				\setlength{\itemsep}{-1pt}
+				\singlespacing
+				\item Darstellung über breite 2D-Linien mit Unity's \textit{LineRenderer}, die an einem Ende zu einer Pfeilspitze zusammenlaufen
+				\item Liegen direkt auf der Spule auf und sind fest, richten sich also nicht zur Kamera aus
+				\item Es werden stets nur Pfeile angezeigt, die der Nutzer gerade sehen kann
+				\item Dazwischen werden die Pfeile kontinuierlich ein- bzw. ausgeblendet
+			\end{itemize}
+			\vspace{18px}
+	}}\\
+\end{center}
+\vspace{6px}
+
+Die Indikatoren werden dynamisch über ein Skript erzeugt und gesteuert. Hier können Parameter wie Richtung, Position, Radius und Bogenlänge festgelegt werden. Die Breite der Linien wurde auf 1cm gesetzt. Die Größe ist für die gewünschte Entfernung ausreichend und übersteigt die Dicke der Spulen nicht. Indem die Darstellung sich der Betrachtungsposition kontinuierlich anpasst wird der Nutzer zusätzlich in die Anwendung einbezogen.\\
+
+\textit{Strom-Labels}\\
+Die Richtungspfeile werden durch die Information unterstützt, wie die Spule in die Schaltung eingebunden ist. Dazu werden die Anschlüsse mit Annotationen versehen.
 \begin{itemize}
+	\setlength{\itemsep}{-1pt}
+	\singlespacing
 	\item Plus- und Minus-Kennzeichner über Tooltip-Elemente des MRTK umgesetzt
 	\item Verbindungslinien farblich an die Farbe der Verbindungsstücke angepasst
 	\item Tooltips um Plus- und Minus-Icons ergänzt
 \end{itemize}
 
+Hier konnte auf ein vorgefertigtes Tooltip-Objekt des MRTK zurückgegriffen werden. Diese wurden um die entsprechenden Farben und Icons ergänzt. Die Icons basieren auf freien Icon-Packeten \footnote{https://icons8.com}, wurden jedoch angepasst. Da schwarze Strukturen vor transparentem Grund auf der HoloLens so nicht zu sehen sind, wurde der Hintergrund bzw. die Icon-Struktur zu weiß geändert.\\
 
-\textbf{Kompass-Linien}
-\begin{itemize}
-	\item Darstellungen über gestrichelte 2D-Linien mit Unity's LineRenderer
-	\item Gestrichelte Linie durch Textur mit weißem Kreis und transparentem Hintergrund, Skalierung auf die Länge der Linie mit Tiling
-	\item Billboard-Verhalten für Sichtbarkeit aus unterschiedlichen Winkeln
-	\item Grau als Farbe genutzt, leicht transparent, virtueller Kompass jedoch etwas heller und daher präsenter gestaltet
-\end{itemize}
+\textbf{Kompass}\\
+Der Kompass besteht aus einer virtuellen Skala und einer realen Magnetnadel in der Mitte. Die verschiedenen Linien wurden als gestrichelte, leicht transparente 2D-Linien umgesetzt.
+\vspace{4px}
+\begin{center}
+	\fbox{
+		\parbox{0.9\linewidth}{
+			\vspace{4px}
+			\textit{Linien}
+			\begin{itemize}[rightmargin=12px, topsep=-12px]
+				\setlength{\itemsep}{-1pt}
+				\singlespacing
+				\item Darstellungen über gestrichelte 2D-Linien mit Unity's LineRenderer
+				\item Gestrichelte Linie durch Textur mit weißem Kreis und transparentem Hintergrund, Skalierung auf die Länge der Linie mit Tiling
+				\item Billboard-Verhalten für Sichtbarkeit aus unterschiedlichen Winkeln
+				\item Grau als Farbe genutzt, leicht transparent, virtueller Kompass jedoch etwas heller und daher präsenter gestaltet
+			\end{itemize}
+			\vspace{18px}
+	}}\\
+\end{center}
+\vspace{6px}
 
+Der Kompass liegt horizontal in einer Ebene durch den Spulenmittelpunkt. Die ringförmige Skala wurde mit einem Radius von 20 cm sehr eng um die Spulen herum gelegt, damit wenig zusätzliches Sichtfeld benötigt wird. Denn je größer der Raduis, desto eher wird das Element durch die Sichtfeldbegrenzung abgeschnitten. Neben den festen Gradzahlen im Abstand von 45° wird hier auch die theoretisch berechnete Gradzahl am Ende der zugehörigen Linie angezeigt.\\
 
-\textbf{Textboxen}
-\begin{itemize}
-	\item 4 Replikas, Platzierung an unteren Balken zwischen den beiden Spulen
-	\item Sichtbarkeit analog zu Strom-Pfeilen
-	\item Dunkelgrauer Hintergrund für bessere Lesbarkeit
-	\item Listet gemessene und berechnete Echtzeitwerte auf: Stromstärke, Spannung, Flussdichte
-\end{itemize}
+Als Farbe wurde Grau gewählt, damit die Linien neutral und weniger dominant wirken. Dem dient auch die Wahl von gestrichelten anstelle durchgezogener Linien. Gleichzeitig wurde die zuvor dunkle Magnetnadel hell angemalt, damit sie zwischen den virtuellen Objekten besser zu sehen ist.\\
+
+In dieser Umsetzung wird zunächst keine Verdeckung durch die Magnetnadel berechnet. Diese ließe sich anhand der theoretischen Auslenkung berechnen. Allerdings unterliegt die reale Nadel Trägheit und Reibung, die in der Berechnung nicht berücksichtigt werden. Außerdem ist sie sehr schmal (etwa 5 mm breit), weshalb Abweichungen zwischen realem und virtuellem Modell stärker ins Gewicht fallen, als bei größeren Objekten. Daher verzichtet diese Lösung darauf, was sich jedoch negativ auf die Immersion des Anwenders auswirkt.\\
+
+\textbf{Datenpanel und weitere Informationen}\\
+Nicht zuletzt wurden von den als optional eingestuften Informationen die ausgewählt, die im Zusammenhang mit den Echtzeitdaten stehen, und für diese eine textuelle Darstellung umgesetzt.
+\vspace{4px}
+\begin{center}
+	\fbox{
+		\parbox{0.9\linewidth}{
+			\vspace{4px}
+			\textit{Status Bar}
+			\begin{itemize}[rightmargin=12px, topsep=-12px]
+				\setlength{\itemsep}{-1pt}
+				\singlespacing
+				\item Listet gemessene und berechnete Echtzeitwerte auf: Stromstärke, Spannung, Flussdichte
+				\item 4 Replikas, Platzierung an unteren Balken zwischen den Spulen
+				\item Sichtbarkeit analog zu Strom-Pfeilen
+				\item Dunkelgrauer Hintergrund für bessere Lesbarkeit
+			\end{itemize}
+			\vspace{18px}
+	}}\\
+\end{center}
+\vspace{6px}
+Das Datenpanel listet die numerischen Werte für die genannten Größen zusammen mit ihren Einheiten auf. Der Hintergrund orientiert sich an dem des vorgefertigten Tooltips und wird einheitlich für alle Texte (abgesehen von den Buttons) verwendet. Die Objekte sind schräg gestellt (ca. 35°), so dass sie aus diesem typischen Winkel gut zu lesen sind.\\
+
+Durch ihre Platzierung unmittelbar über dem Untergrund würden Drop Shadows das Präsenzgefühl stärken. Diese lassen sich hier jedoch nicht direkt umsetzen, denn der Untergrund ist real und kann durch die HoloLens nicht weiter verdunkelt werden. Eine mögliche Lösung besteht darin, die Schatten zu erzeugen, indem der Untergrund außerhalb des Schattens zusätzlich erhellt wird. Allerdings müssten hier wiederum die Schatten der realen Objekte mit einbezogen werden. Daher nimmt diese Lösung die fehlenden Schatten in Kauf.\\
+
+Die weiteren, optional einblendbaren Informationen wie Spulenabstand oder Windungszahl wurden aus zeitlichen Gründen nicht umgesetzt, da hier eine weitere Interaktionsmöglichkeit einzurichten wäre, um die Elemente ein- und auszublenden.
 
 \subsubsection{Weitere technische Komponenten}
-
+Die Implementierung der Darstellungen wird begleitet von weiteren technischen Lösungen, auf die dieser Abschnitt näher eingehen soll.
 \vspace{8px}
 \begin{center}
 	\fbox{
 		\parbox{0.9\linewidth}{
 			\vspace{4px}
-			\textbf{Überblick}
+			\textit{Überblick}
 			\begin{itemize}[rightmargin=12px, topsep=-12px]
 				\setlength{\itemsep}{-1pt}
 				\singlespacing
 				\item Spule maßstabsgetreu für Verdeckungsberechnung modelliert mit ca. 2mm größerer Ausdehnung, Rendering ausschließlich in den Z-Puffer
 				\item Near Plane Fading verbirgt Objekte, die eine minimale Distanz zur Kamera unterschreiten
-				\item Progress Indikator informiert über Zustand länger laufende Vorgänge, z.B. Ladevorgang der Simulationsdaten oder Einlesen des Markers
+				\item Progress Indikator informiert über Zustand länger laufender Vorgänge, z.B. Ladevorgang der Simulationsdaten oder Einlesen des Markers
 				\item Tracking mit Vuforia, nur zum Erkennen des Markers aktiv
 			\end{itemize}
 			\vspace{18px}
@@ -372,7 +432,7 @@ Darüber hinaus sprechen technische Gründe für eine solche Farbskala. Damit di
 \vspace{6px}
 
 \textit{Occlusion Berechnung}\\
-Nachmodelliert besser als Mesh, denn Mesh zu ungenau, Rendering nur in z puffer verbessert Performance, folgt Hinweis der Doku, near plane clipping beachten \\
+Für die Verdeckungsberechnung wurde die Spule anhand gemessener Größen in Blender modelliert. Das Spatial Mapping der HoloLens ist hier zu ungenau, um eine glaubwürdige Verdeckung zu ermöglichen. Eine Gegenüberstellung des durch die HoloLens aufgenommenen Spatial Mappings mit der modellierten Geometrie ist in Abb. \ref{img:mesh-vs-model} zu sehen.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
@@ -381,19 +441,18 @@ Nachmodelliert besser als Mesh, denn Mesh zu ungenau, Rendering nur in z puffer 
 	\caption{HoloLens Mesh vs. Modell}
 	\label{img:mesh-vs-model}
 \end{figure}
+Die Geometrie wird ausschließlich in den Tiefenpuffer gerendert\footnote{Der entsprechende Shader ist nur wenige Zeilen lang und findet sich in ähnlicher Form an etlichen Stellen im Internet wie z.B. http://wiki.unity3d.com/index.php/DepthMask}. Das vermeidet überflüssige Draw Calls und folgt der Empfehlung der Dokumentation. Damit virtuelle Objekte aber auch dann noch verdeckt bleiben, wenn reale Objekte nah kommen, muss das Near Clipping Plane sehr nah am Kameraursprung liegen. Andernfalls würden weiter entfernte, virtuelle Objekte plötzlich doch vor realen Objekten angezeigt werden, sobald letztere zu nah sind und das Clipping die für die Verdeckung eingesetzten Objekte vom Rendering ausschließt. Das stellt bei dieser Lösung aber kein Problem dar, weil zu nahe, virtuelle Objekte ohnehin über ein eigenes Verhalten ausgeblendet werden, das nicht auf die Clippingebene aufbaut.\\
 
-\begin{comment}
-\begin{itemize}
-\item Für Verdeckung werden maßstabsgetreu nachmodellierte, virtuelle Objekte verwendet
-\item 3D Mesh in Blender erstellt, 2mm größer als echte Objekte für Spielraum
-\item Objekte werden möglichst genau über reale gelegt
-\item Rendering erfolgt ausschließlich in den Z-Puffer, dadurch sind die realen Objekte sichtbar, die virtuellen verdecken jedoch dahinterliegende, vrituelle Objekte
-\item Das Near Clipping Plane muss dafür jedoch sehr nah am Kameraursprung liegen, andernfalls würden weiter entfernte, virtuelle Objekte plötzlich doch vor realen Objekten angezeigt werden, sobald letztere zu nah sind und das Clipping die Objekte vom Rendering ausschließt
-\end{itemize}
-\end{comment}
 
 \textit{Near Plane Fading}\\
-Minimale Distanz, angenehmer als Clipping, fade to transparent nicht umgesetzt\\
+Anstelle auf Basus der Clippingebene werden zu nahe Objekte über Skripte bzw. Shader kontinuierlich ausgeblendet. Dieses Verhalten ist für den Nutzer angenehmer, als ein plötzliches Aufpoppen bzw. Verschwinden von Objekten unmittelbar in unmittelbarer Nähe.\\
+
+Der für die meisten Objekte genutzt MRTK Standard Shader bietet bereits einen konfigurierbaren Bereich, über den Objekte ausgeblendet werden. Für andere Elemente wird die Transparenz über ein Skript geregelt. Hier werden für Anfang und Ende des Bereiches, über den zur Transparenz übergegangen wird, die empfohlenen Werte von 85cm und 50 cm genutzt. Lediglich die Linien des Kompasses werden 10 cm ''später'' ausgeblendet, damit die Ausrichtung der Nadel entlang der Linien auch aus geringerem Abstand und damit etwas besser erfasst werden kann. Insgesamt ergibt sich die Transparenz (Alpha-Wert) eines Objektes dann aus dem Minimum der Werte durch die verschiedenen Effekte.\\
+
+Diese Lösung geht jedoch zu Lasten der Performance, denn für die Transparenz werden alle betroffenen Objekte von hinten nach vorne (aus Sicht der Kamera) gerendert. Auch Pixel, die durch weiter vorne gelegene Objekte eingeommen werden, müssen mehrfach gezeichnet werden, da die dichteren Objekte ggf. transparent sind und durch die Farbe anderer Objekte beeinflusst werden. Dieser sogenannte Overdraw nimmt zusätzliche Rechenzeit in Anspruch. Eine Alternative bestünde darin, Objekte schwarz anstatt transparent werden zu lassen. Auf der HoloLens macht dies optisch zunächst keinen Unterschied, da Schwarz auf der Brille nicht dargestellt wird. Allerdings bliebe so die Verdeckung durch bereits verschwundenen Objekte bestehen, was zu Irritationen führen würde.\\
+
+
+
 \begin{comment}
 \begin{itemize}
 \item Minnimum Distanz
