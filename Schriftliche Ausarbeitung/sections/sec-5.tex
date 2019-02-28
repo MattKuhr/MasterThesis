@@ -135,68 +135,7 @@ Darüber hinaus gibt es Faktoren, die durch ein Foto nicht abgedeckt werden kön
 
 Diese Faktoren gilt es beim Einsatz von solchen Screen-Captures zu berücksichtigen. Prinzipiell sind auch Aufnahmen möglich, die näher an die tatsächliche Nutzererfahrung heranreichen. Diese erfordern aber weiteres Equipment, das im Rahmen dieser Arbeit nicht zur Verfügung stand.
 
-\subsubsection{Allgemeines}
-Spulenachse ist die Z-Achse.
-\vspace{8px}
-\begin{center}
-	\fbox{
-		\parbox{0.9\linewidth}{
-			\vspace{4px}
-			\textbf{Überblick}
-			\begin{itemize}[rightmargin=12px, topsep=-12px]
-				\setlength{\itemsep}{-1pt}
-				\singlespacing
-				\item Spule maßstabsgetreu modelliert mit ca. 2mm größerer Ausdehnung für Verdeckungsberechnung
-				\item Rendering der Spule ausschließlich in den Z-Puffer
-				\item Near Plane Fading verbirgt Objekte, die eine minimale Distanz zur Kamera unterschreiten
-			\end{itemize}
-			\vspace{18px}
-	}}\\
-\end{center}
-\vspace{6px}
 
-\textit{Occlusion Berechnung}\\
-Nachmodelliert besser als Mesh, denn Mesh zu ungenau, Rendering nur in z puffer verbessert Performance, folgt Hinweis der Doku, near plane clipping beachten \\
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
-	\hspace{0.05cm}	
-	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
-	\caption{HoloLens Mesh vs. Modell}
-	\label{img:mesh-vs-model}
-\end{figure}
-
-\begin{comment}
-\begin{itemize}
-	\item Für Verdeckung werden maßstabsgetreu nachmodellierte, virtuelle Objekte verwendet
-	\item 3D Mesh in Blender erstellt, 2mm größer als echte Objekte für Spielraum
-	\item Objekte werden möglichst genau über reale gelegt
-	\item Rendering erfolgt ausschließlich in den Z-Puffer, dadurch sind die realen Objekte sichtbar, die virtuellen verdecken jedoch dahinterliegende, vrituelle Objekte
-	\item Das Near Clipping Plane muss dafür jedoch sehr nah am Kameraursprung liegen, andernfalls würden weiter entfernte, virtuelle Objekte plötzlich doch vor realen Objekten angezeigt werden, sobald letztere zu nah sind und das Clipping die Objekte vom Rendering ausschließt
-\end{itemize}
-\end{comment}
-
-\textit{Near Plane Fading}\\
-Minimale Distanz, angenehmer als Clipping, fade to transparent nicht umgesetzt\\
-\begin{comment}
-\begin{itemize}
-	\item Minnimum Distanz
-	\item Behinderung bei Interaktion mit Versuchsaufbau
-	\item Bessere UX als Clipping
-	\item MRTK Standard Shader implementiert Fade To Black
-	\item Shader auf Fade to transparent abgeändert
-	\item Lineares Fading überall genutzt
-\end{itemize}
-\end{comment}
-
-\textit{Künstliche Beleuchtung}\\
-Beleuchtung bildet grob erwartete Lichtverhältnisse nach, keine Schatten\\
-\begin{comment}
-\begin{itemize}
-	\item Virtuelle Beleuchtung von Oben bildet echte Lichtverhältnisse grob nach
-	\item Unterstützt die Einbettung der 3D Objekte im Raum
-\end{itemize}
-\end{comment}
 
 \subsubsection{Das Magnetfeld}
 Die Darstellung des Magnetfeldes in Echtzeit erfolgt über 3D-Objekte. Die Geometrie wurde mit Blender erstellt und in Unity importiert. Die Fotos in Abb. \ref{img:mfield-result} zeigen die beiden alternativen Darstellungsmodelle. Darüber hinaus steht eine Visualisierung einer vorberechneten Lösung zur Verfügung, auf die an späterer Stelle genauer eingegangen wird.
@@ -231,9 +170,10 @@ Die Darstellung des Magnetfeldes in Echtzeit erfolgt über 3D-Objekte. Die Geome
 \end{center}
 \vspace{6px}
 
-
+\textit{Visuelle Gestaltung}\\
 Die Darstellung des Feldes erfolgt über 3D-Pfeile bzw. -Pfeillinien. Diese werden schattiert, damit die Form und Ausrichtung im Raum besser erkennbar wird. Beide verwenden dafür den gleichen Shader. Die Größe der Objekte wurde anhand von Erfahrungswerten angepasst. Durchmesser und Länge sind vergleichbar mit denen eines Kugelschreibers oder dickeren Stiftes. Als Farben wurden Hellblau und Orange für den Anteil der Spule bzw. der Erde gewählt. Blau wird oft für Magnetfeldlinien verwendet und wird daher auch hier gebraucht. Allerdings wird ein weniger gesättigtes, helleres Blau verwendet, damit die Deckkraft vor helleren Hintergründen nicht verloren geht. Das Orange weißt die selbe Sättigung und Helligkeit auf wie das Blau, damit sich die Objekte nicht in der Transparenz voneinander unterscheiden.\\
 
+\textit{Begrenzung der Darstellung}\\
 Die Visualisierung des Feldes erfordert die Festlegung eines darzustellenden Bereiches für die Flussdichte. Ein Intervall lässt sich in der Anwendung frei über die Einstellungen festlegen. Diese Einstellungsmöglichkeit ist für die praktische Nutzung wesentlich, da die gemessene Flussdichte des Erdmagnetfeldes in Abhängigkeit von der Umgebung variieren kann. Voreingestellt ist ein Bereich von $3\mu T$ bis $60\mu T$, die Flussdichte der Erde liegt mit $30 \mu T$ bis $40 \mu T$ im mittleren Bereich dieser Skala. Am unteren Ende des Bereiches werden die Objekte über Transparenz ausgeblendet.\\
 
 Nach oben hin ist keine Darstellung der Begrenzung vorgesehen. Der Bereich sollte so gewählt werden, dass die obere Grenze durch die maximal am Regler einstellbare Stromstärke nicht erreicht werden kann. Somit erfährt der Anwender die Limitierung der Darstellung auf natürliche Weise. Die Konfiguration der Schaltung kann hier über eingebaute Widerstände so an die Spannungsquelle angepasst werden, dass der erzeugte Stromfluss im gewünschten Bereich liegt.\\
@@ -264,8 +204,10 @@ Die Feldliniendarstellung ist in Abb. \ref{img:mfield-lines} gesondert abgebilde
 	}}\\
 \end{center}
 \vspace{6px}
+\textit{Anordnung}\\
 Die Feldlinien der Spule verlaufen orthogonal zur X-Y-Ebene, also in Richtung der Z-Achse. Damit die gewünschten Eigenschaften (Stärke, Homogenität und Richtung) des dreidimensionalen Feldes anhand des Feldlinienmodells erkennbar sind, bedarf es mindestens vier Linien. In einer 2x2 Anordnung um den Mittelpunkt der X-Y-Ebene ist so der Abstand in beiden Dimensionen sichtbar und die Linien sind symmetrisch zur Z-Achse. Anhand der Parallelität lässt sich die Homogenität erkennen und anhand des Abstandes (in der horizontalen oder vertikalen, beide sind gleich groß) die Stärke. Die Flussrichtung ist über eingebaute Pfeilspitzen abgebildet. Als Darstellungsvolumen wurde ein zylindrischer Ausschnitt der Spule gewählt, da diese den Raum besser ausfüllt, als beispielsweise ein kubischer Ausschnitt.\\
 
+\textit{Anzahl}\\
 Bei einem festen, für die Darstellungen zur Verfügung stehenden Volumen und kleiner werdenden Abständen müssen zunehmend mehr Linien gezeichnet werden. Zu viele Objekte würden jedoch die Sichtbarkeit anderer Elemente wie Magnetnadel und Kompass beeinträchtigen. Außerdem transportieren zusätzliche Feldlinien keine zusätzlichen Informationen (im Fall eines homogenen Feldes). Allerdings unterstützt die Beobachtung, dass mit zunehmender Flussdichte die Anzahl der Feldlinien steigt, das Verständnis des Feldlinienmodells. Daher wurde für die Umsetzung das Intervall von minimalem und maximalem Abstand so gewählt, dass mindestens 4 und höchstens 16 Linien dargestellt werden. Beim Ein- und Austreten der Objekte in das bzw. aus dem Darstellungsvolumen werden sie kontinuierlich ein bzw. ausgeblendet.\\
 
 \begin{figure}[H]
@@ -275,6 +217,7 @@ Bei einem festen, für die Darstellungen zur Verfügung stehenden Volumen und kl
 	\label{img:mfield-lines-scaling}
 \end{figure}
 
+\textit{Skalierung}\\
 Dabei wurde sich bewusst für die Abbildung der Flussdichte auf den Abstand der Feldlinien entschieden. Das bedeutet, Letzterer ändert sich proportional mit der Flussdichte. Oft wird statt des Abstandes die Anzahl der Feldlinien durch eine Einheitsfläche proportional zur Flussdichte gewählt. Das bedeutet bei einer symmetrischen Darstellung eines quadratischen Ausschnittes jedoch, dass die Anzahl in diskreten Stufen $n \geq 1$ mit $4^{n}$ steigt. Werden diese Stufen durch eine kontinuierliche Kontraktion der Linien zum Zentrum hin interpoliert, dann skaliert der Abstand $d$ der Feldlinien mit $1/(3n)$. Die Grafik \ref{img:mfield-lines-scaling} illustriert diesen Zusammenhang. Da für den Anwender in erster Linie jedoch der Abstand die sichtbare, sich ändernde Größe ist, könnte dies den falschen Eindruck erwecken, die Flussdichte ändere sich nicht linear mit der Stromstärke. Außerdem werden nur zwei Stufen dargestellt, daher wurde sich für die proportionale Änderung des Abstandes entschieden.\\
 
 \textbf{Vektoren}\\
@@ -303,12 +246,17 @@ Die Umsetzung der Vektordarstellung ist in Abb. \ref{img:mfield-vectors} näher 
 	}}\\
 \end{center}
 \vspace{6px}
+
+\textit{Anordnung und Anzahl}\\
 In der Vektordarstellung werden mindestens acht Vektoren benötigt, damit die zuvor genannten Eigenschaften erkennbar werden. Dabei gelten die gleichen Gründe wie zuvor. Während jedoch eine Feldlinie das Feld in Richtung der Z-Achse kontinuierlich darstellt, sind hier wenigstens zwei Vektoren notwendig. Die Anordnung erfolgt in einem 3D-Gitter, bei dem die Anzahl und die Abstände pro Dimension parametrisiert sind. Auch hier gilt, dass mehr Objekte im homogenen Teil des Feldes keine weiteren Informationen transportieren. Daher wurde in Anbetracht des zur Verfügung stehenden Raumes in die Größe anstelle der Anzahl der Objekte investiert.\\
 
+\textit{Skalierung}\\
 Die Flussdichte wird im Fall der Pfeile über deren Länge und Richtung ausgedrückt. Die Form der Objekte soll mit einer sich ändernden Länge nicht verzerrt werden. Eine einfache Skalierung der Pfeillänge würde jedoch dazu führen, dass auch die Pfeilspitze in die Länge gezogen wird. Daher wird die Geometrie zur Laufzeit angepasst und nur ein Teil in der Mitte verändert.\\
 
+\textit{Bezugspunkt}\\
 Welcher Punkt dem Vektor als Ankerpunkt dient ist dabei nicht entscheidend, denn ein Pfeil repräsentiert jeden Punkt des homogenen Feldes. Eine explizite Darstellung ist daher nicht erforderlich. Allerdings wird die Verankerung im Mittelpunkt dadurch deutlich, dass die Position bei variierender Länge gleich bleibt.\\
 
+\textit{Inhomogener Anteil}\\
 Im Gegensatz zu den Feldlinien ist eine Darstellung des inhomogenen Feldes über Vektoren auch ohne aufwendige Echtzeit-Berechnungen möglich (siehe Kap. \ref{sec-2-2-1}). Die Anwendung nutzt diese Eigenschaft, um in dieser Darstellung auch das inhomogene Feld anzudeuten. Dies geschieht, indem das Raster so gewählt wird, dass vor und hinter der Spule (im Sinne der Z-Achse) jeweils eine Reihe Vektoren positioniert ist. Diese sind hier im Vergleich deutlich kürzer und nicht parallel, sondern nach innen bzw. nach außen gerichtet. So wird erkennbar, dass das Feld hier schwächer und inhomogen ist. Da die Darstellungen erst ab einem minimalen Wert eingeblendet werden, wird der inhomogene Teil nach dem homogenen Teil eingeblendet.\\
 
  
@@ -347,7 +295,7 @@ Die numerische Lösung der Feldgleichungen erfolgte mittels der Simulationssoftw
 	\item Integrationsgenauigkeit?
 \end{itemize}
 \textit{Export, Import, Datenformat}\\
-Das Ergebnis der Simulation ist eine Liste von Datenpunkten der Form $[FeldlinienNr: Int, Position: Vector3, Betrag der Flussdichte: float]$. Dafür wurde ein CSV-Reader geschrieben, der die Daten zur Laufzeit der Applikation einliest, interpretiert und zum Rendering an GameObjects weitergibt. Folglich ließen sich mehrere Simulationen vorberechnen und anzeigen.\\
+Das Ergebnis der Simulation ist eine Liste von Datenpunkten der Form \textbf{[}\textit{FeldlinienNr:} Int, \textit{Position:} Vector3, \textit{Betrag der Flussdichte:} float\textbf{]}. Dafür wurde ein CSV-Reader geschrieben, der die Daten zur Laufzeit der Applikation einliest, interpretiert und zum Rendering an GameObjects weitergibt. Folglich ließen sich mehrere Simulationen vorberechnen und anzeigen.\\
 
 \textit{Querschnitt}\\
 Zunächst ist nur eine Anordnung in der X-Z-Ebene aktiv. Da das Feld aber symmetrisch zur Z-Achse ist, kann mit diesem einen Datensatz bereits jeder Querschnitt durch die Z-Achse dargestellt werden. Bei einer anderen Ausrichtung, z.B. im 45° Winkel, würden jedoch Feldlinien durch den Tisch verlaufen, auf dem die Spule steht.\\
@@ -356,7 +304,7 @@ Zunächst ist nur eine Anordnung in der X-Z-Ebene aktiv. Da das Feld aber symmet
 Die Darstellung erfolgt über Unity's Low-Level \textit{Graphics Library (GL)} mittels eines Line-Strips. Dieser ist vergleichbar mit dem von OpenGL, hat aber weniger Funktionen. Insbesondere lässt sich die Dicke der Linien nicht einstellen, sondern ist auf einen Pixel festgelegt. Der sonst in dieser Arbeit für Linien genutzte LineRenderer konnte hier nicht verwendet werden. Denn letzterer ermöglicht für eine Linie nur die Interpolation zwischen maximal 8 Farben. Eine besser Konfigurierbare Darstellung wäre über ein dynamisch generiertes Mesh möglich.\\
 
 \textit{Anzahl und Anordnung}\\
-Die Auswahl von 10 Feldlinien erfolgte aus praktischem Ermessen bezüglich der Sichtbarkeit aus 1,5 Metern Entfernung. Dabei wurde bewusst eine gerade Anzahl gewählt. Andernfalls entsteht eine Feldlinie, die genau auf der Z-Achse liegt und nicht geschlossen ist sondern von minus nach plus Unendlich verläuft. Dies sollte aus didaktischen Gründen vermieden werden.\\
+Die Auswahl von 10 Feldlinien erfolgte aus praktischem Ermessen bezüglich der Sichtbarkeit aus 1,5 Metern Entfernung. Dabei wurde bewusst eine gerade Anzahl gewählt. Andernfalls entsteht eine Feldlinie, die genau auf der Z-Achse liegt und nicht geschlossen ist sondern von minus nach plus Unendlich verläuft. Dies wurde aus didaktischen Gründen vermieden.\\
 
 \textit{Farbe}\\
 Die Wahl der Farbskala fiel aus mehreren Gründen auf eine Rot-Grün-Skala. Die Linien zeigen die kontinuierliche Änderung der Flussdichte, die durch einen Farbverlauf weiter hervorgehoben werden soll. Dabei kommt es nicht auf das Ablesen der numerischen Werte an, weshalb auch keine Skala mit Farbe und den dazugehörigen Werten angezeigt wird. Es geht viel mehr um das qualitative Verständnis der Darstellung. Mit der gewählten Skala unterscheiden sich die drei wesentlichen Regionen durch ihre Farbe klar voneinander:
@@ -368,29 +316,111 @@ Die Wahl der Farbskala fiel aus mehreren Gründen auf eine Rot-Grün-Skala. Die 
 
 Darüber hinaus sprechen technische Gründe für eine solche Farbskala. Damit die Linien in Helligkeit und Transparenz nicht variieren, sollten sich die Farbanteile im RGB-Raum stets zu einem konstanten Wert addieren. Die Rot-Grün-Skala erfüllt diese Eigenschaft, da hier der Blauanteil stets null ist und Rot und Grün über $R = 1 - G$ zusammenhängen. Möglich wären hier auch eine Regenbogenskala, die jedoch aus Gründen der Wahrnehmung nicht empfohlen wird.\\
 
-\subsubsection{Der Stromfluss}
-
-\subsubsection{Der Kompass}
-\textbf{Kompass-Linien und Strom-Pfeile}
+\subsubsection{Stromfluss, Kompass und weitere Darstellungen}
+\textbf{Strom-Pfeile}
 \begin{itemize}
-	\item Darstellungen über 2D-Linien mit Unity's LineRenderer
-	\item Für gestrichelte Linien eine Textur mit einem weißen Kreis und transparentem Hintergrund, dabei wird die Skalierung mit Tiling auf die Länge der Linie angepasst
-	\item Strom-Pfeile haben Bilboard-Verhalten, Maßgebend ist dabei die Vorwärtsrichtung ihres Transform
-	\item Fade-Away-Effekt verhindert zu steile Winkel, so sind immer die relevanten Pfeile sichtbar
+	\item Darstellungen über breite 2D-Linien mit Unity's LineRenderer, die an einem Ende zu einer Pfeilspitze zusammenlaufen
+	\item Liegen direkt auf der Spule auf und sind fest, richten sich also nicht zur Kamera aus
+	\item Es werden stets nur Pfeile an der Seite der Spule angezeigt, die der Nutzer gerade sehen kann
+	\item Dazwischen werden die Pfeile kontinuierlich ein- bzw. ausgeblendet
 \end{itemize}
 
-\subsubsection{Weitere Darstellungen}
+\textbf{Strom-Labels}
+\begin{itemize}
+	\item Plus- und Minus-Kennzeichner über Tooltip-Elemente des MRTK umgesetzt
+	\item Verbindungslinien farblich an die Farbe der Verbindungsstücke angepasst
+	\item Tooltips um Plus- und Minus-Icons ergänzt
+\end{itemize}
+
+
+\textbf{Kompass-Linien}
+\begin{itemize}
+	\item Darstellungen über gestrichelte 2D-Linien mit Unity's LineRenderer
+	\item Gestrichelte Linie durch Textur mit weißem Kreis und transparentem Hintergrund, Skalierung auf die Länge der Linie mit Tiling
+	\item Billboard-Verhalten für Sichtbarkeit aus unterschiedlichen Winkeln
+	\item Grau als Farbe genutzt, leicht transparent, virtueller Kompass jedoch etwas heller und daher präsenter gestaltet
+\end{itemize}
+
+
 \textbf{Textboxen}
 \begin{itemize}
-	\item Verwendung der im MRTK vorhandenen Schriftsätze
-	\item Dunkelgrauer Hintergrund verbessert Lesbarkeit, da Text vor transparentem Grund vor einigen Hintergründen schwer zu lesen ist
-	\item Dank leicht transparenter Hintergrund ist die Textbox nicht so dominant im Bild und die dahinterliegenden Objekte sind für den Nutzer noch sichtbar
-	\item Umsetzung als 3D Objekt, damit wird Stabilisierung genutzt
+	\item 4 Replikas, Platzierung an unteren Balken zwischen den beiden Spulen
+	\item Sichtbarkeit analog zu Strom-Pfeilen
+	\item Dunkelgrauer Hintergrund für bessere Lesbarkeit
+	\item Listet gemessene und berechnete Echtzeitwerte auf: Stromstärke, Spannung, Flussdichte
 \end{itemize}
 
+\subsubsection{Weitere technische Komponenten}
+
+\vspace{8px}
+\begin{center}
+	\fbox{
+		\parbox{0.9\linewidth}{
+			\vspace{4px}
+			\textbf{Überblick}
+			\begin{itemize}[rightmargin=12px, topsep=-12px]
+				\setlength{\itemsep}{-1pt}
+				\singlespacing
+				\item Spule maßstabsgetreu für Verdeckungsberechnung modelliert mit ca. 2mm größerer Ausdehnung, Rendering ausschließlich in den Z-Puffer
+				\item Near Plane Fading verbirgt Objekte, die eine minimale Distanz zur Kamera unterschreiten
+				\item Progress Indikator informiert über Zustand länger laufende Vorgänge, z.B. Ladevorgang der Simulationsdaten oder Einlesen des Markers
+				\item Tracking mit Vuforia, nur zum Erkennen des Markers aktiv
+			\end{itemize}
+			\vspace{18px}
+	}}\\
+\end{center}
+\vspace{6px}
+
+\textit{Occlusion Berechnung}\\
+Nachmodelliert besser als Mesh, denn Mesh zu ungenau, Rendering nur in z puffer verbessert Performance, folgt Hinweis der Doku, near plane clipping beachten \\
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
+	\hspace{0.05cm}	
+	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
+	\caption{HoloLens Mesh vs. Modell}
+	\label{img:mesh-vs-model}
+\end{figure}
+
+\begin{comment}
+\begin{itemize}
+\item Für Verdeckung werden maßstabsgetreu nachmodellierte, virtuelle Objekte verwendet
+\item 3D Mesh in Blender erstellt, 2mm größer als echte Objekte für Spielraum
+\item Objekte werden möglichst genau über reale gelegt
+\item Rendering erfolgt ausschließlich in den Z-Puffer, dadurch sind die realen Objekte sichtbar, die virtuellen verdecken jedoch dahinterliegende, vrituelle Objekte
+\item Das Near Clipping Plane muss dafür jedoch sehr nah am Kameraursprung liegen, andernfalls würden weiter entfernte, virtuelle Objekte plötzlich doch vor realen Objekten angezeigt werden, sobald letztere zu nah sind und das Clipping die Objekte vom Rendering ausschließt
+\end{itemize}
+\end{comment}
+
+\textit{Near Plane Fading}\\
+Minimale Distanz, angenehmer als Clipping, fade to transparent nicht umgesetzt\\
+\begin{comment}
+\begin{itemize}
+\item Minnimum Distanz
+\item Behinderung bei Interaktion mit Versuchsaufbau
+\item Bessere UX als Clipping
+\item MRTK Standard Shader implementiert Fade To Black
+\item Lineares Fading überall genutzt
+\end{itemize}
+\end{comment}
+
+\textit{Progress Indikator}\\
+Bekannter Windows Ladeindikator, bereitgestellt durch MRTK\\
+
+\textit{Tracking}\\
+Vuforia Tracking Framework genutzt, eigene Sequenz führt den Nutzer durch den Prozess\\
+
+\textit{Künstliche Beleuchtung}\\
+Beleuchtung bildet grob erwartete Lichtverhältnisse nach, keine Schatten\\
+\begin{comment}
+\begin{itemize}
+\item Virtuelle Beleuchtung von Oben bildet echte Lichtverhältnisse grob nach
+\item Unterstützt die Einbettung der 3D Objekte im Raum
+\end{itemize}
+\end{comment}
 
 \subsection{Interaktion}
-\textbf{Erkennung der Position über eigene Szene in Zusammenarbeit mit dem Nutzer}
+\textbf{Erkennung der Position über eigene Sequenz in Zusammenarbeit mit dem Nutzer}
 \begin{itemize}
 	\item Nutzer versteht die Funktionsweise der Anwendung
 	\item Nutzer erhält Feedback über den Prozess der Positionsbestimmung von der Anwendung
