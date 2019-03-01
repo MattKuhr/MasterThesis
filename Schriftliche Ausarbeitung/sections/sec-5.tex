@@ -9,6 +9,7 @@
 Im folgenden soll erläutert werden, wie der zuvor erarbeitete Lösungsansatz umgesetzt wurde. Dazu gibt das Kapitel zunächst einen Überblick über das System und die Architektur der Anwendung. Nach einer kurzen Erläuterung zu ''Screen-Captures'' von der HoloLens folgt eine nähere Betrachtung dessen, wie die Hologramme umgesetzt wurden. Schließlich werden Details zur Interaktion und Performance genannt.
 
 \subsection{Aufbau des Systems}
+\label{sec-5-1}
 Das System ist als Client-Server-Architektur realisiert, einen Überblick gibt das Schema in Abb. \ref{img:communication-schema}. Ein Server erfasst und verarbeitet die in der Schaltung gemessenen Werte für die Stromstärke. Diese stammen von einem Arduino, der in den Stromkreislauf eingekoppelt ist. Die Applikation auf der HoloLens tritt als Client auf und erfragt die aktuellen Werte vom Server. 
 \begin{figure}[H]
 	\centering
@@ -18,6 +19,7 @@ Das System ist als Client-Server-Architektur realisiert, einen Überblick gibt d
 \end{figure}
 
 \subsubsection{Client-Server Datenübertragung}
+\label{sec-5-1-1}
 Die Übertragung der Messwerte vom Arduino zur Anwendung ist so konzipiert, dass Änderungen in Echtzeit übermittelt werden, ohne das unnötiger Netzwerktraffic entsteht. Der Client betreibt ein Polling gegen den Server, der jedoch Antworten solange zurückhält, bis ein neuer, vom vorigen abweichender Wert gemessen wurde. Dieses Verhalten veranschaulicht das Sequenzdiagramm in Abbildung \ref{img:Sequenzdiagramm}. Das Vorgehen führt dazu, dass Änderungen durch den Nutzer am Regler der Spannungsquelle ohne wahrnehmbare Verzögerung auf der HoloLens ankommen.
 
 \vspace{8px}
@@ -55,6 +57,7 @@ Der Server besteht aus zwei miteinander kommunizierenden Threads. Ein Thread üb
 Der Client stellt durch die Nutzung von asynchronen Anfragen sicher, dass die Anfragen nicht blockieren. Unity bietet nur einen Thread, synchrone Anfragen würden daher zu einer Blockierung des Renderprozesses führen und so die Framerate beeinträchtigen. Da die Framerate bei 60 Hz gedeckelt ist und eine Antwort frühestens im nächsten Frame bearbeitet werden kann, beträgt die minimale Antwortzeit ca. 17 ms. Das ist ausreichend, um keine wahrnehmbare Verzögerung aufkommen zu lassen, da die Paketlaufzeit in einem lokalen Netzwerk typischerweise im einstelligen Millisekundenbereich liegt. Eine zusätzliche Wartezeit zwischen Requests kann außerdem eingestellt werden.\\
 
 \subsubsection{Architektur der HoloLens-Anwendung}
+\label{sec-5-1-2}
 Der Hauptteil des Systems besteht in der auf der HoloLens laufenden Applikation. Die Anwendung basiert auf der Unity Engine und wird als UWP App bereitgestellt. Das Schema in Abb. \ref{img:components-schema} gibt einen Überblick über die verschiedenen Komponenten der Anwendung. Deren Aufgaben sind in der darunter zu findenden Tabelle kurz zusammengefasst.
 
 \begin{figure}[H]
@@ -104,6 +107,7 @@ Der Hauptteil des Systems besteht in der auf der HoloLens laufenden Applikation.
 Eine Komponente besteht aus einer Hierarchie von Unity's GameObjects, die mit entsprechenden Skripten versehen sind. Die Komponenten kommunizieren auf unterschiedliche Weise miteinander. Die Behandlung von Events z.B. aufgrund von Nutzereingaben oder neuen Messwerten erfolgt über Callbacks. Manche Komponenten sind auch Singletons, auf die direkt zugegriffen werden kann wie z.B. die Einstellungen.\\
 
 \subsection{Darstellungen}
+\label{sec-5-2}
 Nachdem die grundlegende Architektur der vorgestellt wurde folgt nun eine genauere Betrachtung der Umsetzung der Darstellungen. Die Ausführungen werden dabei durch Abbildungen in Form von Screenshots unterstützt. Einen ersten Eindruck vermitteln die Fotos in Abb. \ref{img:HL_SS_Intro}. Damit die von der HoloLens stammenden Bilder richtig interpretiert werden können, sind jedoch einige Vorbemerkungen nötig.
 
 \begin{figure}[h!]
@@ -118,15 +122,17 @@ Nachdem die grundlegende Architektur der vorgestellt wurde folgt nun eine genaue
 \end{figure}
 
 \subsubsection{Aufnahmen mit der HoloLens}
+\label{sec-5-2-1}
 Zunächst ist festzuhalten, dass herkömmliche Screen-Captures auf der HoloLens nur eingeschränkt sinnvoll wären. Hier wären nämlich nur die gerenderten Objekte sichtbar, die so auch in einer Entwicklungsumgebung zu sehen sind. Die Nutzererfahrung entsteht jedoch durch das Zusammenspiel mit dem Hintergrund. Deshalb bietet die HoloLens eine angepasste Funktion, um möglichst das abzubilden, was der Nutzer tatsächlich sieht: Das \textit{Mixed Reality Capture (MRC)}.\\
 
 Mit dem Mixed Reality Capture lassen sich Screenshots und Screen-Videos aufnehmen. Dazu nutzt die Brille ihre integrierte Frontkamera und überlagert deren Bild mit dem gerenderten Bild. So lässt sich besser darstellen, was ein Nutzer sieht. Allerdings bringt dieses Vorgehen mehrere Einschränkungen mit sich, durch die die Resultate von den tatsächlich wahrgenommenen Bildern abweichen. Damit die folgenden Bilder richtig eingeordnet werden können, sollen die wichtigsten Faktoren hier genannt werden.
 
 \begin{itemize}
-	\item Auflösung
-	\item Begrenzungen des Sichtfeldes
-	\item Farbe und Transparenz
+	\item Andere Auflösung
+	\item Größeres Sichtfeld
+	\item Verfälschte Farben und Transparenz
 	\item Positionierung
+	\item MRC nicht möglich, wenn Kamera durch Anwendung genutzt wird
 \end{itemize}
 
 Bei einem MRC-Foto ändert sich die Auflösung von 1268x720 (720p) zu 1408x792. Obwohl die Auflösung steigt ist damit dennoch ein wesentlicher Qualitätsverlust verbunden, da der Betrachter auf der HoloLens zwei HD-Bilder sieht (stereoskopisch), beim Foto aber nur ein Bild erzeugt wird. Außerdem geht die höhere Auflösung des Einzelbildes nicht mit einer höheren Pixeldichte einher, sondern mit einem größeren Sichtfeld. Ein Foto repräsentiert daher nicht die tatsächlichen Begrenzungen des FOV. Dazu kommt die Transparenz von virtuellen Objekten. Diese hängt stark von deren Farbe sowie der Hintergrundhelligkeit ab und entspricht nicht immer der Wahrnehmung des Nutzers. Farbige Objekte erscheinen auf Fotos stets etwas transparent, auch wenn sie den Hintergrund aus Sicht des Nutzers vollständig überdecken. Das trifft z.B. auf die blauen Objekte in den Fotos aus Abb. \ref{img:HL_SS_Intro} zu. Nicht zuletzt ist auch für Fotos die Reduktion der Bildwiederholrate auf 30Hz relevant. Denn dadurch werden die Objekte nicht so gut stabilisiert und es kann zu leichten Verschiebungen auf den Fotos kommen.\\
@@ -135,9 +141,8 @@ Darüber hinaus gibt es Faktoren, die durch ein Foto nicht abgedeckt werden kön
 
 Diese Faktoren gilt es beim Einsatz von solchen Screen-Captures zu berücksichtigen. Prinzipiell sind auch Aufnahmen möglich, die näher an die tatsächliche Nutzererfahrung heranreichen. Diese erfordern aber weiteres Equipment, das im Rahmen dieser Arbeit nicht zur Verfügung stand.
 
-
-
 \subsubsection{Das Magnetfeld}
+\label{sec-5-2-2}
 Die Darstellung des Magnetfeldes in Echtzeit erfolgt über 3D-Objekte. Die Geometrie wurde mit Blender erstellt und in Unity importiert. Die Fotos in Abb. \ref{img:mfield-result} zeigen die beiden alternativen Darstellungsmodelle. Darüber hinaus steht eine Visualisierung einer vorberechneten Lösung zur Verfügung, auf die an späterer Stelle genauer eingegangen wird.
 
 \begin{figure}[H]
@@ -321,6 +326,7 @@ Die Wahl der Farbskala fiel aus mehreren Gründen auf eine Rot-Grün-Skala. Die 
 Darüber hinaus sprechen technische Gründe für eine solche Farbskala. Damit die Linien in Helligkeit und Transparenz nicht variieren, sollten sich die Farbanteile im RGB-Raum stets zu einem konstanten Wert addieren. Die Rot-Grün-Skala erfüllt diese Eigenschaft, da hier der Blauanteil stets null ist und Rot und Grün über $R = 1 - G$ zusammenhängen. Möglich wären hier auch eine Regenbogenskala, die jedoch aus Gründen der Wahrnehmung nicht empfohlen wird.\\
 
 \subsubsection{Stromfluss, Kompass und weitere Darstellungen}
+\label{sec-5-2-3}
 Nach den Erläuterungen zur Umsetzung der Magnetfelddarstellungen sollen auch die anderen Komponenten kurz beleuchtet werden.\\
 
 \textbf{Stromfluss}
@@ -411,6 +417,7 @@ Durch ihre Platzierung unmittelbar über dem Untergrund würden Drop Shadows das
 Die weiteren, optional einblendbaren Informationen wie Spulenabstand oder Windungszahl wurden aus zeitlichen Gründen nicht umgesetzt, da hier eine weitere Interaktionsmöglichkeit einzurichten wäre, um die Elemente ein- und auszublenden.
 
 \subsubsection{Weitere technische Komponenten}
+\label{sec-5-2-4}
 Die Implementierung der Darstellungen wird begleitet von weiteren technischen Lösungen, auf die dieser Abschnitt näher eingehen soll.
 \vspace{8px}
 \begin{center}
@@ -424,7 +431,6 @@ Die Implementierung der Darstellungen wird begleitet von weiteren technischen L�
 				\item Spule maßstabsgetreu für Verdeckungsberechnung modelliert mit ca. 2mm größerer Ausdehnung, Rendering ausschließlich in den Z-Puffer
 				\item Near Plane Fading verbirgt Objekte, die eine minimale Distanz zur Kamera unterschreiten
 				\item Progress Indikator informiert über Zustand länger laufender Vorgänge, z.B. Ladevorgang der Simulationsdaten oder Einlesen des Markers
-				\item Tracking mit Vuforia, nur zum Erkennen des Markers aktiv
 			\end{itemize}
 			\vspace{18px}
 	}}\\
@@ -441,37 +447,79 @@ Für die Verdeckungsberechnung wurde die Spule anhand gemessener Größen in Ble
 	\caption{HoloLens Mesh vs. Modell}
 	\label{img:mesh-vs-model}
 \end{figure}
-Die Geometrie wird ausschließlich in den Tiefenpuffer gerendert\footnote{Der entsprechende Shader ist nur wenige Zeilen lang und findet sich in ähnlicher Form an etlichen Stellen im Internet wie z.B. http://wiki.unity3d.com/index.php/DepthMask}. Das vermeidet überflüssige Draw Calls und folgt der Empfehlung der Dokumentation. Damit virtuelle Objekte aber auch dann noch verdeckt bleiben, wenn reale Objekte nah kommen, muss das Near Clipping Plane sehr nah am Kameraursprung liegen. Andernfalls würden weiter entfernte, virtuelle Objekte plötzlich doch vor realen Objekten angezeigt werden, sobald letztere zu nah sind und das Clipping die für die Verdeckung eingesetzten Objekte vom Rendering ausschließt. Das stellt bei dieser Lösung aber kein Problem dar, weil zu nahe, virtuelle Objekte ohnehin über ein eigenes Verhalten ausgeblendet werden, das nicht auf die Clippingebene aufbaut.\\
+Die Geometrie wird ausschließlich in den Tiefenpuffer gerendert\footnote{Der entsprechende Shader ist nur wenige Zeilen lang und findet sich in verschiedenen Varianten im Internet. Dieser orientiert sich an http://wiki.unity3d.com/index.php/DepthMask}. Das vermeidet überflüssige Draw Calls und folgt der Empfehlung der Dokumentation. Damit virtuelle Objekte aber auch dann noch verdeckt bleiben, wenn reale Objekte nah kommen, muss das Near Clipping Plane sehr nah am Kameraursprung liegen. Andernfalls würden weiter entfernte, virtuelle Objekte plötzlich doch vor realen Objekten angezeigt werden, sobald letztere zu nah sind und das Clipping die für die Verdeckung eingesetzten Objekte vom Rendering ausschließt. Das stellt bei dieser Lösung aber kein Problem dar, weil zu nahe, virtuelle Objekte ohnehin über ein eigenes Verhalten ausgeblendet werden, das nicht auf die Clippingebene aufbaut.\\
 
 
 \textit{Near Plane Fading}\\
-Anstelle auf Basus der Clippingebene werden zu nahe Objekte über Skripte bzw. Shader kontinuierlich ausgeblendet. Dieses Verhalten ist für den Nutzer angenehmer, als ein plötzliches Aufpoppen bzw. Verschwinden von Objekten unmittelbar in unmittelbarer Nähe.\\
+Anstelle auf Basus der Clippingebene werden zu nahe Objekte über Skripte bzw. Shader kontinuierlich ausgeblendet. Dieses Verhalten ist für den Nutzer angenehmer als ein plötzliches Aufpoppen bzw. Verschwinden von Objekten in unmittelbarer Nähe.\\
 
-Der für die meisten Objekte genutzt MRTK Standard Shader bietet bereits einen konfigurierbaren Bereich, über den Objekte ausgeblendet werden. Für andere Elemente wird die Transparenz über ein Skript geregelt. Hier werden für Anfang und Ende des Bereiches, über den zur Transparenz übergegangen wird, die empfohlenen Werte von 85cm und 50 cm genutzt. Lediglich die Linien des Kompasses werden 10 cm ''später'' ausgeblendet, damit die Ausrichtung der Nadel entlang der Linien auch aus geringerem Abstand und damit etwas besser erfasst werden kann. Insgesamt ergibt sich die Transparenz (Alpha-Wert) eines Objektes dann aus dem Minimum der Werte durch die verschiedenen Effekte.\\
+Der für die meisten Objekte genutzt MRTK Standard Shader bietet bereits einen konfigurierbaren Bereich, über den Objekte ausgeblendet werden. Für andere Elemente wird die Transparenz über ein Skript geregelt. Hier werden für Anfang und Ende des Bereiches, über den zur Transparenz übergegangen wird, die empfohlenen Werte von 85cm und 50cm genutzt. Lediglich die Linien des Kompasses werden 10 cm ''später'' ausgeblendet, damit die Ausrichtung der Nadel entlang der Linien auch aus geringerem Abstand und damit etwas besser erfasst werden kann. Insgesamt ergibt sich die Transparenz (Alpha-Wert) eines Objektes dann aus dem Minimum der Werte durch die verschiedenen Effekte.\\
 
-Diese Lösung geht jedoch zu Lasten der Performance, denn für die Transparenz werden alle betroffenen Objekte von hinten nach vorne (aus Sicht der Kamera) gerendert. Auch Pixel, die durch weiter vorne gelegene Objekte eingeommen werden, müssen mehrfach gezeichnet werden, da die dichteren Objekte ggf. transparent sind und durch die Farbe anderer Objekte beeinflusst werden. Dieser sogenannte Overdraw nimmt zusätzliche Rechenzeit in Anspruch. Eine Alternative bestünde darin, Objekte schwarz anstatt transparent werden zu lassen. Auf der HoloLens macht dies optisch zunächst keinen Unterschied, da Schwarz auf der Brille nicht dargestellt wird. Allerdings bliebe so die Verdeckung durch bereits verschwundenen Objekte bestehen, was zu Irritationen führen würde.\\
-
-
-
-\begin{comment}
-\begin{itemize}
-\item Minnimum Distanz
-\item Behinderung bei Interaktion mit Versuchsaufbau
-\item Bessere UX als Clipping
-\item MRTK Standard Shader implementiert Fade To Black
-\item Lineares Fading überall genutzt
-\end{itemize}
-\end{comment}
+Diese Lösung geht jedoch zu Lasten der Performance, denn für die Transparenz werden alle betroffenen Objekte von hinten nach vorne (aus Sicht der Kamera) gerendert. Auch Pixel, die durch weiter vorne gelegene Objekte eingenommen werden, müssen mehrfach gezeichnet werden, da die dichteren Objekte ggf. transparent sind und durch die Farbe anderer Objekte beeinflusst werden. Dieser sogenannte Overdraw nimmt zusätzliche Rechenzeit in Anspruch. Eine Alternative bestünde darin, Objekte schwarz anstatt transparent werden zu lassen. Auf der HoloLens macht dies optisch zunächst keinen Unterschied, da Schwarz auf der Brille nicht dargestellt wird. Allerdings bliebe so die Verdeckung durch bereits verschwundenen Objekte bestehen, was zu Irritationen führen würde.\\
 
 \textit{Progress Indikator}\\
-Bekannter Windows Ladeindikator, bereitgestellt durch MRTK\\
+Um den Anwender über länger laufende Prozesse zu informieren, kommt eine Fortschrittsanzeige zum Einsatz. Hier kann auf den aus Mircosoft Windows bekannten Indikator zurückgegriffen werden, den das MRTK als vorgefertigtes Objekt anbietet. Das Mixed Reality Capture in Abb. \ref{img:pi-and-tracking} zeigt diesen beim Start der Anwendung.\\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
+	\hspace{0.05cm}	
+	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
+	\caption{Progress Indikator Laden und Tracking}
+	\label{img:pi-and-tracking}
+\end{figure}
+
+Für die Kommunikation mit dem Nutzer ist bei dieser Anwendung vor allem wichtig, was das System tut. Längere Ladezeiten o.Ä. treten hier nicht auf, daher wird lediglich das Text-Element des Indikators verwendet, von der prozentualen Anzeige wird nicht Gebrauch gemacht. Komponenten, die den Indikator nutzen, stellen jedoch stets sicher, dass eine Nachricht lange genug sichtbar ist, um gelesen werden zu können. Länger laufende Operationen sind stets asynchron umgesetzt, die pro Frame nur einen Teil der Arbeit erledigen und so den Renderprozess nicht blockieren.\\
+
+% Einzig das Starten und Stoppen des Trackingframeworks 
+\subsection{Rahmen der Anwendung}
+\vspace{8px}
+\begin{center}
+	\fbox{
+		\parbox{0.9\linewidth}{
+			\vspace{4px}
+			\textit{Überblick}
+			\begin{itemize}[rightmargin=12px, topsep=-12px]
+				\setlength{\itemsep}{-1pt}
+				\singlespacing
+				\item Tracking mit Vuforia, nur zum Erkennen des Markers aktiv
+				\item Einstellungen werden als JSON im AppData Verzeichnis gespeichert
+				\item Menü übernimmt Steuerung der einzelnen Vorgänge, jederzeit aufrufbar
+				\item Startvorgang mit Intro-Sequenz lädt Daten und Einstellungen und initialisiert Komponenten
+			\end{itemize}
+			\vspace{18px}
+	}}\\
+\end{center}
+\vspace{6px}
+
 
 \textit{Tracking}\\
-Vuforia Tracking Framework genutzt, eigene Sequenz führt den Nutzer durch den Prozess\\
+Für das Erkennen der Markerposition kommt das Tracking Framework Vuforia zum Einsatz. Ein optischer Marker wird vor der Spule auf dem Untergrund platziert. Dieser wird dann über die Frontkamera der HoloLens durch das Framework erkannt und die Position und Ausrichtung bestimmt. Die Modelle werden entsprechend positioniert und ein World Anchor gesetzt. Damit ist die Positionierung abgeschlossen und der Marker kann entfernt werden. Da Vuforia nur während dieser Sequenz aktiviert ist, werden für den Rest der Anwendung Hardwareressourcen frei.\\
 
+Dieser Vorgang lässt sich über das Menu jederzeit neu anstoßen und die einzelnen Schritte werden über den Progress Indikator dem Nutzer kommuniziert. Die Steuerung des Prozesses erfolgt durch den \textit{Tracking Manager}. Dieser startet und stoppt das Framework, reagiert auf Änderungen im Tracking und informiert den Anwender über den Fortschritt. Der Screenshot\footnote{Wie in Kap. \ref{sec-5-2-1} festgehalten sind während des Trackings keine Aufnahmen mit der HoloLens möglich, da die Kamera von Vuforia in Anspruch genommen wird.} in Abb. \ref{img:pi-and-tracking} zeigt eine solche Nachricht.\\
+
+\textit{Einstellungen}\\
+Die Einstellungen sind über ein dem Daten-Panel ähnliches Objekt realisiert, das in Abb. \ref{img:menu-and-settings} zu sehen ist. Ein Klick auf eines der Input-Felder ruft die virtuelle Tastatur hervor, beide werden durch das MRTK bereitgestellt und wurden hier für numerische Eingaben konfiguriert. Die Werte werden als JSON formatiert und in das AppData-Verzeichnis der Anwendung gespeichert. Damit stehen sie auch nach einem Neustart oder Update der App noch zur Verfügung. Die Applikation sucht beim Start automatisch nach gespeicherten Einstellungen und lädt entweder diese oder die Default-Werte. Andere Komponenten werden durch ein Event über sich ändernde Einstellungen benachrichtigt und passen sich entsprechend an.\\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
+	\hspace{0.05cm}	
+	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
+	\caption{Einstellungen und Menü}
+	\label{img:menu-and-settings}
+\end{figure}
+
+\textit{Menü}\\
+Die Umsetzung des Menüs ist in Abb. \ref{img:menu-and-settings} abgebildet. Die Form der Buttons wurde so angepasst, dass die Labels und Icons problemlos darauf Platz finden. Bei den Icons wurde auf Standard-Elemente aus dem MRTK zurückgegriffen. Das Menü wird über den \textit{MenuController} gesteuert, von dem aus alle weiteren Vorgänge gestartet werden.\\
+
+\textit{Intro-Sequenz}\\
+Es wurde eine Startsequenz entwickelt, die Aufgaben wie das Laden von Daten und Einstellungen und die Initialisierung der einzelnen Komponenten übernimmt. Hier wird ein Logo in Form eines größeren Schriftzuges und dazu der Progress Indikator angezeigt. Letzterer informiert über den Zustand des Ladevorgangs. Während des Vorgangs werden insbesondere die Einstellungen und  Simulationsdaten geladen.\\
+
+Diese Umsetzung erlaubt die notwendigen Ladevorgänge und ist für den Nutzer nachvollziehbar. Außerdem gibt das letzterem einige Sekunden Zeit, sich auf die Anwendung einzustellen, bevor das Menü erscheint und eine Aktion vom Anwender verlangt.
+\begin{comment}
 \textit{Künstliche Beleuchtung}\\
 Beleuchtung bildet grob erwartete Lichtverhältnisse nach, keine Schatten\\
-\begin{comment}
 \begin{itemize}
 \item Virtuelle Beleuchtung von Oben bildet echte Lichtverhältnisse grob nach
 \item Unterstützt die Einbettung der 3D Objekte im Raum
@@ -479,14 +527,11 @@ Beleuchtung bildet grob erwartete Lichtverhältnisse nach, keine Schatten\\
 \end{comment}
 
 \subsection{Interaktion}
-\textbf{Erkennung der Position über eigene Sequenz in Zusammenarbeit mit dem Nutzer}
+
 \begin{itemize}
-	\item Nutzer versteht die Funktionsweise der Anwendung
-	\item Nutzer erhält Feedback über den Prozess der Positionsbestimmung von der Anwendung
-	\item Nutzer kann sein Verhalten anpassen und so den Prozess unterstützen
-	\item Bessere Kalibrierung möglich
-	\item Tracking nur für kurze Zeit erforderlich, das spart viel Ressourcen
-	\item Marker verdeckt kein Teil des Sichtfeldes, kann nach Positionierung auch entfernt werden
+	\item Klick, Doppelklick und Hold-Klick
+	\item Standard Klick-Sound überall verwendet
+	\item Sprachbefehle aus Zeitgründen nicht umgesetzt
 \end{itemize}
 
 \subsection{Performance}
