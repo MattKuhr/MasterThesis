@@ -472,6 +472,15 @@ Um den Anwender über länger laufende Prozesse zu informieren, kommt eine Forts
 Für die Kommunikation mit dem Nutzer ist bei dieser Anwendung vor allem wichtig, was das System tut. Längere Ladezeiten o.Ä. treten hier nicht auf, daher wird lediglich das Text-Element des Indikators verwendet, von der prozentualen Anzeige wird nicht Gebrauch gemacht. Komponenten, die den Indikator nutzen, stellen jedoch stets sicher, dass eine Nachricht lange genug sichtbar ist, um gelesen werden zu können. Länger laufende Operationen sind stets asynchron umgesetzt, die pro Frame nur einen Teil der Arbeit erledigen und so den Renderprozess nicht blockieren.\\
 
 % Einzig das Starten und Stoppen des Trackingframeworks 
+\begin{comment}
+\textit{Künstliche Beleuchtung}\\
+Beleuchtung bildet grob erwartete Lichtverhältnisse nach, keine Schatten\\
+\begin{itemize}
+\item Virtuelle Beleuchtung von Oben bildet echte Lichtverhältnisse grob nach
+\item Unterstützt die Einbettung der 3D Objekte im Raum
+\end{itemize}
+\end{comment}
+
 \subsection{Rahmen der Anwendung}
 \vspace{8px}
 \begin{center}
@@ -516,15 +525,8 @@ Die Umsetzung des Menüs ist in Abb. \ref{img:menu-and-settings} abgebildet. Die
 \textit{Intro-Sequenz}\\
 Es wurde eine Startsequenz entwickelt, die Aufgaben wie das Laden von Daten und Einstellungen und die Initialisierung der einzelnen Komponenten übernimmt. Hier wird ein Logo in Form eines größeren Schriftzuges und dazu der Progress Indikator angezeigt. Letzterer informiert über den Zustand des Ladevorgangs. Während des Vorgangs werden insbesondere die Einstellungen und  Simulationsdaten geladen.\\
 
-Diese Umsetzung erlaubt die notwendigen Ladevorgänge und ist für den Nutzer nachvollziehbar. Außerdem gibt das letzterem einige Sekunden Zeit, sich auf die Anwendung einzustellen, bevor das Menü erscheint und eine Aktion vom Anwender verlangt.
-\begin{comment}
-\textit{Künstliche Beleuchtung}\\
-Beleuchtung bildet grob erwartete Lichtverhältnisse nach, keine Schatten\\
-\begin{itemize}
-\item Virtuelle Beleuchtung von Oben bildet echte Lichtverhältnisse grob nach
-\item Unterstützt die Einbettung der 3D Objekte im Raum
-\end{itemize}
-\end{comment}
+Diese Umsetzung erlaubt die notwendigen Ladevorgänge und ist für den Nutzer nachvollziehbar. Außerdem gibt das letzterem einige Sekunden Zeit, um sich auf die Anwendung einzustellen, bevor das Menü erscheint und eine Aktion vom Anwender verlangt.
+
 
 \subsection{Interaktion}
 
