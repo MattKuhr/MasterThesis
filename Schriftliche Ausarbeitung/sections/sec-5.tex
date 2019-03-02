@@ -431,6 +431,7 @@ Die Implementierung der Darstellungen wird begleitet von weiteren technischen L�
 				\item Spule maßstabsgetreu für Verdeckungsberechnung modelliert mit ca. 2mm größerer Ausdehnung, Rendering ausschließlich in den Z-Puffer
 				\item Near Plane Fading verbirgt Objekte, die eine minimale Distanz zur Kamera unterschreiten
 				\item Progress Indikator informiert über Zustand länger laufender Vorgänge, z.B. Ladevorgang der Simulationsdaten oder Einlesen des Markers
+				\item Kantenglättung durch 2x MSAA eingesetzt
 			\end{itemize}
 			\vspace{18px}
 	}}\\
@@ -470,6 +471,12 @@ Um den Anwender über länger laufende Prozesse zu informieren, kommt eine Forts
 \end{figure}
 
 Für die Kommunikation mit dem Nutzer ist bei dieser Anwendung vor allem wichtig, was das System tut. Längere Ladezeiten o.Ä. treten hier nicht auf, daher wird lediglich das Text-Element des Indikators verwendet, von der prozentualen Anzeige wird nicht Gebrauch gemacht. Komponenten, die den Indikator nutzen, stellen jedoch stets sicher, dass eine Nachricht lange genug sichtbar ist, um gelesen werden zu können. Länger laufende Operationen sind stets asynchron umgesetzt, die pro Frame nur einen Teil der Arbeit erledigen und so den Renderprozess nicht blockieren.\\
+
+\textit{Kantenglättung}\\
+Bei Darstellungen auf der HoloLens fällt der Kantenglättung eine besondere Bedeutung zu. Im Gegensatz zu anderen Anwendungen, bei denen denen der Nutzer die Kamera über herkömmliche Eingabegeräte steuert, ist bei der Brille die Kamera an die Kopfbewegungen des Trägers gebunden. Die Displays folgen daher den ständigen, feinen Vibrationen des Kopfes, die Kamera steht also nie still. Deshalb können Treppeneffekte an Kanten besonders auffällig und störend wirken, da das resultierende Kantenflimmern stetig präsent ist. Allerdings sind Anti-Aliasing-Verfahren wie z.B. Multi Sampled Anti Aliasing oft mit erheblichem Rechenaufwand verbunden.\\ % Die Dokumentation der HoloLens empfiehlt daher, auf den Einsatz solcher Verfahren zu verzichten.\\
+
+Für die gewählte Visualisierung der Simulationsdaten über Linien ist eine Form des Anti-Aliasing jedoch unerlässlich. Andernfalls würde hier die gesamte Darstellung flimmern. Deshalb wurde sich hier für den Einsatz von zweifachem Multi-Sampled Anti-Aliasing (MSAA) entschieden. Das Verfahren wird durch Unity standardmäßig unterstützt und kann ohne weitere Maßnahmen für die Kamera aktiviert werden. Die Dokumentation rät zwar im Rahmen der Hinweise zu ressourcenschonenden Maßnahmen vom Einsatz solcher Verfahren ab. Da die Anwendung jedoch sonst keine besonders aufwendigen Berechnungen ausführen muss und der Qualitätsgewinn deutlich wahrnehmbar ist, wird MSAA dennoch verwendet.
+
 
 % Einzig das Starten und Stoppen des Trackingframeworks 
 \begin{comment}
@@ -530,9 +537,10 @@ Diese Umsetzung erlaubt die notwendigen Ladevorgänge und ist für den Nutzer na
 
 \subsection{Interaktion}
 
+
 \begin{itemize}
 	\item Klick, Doppelklick und Hold-Klick
-	\item Standard Klick-Sound überall verwendet
+	\item Standard Klick-Sound als Feedback verwendet
 	\item Sprachbefehle aus Zeitgründen nicht umgesetzt
 \end{itemize}
 
