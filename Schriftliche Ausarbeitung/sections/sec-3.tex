@@ -87,21 +87,29 @@ Der erste Punkt soll hier kurz näher beleuchtet werden. Dabei geht es nicht um 
 \subsubsection{Wie - Technische Seite}
 In Kapitel \ref{sec-2-1} wurde die HoloLens mit ihren technischen Möglichkeiten aber auch Einschränkungen vorgestellt sowie Auswirkungen auf das Anwendungsdesign aufgezeigt. Die genannten Probleme sollen möglichst vermieden werden, indem die Anwendung an die speziellen Gegebenheiten der HoloLens angepasst wird. Dementsprechend sollen auch von technischer Seite Anforderungen aufgestellt werden.\\
 
-Die Dokumentation zu Windows Mixed Reality enthält auch eine Liste von Qualitätskriterien, anhand derer Anwendungen bewertet werden können. Diese deckt viele der zuvor erläuterten Probleme wie z.B. der Abstand zu Objekten ab. Jedes Kriterium ist mit einer Beschreibung versehen, unter welchen Umständen es als optimal erfüllt, erfüllt oder nicht erfüllt gilt. Eine Kurzfassung der Kriterien ist in Tabelle X. zusammengestellt, die ausführliche Version findet sich im Anhang.\\
-\textbf{Qualitätskriterien}
-\begin{itemize}
-	\setlength{\itemsep}{-5pt}
-	\item Framerate
-	\item Stabilität
-	\item Positionierung
-	\item Betrachtungs Komfort Zone
-	\item Fokus Wechsel
-	\item FOV Grenezn
-	\item Anpassung an Nutzerposition
-	\item Input Interaction Clarity
-	\item Interaktive Objekte
-	\item Ladevorgänge
-\end{itemize}
+Die Dokumentation zu Windows Mixed Reality enthält auch eine Liste von Qualitätskriterien, anhand derer Anwendungen bewertet werden können. Diese deckt viele der zuvor erläuterten Probleme wie z.B. der Abstand zu Objekten ab. Jedes Kriterium ist mit einer Beschreibung versehen, unter welchen Umständen es als optimal erfüllt, erfüllt oder nicht erfüllt gilt. Eine Kurzfassung der Kriterien ist in Tabelle \ref{tab:tech_criteria} zusammengestellt, die ausführliche Version findet sich im Anhang.\\
+
+\bgroup
+\setlength\extrarowheight{-2pt}
+\def\arraystretch{2}
+\begin{table}[htb]
+	\centering
+	\begin{tabular}{l|l}
+		Kriterium & Kurzbeschreibung \\
+		\hline
+		Framerate & Gibt die Anwendung konstant 60 FPS aus?\\
+		Stabilität der Hologramme & Weisen Hologramme bei Bewegungen Ruckler, Sprünge, Drift, Wackeln, Wippen oder ähnliches auf?\\
+		Positionierung & Sind Hologramme im Verhältnis zu realen Objekten korrekt positioniert?\\
+		Komfortzone & Liegen Distanz und Betrachtungswinkel in den empfohlenen Bereichen?\\
+		Tiefen Wechsel & Bedingt die Anwendung häufige Fokuswechsel?\\
+		FOV-Grenzen & Behindern die Begrenzungen des FOV die Nutzererfahrungen?\\
+		Input Interaction Clarity & Werden konsistente, bekannte und geeignete Eingabemethoden geboten?\\
+		Anpassung an Nutzerposition & Passen sich Darstellungen der Position des Nutzers an?\\
+		Interaktive Objekte & Sind interaktive Objekte als solche erkennbar?\\
+		Ladevorgänge  & Erhält der Nutzer Feedback über länger laufende Operationen?\\
+	\end{tabular}\caption{\label{tab:tech_criteria} Kurzfassung der Qualitätskriterien.}
+\end{table}
+\egroup
 
 An diesen Kriterien soll sich die Lösung orientieren und diese bereits im Design berücksichtigen. Dafür sollen die genannten Hinweise und Empfehlungen zum Design mit einbezogen und darauf aufgebaut werden.\\
 

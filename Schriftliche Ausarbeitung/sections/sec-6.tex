@@ -5,14 +5,20 @@
 	\textit{Ziel des Kapitels:}\\
 	Ergebnisse der Umsetzung vorstellen und auf die Fragestellung anwenden.
 }}
-Bogen zur Fragestellung schließen
+Ziel dieser Arbeit war es, zu untersuchen, wie ein konkretes physikalisches Experiment durch eine Anwendung mit der HoloLens unterstützt werden kann. Dafür wurde ein Versuch aus der Elektrodynamik ausgewählt, Probleme identifiziert und eine Lösung erarbeitet. Diese soll nun im Hinblick auf die in der Problemstellung festgehaltenen Anforderungen bewertet werden. Die Ergebnisse werden dann im breiteren Kontext der Fragestellung diskutiert.\\
+
+
+\begin{comment}
+
+\begin{itemize}
+\item Welche physikalischen Zusammenhänge werden vermittelt?
+\item Wie 
+\end{itemize}
 
 Konkrete untergeordnete Frage:
 \begin{center}
-	\textit{\textbf{Wie kann die HoloLens in einem konkreten Anwendungsfall eines physikalischen Versuches genutzt werden?}}
+\textit{\textbf{Wie kann die HoloLens in einem konkreten Anwendungsfall eines physikalischen Versuches genutzt werden?}}
 \end{center}
-
-\begin{comment}
 \subsection{Aufgabenstellung}
 
 Im Rahmen der Arbeit soll anhand der HoloLens untersucht werden, wie diese in der Physik-Lehre eingesetzt werden kann, um physikalische Inhalte zu vermitteln. Insbesondere soll betrachtet werden, wie physikalische Experimente mittels Mixed Reality Anwendungen durch zusätzliche Inhalte angereichert werden können.\\
@@ -24,34 +30,42 @@ Davon ausgehend soll der Fragestellung anhand eines konkreten Beispiels nachgega
 \end{comment}
 
 \subsection{Ergebnisse}
-Design
+Die Arbeit stellt einen Lösungsansatz vor, der 
 
 \subsubsection{Unterstützung des Experimentes}
-1. Lösung ganz kurz zusammenfassen\\
+Die Lösung erweitert das gegebene Experiment um zusätzliche Inhalte. Die
 \begin{itemize}
 	\item Erweiterung des Versuches um Magnetfeld, Stromfluss, Kompass und weitere Informationen
 	\item Physikalische Eigenschaften von Magnetfeld abgebildet
 	\item Physikalische Zusammenhänge zwischen Stromfluss, Magnetfeld und Kompass umgesetzt
 	\item Anwendung zeigt nicht sichtbare, reale physikalische Zusammenhänge des Experimentes
-	\item Nutzer kann frei mit dem Versuchsaufbau interagieren
-	\item Einführung in Nutzung der HoloLens nicht notwendig
 \end{itemize}
 
 \subsubsection{Technische Umsetzung}
 2. Lösung an technischen Kriterien messen\\
 \textbf{Qualitätskriterien}
-\begin{itemize}
-	\item Framerate
-	\item Stabilität
-	\item Positionierung
-	\item Betrachtungs Komfort Zone
-	\item Tiefen Wechsel
-	\item FOV Grenezn
-	\item Anpassung an Nutzerposition
-	\item Input Interaction Clarity
-	\item Interaktive Objekte
-	\item Ladevorgänge
-\end{itemize}
+\bgroup
+\setlength\extrarowheight{-2pt}
+\def\arraystretch{2}
+\begin{table}[htb]
+	\centering
+	\begin{tabular}{m{2.3cm}|m{6.5cm}|m{2cm}}
+		Kriterium & Ergebnis & Bewertung\\
+		\hline
+		\hline
+		Framerate & Durchgehend 60 FPS, keine Framedrops. Einzig bei Start/Stopp von Vuforia hängt die Anwendung kurz. & Optimal\\
+		Stabilität der Hologramme & Hologramme erscheinen durchgehend sehr stabil, Elemente liegen im Abstand von max. 20cm zu einem Spatial Anchor und der Stabilization Plane. Seltene, minimale Sprünge sowie Wippen der simulierten Feldlinien treten auf. & Fast optimal\\
+		Positionierung & Sehr genaue Positionierung über optischen Marker. Hologramme sind glaubhaft in die Spule eingebettet. Überschneidungen von wenigen Millimetern sind jedoch möglich. & Fast optimal\\
+		Komfortzone & Elemente liegen in der Komfortzone (Winkel und Distanz), sofern eine geeignete Unterlage zur Verfügung steht. Design begünstigt den gewünschten Abstand. Minimale Distanz wird über Fading sichergestellt. & Optimal\\
+		Fokuswechsel & Kaum Neufokussierungen notwendig. Nur bei Ablesen des Kompass und der Stromrichtung. & Fast optimal\\
+		FOV-Grenzen & Darstellungen passen bei empfohlener Distanz vollständig in FOV. Durch Verankerung am realen Objekt verliert Nutzer den Kontext nicht. & Optimal\\
+		Anpassung an Nutzerposition & Text, Labels, Linien und Menüs orientieren sich an Nutzerposition. & Optimal\\
+		Input Interaction Clarity & Vorhandene, einfache Standard-Interaktionsmechanismen genutzt und geringfügig erweitert. Konsistentes, akustisches Feedback. Jedoch keine Erklärung der möglichen Aktionen durch die Anwendung selbst. & Mittel\\
+		Interaktive Objekte & Vorhandene Buttons, Felder und Cursor genutzt. & Optimal\\
+		Ladevorgänge  & Vorhandenen, animierten Progress Indikator verwendet. Lesbarkeit des Textes wird abgesichert. Vorgänge sind kurz, keine Angabe einer erwarteten Dauer notwendig. & Optimal\\
+	\end{tabular}\caption{\label{tab:tech_results} Bewertung der Umsetzung anhand von Qualitätskriterien.}
+\end{table}
+\egroup
 
 \textbf{Performance}
 Kurzen Überblick über Performance geben
@@ -66,12 +80,12 @@ Kurzen Überblick über Performance geben
 \subsubsection{Feedback}
 Hier Feedback kurz zusammenfassen, Aussagen allgemein zusammenfassen sowie Zitate angeben
 \begin{itemize}
-	\item Anwendung wurde mehreren Personen aus unterschiedlichen Gruppen vorgestellt, nur vereinzelt vorige Erfahrungen mit HoloLens vorhandens
+	\item Anwendung wurde mehreren Personen aus unterschiedlichen Gruppen vorgestellt, nur vereinzelt vorige Erfahrungen mit HoloLens vorhanden
 	\item Physik Professoren, wissenschaftliche Mitarbeiter, Lehrer, Studenten, außerdem interessierte Einzelpersonen mit unterschiedlichen Hintergründen, insgesamt ca. 15 Personen
 	\item Feedback durchgehend positiv
 	\item "Kann ich Fotos davon haben"
 	\item Kleines Sichtfeld wurde mehrfach angemerkt
-	\item Vor allem die direkte Interaktion über die Spannungsquelle und die Feldlinien aus den Simulationsdaten wurden positiv aufgenommens
+	\item Vor allem die direkte Interaktion über die Spannungsquelle und die Feldlinien aus den Simulationsdaten wurden positiv aufgenommen
 \end{itemize}
 
 
@@ -79,22 +93,23 @@ Hier Feedback kurz zusammenfassen, Aussagen allgemein zusammenfassen sowie Zitat
 
 \subsubsection{Vor- und Nachteile}
 \subsubsection{Erweiterbarkeit}
-\subsubsection{Übertragbarkeit}
 \begin{itemize}
+	\item Anwendung kann erweitert werden, z.B. um Ablenkung von Elektronen in der Spule
+	\item 3D Darstellungen der HoloLens genutzt für Magnetfeld der Spulen, auch für andere Magnetfelder anwendbar
+	\item Kräftevektoren ebenfalls übertragbar
+	\item Einbettung von Simulation denkbar und sinnvoll, denn das erlaubt den Nutzern What-If Szenarien durchzuspielen, sehr wichtig zum Lernen
 	\item Weitere Lehrinhalte denkbar: z.B. Entstehung der Einzelfelder, Überlagerung der Einzelfelder, Ablenkung eines Elektronenstrahls, 
 	\item Applikation ist parametrisiert: Andere physikalische Parameter möglich
 	\item Variation von Spulengröße möglich, aber Parameter für die Darstellung müssen angepasst werden. Bei einer anderen Spule müsste das virtuelle Modell geändert werden.
 	\item Leistung hat noch Reserven für mehr Darstellungen
 	\item Architektur erlaubt Einfügen neuer Szenen
 \end{itemize}
+
+\subsubsection{Übertragbarkeit}
 \begin{itemize}
-	\item Anwendung kann erweitert werden, z.B. um Ablenkung von Elektronen in der Spule
-	\item 3D Darstellungen der HoloLens genutzt für Magnetfeld der Spulen, auch für andere Magnetfelder anwendbar
-	\item Kräftevektoren ebenfalls übertragbar
-	\item Einbettung von Simulation denkbar und sinnvoll, denn das erlaubt den Nutzern What-If Szenarien durchzuspielen, sehr wichtig zum Lernen
-	\item ...
+	\item Annotationen auch bei anderen Versuchen denkbar
+	\item Unterstützung beim Aufbau eines Versuches möglich
 \end{itemize}
-	
 	
 	
 	
