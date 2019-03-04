@@ -42,33 +42,72 @@ Die Lösung erweitert das gegebene Experiment um zusätzliche Inhalte. Die
 \end{itemize}
 
 \subsubsection{Technische Umsetzung}
-2. Lösung an technischen Kriterien messen\\
-\textbf{Qualitätskriterien}
-\bgroup
-\setlength\extrarowheight{-2pt}
-\def\arraystretch{2}
-\begin{table}[htb]
-	\centering
-	\begin{tabular}{m{2.3cm}|m{6.5cm}|m{2cm}}
-		Kriterium & Ergebnis & Bewertung\\
-		\hline
-		\hline
-		Framerate & Durchgehend 60 FPS, keine Framedrops. Einzig bei Start/Stopp von Vuforia hängt die Anwendung kurz. & Optimal\\
-		Stabilität der Hologramme & Hologramme erscheinen durchgehend sehr stabil, Elemente liegen im Abstand von max. 20cm zu einem Spatial Anchor und der Stabilization Plane. Seltene, minimale Sprünge sowie Wippen der simulierten Feldlinien treten auf. & Fast optimal\\
-		Positionierung & Sehr genaue Positionierung über optischen Marker. Hologramme sind glaubhaft in die Spule eingebettet. Überschneidungen von wenigen Millimetern sind jedoch möglich. & Fast optimal\\
-		Komfortzone & Elemente liegen in der Komfortzone (Winkel und Distanz), sofern eine geeignete Unterlage zur Verfügung steht. Design begünstigt den gewünschten Abstand. Minimale Distanz wird über Fading sichergestellt. & Optimal\\
-		Fokuswechsel & Kaum Neufokussierungen notwendig. Nur bei Ablesen des Kompass und der Stromrichtung. & Fast optimal\\
-		FOV-Grenzen & Darstellungen passen bei empfohlener Distanz vollständig in FOV. Durch Verankerung am realen Objekt verliert Nutzer den Kontext nicht. & Optimal\\
-		Anpassung an Nutzerposition & Text, Labels, Linien und Menüs orientieren sich an Nutzerposition. & Optimal\\
-		Input Interaction Clarity & Vorhandene, einfache Standard-Interaktionsmechanismen genutzt und geringfügig erweitert. Konsistentes, akustisches Feedback. Jedoch keine Erklärung der möglichen Aktionen durch die Anwendung selbst. & Mittel\\
-		Interaktive Objekte & Vorhandene Buttons, Felder und Cursor genutzt. & Optimal\\
-		Ladevorgänge  & Vorhandenen, animierten Progress Indikator verwendet. Lesbarkeit des Textes wird abgesichert. Vorgänge sind kurz, keine Angabe einer erwarteten Dauer notwendig. & Optimal\\
-	\end{tabular}\caption{\label{tab:tech_results} Bewertung der Umsetzung anhand von Qualitätskriterien.}
-\end{table}
-\egroup
+Im Hinblick auf die technischen Anforderungen wurde eine Liste von Qualitätskriterien zugrunde gelegt. Die Bewertung der Lösung anhand dieses Maßstabes ist Tabelle \ref{tab:tech_results} zu entnehmen. Der Einschätzung liegen die zu jedem Kriterium genannten Hinweise zur Bewertung zu Grunde.\\
 
-\textbf{Performance}
-Kurzen Überblick über Performance geben
+\textbf{Qualitätskriterien}
+\begin{landscape}
+	\bgroup
+	\setlength\extrarowheight{-2pt}
+	\def\arraystretch{1.8}
+	\begin{table}
+		\centering
+		\begin{tabular}{m{2.3cm}|m{15.5cm}|m{2cm}}
+			Kriterium & Ergebnis & Bewertung\\
+			\hline
+			\hline
+			Framerate & Durchgehend 60 FPS, keine Framedrops. Einzig bei Start/Stopp von Vuforia hängt die Anwendung kurz (<1s). & Optimal\\
+			\hline
+			Stabilität der Hologramme & Hologramme erscheinen durchgehend sehr stabil, Elemente liegen im Abstand von max. 20cm zu einem Spatial Anchor und der Stabilization Plane. Seltene, minimale Sprünge sowie Wippen der simulierten Feldlinien treten auf. & Fast optimal\\
+			\hline
+			Positionierung & Sehr genaue Positionierung über optischen Marker. Hologramme sind glaubhaft in die Spule eingebettet. Überschneidungen von wenigen Millimetern sind jedoch möglich. & Fast optimal\\
+			\hline
+			Komfortzone & Elemente liegen in Komfortzone (Winkel und Distanz), sofern eine geeignete Unterlage vorhanden ist. Design begünstigt den gewünschten Abstand. Minimale Distanz wird über Fading sichergestellt. & Optimal\\
+			\hline
+			Fokuswechsel & Kaum Neufokussierungen notwendig. Nur bei Ablesen des Kompass und der Stromrichtung. & Fast optimal\\
+			\hline
+			FOV-Grenzen & Darstellungen passen bei empfohlener Distanz vollständig in FOV. Durch Verankerung am realen Objekt verliert Nutzer den Kontext nicht. & Optimal\\
+			\hline
+			Anpassung an Nutzerposition & Text, Labels, Linien und Menüs richten sich zur Nutzerposition aus. Frei bewegliche Elemente (Menü, Progress Indikator) folgen Nutzer. & Optimal\\
+			\hline
+			Input Interaction Clarity & Vorhandene, einfache Standard-Interaktionsmechanismen genutzt und geringfügig erweitert. Konsistentes, akustisches Feedback. Jedoch keine Erklärung der möglichen Aktionen durch die Anwendung selbst. & Mittel\\
+			\hline
+			Interaktive Objekte & Vorhandene Buttons, Felder und Cursor genutzt. & Optimal\\
+			\hline
+			Ladevorgänge & Vorhandenen, animierten Progress Indikator verwendet. Lesbarkeit des Textes wird abgesichert. Vorgänge sind kurz, keine Angabe einer erwarteten Dauer notwendig. & Optimal\\
+		\end{tabular}\caption{\label{tab:tech_results} Bewertung der Umsetzung anhand von Qualitätskriterien.}
+	\end{table}
+	\egroup
+\end{landscape}
+
+Insgesamt erfüllt die Applikation die Anforderungen fast vollständig bis vollständig. Einige Probleme konnten bereits im Design abgemildert oder umgangen werden. Das gilt z.B. für die Aspekte Komfortzone und FOV-Grenzen. Durch die platzsparende Anordnung der Elemente werden die Hologramme seltener abgeschnitten. Außerdem sind häufige Kopfbewegungen und Hinweise auf Elemente außerhalb des FOV so nicht notwendig. Und die Berücksichtigung einer geeigneten Distanz von Beginn an vermeidet bzw. verringert Probleme mit zu dicht positionierten Objekten.\\
+
+Die Umsetzung unterstützt bereits im Design verankerte Maßnahmen weiter. Hier wurde z.B. bei der Festsetzung von Anzahl und Größe von Objekten auf die Einschränkungen der HoloLens Rücksicht genommen. Viele Probleme werden auch durch die Nutzung von vorgefertigten Objekten und Verhaltensweisen vermieden. Hier sind z.B. der Progress Indikator, Standard-Button und Standard-Shader zu nennen. Im Weiteren soll auf einzelne Aspekte kurz näher eingegangen werden.\\
+
+\textit{Stabilität}\\
+Die Stabilität der Objekte beeinflusst die Nutzererfahrung wesentlich, da durch die Einbettung in die Spule selbst geringe Abweichungen negativ auffallen. Bei einer umsichtigen Nutzung treten diesbezüglich wenige bis keine Probleme auf. Selten sind kleinere Sprünge festzustellen. Einzig die Darstellung der Feldlinien wippt bei vertikalen Kopfbewegungen leicht um den Mittelpunkt. Das ist der Tatsache geschuldet, dass die Feldlinien steil auf der Stabilisations-Ebene stehen und sich von dieser mehr als einen Meter ausbreiten. Der Effekt ist jedoch gering und nur auffällig, wenn er provoziert wird.\\
+
+Allerdings hängt die Stabilität nicht unwesentlich von den Randbedingungen ab. Die weiter unten genannten Umstände des Tests erleichtern das Tracking und die Stabilisation. Unter weniger geeigneten Bedingungen kann die Stabilität und damit auch die Positionierung der Hologramme beeinträchtigt werden. Insbesondere kann es bei unerfahrenen Nutzern durch ungünstige Aktionen wie z.B. ruckartige Kopfbewegungen zu negativen Auswirkungen auf die Stabilität kommen.\\
+
+\textit{Positionierung}\\
+\begin{wrapfigure}{L}{0.5\textwidth}
+	\centering
+	\includegraphics[width=0.48\textwidth]{images/todo.jpg}
+	\caption{Überlagerung virtuelle und reale Spule}
+	\label{img:model-overlay}
+\end{wrapfigure}
+Einen Eindruck von der Güte der Positionierung lässt sich anhand von Abb. \ref{img:model-overlay} gewinnen. Das normalerweise nur in den Tiefenpuffer gerenderte Mesh der virtuellen Spule wird hier durch einen Standard-Shader sichtbar dargestellt. Die reale Spule ist dadurch fast gar nicht zu sehen. Zwar sind Abweichungen zwischen den beiden Objekten aus unterschiedlichen Winkeln unterschiedlich stark sichtbar, das gewählte Foto gibt jedoch einen guten Anhaltspunkt für die tatsächliche Nutzererfahrung wieder.\\
+
+\textit{Performance}\\
+\begin{wrapfigure}{R}{0.5\textwidth}
+	\centering
+	\includegraphics[width=0.48\textwidth]{images/todo.jpg}
+	\caption{Performance Monitor}
+	\label{img:performance}
+\end{wrapfigure}
+
+Einen Eindruck vom Ressourcenverbauch der App vermittelt der Screenshot in Abb. \ref{img:performance}. Zu sehen ist die Auslastung der Brille über einen Zeitraum von 60 Sekunden. Währenddessen wurde mehrfach zwischen den verschiedenen Darstellungen hin- und hergewechselt und das Menü aufgerufen.\\
+
+TODO Ergebnisse ermitteln
 \begin{itemize}
 	\item Framerate
 	\item CPU
@@ -76,6 +115,8 @@ Kurzen Überblick über Performance geben
 	\item Stromverbrauch
 \end{itemize}
 
+\textit{Testbedingungen}\\
+Die Bewertung wurde anhand von Tests unter für die Anwendung günstigen Bedingungen durchgeführt. Der Versuchsaufbau wurde so positioniert, dass die umliegenden Objekte gut für das Tracking der Brille geeignet sind. Außerdem wurde die HoloLens vorher öfter im Testraum verwendet und hatte daher bereits ein gutes Modell des Raums zur Orientierung. Weiterhin wurde die Brille auf den Tester kalibriert und ruckartige oder unnötige Kopfbewegungen vermieden. 
 
 \subsubsection{Feedback}
 Hier Feedback kurz zusammenfassen, Aussagen allgemein zusammenfassen sowie Zitate angeben
