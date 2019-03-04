@@ -35,6 +35,8 @@ Die Arbeit stellt einen Lösungsansatz vor, der
 \subsubsection{Unterstützung des Experimentes}
 Die Lösung erweitert das gegebene Experiment um zusätzliche Inhalte. Die
 \begin{itemize}
+	\setlength{\itemsep}{-1pt}
+	\singlespacing
 	\item Erweiterung des Versuches um Magnetfeld, Stromfluss, Kompass und weitere Informationen
 	\item Physikalische Eigenschaften von Magnetfeld abgebildet
 	\item Physikalische Zusammenhänge zwischen Stromfluss, Magnetfeld und Kompass umgesetzt
@@ -83,13 +85,22 @@ Insgesamt erfüllt die Applikation die Anforderungen fast vollständig bis volls
 
 Die Umsetzung unterstützt bereits im Design verankerte Maßnahmen weiter. Hier wurde z.B. bei der Festsetzung von Anzahl und Größe von Objekten auf die Einschränkungen der HoloLens Rücksicht genommen. Viele Probleme werden auch durch die Nutzung von vorgefertigten Objekten und Verhaltensweisen vermieden. Hier sind z.B. der Progress Indikator, Standard-Button und Standard-Shader zu nennen. Im Weiteren soll auf einzelne Aspekte kurz näher eingegangen werden.\\
 
+\textit{Field of View}\\
+Die Darstellungen passen bei einer üblichen Position vollständig in die Grenzen des Sichtfeldes. Der Screenshot in Abb. \ref{img:fov} zeigt die Kameraperspektive aus solch einer Position. Dabei ließe sich der Kopf horizontal in beide Richtungen etwa 6° drehen, ohne dass die Hologramme abgeschnitten werden würden.\\
+\begin{wrapfigure}{L}{0.5\textwidth}
+	\centering
+	\includegraphics[width=0.48\textwidth]{images/todo.jpg}
+	\caption{Screenshot zeigt Kameraperspektive bei 1,5m Distanz zum Zentrum der Spule, 30° Neigung. Auflösung und Seitenverhältnis entspricht dem eines einzelnen Displays auf der HoloLens.}
+	\label{img:fov}
+\end{wrapfigure}
+
 \textit{Stabilität}\\
 Die Stabilität der Objekte beeinflusst die Nutzererfahrung wesentlich, da durch die Einbettung in die Spule selbst geringe Abweichungen negativ auffallen. Bei einer umsichtigen Nutzung treten diesbezüglich wenige bis keine Probleme auf. Selten sind kleinere Sprünge festzustellen. Einzig die Darstellung der Feldlinien wippt bei vertikalen Kopfbewegungen leicht um den Mittelpunkt. Das ist der Tatsache geschuldet, dass die Feldlinien steil auf der Stabilisations-Ebene stehen und sich von dieser mehr als einen Meter ausbreiten. Der Effekt ist jedoch gering und nur auffällig, wenn er provoziert wird.\\
 
 Allerdings hängt die Stabilität nicht unwesentlich von den Randbedingungen ab. Die weiter unten genannten Umstände des Tests erleichtern das Tracking und die Stabilisation. Unter weniger geeigneten Bedingungen kann die Stabilität und damit auch die Positionierung der Hologramme beeinträchtigt werden. Insbesondere kann es bei unerfahrenen Nutzern durch ungünstige Aktionen wie z.B. ruckartige Kopfbewegungen zu negativen Auswirkungen auf die Stabilität kommen.\\
 
 \textit{Positionierung}\\
-\begin{wrapfigure}{L}{0.5\textwidth}
+\begin{wrapfigure}{R}{0.5\textwidth}
 	\centering
 	\includegraphics[width=0.48\textwidth]{images/todo.jpg}
 	\caption{Überlagerung virtuelle und reale Spule}
@@ -97,8 +108,11 @@ Allerdings hängt die Stabilität nicht unwesentlich von den Randbedingungen ab.
 \end{wrapfigure}
 Einen Eindruck von der Güte der Positionierung lässt sich anhand von Abb. \ref{img:model-overlay} gewinnen. Das normalerweise nur in den Tiefenpuffer gerenderte Mesh der virtuellen Spule wird hier durch einen Standard-Shader sichtbar dargestellt. Die reale Spule ist dadurch fast gar nicht zu sehen. Zwar sind Abweichungen zwischen den beiden Objekten aus unterschiedlichen Winkeln unterschiedlich stark sichtbar, das gewählte Foto gibt jedoch einen guten Anhaltspunkt für die tatsächliche Nutzererfahrung wieder.\\
 
+\textit{Interaction Clarity}\\
+In Puncto Interaction Clarity kann die Lösung nur als mittel eingestuft werden. Denn das Kriterium verlangt ausdrücklich, dass eine Anwendung die ihr zu Grunde liegenden Interaktionsmöglichkeiten erklärt, sofern sie über Gewohntes hinausgehen. Das ist hier bei der Steuerung außerhalb des Menüs nicht der Fall. Die Lösung setzt eine Anleitung durch eine begleitende Person voraus, die den Anwender über die möglichen Aktionen informiert. Die anderen Punkte des Kriteriums werden jedoch erfüllt.\\
+
 \textit{Performance}\\
-\begin{wrapfigure}{R}{0.5\textwidth}
+\begin{wrapfigure}{L}{0.5\textwidth}
 	\centering
 	\includegraphics[width=0.48\textwidth]{images/todo.jpg}
 	\caption{Performance Monitor}
@@ -109,21 +123,24 @@ Einen Eindruck vom Ressourcenverbauch der App vermittelt der Screenshot in Abb. 
 
 TODO Ergebnisse ermitteln
 \begin{itemize}
-	\item Framerate
-	\item CPU
-	\item GPU
-	\item Stromverbrauch
+	\setlength{\itemsep}{-1pt}
+	\singlespacing
+	\item Konstante Framerate von 60 FPS
+	\item CPU: X-Y\% Auslastung
+	\item GPU: X-Y\% Auslastung
+	\item Stromverbrauch liegt im grünen Bereich
 \end{itemize}
 
 \textit{Testbedingungen}\\
 Die Bewertung wurde anhand von Tests unter für die Anwendung günstigen Bedingungen durchgeführt. Der Versuchsaufbau wurde so positioniert, dass die umliegenden Objekte gut für das Tracking der Brille geeignet sind. Außerdem wurde die HoloLens vorher öfter im Testraum verwendet und hatte daher bereits ein gutes Modell des Raums zur Orientierung. Weiterhin wurde die Brille auf den Tester kalibriert und ruckartige oder unnötige Kopfbewegungen vermieden. 
 
 \subsubsection{Feedback}
-Hier Feedback kurz zusammenfassen, Aussagen allgemein zusammenfassen sowie Zitate angeben
+Zur Bewertung der vorgestellten Lösung wurde die Anwendung außerdem unterschiedlichen Personen vorgestellt und zum Testen überlassen. Dabei handelt es sich um ca. 15 Personen mit unterschiedlichem Grad an Expertise. Das Spektrum umfasst ungefähr zu gleichen Teilen Akademiker, Lehrer und Studenten der Physik. Deren Feedback wurde qualitativ festgehalten und für diese Arbeit zusammengefasst.\\
+
+Die Reaktionen lassen sich durchweg als positiv beschreiben.
+
+
 \begin{itemize}
-	\item Anwendung wurde mehreren Personen aus unterschiedlichen Gruppen vorgestellt, nur vereinzelt vorige Erfahrungen mit HoloLens vorhanden
-	\item Physik Professoren, wissenschaftliche Mitarbeiter, Lehrer, Studenten, außerdem interessierte Einzelpersonen mit unterschiedlichen Hintergründen, insgesamt ca. 15 Personen
-	\item Feedback durchgehend positiv
 	\item "Kann ich Fotos davon haben"
 	\item Kleines Sichtfeld wurde mehrfach angemerkt
 	\item Vor allem die direkte Interaktion über die Spannungsquelle und die Feldlinien aus den Simulationsdaten wurden positiv aufgenommen
@@ -135,20 +152,16 @@ Hier Feedback kurz zusammenfassen, Aussagen allgemein zusammenfassen sowie Zitat
 \subsubsection{Vor- und Nachteile}
 \subsubsection{Erweiterbarkeit}
 \begin{itemize}
-	\item Anwendung kann erweitert werden, z.B. um Ablenkung von Elektronen in der Spule
-	\item 3D Darstellungen der HoloLens genutzt für Magnetfeld der Spulen, auch für andere Magnetfelder anwendbar
-	\item Kräftevektoren ebenfalls übertragbar
-	\item Einbettung von Simulation denkbar und sinnvoll, denn das erlaubt den Nutzern What-If Szenarien durchzuspielen, sehr wichtig zum Lernen
-	\item Weitere Lehrinhalte denkbar: z.B. Entstehung der Einzelfelder, Überlagerung der Einzelfelder, Ablenkung eines Elektronenstrahls, 
+	\item Weitere Lehrinhalte denkbar: z.B. Entstehung und Überlagerung der Einzelfelder, Elektrisches Feld um die Leiter herum, Anderer Versuch: Ablenkung eines Elektronenstrahls in der Spule
 	\item Applikation ist parametrisiert: Andere physikalische Parameter möglich
 	\item Variation von Spulengröße möglich, aber Parameter für die Darstellung müssen angepasst werden. Bei einer anderen Spule müsste das virtuelle Modell geändert werden.
 	\item Leistung hat noch Reserven für mehr Darstellungen
-	\item Architektur erlaubt Einfügen neuer Szenen
 \end{itemize}
 
 \subsubsection{Übertragbarkeit}
 \begin{itemize}
-	\item Annotationen auch bei anderen Versuchen denkbar
+	\item Einbettung eines Elektrischen Feldes analog, z.B. Kondensator
+	\item Annotationen und Echtzeitdaten auch bei anderen Versuchen denkbar
 	\item Unterstützung beim Aufbau eines Versuches möglich
 \end{itemize}
 	
