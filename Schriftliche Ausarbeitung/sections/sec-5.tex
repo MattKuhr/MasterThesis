@@ -499,7 +499,7 @@ Beleuchtung bildet grob erwartete Lichtverhältnisse nach, keine Schatten\\
 				\setlength{\itemsep}{-1pt}
 				\singlespacing
 				\item Tracking mit Vuforia, nur zum Erkennen des Markers aktiv
-				\item Einstellungen werden als JSON im AppData Verzeichnis gespeichert
+				\item Einstellungen werden als JSON-Datei im AppData Verzeichnis gespeichert
 				\item Menü übernimmt Steuerung der einzelnen Vorgänge, jederzeit aufrufbar
 				\item Startvorgang mit Intro-Sequenz lädt Daten und Einstellungen und initialisiert Komponenten
 			\end{itemize}
@@ -512,7 +512,7 @@ Beleuchtung bildet grob erwartete Lichtverhältnisse nach, keine Schatten\\
 \textit{Tracking}\\
 Für das Erkennen der Markerposition kommt das Tracking Framework Vuforia zum Einsatz. Ein optischer Marker wird vor der Spule auf dem Untergrund platziert. Dieser wird dann über die Frontkamera der HoloLens durch das Framework erkannt und die Position und Ausrichtung bestimmt. Die Modelle werden entsprechend positioniert und ein World Anchor gesetzt. Damit ist die Positionierung abgeschlossen und der Marker kann entfernt werden. Da Vuforia nur während dieser Sequenz aktiviert ist, werden für den Rest der Anwendung Hardwareressourcen frei.\\
 
-Dieser Vorgang lässt sich über das Menu jederzeit neu anstoßen und die einzelnen Schritte werden über den Progress Indikator dem Nutzer kommuniziert. Die Steuerung des Prozesses erfolgt durch den \textit{Tracking Manager}. Dieser startet und stoppt das Framework, reagiert auf Änderungen im Tracking und informiert den Anwender über den Fortschritt. Der Screenshot\footnote{Wie in Kap. \ref{sec-5-2-1} festgehalten sind während des Trackings keine Aufnahmen mit der HoloLens möglich, da die Kamera von Vuforia in Anspruch genommen wird.} in Abb. \ref{img:pi-and-tracking} zeigt eine solche Nachricht.\\
+Dieser Vorgang lässt sich über das Menü jederzeit neu anstoßen und die einzelnen Schritte werden über den Progress Indikator dem Nutzer kommuniziert. Die Steuerung des Prozesses erfolgt durch den \textit{Tracking Manager}. Dieser startet und stoppt das Framework, reagiert auf Änderungen im Tracking und informiert den Anwender über den Fortschritt. Der Screenshot\footnote{Wie in Kap. \ref{sec-5-2-1} festgehalten sind während des Trackings keine Aufnahmen mit der HoloLens möglich, da die Kamera von Vuforia in Anspruch genommen wird.\nopagebreak} in Abb. \ref{img:pi-and-tracking} zeigt eine solche Nachricht.\\
 
 \textit{Einstellungen}\\
 Die Einstellungen sind über ein dem Daten-Panel ähnliches Objekt realisiert, das in Abb. \ref{img:menu-and-settings} zu sehen ist. Ein Klick auf eines der Input-Felder ruft die virtuelle Tastatur hervor, beide werden durch das MRTK bereitgestellt und wurden hier für numerische Eingaben konfiguriert. Die Werte werden als JSON formatiert und in das AppData-Verzeichnis der Anwendung gespeichert. Damit stehen sie auch nach einem Neustart oder Update der App noch zur Verfügung. Die Applikation sucht beim Start automatisch nach gespeicherten Einstellungen und lädt entweder diese oder die Default-Werte. Andere Komponenten werden durch ein Event über sich ändernde Einstellungen benachrichtigt und passen sich entsprechend an.\\
@@ -527,7 +527,7 @@ Die Einstellungen sind über ein dem Daten-Panel ähnliches Objekt realisiert, d
 \end{figure}
 
 \textit{Menü}\\
-Die Umsetzung des Menüs ist in Abb. \ref{img:menu-and-settings} abgebildet. Die Form der Buttons wurde so angepasst, dass die Labels und Icons problemlos darauf Platz finden. Bei den Icons wurde auf Standard-Elemente aus dem MRTK zurückgegriffen. Das Menü wird über den \textit{MenuController} gesteuert, von dem aus alle weiteren Vorgänge gestartet werden.\\
+Die Umsetzung des Menüs ist in Abb. \ref{img:menu-and-settings} abgebildet. Die Form der Buttons wurde so angepasst, dass die Labels und Icons problemlos darauf Platz finden. Bei den Icons wurde auf Standard-Elemente aus dem MRTK zurückgegriffen. Das Menü wird über den \textit{MenuController} gesteuert, von dem aus alle weiteren Vorgänge gestartet werden. Dieser aktiviert auch den Cursor, der zur Nutzung von Menu und EInstellungen dient.\\
 
 \textit{Intro-Sequenz}\\
 Es wurde eine Startsequenz entwickelt, die Aufgaben wie das Laden von Daten und Einstellungen und die Initialisierung der einzelnen Komponenten übernimmt. Hier wird ein Logo in Form eines größeren Schriftzuges und dazu der Progress Indikator angezeigt. Letzterer informiert über den Zustand des Ladevorgangs. Während des Vorgangs werden insbesondere die Einstellungen und  Simulationsdaten geladen.\\
@@ -536,22 +536,34 @@ Diese Umsetzung erlaubt die notwendigen Ladevorgänge und ist für den Nutzer na
 
 
 \subsection{Interaktion}
-
+Die Interaktion erfolgt, wie in Kap. \ref{sec-4-4} beschrieben, durch Klicks. Sprachbefehle wurden aus Zeitgründen nur für Debugging-Funktionen implementiert. 
+Während des Hauptteils der Anwendung belaufen sich die möglichen Aktionen auf:
 
 \begin{itemize}
-	\item Klick, Doppelklick und Hold-Klick
-	\item Standard Klick-Sound als Feedback verwendet
-	\item Sprachbefehle aus Zeitgründen nicht umgesetzt
+	\setlength{\itemsep}{-1pt}
+	\singlespacing
+	\item Klick: Wechsel zwischen den beiden Echtzeitdarstellungen
+	\item Doppelklick: Wechsel zwischen Simulations- und Echtzeitdarstellungen
+	\item Hold-Klick: Aufrufen des Hauptmenüs
 \end{itemize}
+
+Für die letzteren beiden wurden entsprechende Skripte geschrieben, die diese Gesten erkennen. Zwar erkennt das MRTK bereits eine Hold-Geste, allerdings kann hier der Nutzer beliebig lange gedrückt halten und erst beim Loslassen feuert das entsprechende Event. Zum Aufrufen des Menüs ist jedoch ein Verhalten wünschenswert, bei dem nach kurzem Gedrückt-Halten das Menü erscheint. Daher wurde hier eine eigene Lösung entwickelt.\\
+
+Jeder Klick wird durch einen Klick-Sound begleitet, der als Feedback dient. Ist der Cursor aktiv, bietet dieser auch ein visuelles Feedback. Als Klick-Sound wurde ein Standard-Sound des MRTK verwendet, der auch von den Buttons genutzt wird.
 
 \subsection{Performance}
-Vorgenommene Optimierungen:
+Zuletzt sollen einige Maßnahmen genannt werden, die zu einem geringeren Ressourcenverbrauch der Applikation beitragen. Zunächst ist festzuhalten, dass die durch das MRTK voreingestellten Qualitätseinstellungen genutzt wurden. Einzige Ausnahme stellt hier die Kantenglättung dar. Darüber hinaus wurden die folgenden Einstellungen angewandt:
+
 \begin{itemize}
-	\item Single Pass Instanced rendering
-	\item 16 bit depth buffer (min available)
+	\setlength{\itemsep}{-1pt}
+	\singlespacing
+	\item Single Pass Instanced Rendering
+	\item Größe des Tiefenpuffers auf 16-Bit gesetzt (Minimum)
 	\item Vuforia nur für den Vorgang der Positionsbestimmung aktiv
 	\item Physics Enginge deaktiviert
-	\item Frustum Culling
-	\item Occlusion Mesh wird auschließlich in Z-Puffer gerendert
-	\item Texture MipMaps
+	\item Frustum Culling aktiviert
+	\item Occlusion Mesh wird ausschließlich in Z-Puffer gerendert
+	\item Unsichtbare (vollst. transparente) Objekte werden meist deaktiviert
 \end{itemize}
+
+Diese Maßnahmen basieren vorrangig auf den Empfehlungen zur Performance in der Dokumentation.

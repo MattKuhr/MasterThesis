@@ -9,7 +9,7 @@
 Nachdem in den vorangegangenen Kapiteln die Hintergründe erläutert und Probleme identifiziert wurden, beschreibt dieses Kapitel nun einen möglichen Lösungsansatz.
 
 \subsection{Grundidee}
-% \textbf{Mixed Reality: Einbettung und Zusammenspiel von realen und virtuellen Objekten}\\
+\label{sec-4-1}
 Im Kern besteht der Ansatz darin, die physikalischen Eigenschaften darzustellen, in ihren realen Kontext einzubetten und dadurch einen räumlichen und zeitlichen Zusammenhang zu schaffen. Die Versuchsaufbauten werden mit virtuellen Objekten angereichert und somit in eine gemeinsame Anwendung integriert. Die Nutzererfahrung entsteht also durch das Zusammenspiel von realer und virtueller Welt.\\
 
 Das bedeutet also, dass die virtuellen Objekte in Relation zum Versuchsaufbau, vor allem zur Spule, platziert werden. Das betrifft vor allem die Darstellungen der Magnetfelder. Dementsprechend muss die genaue Position und Ausrichtung relevanter Geräte bestimmt und in das Koordinatensystem der Anwendung transformiert werden. Nachdem dies einmal erfolgt ist, muss der Vorgang im Laufe der Anwendung nicht wiederholt werden, denn der Aufbau wird im Laufe des Versuches nicht bewegt oder gedreht. Der Anwender kann sich dann frei um die Gerätschaften herum bewegen, sie aus verschiedenen Perspektiven betrachten und damit interagieren. Die Interaktion erfolgt dabei sowohl mit den realen als auch den virtuellen Objekten.\\
@@ -42,9 +42,11 @@ Dieses Konzept macht dabei von den zentralen Stärken der HoloLens Gebrauch. Als
 Unter diesem grundsätzlichen Ansatz soll die Lösung nun weiter konkretisiert werden. Dazu erläutert die Arbeit zunächst das Design der Darstellungen und darauf folgend die Interaktion. Das Kapitel schließt mit einer kurzen Betrachtung der Einbettung dieser Elemente in den Rahmen einer Anwendung.
 
 \subsection{Darstellungen}
+\label{sec-4-2}
 Der folgende Abschnitt stellt die gewählten Visualisierungen im Einzelnen entsprechend der funktionalen Anforderungen vor. Zuvor sollen kurz Designentscheidungen festgehalten werden, die alle Darstellungen betreffen.\\
 
-\subsubsection{Allgemeines} % \textbf{\textit{Allgemeines}}\\
+\subsubsection{Allgemeines}
+\label{sec-4-2-1}
 Viele Darstellungen sollen am Versuchsaufbau, also vor allem an der Spule, verankert werden. Das bedeutet, dass der Anwender Abstand und Blickwinkel zu diesen Objekten durch seine Bewegungen und Blickrichtung selbst steuert. Um dennoch stets eine komfortable Nutzung zu ermöglichen, und die zuvor erläuterten Probleme im Hinblick auf Distanz und Blickrichtung zu vermeiden, werden mehrere Maßnahmen getroffen.\\
 
 Um zu geringe Distanzen zwischen Nutzer und den virtuellen Objekten zu vermeiden, werden fest verankerte Darstellung unterhalb einer gewissen Distanz ausgeblendet. Hier folgt das Design den entsprechenden, zuvor aufgeführten Empfehlungen. Das ermöglicht dem Nutzer zugleich das Eintauchen in die Darstellungen. Frei bewegliche Elemente hingegen werden durch entsprechende Skripte den Bewegungen des Nutzers angepasst, so dass sie stets in einer komfortablen Zone des Sichtfeldes verbleiben.\\
@@ -57,7 +59,8 @@ Weiterhin sind für alle Objekte, die in Abhängigkeit des sich ändernden Felde
 
 Nach diesen allgemeinen Festlegungen sollen die einzelnen Elemente erläutert werden.\\
 
-\subsubsection{Das Magnetfeld} %\textbf{\textit{Das Magnetfeld}}\\
+\subsubsection{Das Magnetfeld}
+\label{sec-4-2-2}
 Die Darstellung des Magnetfeldes von Erde und Spule ist zentraler Bestandteil der Anwendung. Die wichtigsten Designentscheidungen lassen sich der Skizze in Abb. \ref{img:magnetic-design} entnehmen und sind hier in Stichpunkten zusammengefasst.
 
 \begin{figure}[h!]
@@ -99,7 +102,8 @@ Beide Modelle beschränken sich zunächst auf einen zylindrischen Ausschnitt der
 
 Die Darstellungen verändern sich dabei dynamisch, entsprechend ihrer Modelle, anhand der aus den Messwerten berechneten Flussdichte. Beim Feldlinienmodell verändern sich Anzahl, Position und Abstand der Linen, bei den Vektoren variiert die Länge. Für die Flussdichte des Erdmagnetfeldes wird ein zuvor gemessener Wert angenommen.\\
 
-\subsubsection{Der Stromfluss} %\textbf{\textit{Der Stromfluss}}\\
+\subsubsection{Der Stromfluss} 
+\label{sec-4-2-3}
 Beim Stromfluss ist in erster Linie die Flussrichtung durch die Spulen von Interesse, denn hiervon hängt die Ausrichtung des entstehenden Magnetfeldes ab. Diese wird über pfeil-ähnliche Indikatoren an den Spulen angezeigt. Außerdem werden die Anschlüsse mit Labels versehen, die Plus und Minus kennzeichnen. Das Konzept ist in Grafik \ref{img:current-design} dargestellt.
 
 \begin{figure}[h!]
@@ -134,7 +138,8 @@ Ein Nachteil dieser Lösung ist jedoch, dass das zuvor erläuterte Problem mit d
 
 Damit die Stromrichtung auch als technische Stromrichtung interpretiert und in die Schaltung eingeordnet werden kann, sind die Konnektoren mit Labels in Form von Tooltips mit Bezeichnung, entsprechender Farbe und Icon ausgestattet. Die Lables orientieren sich dabei an der Kamera, damit sie aus allen Winkeln lesbar sind.\\
 
-\subsubsection{Der Kompass} %\textbf{\textit{Der Kompass}}\\
+\subsubsection{Der Kompass} 
+\label{sec-4-2-4}
 Der Kompass bildet sich aus dem Zusammenspiel einer realen Magnetnadel, einer virtuellen Skala sowie virtuellen Hilfslinien. Die Idee ist in Abbildung \ref{img:compass-design} festgehalten.
 
 \begin{figure}[h!]
@@ -180,7 +185,8 @@ Dieses Design erlaubt es dem Betrachter genau festzustellen, ob die Linie der Na
 
 Diese Lösung setzt jedoch auf eine genaue Positionsbestimmung der Spule sowie eine hohe Stabilität der Hologramme. Wenn das Modell verrutscht oder zittert schränkt das die Nutzung des Kompasses ein.\\
 
-\subsubsection{Weitere Informationen} %\textbf{\textit{Weitere Informationen}}\\
+\subsubsection{Weitere Informationen} 
+\label{sec-4-2-5}
 Die Darstellung weiterer Informationen sind zwei Lösungen vorgesehen: Ein Datenpanel zur Darstellung numerischer Werte in Textform sowie optional aktivierbare Labels am Versuchsaufbau. Beides ist in Abbildung \ref{img:info-design} skizziert.
 
 
@@ -218,6 +224,7 @@ Schließlich lassen sich verschiedene weitere Parameter des Versuches anzeigen. 
 Nachdem eine Lösung für die inhaltlichen Aspekte erarbeitet wurde soll diese auch in den Rahmen einer Anwendung mit einem Ablauf integriert werden.
 
 \subsection{Rahmen der Anwendung}
+\label{sec-4-3}
 Die Lösung sieht neben der Durchführung des Versuches weitere Komponenten vor, die der Nutzbarkeit der Anwendung dienen. Das betrifft drei Bereiche: Die Steuerung des Ablaufes, die Bestimmung von Position und Ausrichtung der Spule sowie Einstellungen.
 
 \vspace{8px}
@@ -260,6 +267,7 @@ Das Design nutzt hier gezielt die Funktionalitäten der HoloLens sowie den Umsta
 Solange also der Versuchsaufbau nicht bewegt wird, kann die einmalig gespeicherte Position verwendet werden. Die Anwendung erkennt automatisch, ob die gespeicherten Daten vorliegen. Dadurch verkürzt sich die Setup-Zeit und es trägt dazu bei, dass auch unerfahrene Nutzer die Applikation verwenden können.\\
 
 \subsection{Interaktion}
+\label{sec-4-4}
 Die Interaktion soll möglichst einfach gehalten werden und auch für Nutzer ohne Erfahrung mit der HoloLens geeignet sein. Daher folgt das Design der Empfehlung, alternative Interaktionsmöglichkeiten zur Verfügung zu stellen. Diese Lösung bietet dem Anwender drei Eingabemethoden an:
 \begin{enumerate}
 	\setlength{\itemsep}{-5pt}
@@ -310,6 +318,7 @@ Das Menü und die Einstellungen werden über Buttons gesteuert. Diese lassen sic
 Die Lösung baut hier auf den vorhandenen Elementen des MRTK auf und nutzt vorgefertigte Objekte. Dazu gehören Cursor, Progress Indikator, das virtuelle Keyboard und Buttons. Dadurch entsteht zum einen eine konsistente Interaktionsweise. Zum anderen sind die Komponenten speziell für die HoloLens designet und bringen bereits gewünschtes Verhalten wie z.B. Feedback bei Aktionen bereits mit.\\
 
 \subsection{Zusammenfassung Design}
+\label{sec-4-5}
 Die vorgestellte Lösung zielt darauf ab, die physikalischen Zusammenhänge erkennbar zu machen, indem die Möglichkeiten der HoloLens genutzt, technische Einschränkungen berücksichtigt und Designempfehlungen eingearbeitet werden. Dazu wird, wenn möglich, auf bestehende, bereits für Mixed Reality designete Objekte und Verhaltensweisen zurückgegriffen. Durch die räumliche und zeitliche Integration der Hologramme in den Versuchsaufbau werden die physikalischen Eigenschaften des Systems direkt in ihrem tatsächlichen Kontext dargestellt. Dabei hat der Nutzer die Kontrolle über das Verhalten des Systems, wodurch es auf natürliche Weise erforschbar wird.\\
 
 Das folgende Kapitel erläutert nun die Details einer konkreten Umsetzung dieses Designs.
