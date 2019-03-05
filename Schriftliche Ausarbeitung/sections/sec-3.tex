@@ -1,4 +1,4 @@
-\section{Problemstellung und Requirements}
+\section{Anforderungen und Problemstellung}
 \label{sec-3}
 \begin{comment}
 \begin{center}
@@ -10,34 +10,27 @@ Anforderungen von technischer und anwendungsorientierter Seite darstellen und Pr
 \end{center}
 \end{comment}
 
+Ziel dieser Arbeit ist es, am konkreten Beispiel des in Kap. \ref{sec-2-2} beschriebenen Laborversuches zu untersuchen, wie die HoloLens in der Physik Lehre eingesetzt werden kann. Die dazu notwendigen Hintergrundinformationen von technischer und physikalischer Seite wurden im vorangegangenen Kapitel erläutert. Außerdem wurden bestehende Lösungen vorgestellt und in Zusammenhang mit der Zielsetzung dieser Arbeit gebracht. Damit ist die Grundlage geschaffen, um konkrete Anforderungen und Probleme zu formulieren. Zuvor soll jedoch noch kurz auf die Auswahl des vorgestellten Versuches eingegangen werden.\\
 
-%Auf Basis der Hintergrundinformationen aus dem vorangegangenen Kapitel können nun konkrete Probleme identifiziert und formuliert werden. 
+\textit{Auswahl des physikalischen Experimentes}\\
+Das Experiment wurde neben den bereits in Kap. \ref{sec-2-3} erörterten Gründen und Motivationen auch aus technischen und praktischen Aspekten ausgewählt. Im Wesentlichen trugen dazu die folgenden Faktoren bei:
+\begin{itemize}
+	\item Die notwendigen Materialien (Spule, Messgeräte, Simulationslösung) standen für diese Arbeit zur Verfügung
+	\item Das Magnetfeld der Spule hat keine erkennbaren Auswirkungen auf die HoloLens (das Gerät nutzt ein Magnetometer). Tests im Vorfeld mit Flussdichten von über 100 Mikrotesla zeigten keine wahrnehmbaren Auswirkungen auf das Tracking und die Stabilität von Hologrammen.
+	\item Die gegebene Größe der Spule (R=15cm) eignet sich für das beschränkte Sichtfeld der HoloLens
+	\item Das Experiment enthält keine sich schnell bewegenden Elemente und ist bis auf den Kompass statisch, es erfordert außerdem keine besondere Schutzausrüstung und stört das Tracking der HoloLens nicht weiter
+\end{itemize}
 
-Einleitung
-
-%TODO formulierungen überarbeiten
-\begin{comment}
-Ziel dieser Arbeit ist am konkreten Beispiel der Helmholtz-Spule zu untersuchen, wie die HoloLens in der Physik Lehre eingesetzt werden kann. Dazu betrachtet die Arbeit speziell, wie der zuvor beschriebene Versuchsaufbau mit Informationen angereichert werden kann. Aufbauend auf den im vorigen Kapiteln erarbeiteten Hintergründen formulieren die folgenden Abschnitte an die Anwendung zu stellende Anforderungen aus anwendungsorientierter sowie technischer Sicht.\\
-
-Wie kann die HoloLens für diesen Versuch konkret eingesetzt werden?\\
-\end{comment}
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.6\textwidth]{images/Informiertes_Design.png}
-	\caption{Informiertes Design}
-	\label{img:Informiertes_Design}
-\end{figure}
+Diese Umstände begünstigen einen Einsatz der Brille für diesen konkreten Anwendungsfall und sind ggf. bei anderen Szenarien so nicht gegeben.
 
 \subsection{Anforderungen}
 \label{sec-3-1}
-%TODO formulierungen überarbeiten
-Die Anforderungen an eine Umsetzung kommen aus zwei Bereichen: Zum einen aus der Physik und zum anderen aus den technischen Modalitäten der HoloLens. Ein Design muss beide berücksichtigen und zusammenführen zu einer Lösung. Dabei bestimmt das Anwendungsszenario vor allem die inhaltlichen Anforderungen während die technischen Gegebenheiten eher auf das ''Wie'' der Umsetzung Einfluss nehmen. Zunächst sollen die inhaltlichen Anforderungen aufgestellt werden.
+Die Anforderungen an eine Umsetzung teilen sich somit in zwei Bereiche: Inhaltliche Anforderungen aus Sicht der Physik und technische Bedingungen von Seiten der HoloLens. Ein Design muss beide berücksichtigen und zu einer Lösung zusammenführen. Dabei bestimmt das Anwendungsszenario vor allem die Frage, was dargestellt werden soll, während die technischen Gegebenheiten eher auf das ''Wie'' der Umsetzung Einfluss nehmen. Im Weiteren sollen die Anforderungen beider Seiten formuliert werden.
 
-\subsubsection{Was - Physik}
-Zunächst stellt sich die Frage, welche Informationen zum Versuchsaufbau über die Anwendung integriert werden sollen. Von besonderem Interesse sind hier natürlich vor allem Informationen, die für den Nutzer nicht direkt beobachtbar sind. Das betrifft in erster Linie die beiden sich überlagernden Magnetfelder von Erde und Spule mit deren Eigenschaften. Das Zusammenspiel beider Felder ist elementar für den Versuch und soll für den Anwender sichtbar gemacht werden. Weitere, nicht direkt erkennbare Eigenschaften  des Versuches sind außerdem wie die Richtung des Stromflusses durch die Spule und die physikalischen Parameter des Versuchsaufbaus.\\
+\subsubsection{Physikalische Seite}
+Zunächst stellt sich die Frage, welche Informationen zum Versuchsaufbau über die Anwendung integriert werden sollen. Von besonderem Interesse sind hier natürlich vor allem Informationen, die für den Nutzer nicht direkt beobachtbar sind. Das betrifft in erster Linie die beiden sich überlagernden Magnetfelder von Erde und Spule mit deren Eigenschaften. Das Zusammenspiel beider Felder ist elementar für den Versuch und soll für den Anwender sichtbar gemacht werden. Weitere, nicht direkt erkennbare Eigenschaften des Versuches sind außerdem die Richtung des Stromflusses durch die Spule und die physikalischen Parameter des Versuchsaufbaus.\\
 
-Ein weiterer interessanter Aspekt ist die Einbindung theoretischer Ergebnisse. Das ermöglicht dem Anwender direkt am Versuchsaufbau sowohl gemessene als auch berechnete Werte zu erfassen und beide miteinander zu vergleichen. Bei der Bestimmung des Erdmagnetfeldes betrifft das vor allem die Auslenkung des Kompasses, die sich in Abhängigkeit der anliegenden Stromstärke verändert. Die Magnetnadel des Kompass unterliegt dabei Faktoren wie Reibung und Trägheit, die zu Abweichungen führen können. Ein berechneter, virtueller Kompass unterliegt solchen Einschränkungen nicht und kann ergänzend zum realen Konterpart das angenommene Verhalten des Systems unter Idealbedingungen aufzeigen.\\
+Ein weiterer interessanter Aspekt ist die Einbindung theoretischer Ergebnisse. Das ermöglicht dem Anwender, direkt am Versuchsaufbau sowohl gemessene, als auch berechnete Werte zu erfassen und beide miteinander zu vergleichen. Bei der Bestimmung des Erdmagnetfeldes betrifft das vor allem die Auslenkung des Kompasses, die sich in Abhängigkeit der anliegenden Stromstärke verändert. Die Magnetnadel des Kompass unterliegt dabei Faktoren wie Reibung und Trägheit, die zu Abweichungen führen können. Ein berechneter, virtueller Kompass unterliegt solchen Einschränkungen nicht und kann ergänzend zum realen Konterpart das angenommene Verhalten des Systems unter Idealbedingungen aufzeigen.\\
 
 Unter diesen Gesichtspunkten und für den Rahmen dieser Arbeit wurden in Zusammenarbeit mit Physikern die folgenden Anforderungen im Hinblick auf die darzustellenden Elemente aufgestellt:\\[4px]
 \textbf{Funktionale Anforderungen}
@@ -134,7 +127,7 @@ Zunächst stellt sich die Frage, welche Objekte die HoloLens zusätzlich anzeige
 Dazu kommen als optional eingestufte Elemente sowie Informationen, die den Ablauf und die Interaktion mit der Anwendung betreffen. Das betrifft z.B. Feedback für Nutzeraktionen, den Cursor oder Statusinformationen.\\
 
 \textbf{\textit{Wie soll es dargestellt werden?}}\\
-Die wohl umfassendste Frage besteht darin, wie die Informationen und Zusammenhänge visualisiert werden sollen. Was soll textuell, als 2D oder als 3D Geometrie dargestellt werden? \\
+Die wohl umfassendste Frage besteht darin, wie die Informationen und Zusammenhänge visualisiert werden sollen. Was soll textuell, als 2D oder als 3D Geometrie dargestellt werden? Welche Objekte werden gewählt und wie angeordnet?\\
 
 \textbf{\textit{Wie soll damit interagiert werden?}}\\
 Nicht zuletzt ist ein Konzept für die Interaktion zu erstellen. Welche Eingabemethoden werden dem Nutzer angeboten und wie wird der Nutzer über diese informiert? Welche Aktionen soll die Anwendung zur Verfügung stellen?\\
