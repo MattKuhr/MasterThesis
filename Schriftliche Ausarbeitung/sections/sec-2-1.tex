@@ -1,12 +1,14 @@
 \subsection{HoloLens}
 \label{sec-2-1}
+\begin{comment}
 \begin{center}
-	\fbox{
-		\parbox{0.9\linewidth}{
-			\textit{Ziel des Kapitels:}\\
-			HoloLens und Mixed Reality Toolkit mit ihrer Technik und Interaktionsweise vorstellen.
-	}}
+\fbox{
+\parbox{0.9\linewidth}{
+\textit{Ziel des Kapitels:}\\
+HoloLens und Mixed Reality Toolkit mit ihrer Technik und Interaktionsweise vorstellen.
+}}
 \end{center}
+\end{comment}
 
 \subsubsection{Mixed und Augmented Reality}
 \label{sec-2-1-1}
@@ -18,7 +20,7 @@
 	\label{img:virtual_continuum}
 \end{figure}
 
-Der Begriff \textit{Mixed Reality} (MR) wurde von Paul Milgram und Fumio Kishino in deren Arbeit \textit{``A Taxonomy of Mixed Reality Visual Displays''} im Jahr 1994 eingeführt \cite{Milgram94}. Die Autoren stellen das Konzept eines \textit{Virtual Continuum} vor, einem kontinuierlichen Spektrum zwischen vollständig realer und vollständig virtueller Umgebung. Augmented Reality findet sich damit auf der linken Seite des Spektrums wieder, dem entgegen steht Augmented Virtuality auf der rechten Seite. Als Mixed Reality wird der gesamte Bereich des Continuums bezeichnet, der zwischen den beiden Extremen ``völlig real'' und ``völlig virtuell'' liegt. Schema \ref{img:virtual_continuum} skizziert diesen Zusammenhang.\\
+Der Begriff \textit{Mixed Reality} (MR) wurde von Paul Milgram und Fumio Kishino in deren Arbeit \textit{``A Taxonomy of Mixed Reality Visual Displays''} im Jahr 1994 eingeführt \cite{Milgram94}. Die Autoren stellen das Konzept eines \textit{Virtual Continuums} vor, einem kontinuierlichen Spektrum zwischen vollständig realer und vollständig virtueller Umgebung. Augmented Reality findet sich damit auf der linken Seite des Spektrums wieder, dem entgegen steht Augmented Virtuality auf der rechten Seite. Als Mixed Reality wird der gesamte Bereich des Continuums bezeichnet, der zwischen den beiden Extremen ``völlig real'' und ``völlig virtuell'' liegt. Schema \ref{img:virtual_continuum} skizziert diesen Zusammenhang.\\
 
 \begin{comment}
 An dieser Stelle sei erwähnt, dass sich auch andere Interpretationen des MR-Begriffes finden. So beschreibt Jon Peddie MR als Kombination von realer und virtueller Welt, bei der beide co-existieren, wobei die MR Anwendung Informationen über die Umgebung und darin vorhandene Objekte nutzt \cite{Peddie17}. MR wird also eher als Erweiterung von AR verstanden, als eine übergeordnete Kategorie. Diese Herangehensweise findet sich auch bei manchen Internetquellen\footnote{https://www.intel.de/content/www/de/de/tech-tips-and-tricks/virtual-reality-vs-augmented-reality.html} \footnote{https://www.forbes.com/sites/quora/2018/02/02/the-difference-between-virtual-reality-augmented-reality-and-mixed-reality}.\\
@@ -52,9 +54,9 @@ Die HoloLens ist ein von Microsoft entwickeltes \textit{Head-Mounted Display} (H
 	\label{img:hololens}
 \end{figure}
 
+\subsubsection{Die Hardware}
 Bei dem Device handelt es sich um einen eigenständigen Computer, auf dem eine spezielle Version von Windows 10 läuft. Die Brille arbeitet also völlig autonom und ist nicht auf externe Hardware wie z.B. zusätzliche Rechen- und Batterieeinheiten angewiesen.\\
 
-\subsubsection{Die Hardware}
 \label{sec-2-1-2}
 \begin{figure}[h!]
 	\centering
@@ -69,7 +71,7 @@ Einen Überblick über die verwendete Hardware gibt Tabelle \ref{tab:hololens_te
 \bgroup
 \setlength\extrarowheight{-2pt}
 \def\arraystretch{2}
-\begin{table}[htb]
+\begin{table}[H]
 	\centering
 	\begin{tabular}{l|l}
 		Kategorie & Eigenschaft\\
@@ -112,20 +114,10 @@ Es handelt sich dabei um ein stereoskopisches Display, bei dem pro Auge separat 
 Um die Hologramme im Raum verankern zu können, benötigt die HoloLens Informationen über ihre exakte Position und Orientierung im Raum. Beides erarbeitet das Gerät allein aus einem Zusammenspiel der verschiedenen internen Sensoren und ist nicht auf externe Markierungen angewiesen, es handelt sich um sogenanntes \textit{Inside-Out Tracking}. Das Vorgehen basiert dabei auf zwei Strategien.
 \par
 \noindent\hspace*{5mm}
-Zum einen erfasst die HoloLens die Oberflächenstruktur der Umgebung über Tiefen- und Stereokameras. Während der Nutzer sich durch den Raum bewegt, wird dies immer weiter vervollständigt und verbessert. Dieses Vorgehen wird \textit{Spatial Mapping} genannt und kann auch von Anwendungen genutzt werden, um mit Objekten der realen Welt zu interagieren. Die Darstellung einer aufgenommenen Raumstruktur ist in Garfik \ref{img:spatial-mapping} zu sehen.
+Zum einen erfasst die HoloLens die Oberflächenstruktur der Umgebung über Tiefen- und Stereokameras. Während der Nutzer sich durch den Raum bewegt, wird dies immer weiter vervollständigt und verbessert. Dieses Vorgehen wird \textit{Spatial Mapping} genannt und kann auch von Anwendungen genutzt werden, um mit Objekten der realen Welt zu interagieren.
 \par
 \noindent\hspace*{5mm}
-Zum anderen kommt eine inertiale Messeinheit zum Einsatz. Über die Beschleunigungs-, Rotations- und Magnetflusssensoren können Änderungen in Position und Ausrichtung der Brille gemessen werden.
-
-%TODO
-\begin{minipage}{0.48\textwidth}
-	\centering
-	\includegraphics[width=0.9\textwidth]{images/Spatial_Understanding.png}
-	\label{img:spatial-mapping}
-\end{minipage}\begin{minipage}{0.48\textwidth}
-	\centering
-	\includegraphics[width=0.9\textwidth]{images/Spatial_Understanding.png}
-\end{minipage}\\
+Zum anderen kommt eine inertiale Messeinheit zum Einsatz. Über die Beschleunigungs-, Rotations- und Magnetflusssensoren können Änderungen in Position und Ausrichtung der Brille gemessen werden. Bei diesem Vorgehen summieren sich Messfehler im Laufe der Zeit jedoch stetig weiter auf und die Positionsschätzung wird zunehmend unzuverlässiger. Daher wird ein Zusammenspiel mit der Raumerkennung genutzt.
 
 \begin{comment}
  Das Vorgehen lässt sich dabei in zwei Bereiche unterteilen:
@@ -137,27 +129,30 @@ Um die exakte Position und Ausrichtung der HoloLens nachzuverfolgen kommt außer
 
 \subsubsection{Die Software und Interaktion}
 \label{sec-2-1-3}
-Auf der HoloLens läuft eine spezielle Version von Windows 10: Windows 10 Holographic. Diese benötigt weniger Resourcen im Vergleich zu einem herkömmlichen PC und hat daher auch einen eingeschränkten Funktionsumfang. Anwendungen werden in Form von UWP Apps bereitgestellt. Hier unterstützt Microsoft die Entwicklung mit Unity und stellt entsprechende Toolkits zur Verfügung.\\
+Auf der HoloLens läuft eine spezielle Version von Windows 10. Diese benötigt weniger Resourcen im Vergleich zu einem herkömmlichen PC und hat daher auch einen eingeschränkten Funktionsumfang. Anwendungen werden in Form von UWP Apps bereitgestellt. Hier unterstützt Microsoft die Entwicklung mit Unity und stellt entsprechende Toolkits zur Verfügung.\\
 
 Die Steuerung durch den Nutzer erfolgt auf vier verschiedene Arten:
 \begin{itemize}[topsep=-2px]
-	\setlength{\itemsep}{-5pt}
+	\setlength{\itemsep}{-1pt}
+	\singlespacing
 	\item Blickrichtung (Orientierung des Kopfes)
 	\item Handgesten
 	\item Sprachbefehle
 	\item Externe Eingabegeräte (Controller, Maus, Tastatur, etc.)
 \end{itemize}
+\vspace{6px}
 
 Handgesten werden von der HoloLens automatisch erkannt und an die Anwendung in Form von Events weitergegeben, auf welche dann reagiert werden kann. Hier sind aktuell verschiedene Klick-Gesten zu nennen, durch die bekannte Mausfunktionen wie Klick, Click-and-Hold, Doppelklick und Drag-and-Drop abgebildet werden. Der Cursor orientiert sich dabei an der aktuellen Blickrichtung: Es wird automatisch das Objekt angeklickt, das als erstes von einer zentralen, vorwärts gerichteten Linie getroffen würde. Außerdem gibt es eine spezifische Handgeste zum aufrufen des Hauptmenüs.\\
 
-Darüber hinaus nimmt die HoloLens englische Wörter als Sprachbefehle an, die sich auch kombinieren lassen. So kann eine Anwendung die Phrase "Hello World" als Keyword registrieren und dann darauf reagieren. Über Bluetooht lassen sich weitere Eingabegeräte anschließen: Den mit der HoloLens mitgelieferten Klicker, der die Klick-Geste ersetzen kann, aber auch eine Tastatur oder ein Controller lassen sich nutzen.\\
+Darüber hinaus nimmt die HoloLens englische Wörter als Sprachbefehle an, die sich auch kombinieren lassen. So kann eine Anwendung die Phrase ''Hello World'' als Keyword registrieren und dann darauf reagieren. Über Bluetooth lassen sich weitere Eingabegeräte anschließen: Den mit der HoloLens mitgelieferten Klicker, der die Klick-Geste ersetzen kann, aber auch eine Tastatur oder ein Controller lassen sich nutzen.\\
 
 \vspace{4px}
 \textit{Das Mixed Reality Toolkit}\\
 Das \textit{Mixed Reality Toolkit} (MRTK) ist ein quelloffenes Toolkit, das elementare Funktionen für die Entwicklung von Mixed Reality Anwendungen, insbesondere auch für die HoloLens, bereitstellt. Dazu gehört beispielsweise ein Objekt, das den zuvor genannten Cursor implementiert, aber auch Funktionen, die das Spatial Mapping auswerten. Für die Entwicklung mit Unity gibt es das Toolkit als Unitypackage, das unter anderem folgende Features bereitstellt:
 
-\begin{itemize}
-	\setlength{\itemsep}{-5pt}
+\begin{itemize}[topsep=-2px]
+	\setlength{\itemsep}{-1pt}
+	\singlespacing
 	\item Kameraobjekt mit den korrekten Einstellungen für die HoloLens
 	\item Stabilisiertes Cursorobjekt mit Animationen für verschiedene Klicks
 	\item Manager-Objekte, die Steuerung von Inputs und des Spatial Mappings erlauben
@@ -165,6 +160,7 @@ Das \textit{Mixed Reality Toolkit} (MRTK) ist ein quelloffenes Toolkit, das elem
 	\item Für HoloLens angepasste Materialien und Shader
 	\item Vorgefertigte und anpassbare UI-Elemente wie Buttons, Tooltips, Icons und Dialoge
 \end{itemize}
+\vspace{6px}
 
 Für die Entwicklung mit dem Toolkit und der HoloLens existiert ein umfassendes Repertoire aus Dokumentation, Beispielen, Guidelines, Einführungen und Hinweisen.\\
 
@@ -214,7 +210,7 @@ Bevor eine Szene in die Render-Pipeline geht, trifft die Brille anhand der Senso
 
 \subsubsection{Empfehlungen zu Design und Umsetzung}
 \label{sec-2-1-5}
-Damit Einschränkungen umgangen und negative Auswirkungen vermieden werden können gibt es bereits einige Designempfehlungen und Guide-Lines sowie Empfehlungen zur Implementierung. Die Dokumentation zu Windows Mixed Reality umfasst hier einige Vorschläge und Hinweise, von denen besonders relevante hier vorgestellt werden sollen.\\
+Damit Einschränkungen umgangen und negative Auswirkungen vermieden werden können, gibt es bereits einige Designempfehlungen und Guide-Lines sowie Empfehlungen zur Implementierung. Die Dokumentation zu Windows Mixed Reality umfasst hier einige Vorschläge und Hinweise, von denen besonders relevante hier vorgestellt werden sollen.\\
 
 \textbf{\textit{Positionierung von Objekten}}\\
 Objekte sollten typischerweise aus einer Distanz zwischen einem und fünf Metern betrachtet werden, um die zuvor erläuterten Probleme mit der Wahrnehmung zu vermeiden. Deshalb sollten Objekte ausgeblendet werden, die zu nah kommen. Neben der Distanz spielt auch der Blickwinkel in der vertikalen eine Rolle. Damit ein Anwender die Darstellungen angenehm betrachten kann ist es wichtig, eine angenehme und natürliche Kopfposition zu ermöglichen. Hier wird ein Blickwinkel zwischen 0° und 35° unterhalb der Horizontlinie empfohlen.\\
@@ -225,8 +221,9 @@ Um Objekte wie z.B. Menus und Dialoge, die nicht fest im Raum verankert sind, an
 
 \textbf{\textit{Performance Optimierungen}}\\
 Da die Framerate maßgeblichen Einfluss auf die Stabilität von Hologrammen hat und die Hardwareressourcen limitiert sind, gibt es eine Reihe von empfohlenen Optimierungen und Hinweisen, um die Performance einer Anwendung zu verbessern. Diese umfassen unter anderem:
-\begin{itemize}
-	\setlength{\itemsep}{-5pt}
+\begin{itemize}[topsep=-2px]
+	\setlength{\itemsep}{-1pt}
+	\singlespacing
 	\item Singe Pass Instanced Rendering verwenden
 	\item Z-Puffer Größe auf 16 Bit setzen
 	\item Full-Screen Post Processing (z.B. FXAA) vermeiden
@@ -234,11 +231,15 @@ Da die Framerate maßgeblichen Einfluss auf die Stabilität von Hologrammen hat 
 	\item Physics ausschalten
 	\item Overdraw reduzieren
 \end{itemize}
+\vspace{6px}
+
 Um die Performance bei der Entwicklung im Blick haben zu können gibt es einige Tools. Die HoloLens stellt über ein Webinterface einen Performance-Monitor zur Verfügung. Dieser gibt Auskunft über die Auslastung von Ressourcen wie CPU und GPU, ähnlich zum Windows Taskmanager. Außerdem verfügt Unity über einen Profiler, der detailliertere Informationen zum Renderingprozess liefert.\\
 
 \textbf{\textit{Weitere Empfehlungen}}\\
 Die folgenden Empfehlungen geben Zimmer et. al. aus ihrer Erfahrung und dem Nutzerfeedback aus mehreren HoloLens-Applikationen \cite{Zimmer17}:
-\begin{itemize}
+\begin{itemize}[topsep=-2px]
+	\setlength{\itemsep}{-1pt}
+	\singlespacing
 	\item Einen sichtbaren Cursor in der Mitte des Blickfeldes für die Auswahl bzw. das Anklicken von Objekten nutzen
 	\item Begrenzungen des Field-of-View (FOV) beachten: Wenn möglich Objektegröße so anpassen, dass diese ganz dargestellt werden können, da andernfalls Objekte weniger präsent wirken
 	\item Die Einbettung von Objekten kann durch visuelle Anhaltspunkte wie Verdeckung oder Schatten unterstützt werden
@@ -246,6 +247,7 @@ Die folgenden Empfehlungen geben Zimmer et. al. aus ihrer Erfahrung und dem Nutz
 	\item Alternative Interaktionsmöglichkeiten (z.B. Klicker) können hilfreich sein, wenn Nutzer Probleme mit Gesten oder der Sprachsteuerung haben
 	\item Eine Einführung in die Anwendung und insbesondere die Steuerung kann hilfreich sein, da der Umgang mit der HoloLens oder ähnlichen Geräten für Anwender meist ungewohnt ist
 \end{itemize}
+\vspace{6px}
 
 % In der Dokumentation für Windows Mixed Reality finden sich weitere Empfehlungen und Guidelines.
 

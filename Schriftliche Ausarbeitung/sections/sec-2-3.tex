@@ -1,20 +1,22 @@
 \subsection{Mixed Reality in der Lehre}
-\label{sec-2-2}
+\label{sec-2-3}
+\begin{comment}
 \begin{center}
-	\fbox{
-		\parbox{0.9\linewidth}{
-			\textit{Ziel des Kapitels:}\\
-			State of the Art in der Überschneidung mit dem Education Bereich vorstellen.\\[6px]
-			\textit{Inhalte:}
-			\begin{itemize}
-				\setlength{\itemsep}{-5pt}
-				\item Aktueller Einsatz von MR, insb. der HoloLens, in der Physik
-				\item Einsatz von MR in Lehre allgemein, nur relevante Aspekte
-			\end{itemize}	
-	}}\\	
+\fbox{
+\parbox{0.9\linewidth}{
+\textit{Ziel des Kapitels:}\\
+State of the Art in der Überschneidung mit dem Education Bereich vorstellen.\\[6px]
+\textit{Inhalte:}
+\begin{itemize}
+\setlength{\itemsep}{-5pt}
+\item Aktueller Einsatz von MR, insb. der HoloLens, in der Physik
+\item Einsatz von MR in Lehre allgemein, nur relevante Aspekte
+\end{itemize}	
+}}\\	
 \end{center}
+\end{comment}
 
-Ausbildung und Training sind ein wichtiges Anwendungsgebiet für Mixed Reality Technologie. Das gilt besonders für den Bereich der Augmented Realit. In der Literatur findet sich ein breites Spektrum an Arbeiten zum Einsatz von AR zur Vermittlung von Lerninhalten und zum Training. Einige Arbeiten beleuchten die Anwendung von AR aus dem Gesichtspunkt der Lerntheorie, Psychologie und Kognitionsforschung \cite{Marichal17, Santos14}. Andere nähern sich dem Thema aus Sicht konkreter Anwendungsbeispiele und stellen speziell entwickelte AR-Lösungen vor \cite{Strzys17, Amiraslanov18, Buchau09, Hughes05}. Außerdem gibt es eine Reihe von Studien zu den Auswirkungen von AR-Technologie auf das Lernverhalten, den Lernerfolg und die Nutzererfahrung \cite{Ibanez14, Li11, Jerry10, Akcayir16, Strzys18}. Einen Überblick über die Forschung zum Einsatz von AR bei Lernanwendungen geben unter anderem die Arbeiten von Bacca et. al. und Chen et. al. \cite{Chen2017, Bacca14}.\\
+Ausbildung und Training sind ein wichtiges Anwendungsgebiet für Mixed Reality Technologie. Das gilt besonders für den Bereich der Augmented Reality. In der Literatur findet sich ein breites Spektrum an Arbeiten zum Einsatz von AR zur Vermittlung von Lerninhalten und zum Training. Einige Arbeiten beleuchten die Anwendung von AR aus dem Gesichtspunkt der Lerntheorie, Psychologie und Kognitionsforschung \cite{Marichal17, Santos14}. Andere nähern sich dem Thema aus Sicht konkreter Anwendungsbeispiele und stellen speziell entwickelte AR-Lösungen vor \cite{Strzys17, Amiraslanov18, Buchau09, Hughes05}. Außerdem gibt es eine Reihe von Studien zu den Auswirkungen von AR-Technologie auf das Lernverhalten, den Lernerfolg und die Nutzererfahrung \cite{Ibanez14, Li11, Jerry10, Akcayir16, Strzys18}. Einen Überblick über die Forschung zum Einsatz von AR bei Lernanwendungen geben unter anderem die Arbeiten von Bacca et. al. und Chen et. al. \cite{Chen2017, Bacca14}.\\
 
 Im ersten Schritt beleuchtet das Kapitel kurz allgemeine Erkenntnisse aus der Forschung und stellt dann bestehende Arbeiten zum Einsatz von AR in der Physik vor.
 
@@ -57,34 +59,51 @@ Vision-haptic visualization improves elaboration based on embodied imaging. It p
 \textit{design strategies such as enabling exploration, promoting collaboration, and ensuring immersion to create compelling learning experiences.}\cite{Santos14}
 \end{comment}
 
-%TODO Erst aktuell, dann ältere paper oder andersherum?\\
 \subsubsection{In der Physik}
-Auch in der Physik finden sich in der gängigen Literatur bereits einige Ansätze, die MR-Technologie nutzen. Die Idee, physikalische Experimente in MR durchzuführen, ist nicht neu und es finden sich für mehrere Bereiche der Physik Arbeiten. Davon sollen ausgewählte kurz vorgestellt werden.\\
+Auch in der Physik finden sich in der gängigen Literatur bereits einige Ansätze, die MR-Technologie nutzen. Die Idee, physikalische Experimente in MR durchzuführen, ist nicht neu und es finden sich für mehrere Bereiche der Physik Arbeiten. Insbesondere im Bereich Magnetismus und Elektrodynamik finden sich Beispiele für Anwendungen mit AR \cite{Ibanez14, Matsutomo13, Mannuss11, Buchau09}. Aber auch in den Fachgebieten Thermodynamik \cite{Strzys17, Strzys18}, Elektrik \cite{Akcayir16, Amiraslanov18, Javaheri18} und Mechanik \cite{Li11, Jerry10, Kaufmann08} finden sich Arbeiten. Die gewählten Ansätze variieren dabei. Oft besteht das Ziel in der Darstellung physikalischer Sachverhalte wie z.B. Magnetfelder. Andere Lösungen zielen auf ein kollaboratives Erlebnis ab oder aber sollen Experimente unterstützen. Einige ausgewählte Beispiele sind in Abb. \ref{img:paper-collection} abgebildet. 
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.45\textwidth]{images/Amiraslanov18.png}
+	\hspace{0.05cm}
+	\includegraphics[width=0.45\textwidth]{images/Javaheri18.png}
+	\vspace{0.05cm}
+	\includegraphics[width=0.45\textwidth]{images/Matsutomo13.jpg}
+	\hspace{0.05cm}
+	\includegraphics[width=0.45\textwidth]{images/Mannuss11.jpg}
+	\caption{\textbf{Oben Links:} Experimente mit elektrischen Schaltungen, unterstützt durch AR mit HoloLens \cite{Amiraslanov18}. \textbf{Oben Rechts:} Messungen an elektrischen Schaltungen werden durch HoloLens mit Echtzeitdaten angereichert \cite{Javaheri18}. \textbf{Unten Links:} Webcam-basierte Darstellung von Feldlinien eines Stabmagneten \cite{Matsutomo13}. \textbf{Unten Rechts:} Video-See-Through HMD zeigt Feldlinien für zwei Stabmagneten \cite{Mannuss11}.}
+	\label{img:paper-collection}
+\end{figure}
+
+Diese Arbeit baut besonders auf zwei bestehenden Arbeiten auf, die daher im Folgenden näher vorgestellt werden sollen.\\
 
 \vspace{4px}
-\textit{MR in Elektrodynamik}\\
-Im Themengebiet der Elektrodynamik finden sich mehrere Anwendungen von AR-Technologie, die auf eine Nutzung in der Lehre abzielen. Buchau et. al. stellen eine Arbeit vor, in der ein Verbund aus optischen Markern, Webcam, Laptop und Server genutzt wird, um Magnetfeldlinien für einen Stabmagneten und eine Helmholtz-Spule anzuzeigen \cite{Buchau09}. Über die optischen Marker wird die genaue Position und Ausrichtung der Objekte relativ zur Kamera bestimmt. Die Feldlinien werden dann entsprechend in das Bild der WebCam eingebettet und auf dem Laptop angezeigt. Abbildung \ref{img:paper-collection} zeigt zwei Screenshots der Anwendung.\\
+\textit{AR in der Elektrodynamik}\\
+Die erste Arbeit wendet AR im Bereich der Elektrodynamik an und präsentiert unter anderem eine Darstellung des Magnetfeldes einer Helmholtz-Spule. Buchau et. al. stellen eine Arbeit vor, in der ein Verbund aus optischen Markern, Webcam, Laptop und Server genutzt wird, um Magnetfeldlinien für verschiedene Objekte anzuzeigen \cite{Buchau09}. Über die optischen Marker wird die genaue Position und Ausrichtung der Objekte relativ zur Kamera bestimmt. Die Feldlinien werden dann entsprechend in das Bild der WebCam eingebettet und auf dem Laptop angezeigt. Abbildung \ref{img:paper-collection} zeigt zwei Screenshots der Anwendung.\\
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.45\textwidth]{images/Buchau09.jpg}
 	\hspace{0.05cm}
 	\includegraphics[width=0.45\textwidth]{images/Buchau09_Magnet_2.jpg}
-	\caption{\cite{Matsutomo13}}
+	\caption{\textbf{Links:} Berechnete Feldlinien für Helmholtz-Spule in drei ausgewählten Ebenen. \textbf{Rechts: } Feldlinien eines Stabmagneten.\cite{Buchau09}}
 \end{figure}
 
-Die Berechnung der Feldlinien erfolgt mittels der Finite Elemente Methode auf einem Server. Die Feldstärke ist dabei zusätzlich über die Farbe der Feldlinien codiert. Die Einbettung der errechneten Geometrie in die realen Objekte wird neben der perspektivisch korrekten Darstellung über Verdeckung erzielt. Das geschieht mittels den realen Objekten nachmodellierten, virtuellen Objekten, die anhand der Marker mit den realen Gegenständen überlagert und ausschließlich in den Z-Buffer gerendert werden. Dadurch werden Feldlinien, die sich hinter einem Magneten oder Spulenteil befinden, nicht dargestellt.\\
+Die Berechnung der Feldlinien erfolgt auf Basis der Finite Elemente Methode auf einem Server. Die Feldstärke ist dabei zusätzlich über die Farbe der Feldlinien codiert. Die Einbettung der errechneten Linien in die realen Objekte wird neben der perspektivisch korrekten Darstellung über Verdeckung erzielt. Das geschieht mittels  virtuellen Objekten, die den realen maßstabsgetreu entsprechen. Diese werden dann anhand der Marker mit den realen Gegenständen überlagert und ausschließlich in den Z-Puffer gerendert. Dadurch werden Feldlinien, die sich hinter einem Magneten oder Spulenteil befinden, nicht dargestellt. Die vorgestellte Anwendung zielt dabei vor allem auf den Einsatz in einem Unterrichtsraum ab, indem das Bild vom Laptop über einen Beamer für alle Teilnehmer sichtbar gemacht wird.\\
 
-Die Autoren halten fest, dass Augmented Reality eine anschauliche Methode zur Visualisierung elektromagnetischer Felder ist. Sowohl Lernende als auch Experten könnten dabei leicht die Charakteristiken der Felder mit den realen Objekten verknüpfen. Die vorgestellte Anwendung zielt dabei vor allem auf den Einsatz in einem Unterrichtsraum ab, indem das Bild vom Laptop über einen Beamer für alle Teilnehmer sichtbar gemacht wird.\\
+Die Autoren halten fest, dass Augmented Reality eine anschauliche Methode zur Visualisierung elektromagnetischer Felder ist. Sowohl Lernende als auch Experten könnten dabei leicht die Charakteristiken der Felder mit den realen Objekten verknüpfen. Diese Einschätzung stützt die Motivation der vorliegenden Arbeit, die Felddarstellungen für die Durchführung eines Experimentes in eine Helmholtz-Spule einzubetten.\\
 
-\vspace{4px}
-\textit{MR in Thermodynamik}\\
-Strzys et. al. stellen eine Arbeit vor, in der eine Mixed Reality Anwendung mit der HoloLens im Kontext eines physikalischen Laborversuches genutzt wird \cite{Strzys17}. Dabei handelt es sich um ein Experiment aus der Thermodynamik, bei dem ein Metallstab gleichzeitig von der einen Seite erhitzt und von der anderen gekühlt wird. Nach kurzer Zeit ergibt sich über die Länge des Stabes ein Temperaturverlauf, der mit einer Infrarotkamera gemessen werden kann. Abbildung \ref{img:Strzys17} zeigt den Versuchsaufbau sowie die Szene aus Sicht eines Nutzers mit der HoloLens.\\
+Ziel der vorgestellten Anwendung ist vor allem die Visualisierung realer physikalischer Gegebenheiten in ihrem natürlichen Kontext. Diese wird jedoch durch die Limitierungen der verwendeten Hardware eingeschränkt. Die Wahrnehmung erfolgt indirekt über den Laptop und beschränkt sich auf ausgewählte Perspektiven. Diese sind begrenzt durch die Beweglichkeit der Webcam und die Positionierung der Marker. Letztere nehmen außerdem aufgrund ihrer Größe\footnote{Die Marker müssen so groß sein, damit die Positionierung ausreichend genau erfolgen kann.} einen nicht unerheblichen Teil des Sichtfeldes ein.\\
+
+Die vorliegende Arbeit setzt hier an und soll eine direkte Betrachtung des Magnetfeldes durch die HoloLens ermöglichen, bei der sich ein Nutzer frei um die Spule bewegen kann und die Felddarstellung nicht durch Marker beeinträchtigt wird. Außerdem sollen mehrere, teils interaktive Felddarstellungen geboten werden.\\
+
+\textit{AR in der Thermodynamik}\\
+Die zweite Arbeit kommt aus dem Bereich der Thermodynamik und verwendet die HoloLens. Strzys et. al. stellen \textit{holo.lab} vor, eine Mixed Reality Anwendung die im Kontext eines physikalischen Laborversuches genutzt wird \cite{Strzys17}. Dabei handelt es sich um ein Experiment aus der Thermodynamik, bei dem ein Metallstab gleichzeitig von der einen Seite erhitzt und von der anderen gekühlt wird. Nach kurzer Zeit ergibt sich über die Länge des Stabes ein Temperaturverlauf, der mit einer Infrarotkamera gemessen werden kann. Abbildung \ref{img:Strzys17} zeigt den Versuchsaufbau sowie die Szene aus Sicht eines Nutzers mit der HoloLens. In einem sich anschließenden Paper führen die Autoren eine Nutzungsstudie durch und weisen einen kleinen, positiven Effekt bei der Lernleistung nach \cite{Strzys18}.\\
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=1\textwidth]{images/Strzys18.png}
-	\caption{Links: Der zu erhitzende Metallstab. Rechts: Laufendes Experiment aus Sicht eines Nutzers. \cite{Strzys17}}
+	\caption{\textbf{Links:} Der zu erhitzende Metallstab.\textbf{ Rechts:} Laufendes Experiment aus Sicht eines Nutzers. \cite{Strzys17}}
 	\label{img:Strzys17}
 \end{figure}
 
@@ -100,6 +119,12 @@ Dabei hat der Nutzer die Möglichkeit, einzelne Darstellungsformen ein- und ausz
 	\textit{``The main focus of this design is to visualize the invisible and thus to extend human perception to new regimes, e.g., temperature and heat, thereby strengthening the connection between theory and experiment.\\ 
 	In this realization the MR setting not only has the advantage of intrinsic contextuality, but also spatial and time contiguity which is supposed to support the learning process of the students. Moreover, the just-in-time evaluation of the data yields the possibility for the students to directly examine the process itself and the parameter involved, and immediately compare the outcome to theoretical predictions which we believe to enhance the links between theory and experiment.''}
 \end{quote}
+
+Die hier vorliegende Arbeit baut direkt auf genau diesen Ansatz auf und überträgt jenen auf den Versuch mit der Helmholtz-Spule. So fließen die beschriebenen Erkenntnisse, die auf der Forschung im Bereich E-Learning fußen, in diese Arbeit mit ein.\\
+
+Allerdings wird das Konzept nicht nur übertragen, sondern dahingehend erweitert, dass das Design auch die technischen Gegebenheiten der HoloLens berücksichtigt. Außerdem geht der Umfang der hier vorgestellten Anwendung deutlich über den des holo.lab hinaus. Die Autoren merken an, dass der Umfang an zusätzlichen Inhalten gering ist, um in der Studie aussagekräftige Ergebnisse erhalten zu können. Sie gehen aber davon aus, dass umfangreichere Experimente noch mehr von einer Erweiterung durch AR profitieren würden. Das motiviert diese Arbeit zusätzlich.
+
+
 \begin{comment}
 %TODO WO ZITIEREN? AN WELCHER STELLE?
 \begin{quote}
@@ -108,24 +133,6 @@ Dabei hat der Nutzer die Möglichkeit, einzelne Darstellungsformen ein- und ausz
 
 \end{comment}
 
-
-
-\vspace{4px}
-\textit{Weitere Arbeiten}\\
-\cite{Amiraslanov18} und \cite{Javaheri18} und \cite{Matsutomo13} und \cite{Mannuss11} und \cite{Jerry10} und \cite{Kaufmann08} und \cite{Techakosit15}
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.45\textwidth]{images/Amiraslanov18.png}
-	\hspace{0.05cm}
-	\includegraphics[width=0.45\textwidth]{images/Javaheri18.png}
-	\vspace{0.05cm}
-	\includegraphics[width=0.45\textwidth]{images/Matsutomo13.jpg}
-	\hspace{0.05cm}
-	\includegraphics[width=0.45\textwidth]{images/Mannuss11.jpg}
-	\caption{\cite{Amiraslanov18} und \cite{Javaheri18} und \cite{Matsutomo13} und \cite{Mannuss11}}
-	\label{img:paper-collection}
-\end{figure}
 
 \vspace{4px}
 \textit{Übersicht über ausgewählte Arbeiten}\\

@@ -1,15 +1,16 @@
 \subsection{Physikalischer Hintergrund}
 \label{sec-2-2}
+\begin{comment}
 \begin{center}
-	\fbox{
-		\parbox{0.9\linewidth}{
-			\textit{Ziel des Kapitels:}\\
-			Anwendungsfall und Hintergrund vorstellen.
-	}}\\
+\fbox{
+\parbox{0.9\linewidth}{
+\textit{Ziel des Kapitels:}\\
+Anwendungsfall und Hintergrund vorstellen.
+}}\\
 \end{center}
+\end{comment}
 
-
-Helmholtz-Spulen werden in der Physik an verschiedensten Stellen verwendet und spielen auch in der Ausbildung von Schülern und Studenten eine wichtige Rolle. Unter anderem werden sie in Schülerversuchen genutzt, um experimentell die Stärke des Erdmagnetfeldes zu bestimmen. Im Folgenden sollen die physikalischen Hintergründe kurz eingeführt sowie der Versuchsaufbau und -Ablauf erläutert werden.
+Helmholtz-Spulen werden in der Physik an verschiedenen Stellen verwendet und spielen auch in der Ausbildung von Schülern und Studenten eine wichtige Rolle. Unter anderem werden sie in Schülerversuchen genutzt, um experimentell die Stärke des Erdmagnetfeldes zu bestimmen. Im Folgenden sollen die physikalischen Hintergründe kurz eingeführt sowie der Versuchsaufbau und -Ablauf erläutert werden.
 
 \subsubsection{Spulen und Magnetfelder}
 \label{sec-2-2-1}
@@ -26,20 +27,20 @@ Zur Visualisierung von Magnetfeldern gibt es unterschiedliche Darstellungsmodell
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.65\textwidth]{images/Magnetfeld-Helmholtzspule.jpg}
-	\caption{HH Spule MFeld Wikipedia}
+	\caption{Magnetfeld einer Helmholtz-Spule in der X-Z-Ebene. Der Betrag der Vektoren wurde hier statt der Länge über die Farbe kodiert. Die Feldlinien sind für einen mittigen Ausschnitt der Spule gezeichnet. Die Homogenität des Feldes im Inneren ist klar zu erkennen. Bildquelle: Wikipedia} %\footnote{\url{https://de.wikipedia.org/wiki/Helmholtz-Spule}}}
 	\label{img:Magnetfeld-Helmholtzspule}
 \end{figure}
 
 \textit{Das Feldlinienmodell}\\
-Die Feldliniendarstellung ist wohl die häufiger anzutreffende Darstellungsform. Hier werden kontinuierliche Linien genutzt, um den magnetischen Fluss darzustellen. Die Richtung des Feldes an einem Punkt auf einer Feldlinie entspricht der Tangente an diesem Punkt.  Die Stärke des Feldes wird meist proportional zur Dichte der Feldlinien dargestellt.\\
+Die Feldliniendarstellung ist wohl die häufiger anzutreffende Darstellungsform. Hier werden kontinuierliche Linien genutzt, um den magnetischen Fluss darzustellen. Die Richtung des Feldstärkevektors an einem Punkt auf einer Feldlinie entspricht der Tangente an diesem Punkt.  Die Stärke des Feldes wird meist proportional zur Dichte der Feldlinien dargestellt.\\
 
 Diese Darstellung macht den Unterschied zwischen homogenen und inhomogenen Feldern besonders gut sichtbar, da bei einem homogenen Feld die Feldlinien parallel verlaufen, bei einem inhomogenen hingegen nicht. Außerdem ist die Darstellung über die Dichte der Feldlinien eng verbunden mit dem Konzept des magnetischen Flusses.\\
-% TODO verifizieren
+
 Allerdings bedeutet diese Darstellungsform auch, dass um so stärker das Feld ist, desto mehr Feldlinien auf gleichem Raum dargestellt werden müssen. Außerdem ist bei sich ändernden Feldern schwer zu erkennen, ob sich nur die Beträge der Feldstärkevektoren ändern, oder auch die Richtungen. Denn in beiden Fällen verändern sich Form und Abstand der Feldlinien.\\
 
 \textit{Vektorfeld}\\
 Im Gegensatz dazu wird in der Vektor-Darstellung das Feld über einzelne Vektoren repräsentiert. Dabei geben Richtung und Betrag eines Vektors den Feldstärkevektor des Magnetfeldes für genau einen Punkt an.\\
-So lässt sich die Feldstärke an einem durch einen Vektor repräsentierten Punkt im Raum direkt ablesen. Wo ein Feld homogen ist lässt sich jedoch nur durch das Vergleichen von mehreren Vektoren in Länge und Richtung feststellen. Dieses Modell hat gegenüber dem Feldlinienmodell jedoch den Vorteil, dass mit zunehmender Feldstärke nur die Vektoren länger werden, die Anzahl jedoch gleich bleibt. Außerdem ist hier klar zu erkennen, ob bei einem sich ändernden Feld die Richtung der Vektoren konstant bleibt, oder nicht.
+So lässt sich die Feldstärke an einem durch einen Vektor repräsentierten Punkt im Raum direkt ablesen. Wo ein Feld homogen ist lässt sich jedoch nur durch das Vergleichen von mehreren Vektoren in Länge und Richtung feststellen. Dieses Modell hat gegenüber dem Feldlinienmodell jedoch den Vorteil, dass mit zunehmender Feldstärke die Vektoren nur länger werden, ihre Anzahl jedoch gleich bleibt. Außerdem ist hier klar zu erkennen, ob bei einem sich ändernden Feld die Richtung der Vektoren konstant bleibt, oder nicht.
 
 \subsubsection{Helmholtz-Spule}
 \label{sec-2-2-2}
@@ -52,7 +53,7 @@ Bei einer Helmholtz-Spule handelt es sich im Prinzip um zum zwei zusammengeschal
 	\label{img:Helmholtz}
 \end{figure}
 
-Durch diese spezielle Eigenschaft des Aufbaus überlagern sich die beiden, durch die einzelnen Spulen entstehenden Magnetfelder genau so, dass im Raum zwischen den Spulen ebenfalls ein (nahezu) homogenes Magnetfeld entsteht. Abbildung \ref{img:Magnetfeld-Helmholtzspule} zeichnet das Vektorfeld schematisch für die X-Z-Ebene in der Draufsicht von oben auf eine Helmholtz-Spule. Dabei ist zu erkennen, dass das Feld in weiten Teilen des durch die zwei Spulen aufgespannten Zylinders homogen ist. Lediglich am Rand und in unmittelbarer Nähe zu den Spulen wird das Feld zunehmend inhomogen. Detailliertere Informationen dazu finden sich beispielsweise in \cite{Demtroder13}.\\
+Durch diese spezielle Eigenschaft des Aufbaus überlagern sich die beiden, durch die einzelnen Spulen entstehenden Magnetfelder genau so, dass im Raum zwischen den Spulen ebenfalls ein (nahezu) homogenes Magnetfeld entsteht. Abbildung \ref{img:Magnetfeld-Helmholtzspule} zeigt das Feld für die X-Z-Ebene in der Draufsicht von oben auf eine Helmholtz-Spule. Dabei ist zu erkennen, dass das Feld in weiten Teilen des durch die zwei Spulen aufgespannten Zylinders homogen ist. Lediglich am Rand und in unmittelbarer Nähe zu den Spulen wird das Feld zunehmend inhomogen. Detailliertere Informationen dazu finden sich beispielsweise in \cite{Demtroder13}.\\
 
 Das Feld wird durch elliptische Integrale beschrieben, die nur numerisch zu lösen sind.
 Die magnetische Flussdichte einer Helmholtz-Spule im Mittelpunkt zwischen den Spulen vereinfacht sich jedoch zu folgender Gleichung:
@@ -65,7 +66,7 @@ Dabei entspricht $I$ der Stromstärke, $N$ der Anzahl Windungen, $R$ dem Radius 
 
 \subsubsection{Versuchsaufbau und Ablauf}
 \label{sec-2-2-3}
-Ziel des Versuches ist die Bestimmung des Erdmagnetfeldes. Genauer bedeutet das die experimentelle Bestimmung von Richtung und magnetische Flussdichte des Feldes. Die Richtung kann dabei allein über den Kompass bestimmt werden. Die Flussdichte wird aus der gemessenen Stromstärke ermittelt, bei der die Helmholtz-Spule ein gleich starkes, eigenes Magnetfeld erzeugt.\\
+Ziel des Versuches ist die Bestimmung des Erdmagnetfeldes. Genauer bedeutet das die experimentelle Bestimmung von Richtung und magnetischer Flussdichte des Feldes. Die Richtung kann dabei allein über den Kompass bestimmt werden. Die Flussdichte wird aus der gemessenen Stromstärke ermittelt, bei der die Helmholtz-Spule ein gleich starkes, eigenes Magnetfeld erzeugt.\\
 
 \textit{Aufbau}\\
 Der Versuchsaufbau ist in Abbildung \ref{img:experiment-devices} dargestellt und besteht aus: 
