@@ -38,7 +38,7 @@ Die Übertragung der Messwerte vom Arduino zur Anwendung ist so konzipiert, dass
 				\item Server nimmt den Request entgegen und hält eine Antwort solange zurück, bis ein neuer Wert vom Arduino vorliegt
 				\item Dadurch kommen neue Daten sehr schnell bei der HoloLens an, der Nutzer sieht die Änderungen auf der Brille sofort, wenn er Änderungen an der Spannungsquelle vornimmt
 				\item So wird zeitliche Einbettung und Kontinuität erreicht
-				\item Dabei wird jedoch kein unnötiger Traffic erzeugt, wenn es keine Änderungen gibt
+				\item Dabei wird jedoch kein unnötiger Traffic erzeugt
 			\end{itemize}
 			\vspace{18px}
 	}}\\
@@ -64,7 +64,7 @@ Der Hauptteil des Systems besteht in der auf der HoloLens laufenden Applikation.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth]{images/todo.jpg}
+	\includegraphics[width=0.7\textwidth]{images/todo.jpg}
 	\caption{Schema Komponenten}
 	\label{img:components-schema}
 \end{figure}
@@ -106,7 +106,7 @@ Der Hauptteil des Systems besteht in der auf der HoloLens laufenden Applikation.
 \end{center}
 \vspace{6px}
 
-Eine Komponente besteht aus einer Hierarchie von Unity's GameObjects, die mit entsprechenden Skripten versehen sind. Die Komponenten kommunizieren auf unterschiedliche Weise miteinander. Die Behandlung von Events z.B. aufgrund von Nutzereingaben oder neuen Messwerten erfolgt über Callbacks. Manche Komponenten sind auch Singletons, auf die direkt zugegriffen werden kann wie z.B. die Einstellungen.\\
+Eine Komponente besteht aus einer Hierarchie von Unity's GameObjects, die mit entsprechenden Skripten versehen sind. Die Komponenten kommunizieren auf unterschiedliche Weise miteinander. Die Behandlung von Events z.B. aufgrund von Nutzereingaben oder neuen Messwerten erfolgt über Callbacks. Manche Komponenten sind auch Singletons, auf die direkt zugegriffen werden kann wie z.B. die Einstellungen.
 
 \subsection{Darstellungen}
 \label{sec-5-2}
@@ -125,11 +125,12 @@ Nachdem die grundlegende Architektur der vorgestellt wurde folgt nun eine genaue
 
 \subsubsection{Aufnahmen mit der HoloLens}
 \label{sec-5-2-1}
-Zunächst ist festzuhalten, dass herkömmliche Screen-Captures auf der HoloLens nur eingeschränkt sinnvoll wären. Hier wären nämlich nur die gerenderten Objekte sichtbar, die so auch in einer Entwicklungsumgebung zu sehen sind. Die Nutzererfahrung entsteht jedoch durch das Zusammenspiel mit dem Hintergrund. Deshalb bietet die HoloLens eine angepasste Funktion, um möglichst das abzubilden, was der Nutzer tatsächlich sieht: Das \textit{Mixed Reality Capture (MRC)}.\\
+Zunächst ist festzuhalten, dass herkömmliche Bildschirmaufnahmen auf der HoloLens nur eingeschränkt sinnvoll wären. Hier wären nämlich nur die gerenderten Objekte sichtbar, die so auch in einer Entwicklungsumgebung zu sehen sind. Die Nutzererfahrung entsteht jedoch durch das Zusammenspiel mit dem Hintergrund. Deshalb bietet die HoloLens eine angepasste Funktion, um möglichst das abzubilden, was der Nutzer tatsächlich sieht: Das \textit{Mixed Reality Capture (MRC)}.\\
 
 Mit dem Mixed Reality Capture lassen sich Screenshots und Screen-Videos aufnehmen. Dazu nutzt die Brille ihre integrierte Frontkamera und überlagert deren Bild mit dem gerenderten Bild. So lässt sich besser darstellen, was ein Nutzer sieht. Allerdings bringt dieses Vorgehen mehrere Einschränkungen mit sich, durch die die Resultate von den tatsächlich wahrgenommenen Bildern abweichen. Damit die folgenden Bilder richtig eingeordnet werden können, sollen die wichtigsten Faktoren hier genannt werden.
 
 \begin{itemize}
+	\singlespacing
 	\item Andere Auflösung
 	\item Größeres Sichtfeld
 	\item Verfälschte Farben und Transparenz
@@ -141,7 +142,7 @@ Bei einem MRC-Foto ändert sich die Auflösung von 1268x720 (720p) zu 1408x792. 
 
 Darüber hinaus gibt es Faktoren, die durch ein Foto nicht abgedeckt werden können. Dazu gehören die schon erläuterten Eigenheiten der stereoskopischen Wahrnehmung. Auf einem Foto sieht ein Objekt immer scharf aus und es gibt keine Probleme mit der Akkommodation oder Konvergenz, auch wenn ein Nutzer diese möglicherweise erfährt. Außerdem nimmt ein Nutzer die Umgebung anders wahr als auf einem Foto, da das Sichtfeld (auf die Umgebung) kaum eingeschränkt wird und nicht in Farbe und Auflösung begrenzt ist, sondern direkt wahrgenommen wird.\\
 
-Diese Faktoren gilt es beim Einsatz von solchen Screen-Captures zu berücksichtigen. Prinzipiell sind auch Aufnahmen möglich, die näher an die tatsächliche Nutzererfahrung heranreichen. Diese erfordern aber weiteres Equipment, das im Rahmen dieser Arbeit nicht zur Verfügung stand.
+Diese Faktoren gilt es bei der Bewertung solcher Bilder zu berücksichtigen. Prinzipiell sind auch Aufnahmen möglich, die näher an die tatsächliche Nutzererfahrung heranreichen. Diese erfordern aber weiteres Equipment, das im Rahmen dieser Arbeit nicht zur Verfügung stand.
 
 \subsubsection{Das Magnetfeld}
 \label{sec-5-2-2}
@@ -244,7 +245,7 @@ Die Umsetzung der Vektordarstellung ist in Abb. \ref{img:mfield-vectors} näher 
 			\begin{itemize}[rightmargin=12px, topsep=-12px]
 				\setlength{\itemsep}{-1pt}
 				\singlespacing
-				\item Pfeile repräsentieren Flussdichtevektor über Länge und Ausrichtung
+				\item Pfeile repräsentieren Feldstärkevektor über Länge und Ausrichtung
 				\item 8 Pfeile für homogenes Feld, weitere 8 für Andeutung inhomogenes Feld
 				\item Anordnung im 3D-Gitter mit konfigurierbaren Parametern (Abstand und Anzahl, jeweils pro Raumrichtung)
 				\item Ankerpunkt mittig im Pfeil
@@ -264,7 +265,7 @@ Die Flussdichte wird im Fall der Pfeile über deren Länge und Richtung ausgedr�
 Welcher Punkt dem Vektor als Ankerpunkt dient ist dabei nicht entscheidend, denn ein Pfeil repräsentiert jeden Punkt des homogenen Feldes. Eine explizite Darstellung ist daher nicht erforderlich. Allerdings wird die Verankerung im Mittelpunkt dadurch deutlich, dass die Position bei variierender Länge gleich bleibt.\\
 
 \textit{Inhomogener Anteil}\\
-Im Gegensatz zu den Feldlinien ist eine Darstellung des inhomogenen Feldes über Vektoren auch ohne aufwendige Echtzeit-Berechnungen möglich (siehe Kap. \ref{sec-2-2-1}). Die Anwendung nutzt diese Eigenschaft, um in dieser Darstellung auch das inhomogene Feld anzudeuten. Dies geschieht, indem das Raster so gewählt wird, dass vor und hinter der Spule (im Sinne der Z-Achse) jeweils eine Reihe Vektoren positioniert ist. Diese sind hier im Vergleich deutlich kürzer und nicht parallel, sondern nach innen bzw. nach außen gerichtet. So wird erkennbar, dass das Feld hier schwächer und inhomogen ist. Da die Darstellungen erst ab einem minimalen Wert eingeblendet werden, wird der inhomogene Teil nach dem homogenen Teil eingeblendet.\\
+Im Gegensatz zu den Feldlinien ist eine Darstellung des inhomogenen Feldes über Vektoren auch ohne aufwendige Echtzeit-Berechnungen möglich (siehe Kap. \ref{sec-2-2-2}). Die Anwendung nutzt diese Eigenschaft, um in dieser Darstellung auch das inhomogene Feld anzudeuten. Dies geschieht, indem das Raster so gewählt wird, dass vor und hinter der Spule (im Sinne der Z-Achse) jeweils eine Reihe Vektoren positioniert ist. Diese sind hier im Vergleich deutlich kürzer und nicht parallel, sondern nach innen bzw. nach außen gerichtet. So wird erkennbar, dass das Feld hier schwächer und inhomogen ist. Da die Darstellungen erst ab einem minimalen Wert eingeblendet werden, wird der inhomogene Teil nach dem homogenen Teil eingeblendet.\\
 
  
 \textbf{Simulation}\\
@@ -300,11 +301,11 @@ Die numerische Lösung der Feldgleichungen erfolgte mittels der Simulationssoftw
 	\setlength{\itemsep}{-1pt}
 	\singlespacing
 	\item Anzahl und Anordnung: 10, symmetrisch zur Z-Achse, Abstand entsprechend der Flussdichte
-	\item Beschränkung auf die X-Z-Ebene
-	\item Integrationsgenauigkeit?
+	\item Beschränkung auf die X-Z-Ebene im Radius von 2m um die Spule
+	\item Qualitätseinstellungen auf Maximum gesetzt
 \end{itemize}
 \textit{Export, Import, Datenformat}\\
-Das Ergebnis der Simulation ist eine Liste von Datenpunkten der Form \textbf{[}\textit{FeldlinienNr:} Int, \textit{Position:} Vector3, \textit{Betrag der Flussdichte:} float\textbf{]}. Dafür wurde ein CSV-Reader geschrieben, der die Daten zur Laufzeit der Applikation einliest, interpretiert und zum Rendering an GameObjects weitergibt. Folglich ließen sich mehrere Simulationen vorberechnen und anzeigen.\\
+Das Ergebnis der Simulation ist eine Liste von Datenpunkten der Form \textbf{[}\textit{FeldlinienNr:} Int, \textit{Position:} Vector3, \textit{Betrag der Flussdichte:} float\textbf{]}. Dafür wurde ein CSV-Reader geschrieben, der die Daten zur Laufzeit der Applikation einliest, interpretiert und zum Rendering an GameObjects weitergibt. Folglich ließen sich weitere Simulationen vorberechnen und anzeigen.\\
 
 \textit{Querschnitt}\\
 Zunächst ist nur eine Anordnung in der X-Z-Ebene aktiv. Da das Feld aber symmetrisch zur Z-Achse ist, kann mit diesem einen Datensatz bereits jeder Querschnitt durch die Z-Achse dargestellt werden. Bei einer anderen Ausrichtung, z.B. im 45° Winkel, würden jedoch Feldlinien durch den Tisch verlaufen, auf dem die Spule steht.\\
@@ -325,7 +326,7 @@ Die Wahl der Farbskala fiel aus mehreren Gründen auf eine Rot-Grün-Skala. Die 
 	\item Inhomogenes, starkes Feld unmittelbar am Rand der Spule: Rot
 \end{itemize}
 
-Darüber hinaus sprechen technische Gründe für eine solche Farbskala. Damit die Linien in Helligkeit und Transparenz nicht variieren, sollten sich die Farbanteile im RGB-Raum stets zu einem konstanten Wert addieren. Die Rot-Grün-Skala erfüllt diese Eigenschaft, da hier der Blauanteil stets null ist und Rot und Grün über $R = 1 - G$ zusammenhängen. Möglich wären hier auch eine Regenbogenskala, die jedoch aus Gründen der Wahrnehmung nicht empfohlen wird.\\
+Darüber hinaus sprechen technische Gründe für eine solche Farbskala. Damit die Linien in Helligkeit und Transparenz nicht variieren, sollten sich die Farbanteile im RGB-Raum stets zu einem konstanten Wert addieren. Die Rot-Grün-Skala erfüllt diese Eigenschaft, da hier der Blauanteil stets null ist und Rot und Grün über $R = 1 - G$ zusammenhängen. Möglich wären hier auch eine Regenbogenskala, die nicht selten für Magnetfelder angewandt wird\footnote{Vgl. z.B. die Darstellungen in Kap. \ref{sec-2-2} und \ref{sec-2-3}}. Die Skala wird jedoch aufgrund der verzerrten Wahrnehmung nicht empfohlen und wurde hier daher nicht verwendet.
 
 \subsubsection{Stromfluss, Kompass und weitere Darstellungen}
 \label{sec-5-2-3}
@@ -414,7 +415,7 @@ Nicht zuletzt wurden von den als optional eingestuften Informationen die ausgew�
 \vspace{6px}
 Das Datenpanel listet die numerischen Werte für die genannten Größen zusammen mit ihren Einheiten auf. Der Hintergrund orientiert sich an dem des vorgefertigten Tooltips und wird einheitlich für alle Texte (abgesehen von den Buttons) verwendet. Die Objekte sind schräg gestellt (ca. 35°), so dass sie aus diesem typischen Winkel gut zu lesen sind.\\
 
-Durch ihre Platzierung unmittelbar über dem Untergrund würden Drop Shadows das Präsenzgefühl stärken. Diese lassen sich hier jedoch nicht direkt umsetzen, denn der Untergrund ist real und kann durch die HoloLens nicht weiter verdunkelt werden. Eine mögliche Lösung besteht darin, die Schatten zu erzeugen, indem der Untergrund außerhalb des Schattens zusätzlich erhellt wird. Allerdings müssten hier wiederum die Schatten der realen Objekte mit einbezogen werden. Daher nimmt diese Lösung die fehlenden Schatten in Kauf.\\
+Durch ihre Platzierung unmittelbar über dem Untergrund würden Drop Shadows das Präsenzgefühl stärken. Diese lassen sich hier jedoch nicht direkt umsetzen, denn der Untergrund ist real und kann durch die HoloLens nicht weiter verdunkelt werden. Eine mögliche Lösung bestünde darin, die Schatten zu erzeugen, indem der Untergrund außerhalb des Schattens zusätzlich erhellt wird. Allerdings müssten hier wiederum die Schatten der realen Objekte mit einbezogen werden. Daher nimmt diese Lösung die fehlenden Schatten in Kauf.\\
 
 Die weiteren, optional einblendbaren Informationen wie Spulenabstand oder Windungszahl wurden aus zeitlichen Gründen nicht umgesetzt, da hier eine weitere Interaktionsmöglichkeit einzurichten wäre, um die Elemente ein- und auszublenden.
 
@@ -433,7 +434,7 @@ Die Implementierung der Darstellungen wird begleitet von weiteren technischen L�
 				\item Spule maßstabsgetreu für Verdeckungsberechnung modelliert mit ca. 2mm größerer Ausdehnung, Rendering ausschließlich in den Z-Puffer
 				\item Near Plane Fading verbirgt Objekte, die eine minimale Distanz zur Kamera unterschreiten
 				\item Progress Indikator informiert über Zustand länger laufender Vorgänge, z.B. Ladevorgang der Simulationsdaten oder Einlesen des Markers
-				\item Kantenglättung durch 2x MSAA eingesetzt
+				\item Kantenglättung durch 2x MSAA
 			\end{itemize}
 			\vspace{18px}
 	}}\\
@@ -454,7 +455,7 @@ Die Geometrie wird ausschließlich in den Tiefenpuffer gerendert\footnote{Der en
 
 
 \textit{Near Plane Fading}\\
-Anstelle auf Basus der Clippingebene werden zu nahe Objekte über Skripte bzw. Shader kontinuierlich ausgeblendet. Dieses Verhalten ist für den Nutzer angenehmer als ein plötzliches Aufpoppen bzw. Verschwinden von Objekten in unmittelbarer Nähe.\\
+Anstelle auf Basis der Clippingebene werden zu nahe Objekte über Skripte bzw. Shader kontinuierlich ausgeblendet. Dieses Verhalten ist für den Nutzer angenehmer als ein plötzliches Aufpoppen bzw. Verschwinden von Objekten in unmittelbarer Nähe.\\
 
 Der für die meisten Objekte genutzt MRTK Standard Shader bietet bereits einen konfigurierbaren Bereich, über den Objekte ausgeblendet werden. Für andere Elemente wird die Transparenz über ein Skript geregelt. Hier werden für Anfang und Ende des Bereiches, über den zur Transparenz übergegangen wird, die empfohlenen Werte von 85cm und 50cm genutzt. Lediglich die Linien des Kompasses werden 10 cm ''später'' ausgeblendet, damit die Ausrichtung der Nadel entlang der Linien auch aus geringerem Abstand und damit etwas besser erfasst werden kann. Insgesamt ergibt sich die Transparenz (Alpha-Wert) eines Objektes dann aus dem Minimum der Werte durch die verschiedenen Effekte.\\
 

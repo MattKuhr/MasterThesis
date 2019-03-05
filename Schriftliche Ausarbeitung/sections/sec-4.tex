@@ -41,7 +41,7 @@ Dieses Konzept macht dabei von den zentralen Stärken der HoloLens Gebrauch. Als
 \vspace{6px}
 
 
-Unter diesem grundsätzlichen Ansatz soll die Lösung nun weiter konkretisiert werden. Dazu erläutert die Arbeit zunächst das Design der Darstellungen und darauf folgend die Interaktion. Das Kapitel schließt mit einer kurzen Betrachtung der Einbettung dieser Elemente in den Rahmen einer Anwendung.
+Unter diesem grundsätzlichen Ansatz soll die Lösung nun weiter konkretisiert werden. Dazu erläutert die Arbeit zunächst das Design der Darstellungen und darauf folgend die Interaktion und Steuerung der Anwendung. Das Kapitel schließt mit einer kurzen Zusammenfassung des Designs.
 
 \subsection{Darstellungen}
 \label{sec-4-2}
@@ -53,13 +53,13 @@ Viele Darstellungen sollen am Versuchsaufbau, also vor allem an der Spule, veran
 
 Um zu geringe Distanzen zwischen Nutzer und den virtuellen Objekten zu vermeiden, werden fest verankerte Darstellung unterhalb einer gewissen Distanz ausgeblendet. Hier folgt das Design den entsprechenden, zuvor aufgeführten Empfehlungen. Das ermöglicht dem Nutzer zugleich das Eintauchen in die Darstellungen. Frei bewegliche Elemente hingegen werden durch entsprechende Skripte den Bewegungen des Nutzers angepasst, so dass sie stets in einer komfortablen Zone des Sichtfeldes verbleiben.\\
 
-Weiterhin soll eine Nutzung im Abstand von ca. 1,2m bis 1,5m begünstigt werden. Das hat mehrere Gründe. Zum einen passt bei diesem Abstand die Spule vollständig in das Sichtfeld der HoloLens. Darin eingebettete Darstellungen werden also nicht durch die Grenzen des Field of View abgeschnitten. Dabei bleibt auch noch etwas Spielraum für Kopfbewegungen, so dass die Darstellungen nicht schon bei kleinen Bewegungen an die Grenzen des Displays stoßen. Gleichzeitig bleiben nicht so große Teile des Sichtfeldes ungenutzt. Außerdem reduzieren sich so die Effekte durch die Diskrepanz zwischen Konvergenz und Akkommodation der Augen im Vergleich zu kleineren Abständen. Hier findet also ein Kompromiss zwischen Ausnutzung des Sichtfeldes und Komfort statt. Der genannte Bereich wurde dabei aus der praktischen Erfahrung festgelegt.\\
+Weiterhin soll eine Nutzung im Abstand von ca. 1,2m bis 1,5m begünstigt werden. Das hat mehrere Gründe. Zum einen passt bei diesem Abstand die Spule vollständig in das Sichtfeld der HoloLens. Darin eingebettete Darstellungen werden also nicht durch die Grenzen des Field of View abgeschnitten. Dabei bleibt auch noch etwas Spielraum für Kopfbewegungen, so dass die Darstellungen nicht schon bei kleinen Bewegungen an die Grenzen des Displays stoßen. Gleichzeitig bleiben nicht so große Teile des Sichtfeldes ungenutzt. Außerdem reduzieren sich so die Effekte durch die Diskrepanz zwischen Konvergenz und Akkommodation der Augen im Vergleich zu kleineren Abständen. Hier findet also ein Kompromiss zwischen Ausnutzung des Sichtfeldes und Komfort statt. Der genannte Bereich wurde dabei aus praktischer Erfahrung festgelegt.\\
 
 Für die Darstellungen bedeutet das, dass die Größe der Objekte für diesen Bereich geeignet sein sollte. Darüber hinaus kann die Auswahl eines geeigneten Tisches die Nutzung begünstigen. Das Design geht davon aus, dass der Nutzer die Anwendung im Stehen verwendet, damit er in der Lage ist, sich frei um den Versuchsaufbau herum zu bewegen. Ein entsprechend hoher Tisch führt dazu, dass der vertikale Blickwinkel im empfohlenen Bereich zwischen 0° und -35° liegt. Weiterhin kann die Spule mit etwas Abstand zur Tischkante positioniert werden, um so auf natürliche Weise die Nutzung in der geeigneten Distanz zu begünstigen.\\
 
 Weiterhin sind für alle Objekte, die in Abhängigkeit des sich ändernden Feldes stehen, Parameter für die Darstellung definiert. Diese legen für alle Elemente einen gemeinsamen Wertebereich fest, für den die Darstellung erfolgt. Außerdem werden ab dem minimalen Wert die Objekte über einen gewählten Bereich kontinuierlich eingeblendet. Dieses konsistente Verhalten dient dazu, das Verständnis der Darstellungen zu verbessern. Außerdem soll auf diese Weise transportiert werden, dass nur die Darstellungen verschwinden, nicht jedoch die physikalischen Sachverhalte, die repräsentiert werden.\\
 
-Nach diesen allgemeinen Festlegungen sollen die einzelnen Elemente erläutert werden.\\
+Nach diesen allgemeinen Festlegungen sollen die einzelnen Elemente erläutert werden.
 
 \subsubsection{Das Magnetfeld}
 \label{sec-4-2-2}
@@ -185,11 +185,11 @@ Die virtuelle Skala umgeht dieses Problem, da sie als Ring unmittelbar außerhal
 
 Dieses Design erlaubt es dem Betrachter genau festzustellen, ob die Linie der Nadel durch eine der virtuellen Linien fortgesetzt wird. Außerdem entsteht so die Vergleichbarkeit mit der theoretischen Nadel, da diese entweder stärker, schwächer oder genauso stark ausgelenkt ist. Für letztere wird außerdem die Gradzahl als Text angegeben.\\
 
-Diese Lösung setzt jedoch auf eine genaue Positionsbestimmung der Spule sowie eine hohe Stabilität der Hologramme. Wenn das Modell verrutscht oder zittert schränkt das die Nutzung des Kompasses ein.\\
+Diese Lösung setzt jedoch auf eine genaue Positionsbestimmung der Spule sowie eine hohe Stabilität der Hologramme. Wenn das Modell verrutscht oder zittert schränkt das die Nutzung des Kompasses ein.
 
 \subsubsection{Weitere Informationen} 
 \label{sec-4-2-5}
-Die Darstellung weiterer Informationen sind zwei Lösungen vorgesehen: Ein Datenpanel zur Darstellung numerischer Werte in Textform sowie optional aktivierbare Labels am Versuchsaufbau. Beides ist in Abbildung \ref{img:info-design} skizziert.
+Für die Darstellung weiterer Informationen sind zwei Lösungen vorgesehen: Ein Datenpanel zur Darstellung numerischer Werte in Textform sowie optional aktivierbare Labels am Versuchsaufbau. Beides ist in Abbildung \ref{img:info-design} skizziert.
 
 
 \begin{figure}[h!]
@@ -221,7 +221,7 @@ Das Datenpanel dient als Informationsboard für die Echtzeitdaten. Der graue Hin
 
 Man könnte auch eine Lösung über ein Heads-Up Display in Erwägung ziehen, da es sich um numerische Werte handelt, ohne einen natürlichen Ankerpunkt in der Szene. Allerdings sind HUDs aus verschiedenen Gründen auf der HoloLens ungünstig. Deshalb rät die Dokumentation explizit vom Gebrauch solcher ab. Daher wurde hier die Variante eines fest stehenden Objektes gewählt.\\
 
-Schließlich lassen sich verschiedene weitere Parameter des Versuches anzeigen. Diese müssen nicht immer sichtbar sein und können deshalb optional eingeblendet werden. Die Umsetzung erfolgt wie bei den Markierungen für Plus und Minus im ToolTip-Stil.\\
+Schließlich lassen sich verschiedene weitere Parameter des Versuches anzeigen. Diese müssen nicht immer sichtbar sein und können deshalb optional eingeblendet werden. Die Umsetzung erfolgt wie bei den Markierungen für Plus und Minus im Tooltip-Stil.\\
 
 Nachdem eine Lösung für die inhaltlichen Aspekte erarbeitet wurde soll diese auch in den Rahmen einer Anwendung mit einem Ablauf integriert werden.
 
@@ -238,13 +238,12 @@ Die Lösung sieht neben der Durchführung des Versuches weitere Komponenten vor,
 			\begin{itemize}[rightmargin=12px, topsep=-12px]
 				\setlength{\itemsep}{-1pt}
 				\singlespacing
-				\item Start-Logo und Sound
+				\item Start-Logo mit Ladevorgang
 				\item Menü mit Start der Hauptanwendung und Optionen
 				\item Einstellungsmenü für IP, Feldstärke der Erde und weitere Parametern, Default-Werte vorhanden
 				\item Einstellungen werden persistent auf der HoloLens gespeichert und lassen sich ggf. auf Default-Werte zurücksetzen
 				\item Menü lässt sich jederzeit wieder aufrufen
-				\item Erklärungen per Voice Over
-				\item Tracking-Sequenz
+				\item Tracking-Sequenz zum Einlesen des Markers
 			\end{itemize}
 			\vspace{18px}
 	}}\\
@@ -262,11 +261,11 @@ Damit die Einstellungen nicht nach jedem Neustart der Anwendung vorgenommen werd
 \textit{Das Tracking}\\
 Nicht zuletzt soll die Anwendung den Nutzer durch den Prozess der Positionsbestimmung der Spule führen. Die Bestimmung soll über einen optischen Marker erfolgen, der über die integrierte Kamera eingelesen wird. Die Verwendung eines hinreichend großen, optischen Markers erlaubt die Genauigkeiten im Bereich unter einem Zentimeter, die von der Anwendung benötigt werden. Letztere instruiert den Nutzer dabei und informiert über den Fortschritt des Vorgangs.\\
 
-Die Idee dahinter besteht darin diesen, hier als ''Tracking'' bezeichneten Vorgang, nur einmalig erfolgen zu lassen. Wurden Position und Ausrichtung einmal ermittelt, werden diese gespeichert und verwendet. Hier bietet die HoloLens den sogenannten \textit{World Anchor Store} an, in dem die Position von Objekten in Relation zum Raumverständnis dauerhaft gespeichert werden kann. Dieser Speicher ist persistent und kann die Position nicht nur über mehrere Anwendungssessions hinweg, sondern auch über einen Neustart der Brille hinweg speichern.\\ 
+Die Idee dahinter besteht darin, diesen, hier als ''Tracking'' bezeichneten Vorgang, nur einmalig erfolgen zu lassen. Wurden Position und Ausrichtung einmal ermittelt, werden diese gespeichert und verwendet. Hier bietet die HoloLens den sogenannten \textit{World Anchor Store} an, in dem die Position von Objekten in Relation zum Raumverständnis dauerhaft gespeichert werden kann. Dieser Speicher ist persistent und kann die Position nicht nur über mehrere Anwendungssessions hinweg, sondern auch über einen Neustart der Brille hinweg speichern.\\ 
 
 Das Design nutzt hier gezielt die Funktionalitäten der HoloLens sowie den Umstand aus, dass Spule und Magnetnadel, nachdem sie einmal aufgestellt wurden, nicht weiter bewegt werden müssen. Allerdings bedeutet dieser Ansatz auch, dass die Qualität der Positionierung über mehrere Sessions hinweg abhängig vom Raumverständnis der HoloLens ist. Deshalb lässt sich das Tracking jederzeit manuell neu anstoßen, wenn die Überlagerung als nicht gut genug empfunden wird.\\
 
-Solange also der Versuchsaufbau nicht bewegt wird, kann die einmalig gespeicherte Position verwendet werden. Die Anwendung erkennt automatisch, ob die gespeicherten Daten vorliegen. Dadurch verkürzt sich die Setup-Zeit und es trägt dazu bei, dass auch unerfahrene Nutzer die Applikation verwenden können.\\
+Solange also der Versuchsaufbau nicht bewegt wird, kann die einmalig gespeicherte Position verwendet werden. Die Anwendung erkennt automatisch, ob die gespeicherten Daten vorliegen. Dadurch verkürzt sich die Setup-Zeit und es trägt dazu bei, dass auch unerfahrene Nutzer die Applikation verwenden können.
 
 \subsection{Interaktion}
 \label{sec-4-4}
@@ -317,7 +316,7 @@ Bei ersterer interagiert der Nutzer mit dem Versuchsaufbau, die Anwendung passt 
 \textbf{Menü, Einstellungen und Tracking}\\
 Das Menü und die Einstellungen werden über Buttons gesteuert. Diese lassen sich über den standardmäßigen Cursor in der Mitte des Sichtfeldes anvisieren und dann mit einem Klick betätigen. Der Cursor ist jedoch nur während der Nutzung des Menüs oder der Einstellungen sichtbar, da sonst keine Objekte ausgewählt werden müssen und der Cursor zwischen den anderen Hologrammen nur stören würde. Länger laufende Operationen wie z.B. das Laden von Objekten werden außerdem durch einen Progress Indikator mit einem kurzen Text angezeigt.\\
 
-Die Lösung baut hier auf den vorhandenen Elementen des MRTK auf und nutzt vorgefertigte Objekte. Dazu gehören Cursor, Progress Indikator, das virtuelle Keyboard und Buttons. Dadurch entsteht zum einen eine konsistente Interaktionsweise. Zum anderen sind die Komponenten speziell für die HoloLens designet und bringen bereits gewünschtes Verhalten wie z.B. Feedback bei Aktionen bereits mit.\\
+Die Lösung baut hier auf den vorhandenen Elementen des MRTK auf und nutzt vorgefertigte Objekte. Dazu gehören Cursor, Progress Indikator, das virtuelle Keyboard und Buttons. Dadurch entsteht zum einen eine konsistente Interaktionsweise. Zum anderen sind die Komponenten speziell für die HoloLens designet und bringen bereits gewünschtes Verhalten wie z.B. Feedback bei Aktionen bereits mit.
 
 \subsection{Zusammenfassung Design}
 \label{sec-4-5}
