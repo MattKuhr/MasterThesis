@@ -32,10 +32,46 @@ Davon ausgehend soll der Fragestellung anhand eines konkreten Beispiels nachgega
 \end{comment}
 
 \subsection{Ergebnisse}
-Die Arbeit stellt einen Lösungsansatz vor, der 
+ Die Lösung integriert virtuelle Elemente in das Experiment, die relevante, physikalische Zusammenhänge abbilden. Anhand der von Seiten der Physik aufgestellten Anforderungen soll diese Unterstützung nun bewertet werden.\\
 
 \subsubsection{Unterstützung des Experimentes}
-Die Lösung erweitert das gegebene Experiment um zusätzliche Inhalte. Die
+Die Anwendung integriert alle in den Anforderungen festgehaltenen Elemente, bis auf die als optional eingestuften, weiteren Parameter des Experimentes. Im Wesentlichen umfasst die Lösung folgende, inhaltliche Funktionen:
+\vspace{8px}
+\begin{center}
+	\fbox{
+		\parbox{0.9\linewidth}{
+			\vspace{4px}
+			\textit{Unterstützung des Versuches}
+			\begin{itemize}[rightmargin=12px, topsep=-12px]
+				\setlength{\itemsep}{-1pt}
+				\singlespacing
+				\item Visualisierung der Komponenten des Magnetfeldes in zwei Darstellungen und in Echtzeit
+				\item Darstellung einer vorberechneten, numerischen Lösung für eine ausgewählte Ebene
+				\item Kennzeichnung des Stromflusses
+				\item Integration eines Kompass mit Hervorhebung wichtiger Zustände
+				\item Einbettung einer virtuellen Kompassnadel auf Basis theoretischer Werte
+				\item Numerischer Darstellung gemessener und berechneter Echtzeitdaten
+			\end{itemize}
+			\vspace{18px}
+	}}\\
+\end{center}
+\vspace{6px}
+
+Durch den gewählten Designansatz werden die physikalischen Eigenschaften in ihrem realen, räumlichen und zeitlichen Kontext dargestellt. Somit kann ein direkter Zusammenhang zwischen dem Verhalten der Objekte des Versuches und den physikalischen Modellen hergestellt werden.\\
+
+Nicht-funktionale Anforderungen:\\
+Korrektheit und Interpretierbarkeit wird weitestgehend über die Nutzung etablierter physikalischer Darstellungsmodelle gesichert. Dabei liegt der Fokus nicht auf möglichst exakten Darstellungen numerischer Werte, sondern auf einer zweckmäßigen Darstellung. Im Vordergrund steht das qualitative Verständnis.\\
+
+Die Anwendung ist jedoch nicht vollständig selbsterklärend, sondern bedarf einer Anleitung durch eine fachkundige Person. Das betrifft auch den Bereich Interpretierbarkeit in den Punkten:
+\begin{itemize}
+	\item Räumliche Begrenzungen aller Felddarstellungen
+	\item Einordnung der berechneten Vektoren und Feldlinien als Komponenten des resultierenden Feldes
+	\item Einordnung der Simulationsdarstellung als unabhängig, vorberechnet und nur für die Spule allein zutreffend (ohne Feld der Erde)
+	\item Bewertung der Darstellungen als approximiert
+\end{itemize}
+
+
+
 \begin{itemize}
 	\setlength{\itemsep}{-1pt}
 	\singlespacing
