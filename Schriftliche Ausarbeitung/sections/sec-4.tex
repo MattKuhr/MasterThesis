@@ -8,7 +8,7 @@ Eigene Lösungsidee vorstellen, Prinzip erläutern.\\
 \end{comment}
 \label{sec-4}
 
-Nachdem in den vorangegangenen Kapiteln die Hintergründe erläutert und Probleme identifiziert wurden, beschreibt dieses Kapitel nun einen möglichen Lösungsansatz.
+Nachdem in den vorangegangenen Kapiteln die Hintergründe erläutert und Probleme identifiziert wurden, beschreibt dieses Kapitel nun einen möglichen Lösungsansatz. Die Idee baut auf dem Ansatz von Strzys et. al. auf und soll zunächst in ihren Grundzügen dargestellt und konkretisiert werden.
 
 \subsection{Grundidee}
 \label{sec-4-1}
@@ -63,7 +63,10 @@ Nach diesen allgemeinen Festlegungen sollen die einzelnen Elemente erläutert we
 
 \subsubsection{Das Magnetfeld}
 \label{sec-4-2-2}
-Die Darstellung des Magnetfeldes von Erde und Spule ist zentraler Bestandteil der Anwendung. Die wichtigsten Designentscheidungen lassen sich der Skizze in Abb. \ref{img:magnetic-design} entnehmen und sind hier in Stichpunkten zusammengefasst.
+Die Darstellung des Magnetfeldes von Erde und Spule ist zentraler Bestandteil der Anwendung. Die wichtigsten Designentscheidungen %lassen sich der Skizze in Abb. \ref{img:magnetic-design} entnehmen und 
+sind hier in Stichpunkten zusammengefasst.
+
+\begin{comment}
 
 \begin{figure}[h!]
 	\centering
@@ -71,6 +74,7 @@ Die Darstellung des Magnetfeldes von Erde und Spule ist zentraler Bestandteil de
 	\caption{Magnetfeld Design}
 	\label{img:magnetic-design}
 \end{figure}
+\end{comment}
 
 \vspace{8px}
 \begin{center}
@@ -94,19 +98,25 @@ Die Darstellung des Magnetfeldes von Erde und Spule ist zentraler Bestandteil de
 \end{center}
 \vspace{6px}
 
+\textit{3D-Objekte}\\
 Die Repräsentation über dreidimensionale Objekte erlaubt die Betrachtung aus beliebigen Blickwinkeln. Zweidimensionale Linien oder Pfeile würden hier dazu führen, dass die Darstellung beim Blick in Richtung des Feldstärkevektors verschwindet. Außerdem stärkt ein 3D-Objekt das Präsenzgefühl und unterstützt so die Glaubhaftigkeit der Einbettung. Letztere wird dabei vor allem durch die Verdeckung der Feldlinien und Vektoren durch die Spule unterstützt. Die Überdeckung von weiter entfernten Objekten durch nähergelegende ist einer der wichtigsten Faktoren für die menschliche Tiefenwahrnehmung und ist hier daher unverzichtbar.\\
 
+\textit{Komponenten des Feldes}\\
 Die Entscheidung, die einzelnen Komponenten des Feldes mit verschiedenen Farben darzustellen anstelle des tatsächlichen, überlagerten Feldes, wurde aus didaktischen Gründen getroffen. Für das Verständnis, wie das resultierende Feld entsteht, ist die Visualisierung der Komponenten entscheidend. Deshalb wurde auf Empfehlung der Didaktiker diese Variante gewählt. Damit jedoch nicht der falsche Eindruck entsteht, es würden sich um zwei unabhängige, eigene Magnetfelder handeln, sollte der Anwender darüber informiert werden. Dies kann z.B. durch ein Voice Over mit einem kurzen Erklärtext oder auch eine Fachkundige Person, z.B. eine Lehrkraft, erfolgen.\\
 
+\textit{Modelle und Begrenzung}\\
 Weiterhin werden die beiden, in der Lehre üblichen Darstellungsmodelle angeboten. Beide Modelle bringen Vor- und Nachteile mit sich. Der Nutzer kann im Laufe der Anwendung frei zwischen den Modellen wechseln. Dadurch können beide Modelle ihre individuellen Stärken ausspielen. Außerdem ist so ein besseres Verständnis davon möglich, wie die Modelle zusammenhängen.\\
 
 Beide Modelle beschränken sich zunächst auf einen zylindrischen Ausschnitt der Spule. Das ist ausreichend, da für den Versuch lediglich das Feld im Zentrum der Spule, in dem sich auch der Kompass befindet, relevant ist. Das inhomogene Feld außerhalb der Spule wirkt sich nicht auf den Versuch aus. Dies wird daher in einer eigenen Darstellung auf Basis von vorberechneten Simulationsdaten dargestellt. So wird zum einen vermittelt, wie das gesamte Feld aussieht, und zum anderen, warum der Kompass gerade in die Mitte der Spule gestellt wird.\\
 
-Die Darstellungen verändern sich dabei dynamisch, entsprechend ihrer Modelle, anhand der aus den Messwerten berechneten Flussdichte. Beim Feldlinienmodell verändern sich Anzahl, Position und Abstand der Linen, bei den Vektoren variiert die Länge. Für die Flussdichte des Erdmagnetfeldes wird ein zuvor gemessener Wert angenommen.\\
+Die Darstellungen verändern sich dabei dynamisch, entsprechend ihrer Modelle, anhand der aus den Messwerten berechneten Flussdichte. Beim Feldlinienmodell verändern sich Anzahl, Position und Abstand der Linien, bei den Vektoren variiert die Länge. Für die Flussdichte des Erdmagnetfeldes wird ein zuvor gemessener Wert angenommen.\\
 
 \subsubsection{Der Stromfluss} 
 \label{sec-4-2-3}
-Beim Stromfluss ist in erster Linie die Flussrichtung durch die Spulen von Interesse, denn hiervon hängt die Ausrichtung des entstehenden Magnetfeldes ab. Diese wird über pfeil-ähnliche Indikatoren an den Spulen angezeigt. Außerdem werden die Anschlüsse mit Labels versehen, die Plus und Minus kennzeichnen. Das Konzept ist in Grafik \ref{img:current-design} dargestellt.
+Beim Stromfluss ist in erster Linie die Flussrichtung durch die Spulen von Interesse, denn hiervon hängt die Ausrichtung des entstehenden Magnetfeldes ab. Diese wird über pfeil-ähnliche Indikatoren an den Spulen angezeigt. Außerdem werden die Anschlüsse mit Labels versehen, die Plus und Minus kennzeichnen.
+
+\begin{comment}
+ Das Konzept ist in Grafik \ref{img:current-design} dargestellt.
 
 \begin{figure}[h!]
 	\centering
@@ -114,7 +124,7 @@ Beim Stromfluss ist in erster Linie die Flussrichtung durch die Spulen von Inter
 	\caption{Stromfluss Design}
 	\label{img:current-design}
 \end{figure}
-
+\end{comment}
 
 \vspace{8px}
 \begin{center}
@@ -133,16 +143,20 @@ Beim Stromfluss ist in erster Linie die Flussrichtung durch die Spulen von Inter
 	}}\\
 \end{center}
 \vspace{6px}
-
+\textit{Positionierung und Ausrichtung}\\
 Die Indikatoren werden abhängig von Position und Blickwinkel des Betrachters angezeigt, wie in der Abbildung zu sehen. Auf diese Weise ist die Richtung aus allen Perspektiven zu erkennen. Beim Wechsel der Darstellungen gibt es einen kontinuierlichen Übergang. In dieser Umsetzung ist die 2D-Geometrie ausreichend. Die Positionierung direkt auf bzw. an den Spulen führt dazu, dass kein zusätzlicher Screenspace, der für die Felddarstellung genutzt wird, in Anspruch genommen werden muss, da das Feld hier ohnehin von den Spulen verdeckt wird. Die Spulen bleiben weiterhin gut sichtbar, da nur ein Teil und nur eine Seite überdeckt wird. Hier haushaltet die Anwendung also mit dem ihr zur Verfügung stehenden Platz.\\
 
 Ein Nachteil dieser Lösung ist jedoch, dass das zuvor erläuterte Problem mit der Akkommodation auftritt. Die Kante zwischen virtuellem Pfeil und realer Spule kann bei einer Entfernung unter 2m zu Irritationen führen, da sich das Auge auf eine Akkommodation festlegen muss und dementsprechend das andere Objekt nicht als scharf wahrnimmt. Allerdings stehen beide Objekte selten im Fokus und die Spule muss nicht detailreich betrachtet werden, deshalb überwiegen hier die Vorteile dieser Lösung.\\
 
+\textit{Annotationen der Anschlüsse}\\
 Damit die Stromrichtung auch als technische Stromrichtung interpretiert und in die Schaltung eingeordnet werden kann, sind die Konnektoren mit Labels in Form von Tooltips mit Bezeichnung, entsprechender Farbe und Icon ausgestattet. Die Lables orientieren sich dabei an der Kamera, damit sie aus allen Winkeln lesbar sind.\\
 
 \subsubsection{Der Kompass} 
 \label{sec-4-2-4}
-Der Kompass bildet sich aus dem Zusammenspiel einer realen Magnetnadel, einer virtuellen Skala sowie virtuellen Hilfslinien. Die Idee ist in Abbildung \ref{img:compass-design} festgehalten.
+Der Kompass bildet sich aus dem Zusammenspiel einer realen Magnetnadel, einer virtuellen Skala sowie virtuellen Hilfslinien. 
+
+\begin{comment}
+Die Idee ist in Abbildung \ref{img:compass-design} festgehalten.
 
 \begin{figure}[h!]
 	\centering
@@ -150,6 +164,7 @@ Der Kompass bildet sich aus dem Zusammenspiel einer realen Magnetnadel, einer vi
 	\caption{Kompass Design}
 	\label{img:compass-design}
 \end{figure}
+\end{comment}
 
 \vspace{8px}
 \begin{center}
@@ -189,7 +204,10 @@ Diese Lösung setzt jedoch auf eine genaue Positionsbestimmung der Spule sowie e
 
 \subsubsection{Weitere Informationen} 
 \label{sec-4-2-5}
-Für die Darstellung weiterer Informationen sind zwei Lösungen vorgesehen: Ein Datenpanel zur Darstellung numerischer Werte in Textform sowie optional aktivierbare Labels am Versuchsaufbau. Beides ist in Abbildung \ref{img:info-design} skizziert.
+Für die Darstellung weiterer Informationen sind zwei Lösungen vorgesehen: Ein Datenpanel zur Darstellung numerischer Werte in Textform sowie optional aktivierbare Labels am Versuchsaufbau.
+
+\begin{comment}
+ Beides ist in Abbildung \ref{img:info-design} skizziert.
 
 
 \begin{figure}[h!]
@@ -198,6 +216,7 @@ Für die Darstellung weiterer Informationen sind zwei Lösungen vorgesehen: Ein 
 	\caption{Info Design}
 	\label{img:info-design}
 \end{figure}
+\end{comment}
 
 \vspace{8px}
 \begin{center}

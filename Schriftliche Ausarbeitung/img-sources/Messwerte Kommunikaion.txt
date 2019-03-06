@@ -5,27 +5,27 @@ participant Server-Thread
 participant HoloLens
 
 parallel 
-Arduino->ArduinoListener-Thread:Schreibt Wert '0.0' in serielle Schnittstelle
-ArduinoListener-Thread->Server-Thread:Notify(0.0)
+Arduino->ArduinoListener-Thread:Write(x) to serial output
+ArduinoListener-Thread->Server-Thread:Notify(x)
 parallel off
 HoloLens->(1)Server-Thread:Request
 activate Server-Thread
-Server-Thread-->(1)HoloLens:Response(0.0)
+Server-Thread-->(1)HoloLens:Response(x)
 deactivate Server-Thread
 
 parallel
-Arduino->ArduinoListener-Thread:Schreibt Wert '0.0' in serielle Schnittstelle
+Arduino->ArduinoListener-Thread:Write(x) to serial output
 HoloLens->(1)Server-Thread:Request
 activate Server-Thread
 parallel off
-Arduino->ArduinoListener-Thread:Schreibt Wert '0.0' in serielle Schnittstelle
+Arduino->ArduinoListener-Thread:Write(x) to serial output
 
 
 parallel
-Arduino->ArduinoListener-Thread:Schreibt Wert '5.0' in serielle Schnittstelle
-ArduinoListener-Thread->Server-Thread:Notify(5.0)
+Arduino->ArduinoListener-Thread:Write(y) to serial output
+ArduinoListener-Thread->Server-Thread:Notify(y)
 parallel off
-Server-Thread-->(1)HoloLens:Response(5.0)
+Server-Thread-->(1)HoloLens:Response(y)
 deactivate Server-Thread
 
 HoloLens->(1)Server-Thread:Request

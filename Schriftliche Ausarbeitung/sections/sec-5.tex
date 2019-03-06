@@ -15,7 +15,7 @@ Im folgenden soll erläutert werden, wie der zuvor erarbeitete Lösungsansatz um
 Das System ist als Client-Server-Architektur realisiert, einen Überblick gibt das Schema in Abb. \ref{img:communication-schema}. Ein Server erfasst und verarbeitet die in der Schaltung gemessenen Werte für die Stromstärke. Diese stammen von einem Arduino, der in den Stromkreislauf eingekoppelt ist. Die Applikation auf der HoloLens tritt als Client auf und erfragt die aktuellen Werte vom Server. 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth]{images/todo.jpg}
+	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
 	\caption{Schema Kommunikation Schaltung Arduino Server HoloLens}
 	\label{img:communication-schema}
 \end{figure}
@@ -47,7 +47,7 @@ Die Übertragung der Messwerte vom Arduino zur Anwendung ist so konzipiert, dass
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth]{images/Sequenzdiagramm.png}
+	\includegraphics[width=0.8\textwidth]{images/Sequenzdiagramm.png}
 	\caption{Sequenzdiagramm Kommunikation}
 	\label{img:Sequenzdiagramm}
 \end{figure}
@@ -64,7 +64,7 @@ Der Hauptteil des Systems besteht in der auf der HoloLens laufenden Applikation.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\textwidth]{images/todo.jpg}
+	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
 	\caption{Schema Komponenten}
 	\label{img:components-schema}
 \end{figure}
@@ -130,11 +130,12 @@ Zunächst ist festzuhalten, dass herkömmliche Bildschirmaufnahmen auf der HoloL
 Mit dem Mixed Reality Capture lassen sich Screenshots und Screen-Videos aufnehmen. Dazu nutzt die Brille ihre integrierte Frontkamera und überlagert deren Bild mit dem gerenderten Bild. So lässt sich besser darstellen, was ein Nutzer sieht. Allerdings bringt dieses Vorgehen mehrere Einschränkungen mit sich, durch die die Resultate von den tatsächlich wahrgenommenen Bildern abweichen. Damit die folgenden Bilder richtig eingeordnet werden können, sollen die wichtigsten Faktoren hier genannt werden.
 
 \begin{itemize}
+	\setlength{\itemsep}{-1pt}
 	\singlespacing
 	\item Andere Auflösung
 	\item Größeres Sichtfeld
-	\item Verfälschte Farben und Transparenz
-	\item Positionierung
+	\item Verfälschte Farben und Transparenzen
+	\item Ggf. verfälschte Positionierung
 	\item MRC nicht möglich, wenn Kamera durch Anwendung genutzt wird
 \end{itemize}
 
@@ -146,7 +147,11 @@ Diese Faktoren gilt es bei der Bewertung solcher Bilder zu berücksichtigen. Pri
 
 \subsubsection{Das Magnetfeld}
 \label{sec-5-2-2}
-Die Darstellung des Magnetfeldes in Echtzeit erfolgt über 3D-Objekte. Die Geometrie wurde mit Blender erstellt und in Unity importiert. Die Fotos in Abb. \ref{img:mfield-result} zeigen die beiden alternativen Darstellungsmodelle. Darüber hinaus steht eine Visualisierung einer vorberechneten Lösung zur Verfügung, auf die an späterer Stelle genauer eingegangen wird.
+Die Darstellung des Magnetfeldes in Echtzeit erfolgt über 3D-Objekte. Die Geometrie wurde mit Blender erstellt und in Unity importiert.
+%Die Fotos in Abb. \ref{img:mfield-result} zeigen die beiden alternativen Darstellungsmodelle. 
+Darüber hinaus steht eine Visualisierung einer vorberechneten Lösung zur Verfügung, auf die an späterer Stelle genauer eingegangen wird.
+
+\begin{comment}
 
 \begin{figure}[H]
 	\centering
@@ -156,6 +161,7 @@ Die Darstellung des Magnetfeldes in Echtzeit erfolgt über 3D-Objekte. Die Geome
 	\caption{Links Feldlinien Rechts Vektoren}
 	\label{img:mfield-result}
 \end{figure}
+\end{comment}
 
 \vspace{4px}
 \begin{center}
@@ -187,10 +193,10 @@ Die Visualisierung des Feldes erfordert die Festlegung eines darzustellenden Ber
 Nach oben hin ist keine Darstellung der Begrenzung vorgesehen. Der Bereich sollte so gewählt werden, dass die obere Grenze durch die maximal am Regler einstellbare Stromstärke nicht erreicht werden kann. Somit erfährt der Anwender die Limitierung der Darstellung auf natürliche Weise. Die Konfiguration der Schaltung kann hier über eingebaute Widerstände so an die Spannungsquelle angepasst werden, dass der erzeugte Stromfluss im gewünschten Bereich liegt.\\
 
 \textbf{Feldlinien}\\
-Die Feldliniendarstellung ist in Abb. \ref{img:mfield-lines} gesondert abgebildet.
+Die Feldliniendarstellung ist in Abb. \ref{img:mfield-lines} gesondert dargestellt.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
+	\includegraphics[width=0.8\textwidth]{images/fieldlines.jpg}
 	\caption{Feldlinien}
 	\label{img:mfield-lines}
 \end{figure}
@@ -226,13 +232,13 @@ Bei einem festen, für die Darstellungen zur Verfügung stehenden Volumen und kl
 \end{figure}
 
 \textit{Skalierung}\\
-Dabei wurde sich bewusst für die Abbildung der Flussdichte auf den Abstand der Feldlinien entschieden. Das bedeutet, Letzterer ändert sich proportional mit der Flussdichte. Oft wird statt des Abstandes die Anzahl der Feldlinien durch eine Einheitsfläche proportional zur Flussdichte gewählt \cite{Kilian03}. Das bedeutet bei einer symmetrischen Darstellung eines quadratischen Ausschnittes jedoch, dass die Anzahl in diskreten Stufen $n \geq 1$ mit $4^{n}$ steigt. Werden diese Stufen durch eine kontinuierliche Kontraktion der Linien zum Zentrum hin interpoliert, dann skaliert der Abstand $d$ der Feldlinien mit $1/(3n)$. Die Grafik \ref{img:mfield-lines-scaling} illustriert diesen Zusammenhang. Da für den Anwender in erster Linie jedoch der Abstand die sichtbare, sich ändernde Größe ist, könnte dies den falschen Eindruck erwecken, die Flussdichte ändere sich nicht linear mit der Stromstärke. Außerdem werden nur zwei Stufen dargestellt, daher wurde sich für die proportionale Änderung des Abstandes entschieden.\\
+Dabei wurde sich bewusst für die Abbildung der Flussdichte auf den Abstand der Feldlinien entschieden. Das bedeutet, Letzterer ändert sich proportional mit der Flussdichte. Oft wird statt des Abstandes die Anzahl der Feldlinien durch eine Einheitsfläche proportional zur Flussdichte gewählt. Das bedeutet bei einer symmetrischen Darstellung eines quadratischen Ausschnittes jedoch, dass die Anzahl in diskreten Stufen $n \geq 1$ mit $4^{n}$ steigt. Werden diese Stufen durch eine kontinuierliche Kontraktion der Linien zum Zentrum hin interpoliert, dann skaliert der Abstand $d$ der Feldlinien mit $1/(3n)$. Die Grafik \ref{img:mfield-lines-scaling} illustriert diesen Zusammenhang. Da für den Anwender in erster Linie jedoch der Abstand die sichtbare, sich ändernde Größe ist, könnte dies den falschen Eindruck erwecken, die Flussdichte ändere sich nicht linear mit der Stromstärke. Außerdem werden nur zwei Stufen dargestellt, daher wurde sich für die proportionale Änderung des Abstandes entschieden.\\
 
 \textbf{Vektoren}\\
 Die Umsetzung der Vektordarstellung ist in Abb. \ref{img:mfield-vectors} näher zu sehen.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
+	\includegraphics[width=0.8\textwidth]{images/vector.jpg}
 	\caption{Vektoren}
 	\label{img:mfield-vectors}
 \end{figure}
@@ -272,7 +278,7 @@ Im Gegensatz zu den Feldlinien ist eine Darstellung des inhomogenen Feldes über
 Eine Visualisierung der Simulationsdaten ist in Abb. \ref{img:mfield-simulation} näher zu sehen.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
+	\includegraphics[width=0.8\textwidth]{images/simulation.jpg}
 	\caption{Simulation}
 	\label{img:mfield-simulation}
 \end{figure}
@@ -354,6 +360,13 @@ Nach den Erläuterungen zur Umsetzung der Magnetfelddarstellungen sollen auch di
 
 Die Indikatoren werden dynamisch über ein Skript erzeugt und gesteuert. Hier können Parameter wie Richtung, Position, Radius und Bogenlänge festgelegt werden. Die Breite der Linien wurde auf 1cm gesetzt. Die Größe ist für die gewünschte Entfernung ausreichend und übersteigt die Dicke der Spulen nicht. Indem die Darstellung sich der Betrachtungsposition kontinuierlich anpasst wird der Nutzer zusätzlich in die Anwendung einbezogen.\\
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{images/current.jpg}
+	\caption{Stromfluss}
+	\label{img:current}
+\end{figure}
+
 \textit{Strom-Labels}\\
 Die Richtungspfeile werden durch die Information unterstützt, wie die Spule in die Schaltung eingebunden ist. Dazu werden die Anschlüsse mit Annotationen versehen.
 \begin{itemize}
@@ -389,6 +402,13 @@ Der Kompass besteht aus einer virtuellen Skala und einer realen Magnetnadel in d
 
 Der Kompass liegt horizontal in einer Ebene durch den Spulenmittelpunkt. Die ringförmige Skala wurde mit einem Radius von 20 cm sehr eng um die Spulen herum gelegt, damit wenig zusätzliches Sichtfeld benötigt wird. Denn je größer der Raduis, desto eher wird das Element durch die Sichtfeldbegrenzung abgeschnitten. Neben den festen Gradzahlen im Abstand von 45° wird hier auch die theoretisch berechnete Gradzahl am Ende der zugehörigen Linie angezeigt.\\
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{images/compass.jpg}
+	\caption{Kompass}
+	\label{img:compass}
+\end{figure}
+
 Als Farbe wurde Grau gewählt, damit die Linien neutral und weniger dominant wirken. Dem dient auch die Wahl von gestrichelten anstelle durchgezogener Linien. Gleichzeitig wurde die zuvor dunkle Magnetnadel hell angemalt, damit sie zwischen den virtuellen Objekten besser zu sehen ist.\\
 
 In dieser Umsetzung wird zunächst keine Verdeckung durch die Magnetnadel berechnet. Diese ließe sich anhand der theoretischen Auslenkung berechnen. Allerdings unterliegt die reale Nadel Trägheit und Reibung, die in der Berechnung nicht berücksichtigt werden. Außerdem ist sie sehr schmal (etwa 5 mm breit), weshalb Abweichungen zwischen realem und virtuellem Modell stärker ins Gewicht fallen, als bei größeren Objekten. Daher verzichtet diese Lösung darauf, was sich jedoch negativ auf die Immersion des Anwenders auswirkt.\\
@@ -414,6 +434,13 @@ Nicht zuletzt wurden von den als optional eingestuften Informationen die ausgew�
 \end{center}
 \vspace{6px}
 Das Datenpanel listet die numerischen Werte für die genannten Größen zusammen mit ihren Einheiten auf. Der Hintergrund orientiert sich an dem des vorgefertigten Tooltips und wird einheitlich für alle Texte (abgesehen von den Buttons) verwendet. Die Objekte sind schräg gestellt (ca. 35°), so dass sie aus diesem typischen Winkel gut zu lesen sind.\\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{images/status.jpg}
+	\caption{Statusbar}
+	\label{img:status}
+\end{figure}
 
 Durch ihre Platzierung unmittelbar über dem Untergrund würden Drop Shadows das Präsenzgefühl stärken. Diese lassen sich hier jedoch nicht direkt umsetzen, denn der Untergrund ist real und kann durch die HoloLens nicht weiter verdunkelt werden. Eine mögliche Lösung bestünde darin, die Schatten zu erzeugen, indem der Untergrund außerhalb des Schattens zusätzlich erhellt wird. Allerdings müssten hier wiederum die Schatten der realen Objekte mit einbezogen werden. Daher nimmt diese Lösung die fehlenden Schatten in Kauf.\\
 
@@ -445,10 +472,8 @@ Die Implementierung der Darstellungen wird begleitet von weiteren technischen L�
 Für die Verdeckungsberechnung wurde die Spule anhand gemessener Größen in Blender modelliert. Das Spatial Mapping der HoloLens ist hier zu ungenau, um eine glaubwürdige Verdeckung zu ermöglichen. Eine Gegenüberstellung des durch die HoloLens aufgenommenen Spatial Mappings mit der modellierten Geometrie ist in Abb. \ref{img:mesh-vs-model} zu sehen.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
-	\hspace{0.05cm}	
-	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
-	\caption{HoloLens Mesh vs. Modell}
+	\includegraphics[width=0.45\textwidth]{images/model.jpg}
+	\caption{HoloLens Mesh der Spule}
 	\label{img:mesh-vs-model}
 \end{figure}
 Die Geometrie wird ausschließlich in den Tiefenpuffer gerendert\footnote{Der entsprechende Shader ist nur wenige Zeilen lang und findet sich in verschiedenen Varianten im Internet. Dieser orientiert sich an http://wiki.unity3d.com/index.php/DepthMask}. Das vermeidet überflüssige Draw Calls und folgt der Empfehlung der Dokumentation. Damit virtuelle Objekte aber auch dann noch verdeckt bleiben, wenn reale Objekte nah kommen, muss das Near Clipping Plane sehr nah am Kameraursprung liegen. Andernfalls würden weiter entfernte, virtuelle Objekte plötzlich doch vor realen Objekten angezeigt werden, sobald letztere zu nah sind und das Clipping die für die Verdeckung eingesetzten Objekte vom Rendering ausschließt. Das stellt bei dieser Lösung aber kein Problem dar, weil zu nahe, virtuelle Objekte ohnehin über ein eigenes Verhalten ausgeblendet werden, das nicht auf die Clippingebene aufbaut.\\
@@ -466,9 +491,9 @@ Um den Anwender über länger laufende Prozesse zu informieren, kommt eine Forts
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
+	\includegraphics[width=0.45\textwidth]{images/loading.jpg}
 	\hspace{0.05cm}	
-	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
+	\includegraphics[width=0.45\textwidth]{images/tracking.jpg}
 	\caption{Progress Indikator Laden und Tracking}
 	\label{img:pi-and-tracking}
 \end{figure}
@@ -476,7 +501,7 @@ Um den Anwender über länger laufende Prozesse zu informieren, kommt eine Forts
 Für die Kommunikation mit dem Nutzer ist bei dieser Anwendung vor allem wichtig, was das System tut. Längere Ladezeiten o.Ä. treten hier nicht auf, daher wird lediglich das Text-Element des Indikators verwendet, von der prozentualen Anzeige wird nicht Gebrauch gemacht. Komponenten, die den Indikator nutzen, stellen jedoch stets sicher, dass eine Nachricht lange genug sichtbar ist, um gelesen werden zu können. Länger laufende Operationen sind stets asynchron umgesetzt, die pro Frame nur einen Teil der Arbeit erledigen und so den Renderprozess nicht blockieren.\\
 
 \textit{Kantenglättung}\\
-Bei Darstellungen auf der HoloLens fällt der Kantenglättung eine besondere Bedeutung zu. Im Gegensatz zu anderen Anwendungen, bei denen denen der Nutzer die Kamera über herkömmliche Eingabegeräte steuert, ist bei der Brille die Kamera an die Kopfbewegungen des Trägers gebunden. Die Displays folgen daher den ständigen, feinen Vibrationen des Kopfes, die Kamera steht also nie still. Deshalb können Treppeneffekte an Kanten besonders auffällig und störend wirken, da das resultierende Kantenflimmern stetig präsent ist. Allerdings sind Anti-Aliasing-Verfahren wie z.B. Multi Sampled Anti Aliasing oft mit erheblichem Rechenaufwand verbunden.\\ % Die Dokumentation der HoloLens empfiehlt daher, auf den Einsatz solcher Verfahren zu verzichten.\\
+Bei Darstellungen auf der HoloLens fällt der Kantenglättung eine besondere Bedeutung zu. Im Gegensatz zu anderen Anwendungen, bei denen denen der Nutzer die Kamera über herkömmliche Eingabegeräte steuert, ist bei der Brille die Kamera an die Kopfbewegungen des Trägers gebunden. Die Displays folgen daher den ständigen, feinen Vibrationen des Kopfes, die Kamera steht also nie still. Deshalb können Treppeneffekte an Kanten besonders auffällig und störend wirken, da das resultierende Kantenflimmern stetig präsent ist. Allerdings sind Anti-Aliasing-Verfahren wie z.B. Multi Sampled Anti Aliasing oft mit erheblichem Rechenaufwand verbunden.\\
 
 Für die gewählte Visualisierung der Simulationsdaten über Linien ist eine Form des Anti-Aliasing jedoch unerlässlich. Andernfalls würde hier die gesamte Darstellung flimmern. Deshalb wurde sich hier für den Einsatz von zweifachem Multi-Sampled Anti-Aliasing (MSAA) entschieden. Das Verfahren wird durch Unity standardmäßig unterstützt und kann ohne weitere Maßnahmen für die Kamera aktiviert werden. Die Dokumentation rät zwar im Rahmen der Hinweise zu ressourcenschonenden Maßnahmen vom Einsatz solcher Verfahren ab. Da die Anwendung jedoch sonst keine besonders aufwendigen Berechnungen ausführen muss und der Qualitätsgewinn deutlich wahrnehmbar ist, wird MSAA dennoch verwendet.
 
@@ -522,9 +547,9 @@ Die Einstellungen sind über ein dem Daten-Panel ähnliches Objekt realisiert, d
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
+	\includegraphics[width=0.45\textwidth]{images/menu.jpg}
 	\hspace{0.05cm}	
-	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
+	\includegraphics[width=0.45\textwidth]{images/settings.jpg}
 	\caption{Einstellungen und Menü}
 	\label{img:menu-and-settings}
 \end{figure}

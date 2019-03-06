@@ -1,3 +1,16 @@
+\section{Hintergrund}
+\label{sec-2}
+\begin{comment}
+\begin{center}
+\fbox{
+\parbox{0.9\linewidth}{
+\textit{Ziel des Kapitels:}\\
+Hintergründe der Arbeit in 3 Abschnitten: HoloLens Technik, AR in Education und Physik Hintergründe.\\
+}}\\
+\end{center}
+\end{comment}
+TODO: Einleitender Satz zu den Hintergründen der Arbeit
+
 \subsection{HoloLens}
 \label{sec-2-1}
 \begin{comment}
@@ -181,10 +194,10 @@ Für die Entwicklung mit dem Toolkit und der HoloLens existiert ein umfassendes 
 \label{sec-2-1-4}
 Die technischen Eigenschaften der HoloLens haben Auswirkung auf Design und Nutzung von Anwendungen. Dazu gehören auch technisch bedingte Einschränkungen sowie zu berücksichtigende Aspekte für die Usability und Nutzererfahrung. Im Folgenden soll auf ausgewählte solcher Zusammenhänge hingewiesen werden.\\
 
-\textbf{\textit{Tracking}}\\
+\textit{Tracking}\\
 Ein wichtiger Punkt ist, das Tracking nicht zu behindern, da die Darstellungen andernfalls nicht korrekt im Raum positioniert werden können. Für die Stereo- und Tiefenkamera sind sehr dunkle und transparente Materialien problematisch, da hier kaum (Infrarot-) Licht reflektiert wird und so entsprechende Gegenstände nicht erkannt werden. Spiegelnde Materialien sind daher ebenfalls ungünstig.\\
 
-\textbf{\textit{Display}}\\
+\textit{Display}\\
 Die Displays sind, vergleichbar mit einem Beamer, in der Lage den Hintergrund zu überblenden, nicht jedoch ihn abzudunkeln. Dementsprechend ist kein Schwarz darstellbar. Wie transparent Objekte auf der HoloLens erscheinen, hängt folglich auch vom Hintergrund und der Umgebungshelligkeit ab. Ein sehr heller Hintergrund kann von der HoloLens nicht vollständig überblendet werden.
 \par
 \noindent\hspace*{5mm}
@@ -211,10 +224,10 @@ Angenommen ein Nutzer fokussiert ein reales Objekt in einer Entfernung unter zwe
 
 Sowohl für Akkommodation als auch Konvergenz gilt jedoch, dass die Unterschiede mit zunehmender Distanz kleiner werden und die Probleme deshalb vor allem bei kurzen Distanzen auftreten.\\
 
-\textbf{\textit{Hardwareressourcen}}\\
+\textit{Hardwareressourcen}\\
 Die Hardwareressourcen der HoloLens sind mit einer CPU und GPU mit jeweils 1 GHz und 1GB RAM stark limitiert. Anwendungen sollten daher möglichst ressourcenschonend sein. Auf rechenintensive Operationen wie z.B. Schattenberechnungen oder Kantenglättung muss meist verzichtet werden.\\
 
-\textbf{\textit{Framerate}}\\
+\textit{Framerate}\\
 Dabei ist es von besonderer Bedeutung, dass die Anwendung möglichst konstant 60 Bilder pro Sekunde ausgibt. Um die Hologramme im Raum stabil und ohne Ruckler oder Zittern anzuzeigen, müssen selbst feinste Kopfbewegungen ausgeglichen werden. Dazu nutzt die HoloLens ein spezielles Verfahren:
 \par
 \noindent\hspace*{5mm}
@@ -224,14 +237,14 @@ Bevor eine Szene in die Render-Pipeline geht, trifft die Brille anhand der Senso
 \label{sec-2-1-5}
 Damit Einschränkungen umgangen und negative Auswirkungen vermieden werden können, gibt es bereits einige Designempfehlungen und Guide-Lines sowie Empfehlungen zur Implementierung. Die Dokumentation zu Windows Mixed Reality umfasst hier einige Vorschläge und Hinweise, von denen besonders relevante hier vorgestellt werden sollen.\\
 
-\textbf{\textit{Positionierung von Objekten}}\\
+\textit{Positionierung von Objekten}\\
 Objekte sollten typischerweise aus einer Distanz zwischen einem und fünf Metern betrachtet werden, um die zuvor erläuterten Probleme mit der Wahrnehmung zu vermeiden. Deshalb sollten Objekte ausgeblendet werden, die zu nah kommen. Neben der Distanz spielt auch der Blickwinkel in der vertikalen eine Rolle. Damit ein Anwender die Darstellungen angenehm betrachten kann ist es wichtig, eine angenehme und natürliche Kopfposition zu ermöglichen. Hier wird ein Blickwinkel zwischen 0° und 35° unterhalb der Horizontlinie empfohlen.\\
 
 Weiterhin ist die Größe von Objekten von Bedeutung. Das gilt besonders dann, wenn sie mit dem an die Kopfbewegungen gekoppelten Cursor anvisiert werden müssen. Zu kleine Objekte wären für den Anwender schwer zu treffen. Ein Winkel zwischen 1,5° und 3° des Sichtfeldes dienen hier als Orientierung. Allerdings sollten die Darstellungen auch nicht zu groß sein, da sie sonst schon bei geringen Kopfbewegungen durch die Begrenzung des Displays abgeschnitten werden.\\
 
 Um Objekte wie z.B. Menus und Dialoge, die nicht fest im Raum verankert sind, anzupassen, stellt das Mixed Reality Toolkit verschiedene Funktionen wie z.B. Billboarding oder Tagalong zur Verfügung, die Abstand, Orientierung und Skalierung entsprechend der Nutzerbewegung automatisch anpassen.\\
 
-\textbf{\textit{Performance Optimierungen}}\\
+\textit{Performance Optimierungen}\\
 Da die Framerate maßgeblichen Einfluss auf die Stabilität von Hologrammen hat und die Hardwareressourcen limitiert sind, gibt es eine Reihe von empfohlenen Optimierungen und Hinweisen, um die Performance einer Anwendung zu verbessern. Diese umfassen unter anderem:
 \begin{itemize}[topsep=-2px]
 	\setlength{\itemsep}{-1pt}
@@ -247,7 +260,7 @@ Da die Framerate maßgeblichen Einfluss auf die Stabilität von Hologrammen hat 
 
 Um die Performance bei der Entwicklung im Blick haben zu können gibt es einige Tools. Die HoloLens stellt über ein Webinterface einen Performance-Monitor zur Verfügung. Dieser gibt Auskunft über die Auslastung von Ressourcen wie CPU und GPU, ähnlich zum Windows Taskmanager. Außerdem verfügt Unity über einen Profiler, der detailliertere Informationen zum Renderingprozess liefert.\\
 
-\textbf{\textit{Weitere Empfehlungen}}\\
+\textit{Weitere Empfehlungen}\\
 Aus ihren Erfahrungen und dem Nutzerfeedback aus mehreren HoloLens-Applikationen geben Zimmer et. al. einige weitere Empfehlungen \cite{Zimmer17}. Im Folgenden ist eine Auswahl an für diese Arbeit besonders relevanten Aspekten zusammengefasst:
 \begin{itemize}[topsep=-2px]
 	\setlength{\itemsep}{-1pt}

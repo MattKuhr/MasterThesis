@@ -32,7 +32,7 @@ Davon ausgehend soll der Fragestellung anhand eines konkreten Beispiels nachgega
 \end{comment}
 
 \subsection{Ergebnisse}
- Die Lösung integriert virtuelle Elemente in das Experiment, die relevante, physikalische Zusammenhänge abbilden. Anhand der von Seiten der Physik aufgestellten Anforderungen soll diese Unterstützung nun bewertet werden.\\
+ Die Lösung integriert virtuelle Elemente in das Experiment, die relevante, physikalische Zusammenhänge abbilden. Anhand der von Seiten der Physik aufgestellten Anforderungen soll diese Unterstützung nun bewertet werden.
 
 \subsubsection{Unterstützung des Experimentes}
 Die Anwendung integriert alle in den Anforderungen festgehaltenen Elemente, bis auf die als optional eingestuften, weiteren Parameter des Experimentes. Im Wesentlichen umfasst die Lösung folgende, inhaltliche Funktionen:
@@ -59,32 +59,37 @@ Die Anwendung integriert alle in den Anforderungen festgehaltenen Elemente, bis 
 
 Durch den gewählten Designansatz werden die physikalischen Eigenschaften in ihrem realen, räumlichen und zeitlichen Kontext dargestellt. Somit kann ein direkter Zusammenhang zwischen dem Verhalten der Objekte des Versuches und den physikalischen Modellen hergestellt werden.\\
 
-Nicht-funktionale Anforderungen:\\
-Korrektheit und Interpretierbarkeit wird weitestgehend über die Nutzung etablierter physikalischer Darstellungsmodelle gesichert. Dabei liegt der Fokus nicht auf möglichst exakten Darstellungen numerischer Werte, sondern auf einer zweckmäßigen Darstellung. Im Vordergrund steht das qualitative Verständnis.\\
+Wie die Lösung sicherstellt, dass die notwendigen Informationen auch tatsächlich erkennbar sind, ist in den einzelnen Umsetzungen gezielt erörtert.\\
+
+\textbf{Bewertung anhand der Nicht-funktionale Anforderungen}\\
+\textit{Korrektheit und Interpretierbarkeit}\\
+Die Korrektheit und Interpretierbarkeit wird weitestgehend über die Nutzung etablierter physikalischer Darstellungsmodelle gesichert. Dabei liegt der Fokus nicht auf möglichst exakten Darstellungen numerischer Werte, sondern auf einer zweckmäßigen Darstellung. Im Vordergrund steht das qualitative Verständnis.\\
 
 Die Anwendung ist jedoch nicht vollständig selbsterklärend, sondern bedarf einer Anleitung durch eine fachkundige Person. Das betrifft auch den Bereich Interpretierbarkeit in den Punkten:
 \begin{itemize}
+	\setlength{\itemsep}{-1pt}
+	\singlespacing
 	\item Räumliche Begrenzungen aller Felddarstellungen
 	\item Einordnung der berechneten Vektoren und Feldlinien als Komponenten des resultierenden Feldes
 	\item Einordnung der Simulationsdarstellung als unabhängig, vorberechnet und nur für die Spule allein zutreffend (ohne Feld der Erde)
-	\item Bewertung der Darstellungen als approximiert
+	\item Einordnung der Darstellungen als approximativ
 \end{itemize}
 
+Die betroffenen Eigenschaften lassen sich zwar erahnen oder indirekt ableiten, werden jedoch nicht direkt durch die Applikation kommuniziert. Dafür könnte die Anwendung um eine Einführung z.B. durch einen eingesprochenen Text mit einer eigenen Sequenz entwickelt werden.\\
 
+TODO: Abschnitt erweitern...
 
-\begin{itemize}
-	\setlength{\itemsep}{-1pt}
-	\singlespacing
-	\item Erweiterung des Versuches um Magnetfeld, Stromfluss, Kompass und weitere Informationen
-	\item Physikalische Eigenschaften von Magnetfeld abgebildet
-	\item Physikalische Zusammenhänge zwischen Stromfluss, Magnetfeld und Kompass umgesetzt
-	\item Anwendung zeigt nicht sichtbare, reale physikalische Zusammenhänge des Experimentes
-\end{itemize}
+\textit{Weitere Aspekte}\\
+Der Nutzer wird durch das Tragen der HoloLens nicht wesentlich in der Interaktion mit den Gerätschaften eingeschränkt. Alle wichtigen Elemente (Anschlüsse, Spannungsquelle, Kompassnadel, Messgeräte) bleiben sichtbar und werden wenn dann nur zu kleinen Teilen überblendet. Die Hände bleiben frei zum Einstellen der Geräte oder auch Aufschreiben von Notizen. Der Klicker hat eine kleine Schlaufe, so dass er nicht unbedingt festgehalten werden muss.\\
+
+Die Applikation ist auch für Anwender ohne Erfahrungen mit der HoloLens oder Mixed Reality im Allgemeinen nutzbar, es müssen keine Handgesten erlernt werden. Allerdings kann die Nutzererfahrung bei unerfahrenen Nutzern durch ungünstige (z.B. hektische) Kopfbewegungen beeinträchtigt werden. Außerdem wurden die vorhandenen Gerätschaften genutzt.\\
+
+TODO: Abschnitt erweitern...
 
 \subsubsection{Technische Umsetzung}
-Im Hinblick auf die technischen Anforderungen wurde eine Liste von Qualitätskriterien zugrunde gelegt. Die Bewertung der Lösung anhand dieses Maßstabes ist Tabelle \ref{tab:tech_results} zu entnehmen. Der Einschätzung liegen die zu jedem Kriterium genannten Hinweise zur Bewertung zu Grunde.\\
-
-\textbf{Qualitätskriterien}
+Im Hinblick auf die technischen Anforderungen wurde eine Liste von Qualitätskriterien zugrunde gelegt. Die Bewertung der Lösung anhand dieses Maßstabes ist Tabelle \ref{tab:tech_results} zu entnehmen. Der Einschätzung liegen die zu jedem Kriterium genannten Hinweise zur Bewertung zu Grunde.
+%\textbf{Qualitätskriterien}
+%\begin{sidewaystable}[h!]
 \begin{landscape}
 	\bgroup
 	\setlength\extrarowheight{-2pt}
@@ -117,6 +122,7 @@ Im Hinblick auf die technischen Anforderungen wurde eine Liste von Qualitätskri
 		\end{tabular}\caption{\label{tab:tech_results} Bewertung der Umsetzung anhand von Qualitätskriterien.}
 	\end{table}
 	\egroup
+%\end{sidewaystable}
 \end{landscape}
 
 Insgesamt erfüllt die Applikation die Anforderungen fast vollständig bis vollständig. Einige Probleme konnten bereits im Design abgemildert oder umgangen werden. Das gilt z.B. für die Aspekte Komfortzone und FOV-Grenzen. Durch die platzsparende Anordnung der Elemente werden die Hologramme seltener abgeschnitten. Außerdem sind häufige Kopfbewegungen und Hinweise auf Elemente außerhalb des FOV so nicht notwendig. Und die Berücksichtigung einer geeigneten Distanz von Beginn an vermeidet bzw. verringert Probleme mit zu dicht positionierten Objekten.\\
@@ -127,7 +133,7 @@ Die Umsetzung unterstützt bereits im Design verankerte Maßnahmen weiter. Hier 
 Die Darstellungen passen bei einer üblichen Position vollständig in die Grenzen des Sichtfeldes. Der Screenshot in Abb. \ref{img:fov} zeigt die Kameraperspektive aus solch einer Position. Dabei ließe sich der Kopf horizontal in beide Richtungen etwa 6° drehen, ohne dass die Hologramme abgeschnitten werden würden.
 \begin{wrapfigure}{r}{0.5\textwidth}
 	\centering
-	\includegraphics[width=0.48\textwidth]{images/todo.jpg}
+	\includegraphics[width=0.48\textwidth]{images/fov.jpg}
 	\caption{Screenshot zeigt Kameraperspektive bei 1,5m Distanz zum Zentrum der Spule, 30° Neigung. Auflösung und Seitenverhältnis entspricht dem eines einzelnen Displays auf der HoloLens.}
 	\label{img:fov}
 \end{wrapfigure}
@@ -140,7 +146,7 @@ Allerdings hängt die Stabilität nicht unwesentlich von den Randbedingungen ab.
 \textit{Positionierung}
 \begin{wrapfigure}{r}{0.5\textwidth}
 	\centering
-	\includegraphics[width=0.48\textwidth]{images/todo.jpg}
+	\includegraphics[width=0.48\textwidth]{images/model-overlay.jpg}
 	\caption{Überlagerung virtuelle und reale Spule}
 	\label{img:model-overlay}
 \end{wrapfigure}
@@ -150,12 +156,12 @@ Einen Eindruck von der Güte der Positionierung lässt sich anhand von Abb. \ref
 In Puncto Interaction Clarity kann die Lösung nur als mittel eingestuft werden. Denn das Kriterium verlangt ausdrücklich, dass eine Anwendung die ihr zu Grunde liegenden Interaktionsmöglichkeiten erklärt, sofern sie über Gewohntes hinausgehen. Das ist hier bei der Steuerung außerhalb des Menüs nicht der Fall. Die Lösung setzt eine Anleitung durch eine begleitende Person voraus, die den Anwender über die möglichen Aktionen informiert. Die anderen Punkte des Kriteriums werden jedoch erfüllt.\\
 
 \textit{Performance}
-\begin{wrapfigure}{L}{0.5\textwidth}
+\begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.48\textwidth]{images/todo.jpg}
+	\includegraphics[width=\textwidth]{images/performance.jpg}
 	\caption{Performance Monitor}
 	\label{img:performance}
-\end{wrapfigure}
+\end{figure}
 
 Einen Eindruck vom Ressourcenverbauch der App vermittelt der Screenshot in Abb. \ref{img:performance}. Zu sehen ist die Auslastung der Brille über einen Zeitraum von 60 Sekunden. Währenddessen wurde mehrfach zwischen den verschiedenen Darstellungen hin- und hergewechselt und das Menü aufgerufen.\\
 
@@ -177,26 +183,45 @@ Zur Bewertung der vorgestellten Lösung wurde die Anwendung außerdem unterschie
 
 Die Reaktionen lassen sich durchweg als positiv beschreiben.
 
+TODO...
 
 \begin{itemize}
 	\item "Kann ich Fotos davon haben"
-	\item Kleines Sichtfeld wurde mehrfach angemerkt
+	\item Kleines Sichtfeld wurde nur vereinzelt angemerkt
 	\item Vor allem die direkte Interaktion über die Spannungsquelle und die Feldlinien aus den Simulationsdaten wurden positiv aufgenommen
 \end{itemize}
 
 
 \subsection{Diskussion}
+TODO...
 
-\subsubsection{Vor- und Nachteile}
-\subsubsection{Erweiterbarkeit}
+Frage: Wie HoloLens einsetzen?
+
 \begin{itemize}
+	\item Über 3D-Darstellungen Felder im Raum anzeigen, profitiert von stereoskopischer Wahrnehmung und See-Through-Displays
+	\item Empfohlene Verhaltensweisen durch Nutzung von vorgefertigten Elementen einbinden
+	\item Interaktion einfach halten, z.B. durch Klicker
+	\item Zusammenspiel von realen und virtuellen Objekten nutzen, nicht für alles muss eine softwareseitige Lösung geschaffen werden
+	\item Virtuelle Objekte an Versuchsaufbau verankern, dadurch verliert Nutzer sie nicht
+	\item Tracking der HoloLens nutzen, um Objekte zu positionieren, anstelle eines dauerhaft sichtbaren Markers, Stabilität ausreichend, dabei aber mögliche Störfaktoren beachten
+	\item World Anchor kann für grobe Positionierung genutzt werden, um Setup-Zeit zu verringern
+	\item Anwendung ist hochgradig zugeschnitten auf die konkreten Eigenschaften des Experimentes
+\end{itemize}
+
+
+\subsubsection{Erweiterbarkeit}
+Mögliche Erweiterungen:
+\begin{itemize}
+	\item Vorberechnete Feldlinien für ein 3D-Ausschnitt möglich
 	\item Weitere Lehrinhalte denkbar: z.B. Entstehung und Überlagerung der Einzelfelder, Elektrisches Feld um die Leiter herum, Anderer Versuch: Ablenkung eines Elektronenstrahls in der Spule
 	\item Applikation ist parametrisiert: Andere physikalische Parameter möglich
-	\item Variation von Spulengröße möglich, aber Parameter für die Darstellung müssen angepasst werden. Bei einer anderen Spule müsste das virtuelle Modell geändert werden.
-	\item Leistung hat noch Reserven für mehr Darstellungen
+	\item Ressourcen werden nicht ausgelastet, bieten noch Reserven für mehr Darstellungen	
+	\item Variation von Spulengröße möglich, aber Anpassung der Parameter für die Darstellung und des Modells nötig. Andere Größenordnung erfordert ggf. andere Lösungen aufgrund des Sichtfeldes, Abstandes etc.
+	\item Umsetzung für ein konkretes Einsatzszenario auslegen z.B. Schulunterricht
 \end{itemize}
 
 \subsubsection{Übertragbarkeit}
+Ansatz übertragen auf andere Versuche:
 \begin{itemize}
 	\item Einbettung eines Elektrischen Feldes analog, z.B. Kondensator
 	\item Annotationen und Echtzeitdaten auch bei anderen Versuchen denkbar
