@@ -163,17 +163,28 @@ In Puncto Interaction Clarity kann die Lösung nur als mittel eingestuft werden.
 	\label{img:performance}
 \end{figure}
 
-Einen Eindruck vom Ressourcenverbauch der App vermittelt der Screenshot in Abb. \ref{img:performance}. Zu sehen ist die Auslastung der Brille über einen Zeitraum von 60 Sekunden. Währenddessen wurde mehrfach zwischen den verschiedenen Darstellungen hin- und hergewechselt und das Menü aufgerufen.\\
+Einen Eindruck vom Ressourcenverbauch der App vermittelt der Screenshot in Abb. \ref{img:performance}. Zu sehen ist die Auslastung der Brille über einen Zeitraum von 60 Sekunden. Währenddessen wurde mehrfach zwischen den verschiedenen Darstellungen hin- und hergewechselt und das Menü aufgerufen.
 
-TODO Ergebnisse ermitteln
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{images/profiler.png}
+	\caption{Profiler}
+	\label{img:profiler}
+\end{figure}
+
 \begin{itemize}
 	\setlength{\itemsep}{-1pt}
 	\singlespacing
 	\item Konstante Framerate von 60 FPS
-	\item CPU: X-Y\% Auslastung
-	\item GPU: X-Y\% Auslastung
-	\item Stromverbrauch liegt im grünen Bereich
+	\item CPU: 60-30\% Auslastung
+	\item GPU: 40-50\% Auslastung
+	\item Stromverbrauch unregelmäßig
 \end{itemize}
+
+Insgesamt ist die Auslastung der Hardware relativ hoch. Zwar liegen sowohl bei CPU als auch GPU noch Reserven, allerdings bestimmt das Zusammenspiel von CPU und GPU die Framerate.\\
+
+MSAA treibt Ressourcenverbrauch in die Höhe: ohne MSAA etwa 25\% GPU\\
+Rendering der Linien besonders CPU-intensiv. knapp 7 ms CPU-Zeit nur für die Linien, ohne Optimierungen etwa 45 ms\\
 
 \textit{Testbedingungen}\\
 Die Bewertung wurde anhand von Tests unter für die Anwendung günstigen Bedingungen durchgeführt. Der Versuchsaufbau wurde so positioniert, dass die umliegenden Objekte gut für das Tracking der Brille geeignet sind. Außerdem wurde die HoloLens vorher öfter im Testraum verwendet und hatte daher bereits ein gutes Modell des Raums zur Orientierung. Weiterhin wurde die Brille auf den Tester kalibriert und ruckartige oder unnötige Kopfbewegungen vermieden. 
