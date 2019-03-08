@@ -47,7 +47,7 @@ Die Übertragung der Messwerte vom Arduino zur Anwendung ist so konzipiert, dass
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{images/Sequenzdiagramm.png}
+	\includegraphics[width=0.8\textwidth]{images/schema/Sequenzdiagramm.png}
 	\caption{Sequenzdiagramm Kommunikation}
 	\label{img:Sequenzdiagramm}
 \end{figure}
@@ -196,7 +196,7 @@ Nach oben hin ist keine Darstellung der Begrenzung vorgesehen. Der Bereich sollt
 Die Feldliniendarstellung ist in Abb. \ref{img:mfield-lines} gesondert dargestellt.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{images/fieldlines.jpg}
+	\includegraphics[width=0.8\textwidth]{images/HL/fieldlines.jpg}
 	\caption{Feldlinien}
 	\label{img:mfield-lines}
 \end{figure}
@@ -238,7 +238,7 @@ Dabei wurde sich bewusst für die Abbildung der Flussdichte auf den Abstand der 
 Die Umsetzung der Vektordarstellung ist in Abb. \ref{img:mfield-vectors} näher zu sehen.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{images/vector.jpg}
+	\includegraphics[width=0.8\textwidth]{images/HL/vectors.jpg}
 	\caption{Vektoren}
 	\label{img:mfield-vectors}
 \end{figure}
@@ -278,7 +278,7 @@ Im Gegensatz zu den Feldlinien ist eine Darstellung des inhomogenen Feldes über
 Eine Visualisierung der Simulationsdaten ist in Abb. \ref{img:mfield-simulation} näher zu sehen.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{images/simulation.jpg}
+	\includegraphics[width=0.8\textwidth]{images/HL/simulation.jpg}
 	\caption{Simulation}
 	\label{img:mfield-simulation}
 \end{figure}
@@ -394,6 +394,7 @@ Der Kompass besteht aus einer virtuellen Skala und einer realen Magnetnadel in d
 				\item Gestrichelte Linie durch Textur mit weißem Kreis und transparentem Hintergrund, Skalierung auf die Länge der Linie mit Tiling
 				\item Billboard-Verhalten für Sichtbarkeit aus unterschiedlichen Winkeln
 				\item Grau als Farbe genutzt, leicht transparent, virtueller Kompass jedoch etwas heller und daher präsenter gestaltet
+				\item Magnetnadel von dunkelgrau zu weiß geändert für bessere Sichtbarkeit
 			\end{itemize}
 			\vspace{18px}
 	}}\\
@@ -409,7 +410,7 @@ Der Kompass liegt horizontal in einer Ebene durch den Spulenmittelpunkt. Die rin
 	\label{img:compass}
 \end{figure}
 
-Als Farbe wurde Grau gewählt, damit die Linien neutral und weniger dominant wirken. Dem dient auch die Wahl von gestrichelten anstelle durchgezogener Linien. Gleichzeitig wurde die zuvor dunkle Magnetnadel hell angemalt, damit sie zwischen den virtuellen Objekten besser zu sehen ist.\\
+Als Farbe wurde Grau gewählt, damit die Linien neutral und weniger dominant wirken. Dem dient auch die Wahl von gestrichelten anstelle durchgezogener Linien. Gleichzeitig wurde die zuvor dunkle Magnetnadel mit weißem Papier überklebt, damit sie zwischen den virtuellen Objekten besser zu sehen ist.\\
 
 In dieser Umsetzung wird zunächst keine Verdeckung durch die Magnetnadel berechnet. Diese ließe sich anhand der theoretischen Auslenkung berechnen. Allerdings unterliegt die reale Nadel Trägheit und Reibung, die in der Berechnung nicht berücksichtigt werden. Außerdem ist sie sehr schmal (etwa 5 mm breit), weshalb Abweichungen zwischen realem und virtuellem Modell stärker ins Gewicht fallen, als bei größeren Objekten. Daher verzichtet diese Lösung darauf, was sich jedoch negativ auf die Immersion des Anwenders auswirkt.\\
 
@@ -469,11 +470,11 @@ Die Implementierung der Darstellungen wird begleitet von weiteren technischen L�
 \vspace{6px}
 
 \textit{Occlusion Berechnung}\\
-Für die Verdeckungsberechnung wurde die Spule anhand gemessener Größen in Blender modelliert. Das Spatial Mapping der HoloLens ist hier zu ungenau, um eine glaubwürdige Verdeckung zu ermöglichen. Eine Gegenüberstellung des durch die HoloLens aufgenommenen Spatial Mappings mit der modellierten Geometrie ist in Abb. \ref{img:mesh-vs-model} zu sehen.
+Für die Verdeckungsberechnung wurde die Spule anhand gemessener Größen in Blender modelliert. Das Spatial Mapping der HoloLens ist hier zu ungenau, um eine glaubwürdige Verdeckung zu ermöglichen. In der Standard-Einstellung wird die Spule gar nicht erkannt, was wohl auch dem Material (Kupfer) geschuldet sein dürfte. Eine Darstellung des Spatial Mappings des Versuchsaufbaus ist in Abb. \ref{img:mesh-vs-model} zu sehen.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.45\textwidth]{images/model.jpg}
-	\caption{HoloLens Mesh der Spule}
+	\includegraphics[width=0.45\textwidth]{images/HL/mesh.jpg}
+	\caption{Spatial Mapping der Gerätschaften. Während die Spannungsquelle gut zu sehen ist, ist die Spule lediglich als Unebenheiten im Tisch zu erkennen.}
 	\label{img:mesh-vs-model}
 \end{figure}
 Die Geometrie wird ausschließlich in den Tiefenpuffer gerendert\footnote{Der entsprechende Shader ist nur wenige Zeilen lang und findet sich in verschiedenen Varianten im Internet. Dieser orientiert sich an http://wiki.unity3d.com/index.php/DepthMask}. Das vermeidet überflüssige Draw Calls und folgt der Empfehlung der Dokumentation. Damit virtuelle Objekte aber auch dann noch verdeckt bleiben, wenn reale Objekte nah kommen, muss das Near Clipping Plane sehr nah am Kameraursprung liegen. Andernfalls würden weiter entfernte, virtuelle Objekte plötzlich doch vor realen Objekten angezeigt werden, sobald letztere zu nah sind und das Clipping die für die Verdeckung eingesetzten Objekte vom Rendering ausschließt. Das stellt bei dieser Lösung aber kein Problem dar, weil zu nahe, virtuelle Objekte ohnehin über ein eigenes Verhalten ausgeblendet werden, das nicht auf die Clippingebene aufbaut.\\
@@ -591,6 +592,7 @@ Zuletzt sollen einige Maßnahmen genannt werden, die zu einem geringeren Ressour
 	\item Physics Enginge deaktiviert
 	\item Occlusion Mesh wird ausschließlich in Z-Puffer gerendert
 	\item Unsichtbare (vollst. transparente) Objekte werden meist deaktiviert
+	\item Reduktion der Simulationsdaten auf ca. 10\% durch eine Minimum-Abstand-Regel und Bereinigung von doppelt gezeichneten Linien
 \end{itemize}
 
 Diese Maßnahmen basieren vorrangig auf den Empfehlungen zur Performance in der Dokumentation.

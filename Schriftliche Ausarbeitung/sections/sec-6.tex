@@ -102,7 +102,7 @@ Im Hinblick auf die technischen Anforderungen wurde eine Liste von Qualitätskri
 			\hline
 			Framerate & Durchgehend 60 FPS, keine Framedrops. Einzig bei Start/Stopp von Vuforia hängt die Anwendung kurz (<1s). & Optimal\\
 			\hline
-			Stabilität der Hologramme & Hologramme erscheinen durchgehend sehr stabil, Elemente liegen im Abstand von max. 20cm zu einem Spatial Anchor und der Stabilization Plane. Seltene, minimale Sprünge sowie Wippen der simulierten Feldlinien treten auf. & Fast optimal\\
+			Stabilität der Hologramme & Hologramme erscheinen durchgehend sehr stabil, Elemente liegen im Abstand von max. 20cm zu einem Spatial Anchor und der Stabilization Plane. Seltene, minimale Sprünge sowie Wippen der simulierten Feldlinien treten auf. Objekte, die sehr dicht an realen liegen, driften bei Bewegungen leicht & Fast optimal\\
 			\hline
 			Positionierung & Sehr genaue Positionierung über optischen Marker. Hologramme sind glaubhaft in die Spule eingebettet. Überschneidungen von wenigen Millimetern sind jedoch möglich. & Fast optimal\\
 			\hline
@@ -133,20 +133,20 @@ Die Umsetzung unterstützt bereits im Design verankerte Maßnahmen weiter. Hier 
 Die Darstellungen passen bei einer üblichen Position vollständig in die Grenzen des Sichtfeldes. Der Screenshot in Abb. \ref{img:fov} zeigt die Kameraperspektive aus solch einer Position. Dabei ließe sich der Kopf horizontal in beide Richtungen etwa 6° drehen, ohne dass die Hologramme abgeschnitten werden würden.
 \begin{wrapfigure}{r}{0.5\textwidth}
 	\centering
-	\includegraphics[width=0.48\textwidth]{images/fov.jpg}
+	\includegraphics[width=0.48\textwidth]{images/unity/fov.jpg}
 	\caption{Screenshot zeigt Kameraperspektive bei 1,5m Distanz zum Zentrum der Spule, 30° Neigung. Auflösung und Seitenverhältnis entspricht dem eines einzelnen Displays auf der HoloLens.}
 	\label{img:fov}
 \end{wrapfigure}
 
 \textit{Stabilität}\\
-Die Stabilität der Objekte beeinflusst die Nutzererfahrung wesentlich, da durch die Einbettung in die Spule selbst geringe Abweichungen negativ auffallen. Bei einer umsichtigen Nutzung treten diesbezüglich wenige bis keine Probleme auf. Selten sind kleinere Sprünge festzustellen. Einzig die Darstellung der Feldlinien wippt bei vertikalen Kopfbewegungen leicht um den Mittelpunkt. Das ist der Tatsache geschuldet, dass die Feldlinien steil auf der Stabilisations-Ebene stehen und sich von dieser mehr als einen Meter ausbreiten. Der Effekt ist jedoch gering und nur auffällig, wenn er provoziert wird.\\
+Die Stabilität der Objekte beeinflusst die Nutzererfahrung wesentlich, da durch die Einbettung in die Spule selbst geringe Abweichungen negativ auffallen. Bei einer umsichtigen Nutzung treten diesbezüglich wenige bis keine Probleme auf, die Elemente wirken stabil. Lediglich die sehr nah an der Spule positionierten Daten-Panels und Tooltips können bei Bewegungen einen leichten Drift aufweisen. Selten sind kleinere Sprünge oder Vibrationen festzustellen. Und die Darstellung der Feldlinien wippt bei vertikalen Kopfbewegungen leicht um den Mittelpunkt. Das ist der Tatsache geschuldet, dass die Feldlinien steil auf der Stabilisations-Ebene stehen und sich von dieser bis zu 1,2 Meter ausbreiten. Der Effekt ist jedoch gering und nur auffällig, wenn er provoziert wird.\\
 
 Allerdings hängt die Stabilität nicht unwesentlich von den Randbedingungen ab. Die weiter unten genannten Umstände des Tests erleichtern das Tracking und die Stabilisation. Unter weniger geeigneten Bedingungen kann die Stabilität und damit auch die Positionierung der Hologramme beeinträchtigt werden. Insbesondere kann es bei unerfahrenen Nutzern durch ungünstige Aktionen wie z.B. ruckartige Kopfbewegungen zu negativen Auswirkungen auf die Stabilität kommen.\\
 
 \textit{Positionierung}
 \begin{wrapfigure}{r}{0.5\textwidth}
 	\centering
-	\includegraphics[width=0.48\textwidth]{images/model-overlay.jpg}
+	\includegraphics[width=0.48\textwidth]{images/HL/model-overlay.jpg}
 	\caption{Überlagerung virtuelle und reale Spule}
 	\label{img:model-overlay}
 \end{wrapfigure}
@@ -155,10 +155,12 @@ Einen Eindruck von der Güte der Positionierung lässt sich anhand von Abb. \ref
 \textit{Interaction Clarity}\\
 In Puncto Interaction Clarity kann die Lösung nur als mittel eingestuft werden. Denn das Kriterium verlangt ausdrücklich, dass eine Anwendung die ihr zu Grunde liegenden Interaktionsmöglichkeiten erklärt, sofern sie über Gewohntes hinausgehen. Das ist hier bei der Steuerung außerhalb des Menüs nicht der Fall. Die Lösung setzt eine Anleitung durch eine begleitende Person voraus, die den Anwender über die möglichen Aktionen informiert. Die anderen Punkte des Kriteriums werden jedoch erfüllt.\\
 
-\textit{Performance}
+\textit{Performance}\\
+Etwas ausführlicher soll hier noch der Ressourcenverbrauch der Applikation beleuchtet werden. Die Performance hat maßgeblichen Einfluss auf die Stabilität und Positionierung der Hologramme und ist daher besonders wichtig. Die Anwendung wurde mit Hilfe von Unity's Profiler sowie des Windows Performance Analyzers bei einem ein-minütigem Einsatz auf der HoloLens analysiert. Dabei wurde das Menü und die drei verschiedenen Darstellungen aufgerufen.
+
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=\textwidth]{images/performance.jpg}
+	\includegraphics[width=\textwidth]{images/performance/performance.jpg}
 	\caption{Performance Monitor}
 	\label{img:performance}
 \end{figure}
@@ -167,7 +169,7 @@ Einen Eindruck vom Ressourcenverbauch der App vermittelt der Screenshot in Abb. 
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=\textwidth]{images/profiler.png}
+	\includegraphics[width=\textwidth]{images/performance/profiler.png}
 	\caption{Profiler}
 	\label{img:profiler}
 \end{figure}
@@ -190,18 +192,39 @@ Rendering der Linien besonders CPU-intensiv. knapp 7 ms CPU-Zeit nur für die Li
 Die Bewertung wurde anhand von Tests unter für die Anwendung günstigen Bedingungen durchgeführt. Der Versuchsaufbau wurde so positioniert, dass die umliegenden Objekte gut für das Tracking der Brille geeignet sind. Außerdem wurde die HoloLens vorher öfter im Testraum verwendet und hatte daher bereits ein gutes Modell des Raums zur Orientierung. Weiterhin wurde die Brille auf den Tester kalibriert und ruckartige oder unnötige Kopfbewegungen vermieden. 
 
 \subsubsection{Feedback}
-Zur Bewertung der vorgestellten Lösung wurde die Anwendung außerdem unterschiedlichen Personen vorgestellt und zum Testen überlassen. Dabei handelt es sich um ca. 15 Personen mit unterschiedlichem Grad an Expertise. Das Spektrum umfasst ungefähr zu gleichen Teilen Akademiker, Lehrer und Studenten der Physik. Deren Feedback wurde qualitativ festgehalten und für diese Arbeit zusammengefasst.\\
+Zur Bewertung der vorgestellten Lösung wurde die Anwendung außerdem unterschiedlichen Personen vorgestellt und zum Testen überlassen. Dabei handelt es sich um ca. 15 Personen mit unterschiedlichem Grad an Expertise. Das Spektrum umfasst ungefähr zu gleichen Teilen Akademiker, Lehrer und Studenten der Physik. Deren Feedback wurde für diese Arbeit qualitativ festgehalten und zusammengefasst. Die Nutzung der Anwendung beschränkte sich dabei meistens auf den Hauptteil mit den physikalischen Darstellungen.\\
 
-Die Reaktionen lassen sich durchweg als positiv beschreiben.
+\vspace{8px}
+\begin{center}
+	\fbox{
+		\parbox{0.9\linewidth}{
+			\vspace{4px}
+			\textit{Qualitatives Feedback}
+			\begin{itemize}[rightmargin=12px, topsep=-12px]
+				\setlength{\itemsep}{-1pt}
+				\singlespacing
+				\item Insgesamt positive Bewertung aller Nutzer
+				\item Besonders viel positives Feedback zu: 
+				\begin{itemize}[topsep=-0.25em]
+					\setlength{\itemsep}{-0.25em}
+					\item Darstellung der numerischen Lösung 
+					\item Interaktivität in Echtzeit
+				\end{itemize}
+				\item Häufig gewählte Wörter zur Beschreibung der Nutzererfahrung: ''Toll'', ''Cool'' und ''Beeindruckend''
+				\item Fragen nach einer berechneten Darstellung für 3D
+				\item Keine negativen Äußerungen zur Stabilität und Positionierung
+				\item Anmerkungen zu hohem Aufwand und Praktikabilität
+				\item Viele wollten gern Fotos der Anwendung haben
+			\end{itemize}
+			\vspace{18px}
+	}}\\
+\end{center}
+\vspace{6px}
 
-TODO...
+\textit{Erfahrungen zur praktischen Nutzung der HoloLens}\\
+Die Reaktionen lassen sich durchweg als positiv beschreiben. Obwohl die meisten Tester keine oder kaum Erfahrung mit der HoloLens oder anderen HMDs hatten, beschränkten sich die Schwierigkeiten in der Nutzung auf ein Minimum. Diese betrafen vor allem das Aufsetzen der Brille. Denn wenn diese nicht richtig sitzt, ist das ohnehin schon kleine Sichtfeld nicht vollständig sichtbar. Hier schaffte jedoch eine kurze Erklärung dazu, wie die Brille sitzen sollte, Abhilfe. Außerdem war die Klick-Geste für viele Nutzer nicht auf Anhieb nutzbar, deshalb wurde meist der Klicker bevorzugt. Die Limitierung des Sichtfeldes wurde nur vereinzelt negativ angemerkt.\\
 
-\begin{itemize}
-	\item "Kann ich Fotos davon haben"
-	\item Kleines Sichtfeld wurde nur vereinzelt angemerkt
-	\item Vor allem die direkte Interaktion über die Spannungsquelle und die Feldlinien aus den Simulationsdaten wurden positiv aufgenommen
-\end{itemize}
-
+Die Tatsache, dass größtenteils keine vorangegangenen Erfahrungen mit dem Nutzererlebnis der HoloLens bestanden, trägt natürlich nicht unwesentlich zu den oben genannten Reaktionen bei.\\
 
 \subsection{Diskussion}
 TODO...
@@ -214,9 +237,11 @@ Frage: Wie HoloLens einsetzen?
 	\item Interaktion einfach halten, z.B. durch Klicker
 	\item Zusammenspiel von realen und virtuellen Objekten nutzen, nicht für alles muss eine softwareseitige Lösung geschaffen werden
 	\item Virtuelle Objekte an Versuchsaufbau verankern, dadurch verliert Nutzer sie nicht
-	\item Tracking der HoloLens nutzen, um Objekte zu positionieren, anstelle eines dauerhaft sichtbaren Markers, Stabilität ausreichend, dabei aber mögliche Störfaktoren beachten
+	\item Tracking der HoloLens nutzen, um Objekte zu positionieren, anstelle eines dauerhaft sichtbaren Markers, Stabilität ausreichend, dabei aber mögliche Störfaktoren beachten...
+	\item ... Stabilität bei diesem Ansatz wichtig, daher Performance sehr wichtig, unbedingt beachten und Optimierungen vornehmen
 	\item World Anchor kann für grobe Positionierung genutzt werden, um Setup-Zeit zu verringern
 	\item Anwendung ist hochgradig zugeschnitten auf die konkreten Eigenschaften des Experimentes
+	\item Einsatz per Streaming denkbar, dann jedoch weitere perf. Opt. notwendig oder Deaktivieren von MSAA
 \end{itemize}
 
 
@@ -226,7 +251,7 @@ Mögliche Erweiterungen:
 	\item Vorberechnete Feldlinien für ein 3D-Ausschnitt möglich
 	\item Weitere Lehrinhalte denkbar: z.B. Entstehung und Überlagerung der Einzelfelder, Elektrisches Feld um die Leiter herum, Anderer Versuch: Ablenkung eines Elektronenstrahls in der Spule
 	\item Applikation ist parametrisiert: Andere physikalische Parameter möglich
-	\item Ressourcen werden nicht ausgelastet, bieten noch Reserven für mehr Darstellungen	
+	\item Kaum noch Reserven für mehr Darstellungen, weitere perf. Opt. vornehmen, z.B. selektives Aktivieren/Deaktivieren von MSAA
 	\item Variation von Spulengröße möglich, aber Anpassung der Parameter für die Darstellung und des Modells nötig. Andere Größenordnung erfordert ggf. andere Lösungen aufgrund des Sichtfeldes, Abstandes etc.
 	\item Umsetzung für ein konkretes Einsatzszenario auslegen z.B. Schulunterricht
 \end{itemize}
