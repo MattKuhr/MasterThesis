@@ -32,10 +32,16 @@ Davon ausgehend soll der Fragestellung anhand eines konkreten Beispiels nachgega
 \end{comment}
 
 \subsection{Ergebnisse}
- Die Lösung integriert virtuelle Elemente in das Experiment, die relevante, physikalische Zusammenhänge abbilden. Anhand der von Seiten der Physik aufgestellten Anforderungen soll diese Unterstützung nun bewertet werden.
-
+ Die Lösung integriert virtuelle Elemente in das Experiment, die relevante, physikalische Zusammenhänge abbilden. Dazu gehören interaktive Darstellungen des Magnetfeldes sowie Messwerte, der Stromfluss und ein Kompass. Durch eine dreidimensionale Einbettung in den tatsächlichen Versuchsaufbau wird ein direkter Zusammenhang zwischen dem Verhalten der Objekte des Versuches und den physikalischen Modellen hergestellt.
+ \par
+ \noindent\hspace*{5mm}
+ Gleichzeitig berücksichtigt das Design die besonderen technischen Modalitäten der HoloLens. Auf der einen Seite wird von den verschiedenen technischen Möglichkeiten Gebrauch gemacht (Tracking, World Anchor, stereoskopisches see-through Display, Gestenerkennung, etc.). Auf der andern Seite werden technisch bedingte Anforderungen an das Design von Anwendungen berücksichtigt (Abstand, Größe, Farbe, Positionierung, Performance, etc.).
+ \par
+ \noindent\hspace*{5mm}
+ Im Weiteren sollen die Ergebnisse zunächst aus anwendungsorientierter Sicht näher vorgestellt werden, bevor auf die Resultate aus technischer Sicht eingegangen wird.
+ 
 \subsubsection{Unterstützung des Experimentes}
-Die Anwendung integriert alle in den Anforderungen festgehaltenen Elemente, bis auf die als optional eingestuften, weiteren Parameter des Experimentes. Im Wesentlichen umfasst die Lösung folgende, inhaltliche Funktionen:
+Die Anwendung unterstützt die Vermittlung der physikalischen Zusammenhänge durch die Integration der entsprechenden Modelle und Darstellungen in den Versuchsaufbau und -Ablauf. Im Wesentlichen umfasst die Lösung diesbezüglich folgende, inhaltliche Funktionen:
 \vspace{8px}
 \begin{center}
 	\fbox{
@@ -46,20 +52,60 @@ Die Anwendung integriert alle in den Anforderungen festgehaltenen Elemente, bis 
 				\setlength{\itemsep}{-1pt}
 				\singlespacing
 				\item Visualisierung der Komponenten des Magnetfeldes in zwei Darstellungen und in Echtzeit
-				\item Darstellung einer vorberechneten, numerischen Lösung für eine ausgewählte Ebene
+				\item Darstellung einer vorberechneten, numerischen Lösung für eine ausgewählte Ebene des Feldes der Spule
 				\item Kennzeichnung des Stromflusses
 				\item Integration eines Kompass mit Hervorhebung wichtiger Zustände
 				\item Einbettung einer virtuellen Kompassnadel auf Basis theoretischer Werte
-				\item Numerischer Darstellung gemessener und berechneter Echtzeitdaten
+				\item Numerische Darstellung gemessener und berechneter Echtzeitdaten
 			\end{itemize}
 			\vspace{18px}
 	}}\\
 \end{center}
 \vspace{6px}
 
-Durch den gewählten Designansatz werden die physikalischen Eigenschaften in ihrem realen, räumlichen und zeitlichen Kontext dargestellt. Somit kann ein direkter Zusammenhang zwischen dem Verhalten der Objekte des Versuches und den physikalischen Modellen hergestellt werden.\\
+Durch den gewählten Designansatz werden die physikalischen Eigenschaften in ihrem realen, räumlichen und zeitlichen Kontext dargestellt. Somit kann ein direkter Zusammenhang zwischen dem Verhalten der Objekte des Versuches und den physikalischen Modellen, Darstellungen und Messwerten hergestellt werden. Dabei unterstützt die Anwendung in erster Linie ein qualitatives Verständnis. Die durch die Applikation gestützten Zusammenhänge lassen sich wie folgt zusammenfassen:
 
-Wie die Lösung sicherstellt, dass die notwendigen Informationen auch tatsächlich erkennbar sind, ist in den einzelnen Umsetzungen gezielt erörtert.\\
+\vspace{8px}
+\begin{center}
+	\fbox{
+		\parbox{0.9\linewidth}{
+			\vspace{4px}
+			\textit{Physikalische Zusammenhänge}
+			\begin{itemize}[rightmargin=12px, topsep=-12px]
+				\setlength{\itemsep}{-1pt}
+				\singlespacing
+				\item Räumliches Verständnis des Feldes der Spule
+				\item Zusammenhang zwischen Stromstärke und Flussdichte
+				\item Verständnis der verschiedenen Darstellungsmodelle
+				\item Zusammenspiel der Einzelfelder von Erde und Spule
+				\item Auswirkungen des entstehenden Feldes auf die Magnetnadel
+				\item Einfluss von Störfaktoren wie Reibung und Trägheit auf die Nadel
+			\end{itemize}
+			\vspace{18px}
+	}}\\
+\end{center}
+\vspace{6px}
+
+\textit{Feld der Spule}\\
+Die verschiedenen Darstellungen geben zusammen einen Einblick in die Struktur des dreidimensionalen Feldes der Spule. Die Richtung, Stärke und Homogenität des Feldes werden für das Innere der Spule in Echtzeit dargestellt. In der Vektordarstellung wird auch das dreidimensionale, inhomogene Feld angedeutet. Einen Eindruck von der Struktur des gesamten Feldes gibt die Darstellung der numerischen Lösung. Hier ist zwar zunächst nur eine Ebene dargestellt, allerdings ist diese repräsentativ für den gesamten Raum, da das Feld symmetrisch ist.\\
+
+\textit{Stromstärke und Flussdichte}\\
+Die lineare Abhängigkeit zwischen Stromstärke und Flussdichte wird durch die Interaktion mit der Spannungsquelle deutlich. Eine gleichmäßige Änderung des Reglers hat eine gleichmäßige Änderung der Darstellungen zu Folge, ohne wahrnehmbare zeitliche Verzögerung. Der Nutzer kann hier folglich selbstständig das System mit beiden Darstellungsmodellen erforschen und den Zusammenhang erfahren.
+
+\textit{Darstellungsmodelle}\\
+Der Nutzer hat die Freiheit zwischen den Darstellungen des Magnetfeldes zu wechseln. In Zusammenhang mit der Möglichkeit, das zugrundeliegende Feld zu verändern, können so die unterschiedlichen Eigenschaften der Modelle erforscht werden.\\
+
+\textit{Zusammenspiel der Einzelfelder und Auswirkung auf die Nadel}\\
+
+
+\textit{Einfluss von Störfaktoren}\\
+Die reale Magnetnadel unterliegt den Einflüssen von Reibung und Trägheit. Durch die eingebettete, theoretische Ausrichtung wird der Unterschied zwischen der realen und einer von Störeinflüssen freien Nadel deutlich.
+
+\textit{Zusammenfassung}\\
+Diese physikalischen Zusammenhänge sind am Versuchsaufbau allein so nicht ersichtlich und werden erst durch die Mixed-Reality Anwendung erkennbar.\\
+
+
+Die Anwendung integriert alle in den Anforderungen festgehaltenen Elemente, bis auf die als optional eingestuften, weiteren Parameter des Experimentes. Wie die Lösung sicherstellt, dass die notwendigen Informationen auch tatsächlich erkennbar sind, ist in den einzelnen Umsetzungen gezielt erörtert.\\
 
 \textbf{Bewertung anhand der Nicht-funktionale Anforderungen}\\
 \textit{Korrektheit und Interpretierbarkeit}\\
@@ -80,7 +126,7 @@ Die betroffenen Eigenschaften lassen sich zwar erahnen oder indirekt ableiten, w
 TODO: Abschnitt erweitern...
 
 \textit{Weitere Aspekte}\\
-Der Nutzer wird durch das Tragen der HoloLens nicht wesentlich in der Interaktion mit den Gerätschaften eingeschränkt. Alle wichtigen Elemente (Anschlüsse, Spannungsquelle, Kompassnadel, Messgeräte) bleiben sichtbar und werden wenn dann nur zu kleinen Teilen überblendet. Die Hände bleiben frei zum Einstellen der Geräte oder auch Aufschreiben von Notizen. Der Klicker hat eine kleine Schlaufe, so dass er nicht unbedingt festgehalten werden muss.\\
+Der Nutzer wird durch das Tragen der HoloLens nicht wesentlich in der Interaktion mit den Gerätschaften eingeschränkt. Alle wichtigen Elemente (Anschlüsse, Spannungsquelle, Kompassnadel, Messgeräte, Spule) bleiben sichtbar und werden wenn dann nur zu kleinen Teilen überblendet. Die Hände bleiben frei zum Einstellen der Geräte oder auch Aufschreiben von Notizen. Der Klicker hat eine kleine Schlaufe, so dass er nicht unbedingt festgehalten werden muss.\\
 
 Die Applikation ist auch für Anwender ohne Erfahrungen mit der HoloLens oder Mixed Reality im Allgemeinen nutzbar, es müssen keine Handgesten erlernt werden. Allerdings kann die Nutzererfahrung bei unerfahrenen Nutzern durch ungünstige (z.B. hektische) Kopfbewegungen beeinträchtigt werden. Außerdem wurden die vorhandenen Gerätschaften genutzt.\\
 
@@ -215,6 +261,7 @@ Zur Bewertung der vorgestellten Lösung wurde die Anwendung außerdem unterschie
 				\item Keine negativen Äußerungen zur Stabilität und Positionierung
 				\item Anmerkungen zu hohem Aufwand und Praktikabilität
 				\item Viele wollten gern Fotos der Anwendung haben
+				\item Kaum Feedback von Lernenden, fast allen Nutzern waren die physikalischen Zusammenhänge bereits zu großen Teilen bekannt
 			\end{itemize}
 			\vspace{18px}
 	}}\\
