@@ -237,15 +237,26 @@ Bevor eine Szene in die Render-Pipeline geht, trifft die Brille anhand der Senso
 \label{sec-2-1-5}
 Damit Einschränkungen umgangen und negative Auswirkungen vermieden werden können, gibt es bereits einige Designempfehlungen und Guide-Lines sowie Empfehlungen zur Implementierung. Die Dokumentation zu Windows Mixed Reality umfasst hier einige Vorschläge und Hinweise, von denen besonders relevante hier vorgestellt werden sollen.\\
 
-\textit{Positionierung von Objekten}\\
+\textbf{Positionierung von Objekten}\\
+Zur Anordnung von Objekten gibt es einige Design-Guidelines, von denen ausgewählte hier genannt werden sollen. Die Dokumentation nennt die Folgenden Richtlinien:
+\begin{itemize}
+	\setlength{\itemsep}{-1pt}
+	\singlespacing
+	\item Distanz zur Kamera optimal bei 2m, Komfortzone 1-5m, Blickwinkel zwischen 0° und 35°
+	\item Größe für interaktive Objekte min. 1,5° - 3° Grad in der Vertikalen
+	\item Positionierung möglichst nah an Spatial Anchors und der Stabilization Plane
+\end{itemize}
+
+\textit{Distanz}\\
 Objekte sollten typischerweise aus einer Distanz zwischen einem und fünf Metern betrachtet werden, um die zuvor erläuterten Probleme mit der Wahrnehmung zu vermeiden. Deshalb sollten Objekte ausgeblendet werden, die zu nah kommen. Neben der Distanz spielt auch der Blickwinkel in der vertikalen eine Rolle. Damit ein Anwender die Darstellungen angenehm betrachten kann ist es wichtig, eine angenehme und natürliche Kopfposition zu ermöglichen. Hier wird ein Blickwinkel zwischen 0° und 35° unterhalb der Horizontlinie empfohlen.\\
 
+\textit{Größe}\\
 Weiterhin ist die Größe von Objekten von Bedeutung. Das gilt besonders dann, wenn sie mit dem an die Kopfbewegungen gekoppelten Cursor anvisiert werden müssen. Zu kleine Objekte wären für den Anwender schwer zu treffen. Ein Winkel zwischen 1,5° und 3° des Sichtfeldes dienen hier als Orientierung. Allerdings sollten die Darstellungen auch nicht zu groß sein, da sie sonst schon bei geringen Kopfbewegungen durch die Begrenzung des Displays abgeschnitten werden.\\
 
 Um Objekte wie z.B. Menus und Dialoge, die nicht fest im Raum verankert sind, anzupassen, stellt das Mixed Reality Toolkit verschiedene Funktionen wie z.B. Billboarding oder Tagalong zur Verfügung, die Abstand, Orientierung und Skalierung entsprechend der Nutzerbewegung automatisch anpassen.\\
 
-
-TODO: Stabi Ebene und SPatial Anchors
+\textit{Stabilisierung}\\
+Die HoloLens maximiert die Stabilität von Hologrammen gegen eine ausgewählte Ebene, die von der Anwendung selbst dynamisch gesetzt werden kann. Hologramme sollten daher, sofern sie gerade betrachtet werden, möglichst nah an dieser Ebene liegen, um stabil zu wirken. 
 
 \textit{Performance Optimierungen}\\
 Da die Framerate maßgeblichen Einfluss auf die Stabilität von Hologrammen hat und die Hardwareressourcen limitiert sind, gibt es eine Reihe von empfohlenen Optimierungen und Hinweisen, um die Performance einer Anwendung zu verbessern. Diese umfassen unter anderem:

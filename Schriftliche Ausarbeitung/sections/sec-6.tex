@@ -90,24 +90,22 @@ Durch den gewählten Designansatz werden die physikalischen Eigenschaften in ihr
 Die verschiedenen Darstellungen geben zusammen einen Einblick in die Struktur des dreidimensionalen Feldes der Spule. Die Richtung, Stärke und Homogenität des Feldes werden für das Innere der Spule in Echtzeit dargestellt. In der Vektordarstellung wird auch das dreidimensionale, inhomogene Feld angedeutet. Einen Eindruck von der Struktur des gesamten Feldes gibt die Darstellung der numerischen Lösung. Hier ist zwar zunächst nur eine Ebene dargestellt, allerdings ist diese repräsentativ für den gesamten Raum, da das Feld symmetrisch ist.\\
 
 \textit{Stromstärke und Flussdichte}\\
-Die lineare Abhängigkeit zwischen Stromstärke und Flussdichte wird durch die Interaktion mit der Spannungsquelle deutlich. Eine gleichmäßige Änderung des Reglers hat eine gleichmäßige Änderung der Darstellungen zu Folge, ohne wahrnehmbare zeitliche Verzögerung. Der Nutzer kann hier folglich selbstständig das System mit beiden Darstellungsmodellen erforschen und den Zusammenhang erfahren.
+Die lineare Abhängigkeit zwischen Stromstärke und Flussdichte wird durch die Interaktion mit der Spannungsquelle deutlich. Eine gleichmäßige Änderung des Reglers hat eine gleichmäßige Änderung der Darstellungen zu Folge, ohne wahrnehmbare zeitliche Verzögerung. Der Nutzer kann hier folglich selbstständig das System mit beiden Darstellungsmodellen erforschen und den Zusammenhang erfahren.\\
 
 \textit{Darstellungsmodelle}\\
 Der Nutzer hat die Freiheit zwischen den Darstellungen des Magnetfeldes zu wechseln. In Zusammenhang mit der Möglichkeit, das zugrundeliegende Feld zu verändern, können so die unterschiedlichen Eigenschaften der Modelle erforscht werden.\\
 
 \textit{Zusammenspiel der Einzelfelder und Auswirkung auf die Nadel}\\
+Da das resultierende Feld über seine Komponenten dargestellt wird, lässt sich deren Zusammenspiel bei sich ändernder Feldstärke beobachten. Hier wird ersichtlich, dass ausschließlich die Komponente des Feldstärkevektors in Richtung der Spulenachse variiert. Die Auswirkungen eines sich ändernden Feldes sind anhand der theoretischen Nadel direkt und an der realen Nadel verzögert zu sehen.\\
 
 
 \textit{Einfluss von Störfaktoren}\\
-Die reale Magnetnadel unterliegt den Einflüssen von Reibung und Trägheit. Durch die eingebettete, theoretische Ausrichtung wird der Unterschied zwischen der realen und einer von Störeinflüssen freien Nadel deutlich.
+Die reale Magnetnadel unterliegt den Einflüssen von Reibung und Trägheit. Durch die eingebettete, theoretische Ausrichtung wird der Unterschied zwischen der realen und einer von Störeinflüssen freien Nadel deutlich. Da die reale Nadel mit 12 cm Länge recht groß und träge ist, ist der Unterschied klar zu sehen.\\
 
 \textit{Zusammenfassung}\\
-Diese physikalischen Zusammenhänge sind am Versuchsaufbau allein so nicht ersichtlich und werden erst durch die Mixed-Reality Anwendung erkennbar.\\
+Diese physikalischen Zusammenhänge sind am Versuchsaufbau allein so nicht ersichtlich und werden erst durch die Mixed-Reality Anwendung erkennbar. Die Anwendung integriert alle in den Anforderungen festgehaltenen Elemente, bis auf die als optional eingestuften, weiteren Parameter des Experimentes. Wie die Lösung sicherstellt, dass die notwendigen Informationen auch tatsächlich erkennbar sind, ist in den einzelnen Umsetzungen gezielt erörtert.\\
 
-
-Die Anwendung integriert alle in den Anforderungen festgehaltenen Elemente, bis auf die als optional eingestuften, weiteren Parameter des Experimentes. Wie die Lösung sicherstellt, dass die notwendigen Informationen auch tatsächlich erkennbar sind, ist in den einzelnen Umsetzungen gezielt erörtert.\\
-
-\textbf{Bewertung anhand der Nicht-funktionale Anforderungen}\\
+\textbf{Bewertung anhand der nicht-funktionalen Anforderungen}\\
 \textit{Korrektheit und Interpretierbarkeit}\\
 Die Korrektheit und Interpretierbarkeit wird weitestgehend über die Nutzung etablierter physikalischer Darstellungsmodelle gesichert. Dabei liegt der Fokus nicht auf möglichst exakten Darstellungen numerischer Werte, sondern auf einer zweckmäßigen Darstellung. Im Vordergrund steht das qualitative Verständnis.\\
 
@@ -123,14 +121,10 @@ Die Anwendung ist jedoch nicht vollständig selbsterklärend, sondern bedarf ein
 
 Die betroffenen Eigenschaften lassen sich zwar erahnen oder indirekt ableiten, werden jedoch nicht direkt durch die Applikation kommuniziert. Dafür könnte die Anwendung um eine Einführung z.B. durch einen eingesprochenen Text mit einer eigenen Sequenz entwickelt werden.\\
 
-TODO: Abschnitt erweitern...
-
 \textit{Weitere Aspekte}\\
-Der Nutzer wird durch das Tragen der HoloLens nicht wesentlich in der Interaktion mit den Gerätschaften eingeschränkt. Alle wichtigen Elemente (Anschlüsse, Spannungsquelle, Kompassnadel, Messgeräte, Spule) bleiben sichtbar und werden wenn dann nur zu kleinen Teilen überblendet. Die Hände bleiben frei zum Einstellen der Geräte oder auch Aufschreiben von Notizen. Der Klicker hat eine kleine Schlaufe, so dass er nicht unbedingt festgehalten werden muss.\\
+Der Nutzer wird durch das Tragen der HoloLens nicht wesentlich in der Interaktion mit den Gerätschaften eingeschränkt. Alle wichtigen Elemente (Anschlüsse, Spannungsquelle, Kompassnadel, Messgeräte, Spule) bleiben sichtbar und werden wenn dann nur zu kleinen Teilen überblendet. Die Hände bleiben frei zum Einstellen der Geräte, dem Anfertigen von Notizen oder der Verwendung weiterer Lehrmittel wie z.B. Lehrbüchern oder Arbeitsblättern. Der Klicker hat eine kleine Schlaufe, so dass er nicht unbedingt festgehalten werden muss.\\
 
 Die Applikation ist auch für Anwender ohne Erfahrungen mit der HoloLens oder Mixed Reality im Allgemeinen nutzbar, es müssen keine Handgesten erlernt werden. Allerdings kann die Nutzererfahrung bei unerfahrenen Nutzern durch ungünstige (z.B. hektische) Kopfbewegungen beeinträchtigt werden. Außerdem wurden die vorhandenen Gerätschaften genutzt.\\
-
-TODO: Abschnitt erweitern...
 
 \subsubsection{Technische Umsetzung}
 Im Hinblick auf die technischen Anforderungen wurde eine Liste von Qualitätskriterien zugrunde gelegt. Die Bewertung der Lösung anhand dieses Maßstabes ist Tabelle \ref{tab:tech_results} zu entnehmen. Der Einschätzung liegen die zu jedem Kriterium genannten Hinweise zur Bewertung zu Grunde.
@@ -261,7 +255,7 @@ Zur Bewertung der vorgestellten Lösung wurde die Anwendung außerdem unterschie
 				\item Keine negativen Äußerungen zur Stabilität und Positionierung
 				\item Anmerkungen zu hohem Aufwand und Praktikabilität
 				\item Viele wollten gern Fotos der Anwendung haben
-				\item Kaum Feedback von Lernenden, fast allen Nutzern waren die physikalischen Zusammenhänge bereits zu großen Teilen bekannt
+				\item Kaum Feedback von Lernenden, fast allen Nutzern waren die physikalischen Zusammenhänge bereits zu großen Teilen oder vollständig bekannt
 			\end{itemize}
 			\vspace{18px}
 	}}\\
