@@ -1,41 +1,17 @@
 \section{Anforderungen und Problemstellung}
 \label{sec-3}
-\begin{comment}
-\begin{center}
-\fbox{
-\parbox{0.9\linewidth}{
-\textit{Ziel des Kapitels:}\\
-Anforderungen von technischer und anwendungsorientierter Seite darstellen und Problem formulieren.
-}}\\
-\end{center}
-\end{comment}
-
-Ziel dieser Arbeit ist es, am konkreten Beispiel des in Kap. \ref{sec-2-2} beschriebenen Laborversuches zu untersuchen, wie die HoloLens in der Physik Lehre eingesetzt werden kann. Die dazu notwendigen Hintergrundinformationen von technischer und physikalischer Seite wurden im vorangegangenen Kapitel erläutert. Außerdem wurden bestehende Lösungen vorgestellt und in Zusammenhang mit der Zielsetzung dieser Arbeit gebracht. Damit ist die Grundlage geschaffen, um konkrete Anforderungen und Probleme zu formulieren. Zuvor soll jedoch noch kurz auf die Auswahl des vorgestellten Versuches eingegangen werden.\\
-
-\textit{Auswahl des physikalischen Experimentes}\\
-Das Experiment wurde neben den bereits in Kap. \ref{sec-2-3} erörterten Gründen und Motivationen auch aus technischen und praktischen Aspekten ausgewählt. Im Wesentlichen trugen dazu die folgenden Faktoren bei:
-\begin{itemize}
-	\setlength{\itemsep}{-1pt}
-	\singlespacing
-	\item Die notwendigen Materialien (Spule, Messgeräte, Simulationslösung) standen für diese Arbeit zur Verfügung.
-	\item Das Magnetfeld der Spule hat keine erkennbaren Auswirkungen auf die HoloLens (das Gerät nutzt ein Magnetometer). Tests im Vorfeld mit Flussdichten von über 100 Mikrotesla zeigten keine wahrnehmbaren Auswirkungen auf das Tracking und die Stabilität von Hologrammen.
-	\item Die gegebene Größe der Spule (R=15cm) eignet sich für das beschränkte Sichtfeld der HoloLens.
-	\item Das Experiment enthält keine sich schnell bewegenden Elemente und ist bis auf den Kompass statisch, es erfordert außerdem keine besondere Schutzausrüstung% und stört das Tracking der HoloLens nicht weiter.
-\end{itemize}
-
-Diese Umstände begünstigen einen Einsatz der Brille für diesen konkreten Anwendungsfall und sind ggf. bei anderen Szenarien so nicht gegeben.
+Ziel dieser Arbeit ist es, am konkreten Beispiel des in Kap. \ref{sec-3-2} beschriebenen Laborversuches zu untersuchen, wie die HoloLens in der Physik Lehre eingesetzt werden kann. Die dazu notwendigen Hintergrundinformationen von technischer und physikalischer Seite wurden im vorangegangenen Kapitel erläutert. Außerdem wurden bestehende Lösungen vorgestellt und in Zusammenhang mit der Zielsetzung dieser Arbeit gebracht. Damit ist die Grundlage geschaffen, um konkrete Anforderungen und Probleme zu formulieren.
 
 \subsection{Anforderungen}
 \label{sec-3-1}
-Die Anforderungen an eine Umsetzung teilen sich somit in zwei Bereiche: Inhaltliche Anforderungen aus Sicht der Physik und technische Bedingungen von Seiten der HoloLens. Ein Design muss beide berücksichtigen und zu einer Lösung zusammenführen. Dabei bestimmt das Anwendungsszenario vor allem die Frage, was dargestellt werden soll, während die technischen Gegebenheiten eher auf das ''Wie'' der Umsetzung Einfluss nehmen. Im Weiteren sollen die Anforderungen beider Seiten formuliert werden.
+Die Anforderungen an eine Umsetzung teilen sich in zwei Bereiche: Inhaltliche Anforderungen aus Sicht der Physik und technische Bedingungen von Seiten der HoloLens. Ein Design muss beide berücksichtigen und zu einer Lösung zusammenführen. Dabei bestimmt das Anwendungsszenario vor allem die Frage, was dargestellt werden soll, während die technischen Gegebenheiten eher auf das ''Wie'' der Umsetzung Einfluss nehmen. Im Weiteren sollen die Anforderungen beider Seiten formuliert werden.
 
 \subsubsection{Physikalische Seite}
-Zunächst stellt sich die Frage, welche Informationen zum Versuchsaufbau über die Anwendung integriert werden sollen. Von besonderem Interesse sind hier natürlich vor allem Informationen, die für den Nutzer nicht direkt beobachtbar sind. Das betrifft in erster Linie die beiden sich überlagernden Magnetfelder von Erde und Spule mit deren Eigenschaften. Das Zusammenspiel beider Felder ist elementar für den Versuch und soll für den Anwender sichtbar gemacht werden. Weitere, nicht direkt erkennbare Eigenschaften des Versuches sind außerdem die Richtung des Stromflusses durch die Spule und die physikalischen Parameter des Versuchsaufbaus.\\
+Zunächst stellt sich die Frage, welche Informationen zum Versuchsaufbau über die Anwendung integriert werden sollen. Von besonderem Interesse sind hier vor allem Informationen, die für den Nutzer nicht direkt beobachtbar sind. Das betrifft in erster Linie die beiden sich überlagernden Magnetfelder von Erde und Spule mit deren Eigenschaften. Das Zusammenspiel beider Felder ist elementar für den Versuch und soll für den Anwender sichtbar gemacht werden. Weitere, nicht direkt erkennbare Eigenschaften des Versuches sind außerdem die Richtung des Stromflusses durch die Spule und die physikalischen Parameter des Versuchsaufbaus.\\
 
 Ein weiterer interessanter Aspekt ist die Einbindung theoretischer Ergebnisse. Das ermöglicht dem Anwender, direkt am Versuchsaufbau sowohl gemessene, als auch berechnete Werte zu erfassen und beide miteinander zu vergleichen. Bei der Bestimmung des Erdmagnetfeldes betrifft das vor allem die Auslenkung des Kompasses, die sich in Abhängigkeit der anliegenden Stromstärke verändert. Die Magnetnadel des Kompass unterliegt dabei Faktoren wie Reibung und Trägheit, die zu Abweichungen führen können. Ein berechneter, virtueller Kompass unterliegt solchen Einschränkungen nicht und kann ergänzend zum realen Konterpart das angenommene Verhalten des Systems unter Idealbedingungen aufzeigen.\\
 
 Auch denkbar wäre eine Unterstützung beim Aufbau der Gerätschaften. Dies ist im Rahmen dieser Arbeit jedoch nicht vorgesehen, die Anwendung zielt zunächst nur auf die Bestimmung der Stärke des Erdfeldes ab. Die in Kap. \ref{sec-2-2-3} genannten ersten beiden Schritte der Durchführung (Ausrichtung von Nadel und Spule) werden also vorausgesetzt. Unter diesen Gesichtspunkten und für den Rahmen dieser Arbeit wurden in Zusammenarbeit mit Physikern die folgenden Anforderungen im Hinblick auf die darzustellenden Elemente aufgestellt:\\[4px]
-\textbf{Funktionale Anforderungen}
 \begin{enumerate}[topsep=-2px]
 	\setlength{\itemsep}{-5pt}
 	\item Magnetfeld von Erde und Spule
@@ -72,8 +48,7 @@ Auch denkbar wäre eine Unterstützung beim Aufbau der Gerätschaften. Dies ist 
 
 Diese Anforderung verlangen dabei nicht notwendigerweise (rein) virtuelle Repräsentationen für die genannten Elemente. Auch wenn der Fokus auf über die HoloLens visualisierten Daten liegt, so könnte es für manche Elemente sinnvoller sein, auf andere Optionen zurückzugreifen. Das können reale statt virtueller Objekte sein aber auch akustische Informationen, die über die integrierten Lautsprecher der HoloLens wiedergegeben werden. Die Frage, was visualisiert und auch was nicht visualisiert wird, ist also durch ein Design zu beantworten.\\
 
-Neben diesen eher funktionalen Anforderungen sind von Seiten der Physik auch nicht-funktionale Anforderungen an die Anwendung zu stellen. Hier wurden die Folgenden herausgearbeitet:\\[4px]
-\textbf{Nicht-funktionale Anfoderungen}
+Neben diesen inhaltlichen Anforderungen sind von Seiten der Physik auch Anforderungen an die Anwendung zu stellen. Hier wurden die Folgenden herausgearbeitet:\\[4px]
 \begin{itemize}[topsep=-2px]
 	\setlength{\itemsep}{-1pt}
 	\singlespacing
@@ -85,55 +60,21 @@ Neben diesen eher funktionalen Anforderungen sind von Seiten der Physik auch nic
 \vspace{6px}
 Der erste Punkt soll hier kurz näher beleuchtet werden. Dabei geht es nicht um möglichst exakte Werte und Darstellungen. Vielmehr sollen sie physikalisch interpretierbar sein, indem auf etablierte Modelle zurückgegriffen wird. Außerdem sollen sie keine falschen Eindrücke vermitteln und die physikalischen Zusammenhänge korrekt widerspiegeln.\\
 
-\subsubsection{Wie - Technische Seite}
+\subsubsection{Technische Seite}
 In Kapitel \ref{sec-2-1} wurde die HoloLens mit ihren technischen Möglichkeiten aber auch Einschränkungen vorgestellt sowie Auswirkungen auf das Anwendungsdesign aufgezeigt. Die genannten Probleme sollen möglichst vermieden werden, indem die Anwendung an die speziellen Gegebenheiten der HoloLens angepasst wird. Dementsprechend sollen auch von technischer Seite Anforderungen aufgestellt werden.\\
-
-Die Dokumentation zu Windows Mixed Reality enthält eine Liste von Qualitätskriterien, anhand derer Anwendungen bewertet werden können. Diese deckt viele der zuvor erläuterten Probleme wie z.B. der Abstand zu Objekten ab. Jedes Kriterium ist mit einer Beschreibung versehen, unter welchen Umständen es als optimal erfüllt, erfüllt oder nicht erfüllt gilt. Eine Kurzfassung relevanter Kriterien ist in Tabelle \ref{tab:tech_criteria} zusammengestellt.\\
-
-\bgroup
-\setlength\extrarowheight{-2pt}
-\def\arraystretch{1.8}
-\begin{table}[H]
-	\centering
-	\begin{tabular}{m{2.3cm}|m{8.5cm}}
-		Kriterium & Kurzbeschreibung \\
-		\hline
-		\hline
-		Framerate & Gibt die Anwendung konstant 60 FPS aus?\\
-		\hline
-		Stabilität der Hologramme & Weisen Hologramme bei Bewegungen Ruckler, Sprünge, Drift, Wackeln, Wippen oder ähnliches auf?\\
-		\hline
-		Positionierung & Sind Hologramme im Verhältnis zu realen Objekten korrekt positioniert?\\
-		\hline
-		Komfortzone & Liegen Distanz und Betrachtungswinkel in den empfohlenen Bereichen?\\
-		\hline
-		Tiefen Wechsel & Bedingt die Anwendung häufige Fokuswechsel?\\
-		\hline
-		FOV-Grenzen & Beeinträchtigen die Begrenzungen des FOV die Nutzererfahrungen?\\
-		\hline
-		Input Interaction Clarity & Werden konsistente, bekannte und geeignete Eingabemethoden geboten?\\
-		\hline
-		Anpassung an Nutzerposition & Passen sich Darstellungen der Position des Nutzers an?\\
-		\hline
-		Interaktive Objekte & Sind interaktive Objekte als solche erkennbar?\\
-		\hline
-		Ladevorgänge  & Erhält der Nutzer Feedback über länger laufende Operationen?\\
-	\end{tabular}\caption{\label{tab:tech_criteria} Kurzfassung der Qualitätskriterien.}
-\end{table}
-\egroup
 
 An diesen Kriterien soll sich die Lösung orientieren und diese bereits im Design berücksichtigen. Dafür sollen die genannten Hinweise und Empfehlungen zum Design mit einbezogen und darauf aufgebaut werden.\\
 
-\subsection{Problemstellung}
+\subsection{Präzisierung der Problemstellung}
 \label{sec-3-2}
 Die inhaltlichen und technischen Anforderungen stecken den Rahmen ab, für den eine Lösung zu erarbeiten ist. Dazu ist ein Design nötig, dass die inhaltlichen Anforderungen bedient, dabei die Möglichkeiten der HoloLens nutzt und gleichzeitig um technische Einschränkungen und Besonderheiten herum navigiert.\\
 
 Eine Lösung muss die folgenden Fragen beantworten:
 \begin{itemize}
 	\setlength{\itemsep}{-5pt}
-	\item Was soll dargestellt werden? % (Was soll nicht dargestellt werden?)
-	\item Wie soll es dargestellt werden?
-	\item Wie soll damit interagiert werden?
+	\item Was soll mit der HoloLens dargestellt werden?
+	\item Wie soll die Darstellung erfolgen?
+	\item Und wie soll mit den dargestellten Informationen interagiert werden?
 \end{itemize}
 
 \textbf{\textit{Was soll dargestellt werden?}}\\
@@ -142,7 +83,7 @@ Zunächst stellt sich die Frage, welche Objekte die HoloLens zusätzlich anzeige
 Dazu kommen als optional eingestufte Elemente sowie Informationen, die den Ablauf und die Interaktion mit der Anwendung betreffen. Das betrifft z.B. Feedback für Nutzeraktionen, den Cursor oder Statusinformationen.\\
 
 \textbf{\textit{Wie soll es dargestellt werden?}}\\
-Die wohl umfassendste Frage besteht darin, wie die Informationen und Zusammenhänge visualisiert werden sollen. Was soll textuell, als 2D oder als 3D Geometrie dargestellt werden? Welche Objekte werden gewählt und wie angeordnet?\\
+Die wohl umfassendste Frage besteht darin, wie die Informationen und Zusammenhänge visualisiert werden sollen. Was soll textuell, als 2D oder als 3D Geometrie mit der HoloLens dargestellt werden? Welche Objekte werden gewählt und wie angeordnet?\\
 
 \textbf{\textit{Wie soll damit interagiert werden?}}\\
 Nicht zuletzt ist ein Konzept für die Interaktion zu erstellen. Welche Eingabemethoden werden dem Nutzer angeboten und wie wird der Nutzer über diese informiert? Welche Aktionen soll die Anwendung zur Verfügung stellen?\\

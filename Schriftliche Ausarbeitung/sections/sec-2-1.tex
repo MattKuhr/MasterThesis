@@ -1,29 +1,13 @@
 \section{Hintergrund}
 \label{sec-2}
-\begin{comment}
-\begin{center}
-\fbox{
-\parbox{0.9\linewidth}{
-\textit{Ziel des Kapitels:}\\
-Hintergründe der Arbeit in 3 Abschnitten: HoloLens Technik, AR in Education und Physik Hintergründe.\\
-}}\\
-\end{center}
-\end{comment}
+
 TODO: Einleitender Satz zu den Hintergründen der Arbeit
 
 \subsection{HoloLens}
 \label{sec-2-1}
-\begin{comment}
-\begin{center}
-\fbox{
-\parbox{0.9\linewidth}{
-\textit{Ziel des Kapitels:}\\
-HoloLens und Mixed Reality Toolkit mit ihrer Technik und Interaktionsweise vorstellen.
-}}
-\end{center}
-\end{comment}
+Die HoloLens ist ein von Microsoft entwickeltes \textit{Head-Mounted Display} (HMD), das seit 2016 auf dem Markt ist. Das Gerät ist in der Lage, virtuelle Darstellungen in der Umgebung des Trägers zu verankern und anzuzeigen. Abbildung \ref{img:hololens} zeigt die Brille in der Standardausführung. Die technischen Eigenschaften und genutzten Techniken des HMDs bringen verschiedene Implikationen und Einschränkungen für Anwendungen auf der HoloLens mit sich. Daher soll im Folgenden auf die technischen Aspekte näher eingegangen werden.\\
 
-\subsubsection{Mixed und Augmented Reality}
+\subsubsection{Einordnung der HoloLens}
 \label{sec-2-1-1}
 
 \begin{figure}[h!]
@@ -51,13 +35,9 @@ Beim Begriff der \textit{Augmented Reality} (AR), der ebenfalls kurz definiert w
 Entsprechend der zuvor angesprochenen Variationen im Verständnis von Mixed Reality gibt es Diskussionen darüber, wie die HoloLens zu klassifizieren ist. Microsoft selbst ordnet sie als MR Gerät ein. Andere argumentieren, die Möglichkeiten der Brille seinen mit dem Begriff der Augmented Reality bereits abgedeckt. Peddie beispielsweise schreibt, dass ``Microsoft jedoch, möglicherweise aus Gründen des Marketing und der besseren Produktabgrenzung, darauf besteht, sie sei als MR Device einzuordnen'' \footnote{Zitat frei aus dem Englischen übersetzt.} \cite{Peddie17}.\\
 
 Da diese Arbeit sich am MR Begriff von Milgram orientiert und mit der HoloLens unterschiedlich stark immersive Anwendungen möglich sich, wird die HoloLens im Folgenden allgemein als MR Device bezeichnet.
-
-% TODO Ggf. Beispiele für AR/MR ANwendungen anführen
 \end{comment}
 
 Die HoloLens deckt mit ihren technischen Möglichkeiten vor allem den linken Bereich des Spektrums ab. Viele Anwendungen liegen deshalb im Teilbereich Augmented Reality.
-
-Die HoloLens ist ein von Microsoft entwickeltes \textit{Head-Mounted Display} (HMD), das seit 2016 auf dem Markt ist. Das Gerät ist in der Lage, virtuelle Darstellungen in der Umgebung des Trägers zu verankern und anzuzeigen. Abbildung \ref{img:hololens} zeigt die Brille in der Standardausführung. Die technischen Eigenschaften und genutzten Techniken des HMDs bringen verschiedene Implikationen und Einschränkungen für Anwendungen auf der HoloLens mit sich. Daher soll im Folgenden auf die technischen Aspekte näher eingegangen werden.\\
 
 \begin{figure}[h!]
 	\centering
@@ -90,9 +70,9 @@ Einen Überblick über die verwendete Hardware gibt Tabelle \ref{tab:hololens_te
 		Kategorie & Eigenschaft\\
 		\hline
 		\hline
-		Anzeige & 720p (HD) in 16:9 Format pro Auge\\
+		Anzeige & 1268 x 720 Pixel pro Auge\\
 		& 60 Hz Bildwiederholrate\\
-		& Blickfeld ca. 32°\\
+		& Blickfeld ca. 34° (diagonal), 16:9 Format\\
 		\hline
 		Prozessor & Intel 32-Bit Prozessor @ 1.0 GHz\\
 		\hline
@@ -143,14 +123,6 @@ Zum einen erfasst die HoloLens die Oberflächenstruktur der Umgebung über Tiefe
 \par
 \noindent\hspace*{5mm}
 Zum anderen kommt eine inertiale Messeinheit zum Einsatz. Über die Beschleunigungs-, Rotations- und Magnetflusssensoren können Änderungen in Position und Ausrichtung der Brille gemessen werden. Bei diesem Vorgehen summieren sich Messfehler im Laufe der Zeit jedoch stetig weiter auf und die Positionsschätzung wird zunehmend unzuverlässiger. Daher wird ein Zusammenspiel mit der Raumerkennung genutzt.
-
-\begin{comment}
- Das Vorgehen lässt sich dabei in zwei Bereiche unterteilen:
- Als Grundlage dazu dienen zum einen eine Tiefenkamera, die anhand der Time-of-Flight von ausgestrahltem Infrarotlicht die Entfernung zu nahegelegenen Oberflächen, die das Licht reflektieren, bestimmt. Zum anderen unterstützen die beiden Stereo-Kameras diese Informationen durch Triangulation von Objekten. Auf diese Weise erarbeitet die Brille ein 3D-Gitternetz, das nach und nach aktualisiert und vervollständigt wird, wenn sich der Träger im Raum bewegt. Anhand dieses sogenannten \textit{Spatial Mapping} wird ein Ankerpunkt für ein im Raum festes Koordinatensystem ausgewählt, dass der Brille als Referenzsystem dient.\\
-
-
-Um die exakte Position und Ausrichtung der HoloLens nachzuverfolgen kommt außerdem die inertiale Messeinheit zum Einsatz. Die Beschleunigungs-, Rotations- und Magnetflusssensoren ermöglichen Schlussfolgerungen zu Änderungen in Position und Orientierung über eine Zeitdifferenz. Zusammen mit den Informationen aus den optischen Verfahren leitet die Brille so ihre genaue Position und Ausrichtung ab. Darüber hinaus speichert und unterscheidet das Gerät verschiedene Räume anhand der unterschiedlichen Struktur und den dort vorhandenen WLAN Signalen.\\
-\end{comment}
 
 \subsubsection{Die Software und Interaktion}
 \label{sec-2-1-3}
@@ -233,6 +205,40 @@ Dabei ist es von besonderer Bedeutung, dass die Anwendung möglichst konstant 60
 \noindent\hspace*{5mm}
 Bevor eine Szene in die Render-Pipeline geht, trifft die Brille anhand der Sensordaten eine Vorhersage darüber, in welcher Position und Ausrichtung sich die Brille befinden wird, wenn das zu errechnende Bild dargestellt wird. Anhand dieser Schätzung wird die Kamera-Position und -Ausrichtung für die Szene festgelegt und anschließend gerendert. Eine längere oder variierende Renderzeit bedeutet damit auch eine unzuverlässigere Schätzung. Das kann zu instabil wirkenden Darstellungen führen, z.B. in Form von Zittern oder Ruckeln. Deshalb empfiehlt Microsoft, die Framerate von 60 FPS stets aufrecht zu erhalten.\\
 
+\textit{Qualitätskriterien}\\
+Die Dokumentation zu Windows Mixed Reality enthält eine Liste von Qualitätskriterien, anhand derer Anwendungen bewertet werden können. Diese deckt viele der zuvor erläuterten Probleme wie z.B. der Abstand zu Objekten ab. Jedes Kriterium ist mit einer Beschreibung versehen, unter welchen Umständen es als optimal erfüllt, erfüllt oder nicht erfüllt gilt. Eine Kurzfassung relevanter Kriterien ist in Tabelle \ref{tab:tech_criteria} zusammengestellt.\\
+\bgroup
+\setlength\extrarowheight{-2pt}
+\def\arraystretch{1.8}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{m{2.3cm}|m{8.5cm}}
+		Kriterium & Kurzbeschreibung \\
+		\hline
+		\hline
+		Framerate & Gibt die Anwendung konstant 60 FPS aus?\\
+		\hline
+		Stabilität der Hologramme & Weisen Hologramme bei Bewegungen Ruckler, Sprünge, Drift, Wackeln, Wippen oder ähnliches auf?\\
+		\hline
+		Positionierung & Sind Hologramme im Verhältnis zu realen Objekten korrekt positioniert?\\
+		\hline
+		Komfortzone & Liegen Distanz und Betrachtungswinkel in den empfohlenen Bereichen?\\
+		\hline
+		Tiefen Wechsel & Bedingt die Anwendung häufige Fokuswechsel?\\
+		\hline
+		FOV-Grenzen & Beeinträchtigen die Begrenzungen des FOV die Nutzererfahrungen?\\
+		\hline
+		Input Interaction Clarity & Werden konsistente, bekannte und geeignete Eingabemethoden geboten?\\
+		\hline
+		Anpassung an Nutzerposition & Passen sich Darstellungen der Position des Nutzers an?\\
+		\hline
+		Interaktive Objekte & Sind interaktive Objekte als solche erkennbar?\\
+		\hline
+		Ladevorgänge  & Erhält der Nutzer Feedback über länger laufende Operationen?\\
+	\end{tabular}\caption{\label{tab:tech_criteria} Kurzfassung der Qualitätskriterien.}
+\end{table}
+\egroup
+
 \subsubsection{Empfehlungen zu Design und Umsetzung}
 \label{sec-2-1-5}
 Damit Einschränkungen umgangen und negative Auswirkungen vermieden werden können, gibt es bereits einige Designempfehlungen und Guide-Lines sowie Empfehlungen zur Implementierung. Die Dokumentation zu Windows Mixed Reality umfasst hier einige Vorschläge und Hinweise, von denen besonders relevante hier vorgestellt werden sollen.\\
@@ -287,5 +293,4 @@ Aus ihren Erfahrungen und dem Nutzerfeedback aus mehreren HoloLens-Applikationen
 	\item Eine Einführung in die Anwendung und insbesondere die Steuerung kann hilfreich sein, da der Umgang mit der HoloLens oder ähnlichen Geräten für Anwender meist ungewohnt ist
 \end{itemize}
 \vspace{6px}
-
 
