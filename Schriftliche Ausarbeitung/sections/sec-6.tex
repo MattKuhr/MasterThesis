@@ -1,35 +1,7 @@
 \section{Ergebnisse und Diskussion}
 \label{sec-6}
-\begin{comment}
-\fbox{
-\parbox{\linewidth}{
-\textit{Ziel des Kapitels:}\\
-Ergebnisse der Umsetzung vorstellen und auf die Fragestellung anwenden.
-}}
-\end{comment}
 
 Ziel dieser Arbeit war es, zu untersuchen, wie ein konkretes physikalisches Experiment durch eine Anwendung mit der HoloLens unterstützt werden kann. Dafür wurde ein Versuch aus der Elektrodynamik ausgewählt, Probleme identifiziert und eine Lösung erarbeitet. Diese soll nun im Hinblick auf die in der Problemstellung festgehaltenen Anforderungen bewertet werden. Die Ergebnisse werden dann im breiteren Kontext der Fragestellung diskutiert.
-
-\begin{comment}
-
-\begin{itemize}
-\item Welche physikalischen Zusammenhänge werden vermittelt?
-\item Wie 
-\end{itemize}
-
-Konkrete untergeordnete Frage:
-\begin{center}
-\textit{\textbf{Wie kann die HoloLens in einem konkreten Anwendungsfall eines physikalischen Versuches genutzt werden?}}
-\end{center}
-\subsection{Aufgabenstellung}
-
-Im Rahmen der Arbeit soll anhand der HoloLens untersucht werden, wie diese in der Physik-Lehre eingesetzt werden kann, um physikalische Inhalte zu vermitteln. Insbesondere soll betrachtet werden, wie physikalische Experimente mittels Mixed Reality Anwendungen durch zusätzliche Inhalte angereichert werden können.\\
-
-\par
-Dazu sind zunächst die technischen Möglichkeiten und Voraussetzungen der HoloLens zu betrachten und in Zusammenhang mit dem Anwendungsfall zu bringen. Weiterhin sind bestehende Ansätze im Einsatz von Mixed Reality Technologie in der Lehre, besonders in der Physik-Lehre, herauszuarbeiten und einzuordnen.
-
-Davon ausgehend soll der Fragestellung anhand eines konkreten Beispiels nachgegangen werden. Für einen ausgewählten Versuchsaufbau sind die darzustellenden Objekte und Informationen sowie das Zusammenspiel dieser mit dem aufgebauten Experiment, der Umgebung und den Nutzern zu entwickeln. Für den ausgewählten Anwendungsfall soll eine Umsetzung mit der HoloLens konzipiert, designet und prototypisch implementiert werden.
-\end{comment}
 
 \subsection{Ergebnisse}
  Die Lösung integriert virtuelle Elemente in das Experiment, die relevante, physikalische Zusammenhänge abbilden. Dazu gehören interaktive Darstellungen des Magnetfeldes sowie Messwerte, der Stromfluss und ein Kompass. Durch eine dreidimensionale Einbettung in den tatsächlichen Versuchsaufbau wird ein direkter Zusammenhang zwischen dem Verhalten der Objekte des Versuches und den physikalischen Modellen hergestellt.
@@ -124,10 +96,12 @@ Die betroffenen Eigenschaften lassen sich zwar erahnen oder indirekt ableiten, w
 \textit{Weitere Aspekte}\\
 Der Nutzer wird durch das Tragen der HoloLens nicht wesentlich in der Interaktion mit den Gerätschaften eingeschränkt. Alle wichtigen Elemente (Anschlüsse, Spannungsquelle, Kompassnadel, Messgeräte, Spule) bleiben sichtbar und werden wenn dann nur zu kleinen Teilen überblendet. Die Hände bleiben frei zum Einstellen der Geräte, dem Anfertigen von Notizen oder der Verwendung weiterer Lehrmittel wie z.B. Lehrbüchern oder Arbeitsblättern. Der Klicker hat eine kleine Schlaufe, so dass er nicht unbedingt festgehalten werden muss.\\
 
-Die Applikation ist auch für Anwender ohne Erfahrungen mit der HoloLens oder Mixed Reality im Allgemeinen nutzbar, es müssen keine Handgesten erlernt werden. Allerdings kann die Nutzererfahrung bei unerfahrenen Nutzern durch ungünstige (z.B. hektische) Kopfbewegungen beeinträchtigt werden. Außerdem wurden die vorhandenen Gerätschaften genutzt.\\
+Die Applikation ist auch für Anwender ohne Erfahrungen mit der HoloLens oder Mixed Reality im Allgemeinen nutzbar, es müssen keine Handgesten erlernt werden. Allerdings kann die Nutzererfahrung bei unerfahrenen Nutzern durch ungünstige (z.B. hektische) Kopfbewegungen beeinträchtigt werden. Außerdem wurden die vorhandenen Gerätschaften genutzt und nur geringfügig angepasst (Überkleben der Magnetnade).\\
+
+Nachdem die inhaltlichen Ergebnisse beleuchtet wurden, sollen nun die Ergebnisse aus technische Seite  vorgestellt werden.
 
 \subsubsection{Technische Umsetzung}
-Im Hinblick auf die technischen Anforderungen wurde eine Liste von Qualitätskriterien zugrunde gelegt. Die Bewertung der Lösung anhand dieses Maßstabes ist Tabelle \ref{tab:tech_results} zu entnehmen. Der Einschätzung liegen die zu jedem Kriterium genannten Hinweise zur Bewertung zu Grunde.
+Im Hinblick auf die technischen Anforderungen wurde eine Liste von Qualitätskriterien zugrunde gelegt. Die Bewertung der Lösung anhand dieses Maßstabes ist im Folgenden erörtert. Der Einschätzung liegen die zu jedem Kriterium genannten Hinweise zur Bewertung zu Grunde. ist Tabelle \ref{tab:tech_results} zu entnehmen. 
 %\textbf{Qualitätskriterien}
 %\begin{sidewaystable}[h!]
 \begin{landscape}
@@ -150,16 +124,16 @@ Im Hinblick auf die technischen Anforderungen wurde eine Liste von Qualitätskri
 			\hline
 			Fokuswechsel & Kaum Neufokussierungen notwendig. Nur bei Ablesen des Kompass und der Stromrichtung. & Fast optimal\\
 			\hline
-			FOV-Grenzen & Darstellungen passen bei empfohlener Distanz vollständig in FOV. Durch Verankerung am realen Objekt verliert Nutzer den Kontext nicht. & Optimal\\
+			FOV-Grenzen & Darstellungen passen bei empfohlener Distanz vollständig in FOV mit etwas Spielraum für Bewegungen. Durch Verankerung am realen Objekt verliert Nutzer den Kontext nicht. & Optimal\\
 			\hline
 			Anpassung an Nutzerposition & Text, Labels, Linien und Menüs richten sich zur Nutzerposition aus. Frei bewegliche Elemente (Menü, Progress Indikator) folgen Nutzer. & Optimal\\
 			\hline
-			Input Interaction Clarity & Vorhandene, einfache Standard-Interaktionsmechanismen genutzt und geringfügig erweitert. Konsistentes, akustisches Feedback. Jedoch keine Erklärung der möglichen Aktionen durch die Anwendung selbst. & Mittel\\
+			Input Interaction Clarity & Vorhandene, einfache Standard-Interaktionsmechanismen genutzt und geringfügig erweitert. Konsistentes, akustisches Feedback. Jedoch keine Erklärung der möglichen Aktionen durch die Anwendung selbst. & Erfüllt\\
 			\hline
 			Interaktive Objekte & Vorhandene Buttons, Felder und Cursor genutzt. & Optimal\\
 			\hline
 			Ladevorgänge & Vorhandenen, animierten Progress Indikator verwendet. Lesbarkeit des Textes wird abgesichert. Vorgänge sind kurz, keine Angabe einer erwarteten Dauer notwendig. & Optimal\\
-		\end{tabular}\caption{\label{tab:tech_results} Bewertung der Umsetzung anhand von Qualitätskriterien.}
+		\end{tabular}\caption{\label{tab:tech_results} Bewertung der Umsetzung anhand der in Kap. \ref{sec-2-1-4} vorgestellten Qualitätskriterien. Die detaillierten Kriterien finden sich in \cite{MRDocQuality}. Die Einstufung erfolgt anhand der drei vorgegebenen Stufen optimal, erfüllt und nicht erfüllt. 
 	\end{table}
 	\egroup
 %\end{sidewaystable}
@@ -263,12 +237,13 @@ Zur Bewertung der vorgestellten Lösung wurde die Anwendung außerdem unterschie
 \vspace{6px}
 
 \textit{Erfahrungen zur praktischen Nutzung der HoloLens}\\
-Die Reaktionen lassen sich durchweg als positiv beschreiben. Obwohl die meisten Tester keine oder kaum Erfahrung mit der HoloLens oder anderen HMDs hatten, beschränkten sich die Schwierigkeiten in der Nutzung auf ein Minimum. Diese betrafen vor allem das Aufsetzen der Brille. Denn wenn diese nicht richtig sitzt, ist das ohnehin schon kleine Sichtfeld nicht vollständig sichtbar. Hier schaffte jedoch eine kurze Erklärung dazu, wie die Brille sitzen sollte, Abhilfe. Außerdem war die Klick-Geste für viele Nutzer nicht auf Anhieb nutzbar, deshalb wurde meist der Klicker bevorzugt. Die Limitierung des Sichtfeldes wurde nur vereinzelt negativ angemerkt.\\
+Die Reaktionen lassen sich durchweg als positiv beschreiben. Obwohl die meisten Tester keine oder kaum Erfahrung mit der HoloLens oder anderen HMDs hatten, beschränkten sich die Schwierigkeiten in der Nutzung auf ein Minimum. Diese betrafen vor allem das Aufsetzen der Brille. Denn wenn diese nicht richtig sitzt, ist das ohnehin schon kleine Sichtfeld nicht vollständig sichtbar. Hier schaffte jedoch eine kurze Erklärung dazu, wie die Brille sitzen sollte, Abhilfe. Außerdem war die Klick-Geste für viele Nutzer nicht auf Anhieb benutzbar, deshalb wurde meist der Klicker bevorzugt. Die Limitierung des Sichtfeldes wurde nur vereinzelt negativ angemerkt.\\
 
 Die Tatsache, dass größtenteils keine vorangegangenen Erfahrungen mit dem Nutzererlebnis der HoloLens bestanden, trägt natürlich nicht unwesentlich zu den oben genannten Reaktionen bei.\\
 
 \subsection{Diskussion}
-TODO...
+Wie die HoloLens im Falle des 
+Dazu soll zunächst die Fragestellung diskutiert werden.
 
 Frage: Wie HoloLens einsetzen?
 
@@ -283,24 +258,38 @@ Frage: Wie HoloLens einsetzen?
 	\item World Anchor kann für grobe Positionierung genutzt werden, um Setup-Zeit zu verringern
 	\item Anwendung ist hochgradig zugeschnitten auf die konkreten Eigenschaften des Experimentes
 	\item Einsatz per Streaming denkbar, dann jedoch weitere perf. Opt. notwendig oder Deaktivieren von MSAA
+	\item Anpassbarkeit
 \end{itemize}
 
+Wie die HoloLens weiter im Kontext des gewählten Versuches verwendet werden könnte.
 
 \subsubsection{Erweiterbarkeit}
-Mögliche Erweiterungen:
-\begin{itemize}
-	\item Vorberechnete Feldlinien für ein 3D-Ausschnitt möglich
-	\item Weitere Lehrinhalte denkbar: z.B. Entstehung und Überlagerung der Einzelfelder, Elektrisches Feld um die Leiter herum, Anderer Versuch: Ablenkung eines Elektronenstrahls in der Spule
-	\item Applikation ist parametrisiert: Andere physikalische Parameter möglich
-	\item Kaum noch Reserven für mehr Darstellungen, weitere perf. Opt. vornehmen, z.B. selektives Aktivieren/Deaktivieren von MSAA
-	\item Variation von Spulengröße möglich, aber Anpassung der Parameter für die Darstellung und des Modells nötig. Andere Größenordnung erfordert ggf. andere Lösungen aufgrund des Sichtfeldes, Abstandes etc.
-	\item Umsetzung für ein konkretes Einsatzszenario auslegen z.B. Schulunterricht
-\end{itemize}
+Ein im Rahmen der Fragestellung wichtiger Aspekt besteht darin, wie die vorgestellte Lösung um weitere Inhalte erweitert werden könnte. Dies ist in mehreren Bereichen denkbar und soll im Folgenden diskutiert werden.\\
+
+Eine zuvor bereits angedeutete Erweiterung bestünde darin, mit Erklärungen durch die Anwendung und Durchführung des Experimentes zu führen. Dabei könnten die Darstellungsmodelle und physikalischen Zusammenhänge erläutert, aber auch Hinweise zur Nutzung gegeben werden. Auf diese Weise ließe sich beispielsweise kommunizieren, wie die Darstellungen zu interpretieren sind oder welche Interaktionsmöglichkeiten zur Verfügung stehen. Eine Umsetzung wäre beispielsweise mittels Animationen und eingesprochenen Texten denkbar.\\
+
+Die in einer Simulation berechneten Feldlinien geben das Feld in einem 2D-Schnitt wieder. Diese Darstellung ließe sich zu einer 3D-Darstellung erweitern. Dafür müssten auf Seiten der HoloLens zunächst keine weiteren Anpassungen vorgenommen werden, sofern die Daten in einer Datei im entsprechenden Format bereitgestellt werden. Allerdings sind die knappen Ressourcen zu berücksichtigen. Eine größere Anzahl an Feldlinien könnte zu einem Einbruch der Framerate führen. Eine mögliche Lösung bestünde darin, die Anzahl und bzw. oder Granularität der Feldlinien anzupassen. Alternativ ließen sich auch Qualitätseinstellungen (z.B. MSAA, Auflösung) auf der HoloLens verändern, um den Ressourcenverbrauch einzuschränken.\\
+
+Außerdem wäre eine Variation der physikalischen Parameter umsetzbar. Dazu zählen unter anderem Radius, Windungszahl, elektrischer Widerstand und Materialeigenschaften. Die physikalischen Berechnungen sind parametrisiert und ließen sich zur Laufzeit anpassen. Dadurch könnten auch die Zusammenhänge zwischen diesen Parametern und dem entstehenden Magnetfeld beleuchtet werden.\\
+
+Grundsätzlich sind auch Erweiterungen um weitere Lerninhalte denkbar, die mit dem Versuch zusammenhängen. Beispielsweise wäre eine Erklärung des Zusammenhangs zwischen Stromrichtung, Flussrichtung der Elektronen und Richtung des entstehenden Magnetfeldes möglich.\\
+
+TODO...\\
+Im Falle der Helmholtz-Spule überlagern sich die Felder der beiden einzelnen Spulen zu einem Magnetfeld.
+Allerdings ist die Architektur der Applikation nicht auf weitere Szenarien ausgelegt. 
+Umsetzung für ein konkretes Einsatzszenario auslegen z.B. Schulunterricht
 
 \subsubsection{Übertragbarkeit}
 Ansatz übertragen auf andere Versuche:
+
+Neben dem vorgestellten Experiment sind mit einer Helmholtz-Spule noch weitere Versuche möglich. Ein typisches Beispiel ist die Ablenkung eines Elektronenstrahls, der durch ein Gas sichtbar gemacht wird. Die Elektronen werden im Inneren der Spule durch das Magnetfeld entsprechend dessen Stärke abgelenkt. In dem Versuch ist letztere so einzustellen, dass die Elektronen auf eine Kreisbahn gezwungen werden. Das Foto in Abb. X. zeigt den Versuch in diesem Zustand.\\
+
+Durch die vielen Gemeinsamkeiten mit dem in dieser Arbeit behandelten Versuch liegt eine Übertragung der Lösung auf diesen Anwendungsfall nahe. Das Magnetfeld, die Stromrichtung und die Echtzeitdaten könnten hier ebenfalls in den Versuch integriert werden. Dabei wären jedoch ggf. andere Anforderungen durch den geänderten Versuchsaufbau zu berücksichtigen.\\
+
+Eine Übertragung auf ähnliche Versuche denkbar. Beispiel Ablenkung eines Elektronenstrahls durch Plattenkondensator.
+
+
 \begin{itemize}
-	\item Einbettung eines Elektrischen Feldes analog, z.B. Kondensator
 	\item Annotationen und Echtzeitdaten auch bei anderen Versuchen denkbar
 	\item Unterstützung beim Aufbau eines Versuches möglich
 \end{itemize}
