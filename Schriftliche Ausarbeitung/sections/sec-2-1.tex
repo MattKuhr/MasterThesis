@@ -1,14 +1,19 @@
 \section{Hintergrund}
 \label{sec-2}
 
-TODO: Einleitender Satz zu den Hintergründen der Arbeit
+Die Arbeit baut auf bestehende Erkenntnisse aus drei Bereichen auf. Ausgangspunkt ist die HoloLens mit ihrem technischen Hintergrund. Daraus ergeben sich für diese Arbeit technische Anforderungen und Einschränkungen, die es zu berücksichtigen gilt. Daher wird die Technik mit ihren Implikationen in Kap. \ref{sec-2-1} vorgestellt.\\
+
+Außerdem fußt die Arbeit auf bestehenden Erkenntnissen und Ansätzen aus der Lehre, insbesondere im Bereich der Physik. Aufgrund der Aktualität der HoloLens existieren hier zum Zeitpunkt dieser Arbeit nur begrenzt Arbeiten auf Basis des Gerätes. Gleichzeitig existieren bereits ähnliche Ansätze zur der Anwendung von Augmented Reality in der Physik mit anderen Geräten. Deshalb wird auf Forschungsergebnisse aus dem weiteren Bereich des Einsatzes von Augmented Reality in der Lehre zurückgegriffen, die in Kap. \ref{sec-2-2} erörtert werden.\\
+
+Auf Basis der beiden vorangegangenen Abschnitte motiviert schließlich Kap. \ref{sec-2-3} den gewählten physikalischen Versuch und erläutert dazu notwendige Hintergrundinformationen.
 
 \subsection{HoloLens}
 \label{sec-2-1}
-Die HoloLens ist ein von Microsoft entwickeltes \textit{Head-Mounted Display} (HMD), das seit 2016 auf dem Markt ist. Das Gerät ist in der Lage, virtuelle Darstellungen in der Umgebung des Trägers zu verankern und anzuzeigen. Abbildung \ref{img:hololens} zeigt die Brille in der Standardausführung. Die technischen Eigenschaften und genutzten Techniken des HMDs bringen verschiedene Implikationen und Einschränkungen für Anwendungen auf der HoloLens mit sich. Daher soll im Folgenden auf die technischen Aspekte näher eingegangen werden.\\
+Die HoloLens ist ein von Microsoft entwickeltes \textit{Head-Mounted Display} (HMD), das seit 2016 auf dem Markt ist. Das Gerät ist in der Lage, virtuelle Darstellungen in der Umgebung des Trägers zu verankern und anzuzeigen. Anders als bei anderen Geräten wird dabei die Umgebung nicht durch eine Kamera wahrgenommen wie z.B. bei einer Anwendung mit einem Smartphone, sondern direkt mittels durchsichtiger Displays. Einen Eindruck von dem Gerät vermittelt Abbildung \ref{img:hololens}. Bevor näher auf die technischen Eigenschaften dieser Lösung eingegangen wird, soll zunächst eine kurze Einordnung der Gerätes erfolgen.
 
 \subsubsection{Einordnung der HoloLens}
 \label{sec-2-1-1}
+TODO Problem Mixed Reality vs Augmented Reality auflösen
 
 \begin{figure}[h!]
 	\centering
@@ -37,7 +42,7 @@ Entsprechend der zuvor angesprochenen Variationen im Verständnis von Mixed Real
 Da diese Arbeit sich am MR Begriff von Milgram orientiert und mit der HoloLens unterschiedlich stark immersive Anwendungen möglich sich, wird die HoloLens im Folgenden allgemein als MR Device bezeichnet.
 \end{comment}
 
-Die HoloLens deckt mit ihren technischen Möglichkeiten vor allem den linken Bereich des Spektrums ab. Viele Anwendungen liegen deshalb im Teilbereich Augmented Reality.
+Die HoloLens deckt mit ihren technischen Möglichkeiten vor allem den linken Bereich des Spektrums ab. Viele Anwendungen liegen deshalb im Teilbereich Augmented Reality. Die technischen Eigenschaften und genutzten Techniken des HMDs bringen verschiedene Implikationen und Einschränkungen für Anwendungen auf der HoloLens mit sich. Daher soll nun auf die technischen Aspekte näher eingegangen werden.\\
 
 \begin{figure}[h!]
 	\centering
@@ -48,13 +53,32 @@ Die HoloLens deckt mit ihren technischen Möglichkeiten vor allem den linken Ber
 \end{figure}
 
 \subsubsection{Die Hardware}
+\label{sec-2-1-2}
 Bei dem Device handelt es sich um einen eigenständigen Computer, auf dem eine spezielle Version von Windows 10 läuft. Die Brille arbeitet also völlig autonom und ist nicht auf externe Hardware wie z.B. zusätzliche Rechen- und Batterieeinheiten angewiesen.\\
 
-\label{sec-2-1-2}
+\vspace{4px}
+\textit{Das Display}\\
+Kernstück des Gerätes ist das durchsichtige, stereoskopische Display, mit dem die virtuellen 3D-Objekte angezeigt werden. Durchsichtig bedeutet, dass das Display für Licht von außen durchlässig ist und der Nutzer somit wie durch eine Brille seine Umgebung sehen kann. Virtuelle Objekte werden zusätzlich dazu angezeigt, indem Licht über optische Wellenleiter (Optical Wave Guides) in das Display geleitet wird, welches das Licht dann auf die Augen reflektiert.\\
+
+Anwendungen werden mit 60 Frames pro Sekunde dargestellt. Bei der Anzeige handelt es sich jedoch um ein \textit{Color Sequential Display}, bei dem die drei Farben Rot, Grün und Blau nacheinander dargestellt werden. Pro Bild werden folglich drei Einzelbilder (je eins pro Farbe) gezeigt, was eine Framerate von 240 Hz ergibt.\\
+
+Es handelt sich dabei um ein stereoskopisches Display, bei dem pro Auge separat ein Bild dargestellt wird. So ermöglicht die HoloLens dem Träger das stereoskopische Wahrnehmen dreidimensionaler Objekte. Die beiden Bilder werden in einem festen Abstand von 22 mm zueinander dargestellt. Außerdem beträgt die Distanz, auf die sich die Augen einstellen müssen, damit Bilder als scharf wahrgenommen werden (Akkommodation), etwa zwei Meter und ist ebenfalls fest.\\
+
+\vspace{4px}
+\textit{Das Tracking}\\
+Um die Hologramme im Raum verankern zu können, benötigt die HoloLens Informationen über ihre exakte Position und Orientierung im Raum. Beides erarbeitet das Gerät allein aus einem Zusammenspiel der verschiedenen internen Sensoren und ist nicht auf externe Markierungen angewiesen, es handelt sich um sogenanntes \textit{Inside-Out Tracking}. Das Vorgehen basiert dabei auf zwei Strategien.
+\par
+\noindent\hspace*{5mm}
+Zum einen erfasst die HoloLens die Oberflächenstruktur der Umgebung über Tiefen- und Stereokameras. Während der Nutzer sich durch den Raum bewegt, wird dies immer weiter vervollständigt und verbessert. Dieses Vorgehen wird \textit{Spatial Mapping} genannt und kann auch von Anwendungen genutzt werden, um mit Objekten der realen Welt zu interagieren. Eine Darstellung der optischen Sensoren ist in Abb. \ref{img:hololens_tech} enthalten.
+\par
+\noindent\hspace*{5mm}
+Zum anderen kommt eine inertiale Messeinheit zum Einsatz. Über die Beschleunigungs-, Rotations- und Magnetflusssensoren können Änderungen in Position und Ausrichtung der Brille gemessen werden. Bei diesem Vorgehen summieren sich Messfehler im Laufe der Zeit jedoch stetig weiter auf und die Positionsschätzung wird zunehmend unzuverlässiger. Daher wird ein Zusammenspiel mit der Raumerkennung genutzt.
+
+
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.9\textwidth]{images/papers/hololens_tech.png}
-	\caption{Die Sensorik der HoloLens (Quelle: Microsoft)}
+	\caption{Überblick über die optischen Sensoren der HoloLens \cite{MRDoc}}
 	%https://docs.microsoft.com/en-us/windows/mixed-reality/hololens-hardware-details
 	\label{img:hololens_tech}
 \end{figure}
@@ -64,7 +88,7 @@ Einen Überblick über die verwendete Hardware gibt Tabelle \ref{tab:hololens_te
 \bgroup
 \setlength\extrarowheight{0pt}
 \def\arraystretch{1.25}
-\begin{table}[H]
+\begin{table}[h!]
 	\centering
 	\begin{tabular}{l|l}
 		Kategorie & Eigenschaft\\
@@ -102,27 +126,9 @@ Einen Überblick über die verwendete Hardware gibt Tabelle \ref{tab:hololens_te
 		Steuerung & Gestensteuerung\\
 		& Sprachsteuerung\\
 		& HoloLens Klicker, Controller, Maus, Tastatur\\
-	\end{tabular}\caption{\label{tab:hololens_tech_details} Spezifikation der HoloLens. Quelle: Microsoft}
+	\end{tabular}\caption{\label{tab:hololens_tech_details} Technische Spezifikation der HoloLens \cite{MRDoc}.}
 \end{table}
 \egroup
-
-\vspace{4px}
-\textit{Das Display}\\
-Kernstück des Gerätes ist das durchsichtige, stereoskopische Display, mit dem die virtuellen 3D-Objekte angezeigt werden. Durchsichtig bedeutet, dass das Display für Licht von außen durchlässig ist und der Nutzer somit wie durch eine Brille seine Umgebung sehen kann. Virtuelle Objekte werden zusätzlich dazu angezeigt, indem Licht über optische Wellenleiter (Optical Wave Guides) in das Display geleitet wird, welches das Licht dann auf die Augen reflektiert.\\
-
-Anwendungen werden mit 60 Frames pro Sekunde dargestellt. Bei der Anzeige handelt es sich jedoch um ein \textit{Color Sequential Display}, bei dem die drei Farben Rot, Grün und Blau nacheinander dargestellt werden. Pro Bild werden folglich drei Einzelbilder (je eins pro Farbe) gezeigt, was eine Framerate von 240 Hz ergibt.\\
-
-Es handelt sich dabei um ein stereoskopisches Display, bei dem pro Auge separat ein Bild dargestellt wird. So ermöglicht die HoloLens dem Träger das stereoskopische Wahrnehmen dreidimensionaler Objekte. Die beiden Bilder werden in einem festen Abstand von 22 mm zueinander dargestellt. Außerdem beträgt die Distanz, auf die sich die Augen einstellen müssen, damit Bilder als scharf wahrgenommen werden (Akkommodation), etwa zwei Meter und ist ebenfalls fest.\\
-
-\vspace{4px}
-\textit{Das Tracking}\\
-Um die Hologramme im Raum verankern zu können, benötigt die HoloLens Informationen über ihre exakte Position und Orientierung im Raum. Beides erarbeitet das Gerät allein aus einem Zusammenspiel der verschiedenen internen Sensoren und ist nicht auf externe Markierungen angewiesen, es handelt sich um sogenanntes \textit{Inside-Out Tracking}. Das Vorgehen basiert dabei auf zwei Strategien.
-\par
-\noindent\hspace*{5mm}
-Zum einen erfasst die HoloLens die Oberflächenstruktur der Umgebung über Tiefen- und Stereokameras. Während der Nutzer sich durch den Raum bewegt, wird dies immer weiter vervollständigt und verbessert. Dieses Vorgehen wird \textit{Spatial Mapping} genannt und kann auch von Anwendungen genutzt werden, um mit Objekten der realen Welt zu interagieren.
-\par
-\noindent\hspace*{5mm}
-Zum anderen kommt eine inertiale Messeinheit zum Einsatz. Über die Beschleunigungs-, Rotations- und Magnetflusssensoren können Änderungen in Position und Ausrichtung der Brille gemessen werden. Bei diesem Vorgehen summieren sich Messfehler im Laufe der Zeit jedoch stetig weiter auf und die Positionsschätzung wird zunehmend unzuverlässiger. Daher wird ein Zusammenspiel mit der Raumerkennung genutzt.
 
 \subsubsection{Die Software und Interaktion}
 \label{sec-2-1-3}
@@ -203,10 +209,14 @@ Die Hardwareressourcen der HoloLens sind mit einer CPU und GPU mit jeweils 1 GHz
 Dabei ist es von besonderer Bedeutung, dass die Anwendung möglichst konstant 60 Bilder pro Sekunde ausgibt. Um die Hologramme im Raum stabil und ohne Ruckler oder Zittern anzuzeigen, müssen selbst feinste Kopfbewegungen ausgeglichen werden. Dazu nutzt die HoloLens ein spezielles Verfahren:
 \par
 \noindent\hspace*{5mm}
-Bevor eine Szene in die Render-Pipeline geht, trifft die Brille anhand der Sensordaten eine Vorhersage darüber, in welcher Position und Ausrichtung sich die Brille befinden wird, wenn das zu errechnende Bild dargestellt wird. Anhand dieser Schätzung wird die Kamera-Position und -Ausrichtung für die Szene festgelegt und anschließend gerendert. Eine längere oder variierende Renderzeit bedeutet damit auch eine unzuverlässigere Schätzung. Das kann zu instabil wirkenden Darstellungen führen, z.B. in Form von Zittern oder Ruckeln. Deshalb empfiehlt Microsoft, die Framerate von 60 FPS stets aufrecht zu erhalten.\\
+Bevor eine Szene in die Render-Pipeline geht, trifft die Brille anhand der Sensordaten eine Vorhersage darüber, in welcher Position und Ausrichtung sich die Brille befinden wird, wenn das zu errechnende Bild dargestellt wird. Anhand dieser Schätzung wird die Kamera-Position und -Ausrichtung für die Szene festgelegt und anschließend gerendert. Eine längere oder variierende Renderzeit bedeutet damit auch eine unzuverlässigere Schätzung. Das kann zu instabil wirkenden Darstellungen führen, z.B. in Form von Zittern oder Ruckeln. Deshalb empfiehlt Microsoft, die Framerate von 60 FPS stets aufrecht zu erhalten.
+
+\subsubsection{Empfehlungen zu Design und Umsetzung}
+\label{sec-2-1-5}
+Damit Einschränkungen umgangen und negative Auswirkungen vermieden werden können, gibt es bereits einige Designempfehlungen und Guide-Lines sowie Empfehlungen zur Implementierung. Die Dokumentation zu Windows Mixed Reality umfasst hier einige Kriterien, Vorschläge und Hinweise, von denen besonders relevante hier vorgestellt werden sollen.\\
 
 \textit{Qualitätskriterien}\\
-Die Dokumentation zu Windows Mixed Reality enthält eine Liste von Qualitätskriterien, anhand derer Anwendungen bewertet werden können. Diese deckt viele der zuvor erläuterten Probleme wie z.B. der Abstand zu Objekten ab. Jedes Kriterium ist mit einer Beschreibung versehen, unter welchen Umständen es als optimal erfüllt, erfüllt oder nicht erfüllt gilt. Eine Kurzfassung relevanter Kriterien ist in Tabelle \ref{tab:tech_criteria} zusammengestellt.\\
+Als Referenz dafür, wie gut eine Anwendung technische Einschränkungen berücksichtigt, kann eine Liste von Qualitätskriterien dienen, anhand derer Anwendungen bewertet werden können \cite{MRDocQuality}. Diese deckt viele der zuvor erläuterten Probleme wie z.B. der Abstand zu Objekten ab. Jedes Kriterium ist mit einer Beschreibung versehen, unter welchen Umständen es als optimal erfüllt, erfüllt oder nicht erfüllt gilt. Eine Kurzfassung relevanter Kriterien ist in Tabelle \ref{tab:tech_criteria} zusammengestellt.\\
 \bgroup
 \setlength\extrarowheight{-2pt}
 \def\arraystretch{1.8}
@@ -235,13 +245,9 @@ Die Dokumentation zu Windows Mixed Reality enthält eine Liste von Qualitätskri
 		Interaktive Objekte & Sind interaktive Objekte als solche erkennbar?\\
 		\hline
 		Ladevorgänge  & Erhält der Nutzer Feedback über länger laufende Operationen?\\
-	\end{tabular}\caption{\label{tab:tech_criteria} Kurzfassung der Qualitätskriterien.}
+	\end{tabular}\caption{\label{tab:tech_criteria} Kurzfassung der Qualitätskriterien. Eine ausführliche Version mit genauen Kriterien und Methoden zur Evaluierung findet sich in \cite{MRDocQuality}.}
 \end{table}
 \egroup
-
-\subsubsection{Empfehlungen zu Design und Umsetzung}
-\label{sec-2-1-5}
-Damit Einschränkungen umgangen und negative Auswirkungen vermieden werden können, gibt es bereits einige Designempfehlungen und Guide-Lines sowie Empfehlungen zur Implementierung. Die Dokumentation zu Windows Mixed Reality umfasst hier einige Vorschläge und Hinweise, von denen besonders relevante hier vorgestellt werden sollen.\\
 
 \textbf{Positionierung von Objekten}\\
 Zur Anordnung von Objekten gibt es einige Design-Guidelines, von denen ausgewählte hier genannt werden sollen. Die Dokumentation nennt die Folgenden Richtlinien:
@@ -262,7 +268,7 @@ Weiterhin ist die Größe von Objekten von Bedeutung. Das gilt besonders dann, w
 Um Objekte wie z.B. Menus und Dialoge, die nicht fest im Raum verankert sind, anzupassen, stellt das Mixed Reality Toolkit verschiedene Funktionen wie z.B. Billboarding oder Tagalong zur Verfügung, die Abstand, Orientierung und Skalierung entsprechend der Nutzerbewegung automatisch anpassen.\\
 
 \textit{Stabilisierung}\\
-Die HoloLens maximiert die Stabilität von Hologrammen gegen eine ausgewählte Ebene, die von der Anwendung selbst dynamisch gesetzt werden kann. Hologramme sollten daher, sofern sie gerade betrachtet werden, möglichst nah an dieser Ebene liegen, um stabil zu wirken. 
+Die HoloLens maximiert die Stabilität von Hologrammen gegen eine ausgewählte Ebene, die von der Anwendung selbst dynamisch gesetzt werden kann. Hologramme sollten daher, sofern sie gerade betrachtet werden, möglichst nah an dieser Ebene liegen, um stabil zu wirken.\\
 
 \textit{Performance Optimierungen}\\
 Da die Framerate maßgeblichen Einfluss auf die Stabilität von Hologrammen hat und die Hardwareressourcen limitiert sind, gibt es eine Reihe von empfohlenen Optimierungen und Hinweisen, um die Performance einer Anwendung zu verbessern. Diese umfassen unter anderem:
