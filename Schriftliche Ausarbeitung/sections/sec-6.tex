@@ -101,7 +101,12 @@ Die Applikation ist auch für Anwender ohne Erfahrungen mit der HoloLens oder Mi
 Nachdem die inhaltlichen Ergebnisse beleuchtet wurden, sollen nun die Ergebnisse aus technische Seite  vorgestellt werden.
 
 \subsubsection{Technische Umsetzung}
-Im Hinblick auf die technischen Anforderungen wurde eine Liste von Qualitätskriterien zugrunde gelegt. Die Bewertung der Lösung anhand dieses Maßstabes ist im Folgenden erörtert. Der Einschätzung liegen die zu jedem Kriterium genannten Hinweise zur Bewertung zu Grunde. ist Tabelle \ref{tab:tech_results} zu entnehmen. 
+Im Hinblick auf die technischen Anforderungen wurde eine Liste von Qualitätskriterien zugrunde gelegt. Die Bewertung der Lösung anhand dieses Maßstabes ist im Folgenden erörtert. Der Einschätzung liegen die zu jedem Kriterium genannten Hinweise zur Bewertung zu Grunde.\\
+
+Insgesamt erfüllt die Applikation die technischen Anforderungen fast vollständig bis vollständig. Eine Aufschlüsselung der einzelnen Kriterien bietet die unten stehende Tabelle \ref{tab:tech_results}. Die Hologramme wirken weitestgehend stabil und glaubhaft positioniert, sie bleiben im Rahmen der Komfortzone und passen sich dem Nutzer an. Die Interaktion erfolgt zum Großteil über Standardmechanismen. Auch im Bereich Performance bleibt die Anwendung im Rahmen und liefert konstant 60 Bilder pro Sekunde aus. Allerdings beansprucht die Kantenglättung massiv Ressourcen und lässt kaum Spielraum für weitere oder komplexere Darstellungen.\\
+
+ Im Weiteren soll auf einzelne Aspekte kurz näher eingegangen werden.\\
+ 
 %\textbf{Qualitätskriterien}
 %\begin{sidewaystable}[h!]
 \begin{landscape}
@@ -114,11 +119,11 @@ Im Hinblick auf die technischen Anforderungen wurde eine Liste von Qualitätskri
 			Kriterium & Ergebnis & Bewertung\\
 			\hline
 			\hline
-			Framerate & Durchgehend 60 FPS, keine Framedrops. Einzig bei Start/Stopp von Vuforia hängt die Anwendung kurz (<1s). & Optimal\\
+			Framerate & Durchgehend 60 FPS, keine Einbrüche der Framerate. & Optimal\\
 			\hline
 			Stabilität der Hologramme & Hologramme erscheinen durchgehend sehr stabil, Elemente liegen im Abstand von max. 20cm zu einem Spatial Anchor und der Stabilization Plane. Seltene, minimale Sprünge sowie Wippen der simulierten Feldlinien treten auf. Objekte, die sehr dicht an realen liegen, driften bei Bewegungen leicht & Fast optimal\\
 			\hline
-			Positionierung & Sehr genaue Positionierung über optischen Marker. Hologramme sind glaubhaft in die Spule eingebettet. Überschneidungen von wenigen Millimetern sind jedoch möglich. & Fast optimal\\
+			Positionierung & Sehr genaue Positionierung über optischen Marker. Hologramme sind glaubhaft in die Spule eingebettet. Überschneidungen von einigen Millimetern sind jedoch möglich. & Fast optimal\\
 			\hline
 			Komfortzone & Elemente liegen in Komfortzone (Winkel und Distanz), sofern eine geeignete Unterlage vorhanden ist. Design begünstigt den gewünschten Abstand. Minimale Distanz wird über Fading sichergestellt. & Optimal\\
 			\hline
@@ -139,19 +144,6 @@ Im Hinblick auf die technischen Anforderungen wurde eine Liste von Qualitätskri
 %\end{sidewaystable}
 \end{landscape}
 
-Insgesamt erfüllt die Applikation die Anforderungen fast vollständig bis vollständig. Einige Probleme konnten bereits im Design abgemildert oder umgangen werden. Das gilt z.B. für die Aspekte Komfortzone und FOV-Grenzen. Durch die platzsparende Anordnung der Elemente werden die Hologramme seltener abgeschnitten. Außerdem sind häufige Kopfbewegungen und Hinweise auf Elemente außerhalb des FOV so nicht notwendig. Und die Berücksichtigung einer geeigneten Distanz von Beginn an vermeidet bzw. verringert Probleme mit zu dicht positionierten Objekten.\\
-
-Die Umsetzung unterstützt bereits im Design verankerte Maßnahmen weiter. Hier wurde z.B. bei der Festsetzung von Anzahl und Größe von Objekten auf die Einschränkungen der HoloLens Rücksicht genommen. Viele Probleme werden auch durch die Nutzung von vorgefertigten Objekten und Verhaltensweisen vermieden. Hier sind z.B. der Progress Indikator, Standard-Button und Standard-Shader zu nennen. Im Weiteren soll auf einzelne Aspekte kurz näher eingegangen werden.\\
-
-\textit{Field of View}\\
-Die Darstellungen passen bei einer üblichen Position vollständig in die Grenzen des Sichtfeldes. Der Screenshot in Abb. \ref{img:fov} zeigt die Kameraperspektive aus solch einer Position. Dabei ließe sich der Kopf horizontal in beide Richtungen etwa 6° drehen, ohne dass die Hologramme abgeschnitten werden würden.
-\begin{wrapfigure}{r}{0.5\textwidth}
-	\centering
-	\includegraphics[width=0.48\textwidth]{images/unity/fov.jpg}
-	\caption{Screenshot zeigt Kameraperspektive bei 1,5m Distanz zum Zentrum der Spule, 30° Neigung. Auflösung und Seitenverhältnis entspricht dem eines einzelnen Displays auf der HoloLens.}
-	\label{img:fov}
-\end{wrapfigure}
-
 \textit{Stabilität}\\
 Die Stabilität der Objekte beeinflusst die Nutzererfahrung wesentlich, da durch die Einbettung in die Spule selbst geringe Abweichungen negativ auffallen. Bei einer umsichtigen Nutzung treten diesbezüglich wenige bis keine Probleme auf, die Elemente wirken stabil. Lediglich die sehr nah an der Spule positionierten Daten-Panels und Tooltips können bei Bewegungen einen leichten Drift aufweisen. Selten sind kleinere Sprünge oder Vibrationen festzustellen. Und die Darstellung der Feldlinien wippt bei vertikalen Kopfbewegungen leicht um den Mittelpunkt. Das ist der Tatsache geschuldet, dass die Feldlinien steil auf der Stabilisations-Ebene stehen und sich von dieser bis zu 1,2 Meter ausbreiten. Der Effekt ist jedoch gering und nur auffällig, wenn er provoziert wird.\\
 
@@ -167,25 +159,31 @@ Allerdings hängt die Stabilität nicht unwesentlich von den Randbedingungen ab.
 Einen Eindruck von der Güte der Positionierung lässt sich anhand von Abb. \ref{img:model-overlay} gewinnen. Das normalerweise nur in den Tiefenpuffer gerenderte Mesh der virtuellen Spule wird hier durch einen Standard-Shader sichtbar dargestellt. Die reale Spule ist dadurch fast gar nicht zu sehen. Zwar sind Abweichungen zwischen den beiden Objekten aus unterschiedlichen Winkeln unterschiedlich stark sichtbar, das gewählte Foto gibt jedoch einen guten Anhaltspunkt für die tatsächliche Nutzererfahrung wieder.\\
 
 \textit{Interaction Clarity}\\
-In Puncto Interaction Clarity kann die Lösung nur als mittel eingestuft werden. Denn das Kriterium verlangt ausdrücklich, dass eine Anwendung die ihr zu Grunde liegenden Interaktionsmöglichkeiten erklärt, sofern sie über Gewohntes hinausgehen. Das ist hier bei der Steuerung außerhalb des Menüs nicht der Fall. Die Lösung setzt eine Anleitung durch eine begleitende Person voraus, die den Anwender über die möglichen Aktionen informiert. Die anderen Punkte des Kriteriums werden jedoch erfüllt.\\
+In Puncto Interaction Clarity kann die Lösung nicht als optimal eingestuft werden. Denn das Kriterium verlangt ausdrücklich, dass eine Anwendung die ihr zu Grunde liegenden Interaktionsmöglichkeiten erklärt, sofern sie über Gewohntes hinausgehen. Das ist bei der Steuerung außerhalb des Menüs nicht der Fall. Die Lösung setzt eine Anleitung durch eine begleitende Person voraus, die den Anwender über die möglichen Aktionen informiert. Die anderen Punkte des Kriteriums werden jedoch erfüllt.\\
 
 \textit{Performance}\\
-Etwas ausführlicher soll hier noch der Ressourcenverbrauch der Applikation beleuchtet werden. Die Performance hat maßgeblichen Einfluss auf die Stabilität und Positionierung der Hologramme und ist daher besonders wichtig. Die Anwendung wurde mit Hilfe von Unity's Profiler sowie des Windows Performance Analyzers bei einem ein-minütigem Einsatz auf der HoloLens analysiert. Dabei wurde das Menü und die drei verschiedenen Darstellungen aufgerufen.
+Die Performance hat maßgeblichen Einfluss auf die Stabilität der Hologramme aber auch der Erweiterbarkeit der Applikation und ist daher von besonderer Bedeutung. Deshalb soll hier der Ressourcenverbrauch etwas ausführlicher beleuchtet werden. Dazu wurde die Anwendung mit Hilfe von Unity's Profiler sowie des Performance Monitores der HoloLens-Weboberfläche analysiert. Der Profiler zeigt unter anderem an, wie lange einzelne Tasks auf Seiten von CPU und GPU benötigen. Der Performance Monitor hingegen zeigt den Ressourcenverbrauch des Gesamtsystems an.\\
 
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=\textwidth]{images/performance/performance.jpg}
-	\caption{Performance Monitor}
-	\label{img:performance}
-\end{figure}
+Die Anwendung gibt konstant 60 Bilder pro Sekunde aus. Beide genannten Werkzeuge zeigen keine Einbrüche der Framerate. Der Profiler zeigt eine Renderdauer im Bereich von 11 bis 13 Millieskunden an, wie in Abbildung \ref{img:profiler}. Das liegt deutlich unter den 16,6 ms zwischen zwei Bildern bei einer Bildwiederholfrequenz 60 Hz. Die Lastverteilung zwischen CPU und GPU variiert dabei, je nach aktiver Darstellung. Die Simulationsdaten und das Tracking verlangen mehr CPU Leistung, während das Rendering der 3D-Objekte die GPU mehr in Anspruch nimmt.\\
 
-Einen Eindruck vom Ressourcenverbauch der App vermittelt der Screenshot in Abb. \ref{img:performance}. Zu sehen ist die Auslastung der Brille über einen Zeitraum von 60 Sekunden. Währenddessen wurde mehrfach zwischen den verschiedenen Darstellungen hin- und hergewechselt und das Menü aufgerufen.
+Einen Überblick über den Ressourcenverbrauch des Gesamtsystems gibt Abbildung \ref{img:performance}. Dabei ist jedoch die Auslastung relativ hoch.
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\textwidth]{images/performance/profiler.png}
-	\caption{Profiler}
+	\caption{}
 	\label{img:profiler}
+\end{figure}
+
+Die Kantenglättung wirkt sich deutlich auf den Ressourcenverbrauch der Anwendung aus. Eine Gegenüberstellung der Systemleistungen bei aktiviertem bzw. deaktiviertem Multisampling ist Abbildung \ref{img:msaa-vs-off} zu entnehmen. Unter gleichen Bedingungen steigt die Auslastung der GPU durch 2x MSAA von ca. 40 auf ca. 70 Prozent. Das wirkt sich auch auf den Stromverbrauch aus, der dadurch höher ausfällt aber noch im akzeptablen Bereich liegt.\\
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.45\textwidth]{images/performance/perf_msaa_on.png}
+	\hspace{0.05cm}
+	\includegraphics[width=0.45\textwidth]{images/performance/perf_msaa_off.png}
+	\caption{Unterschied durch Aktivierung von 2x MSAA. Links ist die Technik aktiviert, rechts nicht, bei sonst gleichen Bedingungen. Die GPU wird ohne MSAA um etwa ein Drittel weniger ausgelastet.}
+	\label{img:msaa-vs-off}
 \end{figure}
 
 \begin{itemize}
@@ -197,7 +195,7 @@ Einen Eindruck vom Ressourcenverbauch der App vermittelt der Screenshot in Abb. 
 	\item Stromverbrauch unregelmäßig
 \end{itemize}
 
-Insgesamt ist die Auslastung der Hardware relativ hoch. Zwar liegen sowohl bei CPU als auch GPU noch Reserven, allerdings bestimmt das Zusammenspiel von CPU und GPU die Framerate.\\
+ Zwar liegen sowohl bei CPU als auch GPU noch Reserven, allerdings bestimmt das Zusammenspiel von CPU und GPU die Framerate.\\
 
 MSAA treibt Ressourcenverbrauch in die Höhe: ohne MSAA etwa 25\% GPU\\
 Rendering der Linien besonders CPU-intensiv. knapp 7 ms CPU-Zeit nur für die Linien, ohne Optimierungen etwa 45 ms\\
@@ -206,7 +204,9 @@ Rendering der Linien besonders CPU-intensiv. knapp 7 ms CPU-Zeit nur für die Li
 Die Bewertung wurde anhand von Tests unter für die Anwendung günstigen Bedingungen durchgeführt. Der Versuchsaufbau wurde so positioniert, dass die umliegenden Objekte gut für das Tracking der Brille geeignet sind. Außerdem wurde die HoloLens vorher öfter im Testraum verwendet und hatte daher bereits ein gutes Modell des Raums zur Orientierung. Weiterhin wurde die Brille auf den Tester kalibriert und ruckartige oder unnötige Kopfbewegungen vermieden. 
 
 \subsubsection{Feedback}
-Zur Bewertung der vorgestellten Lösung wurde die Anwendung außerdem unterschiedlichen Personen vorgestellt und zum Testen überlassen. Dabei handelt es sich um ca. 15 Personen mit unterschiedlichem Grad an Expertise. Das Spektrum umfasst ungefähr zu gleichen Teilen Akademiker, Lehrer und Studenten der Physik. Deren Feedback wurde für diese Arbeit qualitativ festgehalten und zusammengefasst. Die Nutzung der Anwendung beschränkte sich dabei meistens auf den Hauptteil mit den physikalischen Darstellungen.\\
+Zur Bewertung der vorgestellten Lösung wurde die Anwendung außerdem unterschiedlichen Personen vorgestellt und zum Testen überlassen. Dabei handelt es sich um ca. 15 Personen mit unterschiedlichem Grad an Expertise. Das Spektrum umfasst ungefähr zu gleichen Teilen Akademiker, Lehrer und Studenten der Physik. Deren Feedback wurde für diese Arbeit qualitativ festgehalten und zusammengefasst. Die Nutzung der Anwendung beschränkte sich dabei auf den Hauptteil mit den physikalischen Darstellungen.\\
+
+Die Reaktionen lassen sich weitestgehend als positiv beschreiben. Besonders die Interaktivität und die Darstellung der Simulationsdaten wurden \\
 
 \vspace{8px}
 \begin{center}
@@ -237,13 +237,17 @@ Zur Bewertung der vorgestellten Lösung wurde die Anwendung außerdem unterschie
 \vspace{6px}
 
 \textit{Erfahrungen zur praktischen Nutzung der HoloLens}\\
-Die Reaktionen lassen sich durchweg als positiv beschreiben. Obwohl die meisten Tester keine oder kaum Erfahrung mit der HoloLens oder anderen HMDs hatten, beschränkten sich die Schwierigkeiten in der Nutzung auf ein Minimum. Diese betrafen vor allem das Aufsetzen der Brille. Denn wenn diese nicht richtig sitzt, ist das ohnehin schon kleine Sichtfeld nicht vollständig sichtbar. Hier schaffte jedoch eine kurze Erklärung dazu, wie die Brille sitzen sollte, Abhilfe. Außerdem war die Klick-Geste für viele Nutzer nicht auf Anhieb benutzbar, deshalb wurde meist der Klicker bevorzugt. Die Limitierung des Sichtfeldes wurde nur vereinzelt negativ angemerkt.\\
+Obwohl die meisten Tester keine oder kaum Erfahrung mit der HoloLens oder anderen HMDs hatten, beschränkten sich die Schwierigkeiten in der Nutzung auf ein Minimum. Diese betrafen vor allem das Aufsetzen der Brille. Denn wenn diese nicht richtig sitzt, ist das ohnehin schon kleine Sichtfeld nicht vollständig sichtbar. Hier schaffte jedoch eine kurze Erklärung dazu, wie die Brille sitzen sollte, Abhilfe. Außerdem war die Klick-Geste für viele Nutzer nicht auf Anhieb benutzbar, deshalb wurde meist der Klicker bevorzugt. Die Limitierung des Sichtfeldes wurde nur vereinzelt negativ angemerkt.\\
 
 Die Tatsache, dass größtenteils keine vorangegangenen Erfahrungen mit dem Nutzererlebnis der HoloLens bestanden, trägt natürlich nicht unwesentlich zu den oben genannten Reaktionen bei.\\
 
 \subsection{Diskussion}
 Wie die HoloLens im Falle des 
 Dazu soll zunächst die Fragestellung diskutiert werden.
+
+Einige Probleme konnten bereits im Design abgemildert oder umgangen werden. Das gilt z.B. für die Aspekte Komfortzone und FOV-Grenzen. Durch die platzsparende Anordnung der Elemente werden die Hologramme seltener abgeschnitten. Außerdem sind häufige Kopfbewegungen und Hinweise auf Elemente außerhalb des FOV so nicht notwendig. Und die Berücksichtigung einer geeigneten Distanz von Beginn an vermeidet bzw. verringert Probleme mit zu dicht positionierten Objekten.\\
+
+Die Umsetzung unterstützt bereits im Design verankerte Maßnahmen weiter. Hier wurde z.B. bei der Festsetzung von Anzahl und Größe von Objekten auf die Einschränkungen der HoloLens Rücksicht genommen. Viele Probleme werden auch durch die Nutzung von vorgefertigten Objekten und Verhaltensweisen vermieden. Hier sind z.B. der Progress Indikator, Standard-Button und Standard-Shader zu nennen.
 
 Frage: Wie HoloLens einsetzen?
 
