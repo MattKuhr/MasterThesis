@@ -48,7 +48,7 @@ Durch den gewählten Designansatz werden die physikalischen Eigenschaften in ihr
 				\singlespacing
 				\item Räumliches Verständnis des Feldes der Spule
 				\item Zusammenhang zwischen Stromstärke und Flussdichte
-				\item Verständnis der verschiedenen Darstellungsmodelle
+				\item Gemeinsamkeiten und Unterschiede der beiden Darstellungsmodelle
 				\item Zusammenspiel der Einzelfelder von Erde und Spule
 				\item Auswirkungen des entstehenden Feldes auf die Magnetnadel
 				\item Einfluss von Störfaktoren wie Reibung und Trägheit auf die Nadel
@@ -69,7 +69,6 @@ Der Nutzer hat die Freiheit zwischen den Darstellungen des Magnetfeldes zu wechs
 
 \textit{Zusammenspiel der Einzelfelder und Auswirkung auf die Nadel}\\
 Da das resultierende Feld über seine Komponenten dargestellt wird, lässt sich deren Zusammenspiel bei sich ändernder Feldstärke beobachten. Hier wird ersichtlich, dass ausschließlich die Komponente des Feldstärkevektors in Richtung der Spulenachse variiert. Die Auswirkungen eines sich ändernden Feldes sind anhand der theoretischen Nadel direkt und an der realen Nadel verzögert zu sehen.\\
-
 
 \textit{Einfluss von Störfaktoren}\\
 Die reale Magnetnadel unterliegt den Einflüssen von Reibung und Trägheit. Durch die eingebettete, theoretische Ausrichtung wird der Unterschied zwischen der realen und einer von Störeinflüssen freien Nadel deutlich. Da die reale Nadel mit 12 cm Länge recht groß und träge ist, ist der Unterschied klar zu sehen.\\
@@ -123,7 +122,7 @@ Insgesamt erfüllt die Applikation die technischen Anforderungen fast vollständ
 			\hline
 			Stabilität der Hologramme & Hologramme erscheinen durchgehend sehr stabil, Elemente liegen im Abstand von max. 20cm zu einem Spatial Anchor und der Stabilization Plane. Seltene, minimale Sprünge sowie Wippen der simulierten Feldlinien treten auf. Objekte, die sehr dicht an realen liegen, driften bei Bewegungen leicht & Fast optimal\\
 			\hline
-			Positionierung & Sehr genaue Positionierung über optischen Marker. Hologramme sind glaubhaft in die Spule eingebettet. Überschneidungen von einigen Millimetern sind jedoch möglich. & Fast optimal\\
+			Positionierung & Sehr genaue Positionierung über optischen Marker. Hologramme sind glaubhaft in die Spule eingebettet. Überschneidungen von einigen Millimetern sind jedoch möglich. World Anchor nur bedingt ausreichend genau.& Fast optimal\\
 			\hline
 			Komfortzone & Elemente liegen in Komfortzone (Winkel und Distanz), sofern eine geeignete Unterlage vorhanden ist. Design begünstigt den gewünschten Abstand. Minimale Distanz wird über Fading sichergestellt. & Optimal\\
 			\hline
@@ -153,7 +152,7 @@ Allerdings hängt die Stabilität nicht unwesentlich von den Randbedingungen ab.
 \begin{wrapfigure}{r}{0.5\textwidth}
 	\centering
 	\includegraphics[width=0.48\textwidth]{images/HL/model-overlay.jpg}
-	\caption{Überlagerung virtuelle und reale Spule}
+	\caption{Überlagerung des virtuellen Modells und der realen Spule. Das virtuelle Modell deckt sich zum großen Teil mit dem realen Objekt. An den Kanten sind jedoch kleine Abweichungen zu erkennen.}
 	\label{img:model-overlay}
 \end{wrapfigure}
 Einen Eindruck von der Güte der Positionierung lässt sich anhand von Abb. \ref{img:model-overlay} gewinnen. Das normalerweise nur in den Tiefenpuffer gerenderte Mesh der virtuellen Spule wird hier durch einen Standard-Shader sichtbar dargestellt. Die reale Spule ist dadurch fast gar nicht zu sehen. Zwar sind Abweichungen zwischen den beiden Objekten aus unterschiedlichen Winkeln unterschiedlich stark sichtbar, das gewählte Foto gibt jedoch einen guten Anhaltspunkt für die tatsächliche Nutzererfahrung wieder.\\
@@ -175,7 +174,7 @@ Einen Überblick über den Ressourcenverbrauch des Gesamtsystems gibt Abbildung 
 	\label{img:profiler}
 \end{figure}
 
-Die Kantenglättung wirkt sich deutlich auf den Ressourcenverbrauch der Anwendung aus. Eine Gegenüberstellung der Systemleistungen bei aktiviertem bzw. deaktiviertem Multisampling ist Abbildung \ref{img:msaa-vs-off} zu entnehmen. Unter gleichen Bedingungen steigt die Auslastung der GPU durch 2x MSAA von ca. 40 auf ca. 70 Prozent. Das wirkt sich auch auf den Stromverbrauch aus, der dadurch höher ausfällt aber noch im akzeptablen Bereich liegt.\\
+Die Kantenglättung wirkt sich deutlich auf den Ressourcenverbrauch der Anwendung aus. Eine Gegenüberstellung der Systemleistungen bei aktiviertem bzw. deaktiviertem Multisampling ist Abbildung \ref{img:msaa-vs-off} zu entnehmen. Unter gleichen Bedingungen steigt die Auslastung der GPU durch 2x MSAA von ca. 40 auf ca. 70 Prozent. Das wirkt sich auch auf den Stromverbrauch aus, der dadurch höher ausfällt, aber noch im akzeptablen Bereich liegt.\\
 
 \begin{figure}[h!]
 	\centering

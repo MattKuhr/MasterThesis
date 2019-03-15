@@ -69,6 +69,20 @@
 \newcommand{\sectionbreak}{\clearpage}
 \renewcommand{\lstlistingname}{Codeausschnitt}% Listing -> Algorithm
 
+\DeclareAutoCiteCommand{inline}{\mycite}{\cites}
+\DeclareCiteCommand{\mycite}
+{}
+{\ifentrytype{misc}{%
+		\IfStrEq{\thefield{howpublished}}{personal communication}
+		{\printnames{labelname} \mkbibparens{personal communication, \printdate, \printaddress}}
+		{\mkbibparens{\usebibmacro{cite}}}%
+	}
+	{\mkbibparens{\usebibmacro{cite}}}%
+}
+{}
+{}
+
+
 %\let\OLDitemize\itemize
 %\renewcommand\itemize{\OLDitemize\addtolength{\itemsep}{-5pt}}
 

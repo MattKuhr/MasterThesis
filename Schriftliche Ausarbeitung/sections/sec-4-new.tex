@@ -55,9 +55,52 @@ HL begrenzte Auflösung und Sichtfeld. Lösungsansatz verfolgt daher Strategie, 
 
 \subsection{Designentscheidungen bezogen auf Infos}
 Warum wird was dargestellt????
+
+Zunächst stellt sich die Frage, welche Informationen zum Versuchsaufbau über die Anwendung integriert werden sollen. Von besonderem Interesse sind hier vor allem Informationen, die für den Nutzer nicht direkt beobachtbar sind. Das betrifft in erster Linie die beiden sich überlagernden Magnetfelder von Erde und Spule mit deren Eigenschaften. Das Zusammenspiel beider Felder ist elementar für den Versuch und soll für den Anwender sichtbar gemacht werden. Weitere, nicht direkt erkennbare Eigenschaften des Versuches sind außerdem die Richtung des Stromflusses durch die Spule und die physikalischen Parameter des Versuchsaufbaus.\\
+
+Ein weiterer interessanter Aspekt ist die Einbindung theoretischer Ergebnisse. Das ermöglicht dem Anwender, direkt am Versuchsaufbau sowohl gemessene, als auch berechnete Werte zu erfassen und beide miteinander zu vergleichen. Bei der Bestimmung des Erdmagnetfeldes betrifft das vor allem die Auslenkung des Kompasses, die sich in Abhängigkeit der anliegenden Stromstärke verändert. Die Magnetnadel des Kompass unterliegt dabei Faktoren wie Reibung und Trägheit, die zu Abweichungen führen können. Ein berechneter, virtueller Kompass unterliegt solchen Einschränkungen nicht und kann ergänzend zum realen Konterpart das angenommene Verhalten des Systems unter Idealbedingungen aufzeigen.\\
+
+Auch denkbar wäre eine Unterstützung beim Aufbau der Gerätschaften. Dies ist im Rahmen dieser Arbeit jedoch nicht vorgesehen, die Anwendung zielt zunächst nur auf die Bestimmung der Stärke des Erdfeldes ab. Die in Kap. \ref{sec-2-2-3} genannten ersten beiden Schritte der Durchführung (Ausrichtung von Nadel und Spule) werden also vorausgesetzt. Unter diesen Gesichtspunkten und für den Rahmen dieser Arbeit wurden in Zusammenarbeit mit Physikern die folgenden Anforderungen im Hinblick auf die darzustellenden Elemente aufgestellt:\\[4px]
+\begin{enumerate}[topsep=-2px]
+	\setlength{\itemsep}{-5pt}
+	\item Magnetfeld von Erde und Spule
+	\begin{itemize}[topsep=-0.25em]
+		\setlength{\itemsep}{-0.25em}
+		\item Stärke
+		\item Richtung
+		\item Homogenität
+		\item Inhomogenität am Rand der Spule andeuten (Optional) 
+	\end{itemize}
+	\item Stromfluss durch die Spule
+	\begin{itemize}[topsep=-0.25em]
+		\setlength{\itemsep}{-0.25em}
+		\item Richtung
+		\item Kennzeichnung von Plus und Minus
+		\item Stärke (Optional) 
+	\end{itemize}
+	\item Kompass
+	\begin{itemize}[topsep=-0.25em]
+		\setlength{\itemsep}{-0.25em}
+		\item Nordrichtung
+		\item Grobe Auslenkung der Nadel
+	\end{itemize}
+	\item Weitere Informationen (Optional)
+	\begin{itemize}[topsep=-0.25em]
+		\singlespacing
+		%		\setlength{\itemsep}{-0.25em}
+		\item Windungszahl der Spule
+		\item Durchmesser und Abstand der Spulen
+		\item Numerische Werte und Informationen (z.B. Fließt aktuell Strom, angelegte Stromstärke, angenommene Stärke des Erdmagnetfeldes, systematischer und zufälliger Fehler, etc.)
+	\end{itemize}
+\end{enumerate}
+\vspace{6px}
+
+
 \begin{itemize}
 	\item Strukturelle Eigenschaften (Stärke, Richtung, Homogenität) des Magnetfeldes im Inneren der Spule sind grundlegend zum Verständnis des Versuches. MFeld 3D darstellen. Beide Darstellungsmodelle anbieten. 
 \end{itemize}
+
+
 \subsection{Wie erfolgt die Darstellung?}
 Weiterhin sind für alle Objekte, die in Abhängigkeit des sich ändernden Feldes stehen, Parameter für die Darstellung definiert. Diese legen für alle Elemente einen gemeinsamen Wertebereich fest, für den die Darstellung erfolgt. Außerdem werden ab dem minimalen Wert die Objekte über einen gewählten Bereich kontinuierlich eingeblendet. Dieses konsistente Verhalten dient dazu, das Verständnis der Darstellungen zu verbessern. Außerdem soll auf diese Weise transportiert werden, dass nur die Darstellungen verschwinden, nicht jedoch die physikalischen Sachverhalte, die repräsentiert werden.\\
 \subsubsection{Das Magnetfeld}
