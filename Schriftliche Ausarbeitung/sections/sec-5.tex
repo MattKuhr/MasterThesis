@@ -101,8 +101,11 @@ Der Hauptteil des Systems besteht in der auf der HoloLens laufenden Applikation.
 
 Eine Komponente besteht aus einer Hierarchie von Unity's GameObjects, die mit entsprechenden Skripten versehen sind. Die Komponenten kommunizieren auf unterschiedliche Weise miteinander. Die Behandlung von Events z.B. aufgrund von Nutzereingaben oder neuen Messwerten erfolgt über Callbacks. Manche Komponenten sind auch Singletons, auf die direkt zugegriffen werden kann wie z.B. die Einstellungen.
 
-\subsection{Darstellungen}
+\subsection{Implementierung}
 \label{sec-5-2}
+
+\subsubsection{Implementierung der Darstellungen}
+\label{sec-5-2-2}
 Nachdem die grundlegende Architektur der vorgestellt wurde folgt nun eine genauere Betrachtung der Umsetzung der Darstellungen. Die Ausführungen werden dabei durch Abbildungen in Form von Screenshots unterstützt. Einen ersten Eindruck vermitteln die Fotos in Abb. \ref{img:HL_SS_Intro}. Damit die von der HoloLens stammenden Bilder richtig interpretiert werden können, sind jedoch einige Vorbemerkungen nötig.
 
 \begin{figure}[h!]
@@ -116,345 +119,56 @@ Nachdem die grundlegende Architektur der vorgestellt wurde folgt nun eine genaue
 	\label{img:HL_SS_Intro}
 \end{figure}
 
-\subsubsection{Aufnahmen mit der HoloLens}
-\label{sec-5-2-1}
-Zunächst ist festzuhalten, dass herkömmliche Bildschirmaufnahmen auf der HoloLens nur eingeschränkt sinnvoll wären. Hier wären nämlich nur die gerenderten Objekte sichtbar, die so auch in einer Entwicklungsumgebung zu sehen sind. Die Nutzererfahrung entsteht jedoch durch das Zusammenspiel mit dem Hintergrund. Deshalb bietet die HoloLens eine angepasste Funktion, um möglichst das abzubilden, was der Nutzer tatsächlich sieht: Das \textit{Mixed Reality Capture (MRC)}.\\
-
-Mit dem Mixed Reality Capture lassen sich Screenshots und Screen-Videos aufnehmen. Dazu nutzt die Brille ihre integrierte Frontkamera und überlagert deren Bild mit dem gerenderten Bild. So lässt sich besser darstellen, was ein Nutzer sieht. Allerdings bringt dieses Vorgehen mehrere Einschränkungen mit sich, durch die die Resultate von den tatsächlich wahrgenommenen Bildern abweichen. Damit die folgenden Bilder richtig eingeordnet werden können, sollen die wichtigsten Faktoren hier genannt werden.
-
+Die Qualität von Aufnahmen mit der HoloLens ist deutlich eingeschränkt und weicht von der tatsächlichen Nutzererfahrung ab. Die wesentlichen Einschränkungen sind dabei: 
 \begin{itemize}
 	\setlength{\itemsep}{-1pt}
 	\singlespacing
-	\item Andere Auflösung
-	\item Größeres Sichtfeld
+	\item Andere Auflösung mit geringerer Pixeldichte
+	\item Stark vergrößertes Sichtfeld
 	\item Verfälschte Farben und Transparenzen
-	\item Ggf. verfälschte Positionierung
-	\item MRC nicht möglich, wenn Kamera durch Anwendung genutzt wird
+	\item Verfälschte Positionierung
+	\item Aufnahmen nicht möglich, wenn Kamera durch Anwendung genutzt wird
 \end{itemize}
 
-Bei einem MRC-Foto ändert sich die Auflösung von 1268x720 (720p) zu 1408x792. Obwohl die Auflösung steigt ist damit dennoch ein wesentlicher Qualitätsverlust verbunden, da der Betrachter auf der HoloLens zwei HD-Bilder sieht (stereoskopisch), beim Foto aber nur ein Bild erzeugt wird. Außerdem geht die höhere Auflösung des Einzelbildes nicht mit einer höheren Pixeldichte einher, sondern mit einem größeren Sichtfeld. Ein Foto repräsentiert daher nicht die tatsächlichen Begrenzungen des FOV. Dazu kommt die Transparenz von virtuellen Objekten. Diese hängt stark von deren Farbe sowie der Hintergrundhelligkeit ab und entspricht nicht immer der Wahrnehmung des Nutzers. Farbige Objekte erscheinen auf Fotos stets etwas transparent, auch wenn sie den Hintergrund aus Sicht des Nutzers vollständig überdecken. Das trifft z.B. auf die blauen Objekte in den Fotos aus Abb. \ref{img:HL_SS_Intro} zu. Nicht zuletzt ist auch für Fotos die Reduktion der Bildwiederholrate auf 30Hz relevant. Denn dadurch werden die Objekte nicht so gut stabilisiert und es kann zu leichten Verschiebungen auf den Fotos kommen.\\
-
-Darüber hinaus gibt es Faktoren, die durch ein Foto nicht abgedeckt werden können. Dazu gehören die schon erläuterten Eigenheiten der stereoskopischen Wahrnehmung. Auf einem Foto sieht ein Objekt immer scharf aus und es gibt keine Probleme mit der Akkommodation oder Konvergenz, auch wenn ein Nutzer diese möglicherweise erfährt. Außerdem nimmt ein Nutzer die Umgebung anders wahr als auf einem Foto, da das Sichtfeld (auf die Umgebung) kaum eingeschränkt wird und nicht in Farbe und Auflösung begrenzt ist, sondern direkt wahrgenommen wird.\\
-
-Diese Faktoren gilt es bei der Bewertung solcher Bilder zu berücksichtigen. Prinzipiell sind auch Aufnahmen möglich, die näher an die tatsächliche Nutzererfahrung heranreichen. Diese erfordern aber weiteres Equipment, das im Rahmen dieser Arbeit nicht zur Verfügung stand.
-
-\subsubsection{Das Magnetfeld}
-\label{sec-5-2-2}
+\textit{Echtzeitdarstellungen des Magnetfeldes}\\
 Die Darstellung des Magnetfeldes in Echtzeit erfolgt über 3D-Objekte. Die Geometrie wurde mit Blender erstellt und in Unity importiert.
-%Die Fotos in Abb. \ref{img:mfield-result} zeigen die beiden alternativen Darstellungsmodelle. 
-Darüber hinaus steht eine Visualisierung einer vorberechneten Lösung zur Verfügung, auf die an späterer Stelle genauer eingegangen wird.
 
-\begin{comment}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
-	\hspace{0.05cm}	
-	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
-	\caption{Links Feldlinien Rechts Vektoren}
-	\label{img:mfield-result}
-\end{figure}
-\end{comment}
-
-\vspace{4px}
-\begin{center}
-	\fbox{
-		\parbox{0.9\linewidth}{
-			\vspace{4px}
-			\textit{Allgemeines}
-			\begin{itemize}[rightmargin=12px, topsep=-12px]
-				\setlength{\itemsep}{-1pt}
-				\singlespacing
-				\item Komponenten des Feldes (Erde, Spule) werden mit verschiedenen Farben dargestellt
-				\item Feld der Erde ist fest und wird exemplarisch, mittig in der Spule mit der minimal notwendigen Anzahl Elemente gezeigt
-				\item Feldlinien / Vektoren als Pfeillinien / Pfeile modelliert
-				\item Form wird durch Schattierung betont
-				\item Anordnung, Minimum und Maximum (von Abstand bzw. Länge) der Darstellungen sind im Code parametrisiert 
-				\item Darstellungsgrenzen über Transparenz (Minimum) und Hardware-Limitierung (Maximum)
-			\end{itemize}
-			\vspace{18px}
-	}}\\
-\end{center}
-\vspace{6px}
-
-
-
-\textbf{Feldlinien}\\
-Die Feldliniendarstellung ist in Abb. \ref{img:mfield-lines} gesondert dargestellt.
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{images/HL/fieldlines.jpg}
-	\caption{Feldlinien}
-	\label{img:mfield-lines}
-\end{figure}
-\vspace{4px}
-\begin{center}
-	\fbox{
-		\parbox{0.9\linewidth}{
-			\vspace{4px}
-			\textit{Überblick}
-			\begin{itemize}[rightmargin=12px, topsep=-12px]
-				\setlength{\itemsep}{-1pt}
-				\singlespacing
-				\item Pfeillinien repräsentieren Feldlinien über Abstand und Ausrichtung
-				\item 4 bis 16 Feldlinien im Gitter angeordnet, orthogonal zur Z-Achse
-				\item Anordnung im 3D-Gitter mit konfigurierbaren Parametern (Abstand, Anzahl pro Dimension)
-				\item Änderung des Abstandes über Kontraktion zum Mittelpunkt in X-Y-Ebene, Linien werden über Transparenz an der Darstellungsgrenze ein- bzw. ausgeblendet
-			\end{itemize}
-			\vspace{18px}
-	}}\\
-\end{center}
-\vspace{6px}
-\textit{Anordnung}\\
-Die Feldlinien der Spule verlaufen orthogonal zur X-Y-Ebene, also in Richtung der Z-Achse. Damit die gewünschten Eigenschaften (Stärke, Homogenität und Richtung) des dreidimensionalen Feldes anhand des Feldlinienmodells erkennbar sind, bedarf es mindestens vier Linien. In einer 2x2 Anordnung um den Mittelpunkt der X-Y-Ebene ist so der Abstand in beiden Dimensionen sichtbar und die Linien sind symmetrisch zur Z-Achse. Anhand der Parallelität lässt sich die Homogenität erkennen und anhand des Abstandes (in der horizontalen oder vertikalen, beide sind gleich groß) die Stärke. Die Flussrichtung ist über eingebaute Pfeilspitzen abgebildet. Als Darstellungsvolumen wurde ein zylindrischer Ausschnitt der Spule gewählt, da diese den Raum besser ausfüllt, als beispielsweise ein kubischer Ausschnitt.\\
-
-\textit{Anzahl}\\
-Bei einem festen, für die Darstellungen zur Verfügung stehenden Volumen und kleiner werdenden Abständen müssen zunehmend mehr Linien gezeichnet werden. Zu viele Objekte würden jedoch die Sichtbarkeit anderer Elemente wie Magnetnadel und Kompass beeinträchtigen. Außerdem transportieren zusätzliche Feldlinien keine zusätzlichen Informationen (im Fall eines homogenen Feldes). Allerdings unterstützt die Beobachtung, dass mit zunehmender Flussdichte die Anzahl der Feldlinien steigt, das Verständnis des Feldlinienmodells. Daher wurde für die Umsetzung das Intervall von minimalem und maximalem Abstand so gewählt, dass mindestens 4 und höchstens 16 Linien dargestellt werden. Beim Ein- und Austreten der Objekte in das bzw. aus dem Darstellungsvolumen werden sie kontinuierlich ein bzw. ausgeblendet.\\
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
-	\caption{Feldlinien Skalierung Abstand}
-	\label{img:mfield-lines-scaling}
-\end{figure}
-
-\textit{Skalierung}\\
-Dabei wurde sich bewusst für die Abbildung der Flussdichte auf den Abstand der Feldlinien entschieden. Das bedeutet, Letzterer ändert sich proportional mit der Flussdichte. Oft wird statt des Abstandes die Anzahl der Feldlinien durch eine Einheitsfläche proportional zur Flussdichte gewählt. Das bedeutet bei einer symmetrischen Darstellung eines quadratischen Ausschnittes jedoch, dass die Anzahl in diskreten Stufen $n \geq 1$ mit $4^{n}$ steigt. Werden diese Stufen durch eine kontinuierliche Kontraktion der Linien zum Zentrum hin interpoliert, dann skaliert der Abstand $d$ der Feldlinien mit $1/(3n)$. Die Grafik \ref{img:mfield-lines-scaling} illustriert diesen Zusammenhang. Da für den Anwender in erster Linie jedoch der Abstand die sichtbare, sich ändernde Größe ist, könnte dies den falschen Eindruck erwecken, die Flussdichte ändere sich nicht linear mit der Stromstärke. Außerdem werden nur zwei Stufen dargestellt, daher wurde sich für die proportionale Änderung des Abstandes entschieden.\\
-
-\textbf{Vektoren}\\
-Die Umsetzung der Vektordarstellung ist in Abb. \ref{img:mfield-vectors} näher zu sehen.
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{images/HL/vectors.jpg}
-	\caption{Vektoren}
-	\label{img:mfield-vectors}
-\end{figure}
-\vspace{4px}
-\begin{center}
-	\fbox{
-		\parbox{0.9\linewidth}{
-			\vspace{4px}
-			\textit{Überblick}
-			\begin{itemize}[rightmargin=12px, topsep=-12px]
-				\setlength{\itemsep}{-1pt}
-				\singlespacing
-				\item Pfeile repräsentieren Feldstärkevektor über Länge und Ausrichtung
-				\item 8 Pfeile für homogenes Feld, weitere 8 für Andeutung inhomogenes Feld
-				\item Anordnung im 3D-Gitter mit konfigurierbaren Parametern (Abstand und Anzahl, jeweils pro Raumrichtung)
-				\item Ankerpunkt mittig im Pfeil
-			\end{itemize}
-			\vspace{18px}
-	}}\\
-\end{center}
-\vspace{6px}
-
-\textit{Anordnung und Anzahl}\\
-In der Vektordarstellung werden mindestens acht Vektoren benötigt, damit die zuvor genannten Eigenschaften erkennbar werden. Dabei gelten die gleichen Gründe wie zuvor. Während jedoch eine Feldlinie das Feld in Richtung der Z-Achse kontinuierlich darstellt, sind hier wenigstens zwei Vektoren notwendig. Die Anordnung erfolgt in einem 3D-Gitter, bei dem die Anzahl und die Abstände pro Dimension parametrisiert sind. Auch hier gilt, dass mehr Objekte im homogenen Teil des Feldes keine weiteren Informationen transportieren. Daher wurde in Anbetracht des zur Verfügung stehenden Raumes in die Größe anstelle der Anzahl der Objekte investiert.\\
-
-\textit{Skalierung}\\
-Die Flussdichte wird im Fall der Pfeile über deren Länge und Richtung ausgedrückt. Die Form der Objekte soll mit einer sich ändernden Länge nicht verzerrt werden. Eine einfache Skalierung der Pfeillänge würde jedoch dazu führen, dass auch die Pfeilspitze in die Länge gezogen wird. Daher wird die Geometrie zur Laufzeit angepasst und nur ein Teil in der Mitte verändert.\\
-
-\textit{Bezugspunkt}\\
-Welcher Punkt dem Vektor als Ankerpunkt dient ist dabei nicht entscheidend, denn ein Pfeil repräsentiert jeden Punkt des homogenen Feldes. Eine explizite Darstellung ist daher nicht erforderlich. Allerdings wird die Verankerung im Mittelpunkt dadurch deutlich, dass die Position bei variierender Länge gleich bleibt.\\
-
-\textit{Inhomogener Anteil}\\
-Im Gegensatz zu den Feldlinien ist eine Darstellung des inhomogenen Feldes über Vektoren auch ohne aufwendige Echtzeit-Berechnungen möglich (siehe Kap. \ref{sec-2-2-2}). Die Anwendung nutzt diese Eigenschaft, um in dieser Darstellung auch das inhomogene Feld anzudeuten. Dies geschieht, indem das Raster so gewählt wird, dass vor und hinter der Spule (im Sinne der Z-Achse) jeweils eine Reihe Vektoren positioniert ist. Diese sind hier im Vergleich deutlich kürzer und nicht parallel, sondern nach innen bzw. nach außen gerichtet. So wird erkennbar, dass das Feld hier schwächer und inhomogen ist. Da die Darstellungen erst ab einem minimalen Wert eingeblendet werden, wird der inhomogene Teil nach dem homogenen Teil eingeblendet.\\
-
- 
-\textbf{Simulation}\\
-Eine Visualisierung der Simulationsdaten ist in Abb. \ref{img:mfield-simulation} näher zu sehen.
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{images/HL/simulation.jpg}
-	\caption{Simulation}
-	\label{img:mfield-simulation}
-\end{figure}
-\vspace{4px}
-\begin{center}
-	\fbox{
-		\parbox{0.9\linewidth}{
-			\vspace{4px}
-			\textit{Überblick}
-			\begin{itemize}[rightmargin=12px, topsep=-12px]
-				\setlength{\itemsep}{-1pt}
-				\singlespacing
-				\item Feldlinien vorberechnet mit COMSOL Multiphysics, exportiert als CSV, Import in Unity erfolgt zur Laufzeit
-				\item Simulation für einen beliebigen 2D-Querschnitt orthogonal zur X-Y-Ebene, da das Feld symmetrisch zur Z-Achse ist
-				\item Anzahl auf 10 Feldlinien festgelegt
-				\item Darstellung über 2D-Linien
-				\item Rot-Grün Farbskala genutzt
-			\end{itemize}
-			\vspace{18px}
-	}}\\
-\end{center}
-\vspace{6px}
+\textit{Vorberechnete Darstellung des Magnetfeldes}\\
+\begin{itemize}[rightmargin=12px, topsep=-12px]
+	\setlength{\itemsep}{-1pt}
+	\singlespacing
+	\item Feldlinien vorberechnet mit COMSOL Multiphysics, exportiert als CSV, Import in Unity erfolgt zur Laufzeit
+	\item Maximale Qualitätseinstellungen in Simulationssoftware um Artefakte durch numerische Ungenauigkeiten zu vermeiden
+	\item Filtering beim Import auf der HoloLens reduziert Datenpunkte für Performance
+\end{itemize}
 
 Die numerische Lösung der Feldgleichungen erfolgte mittels der Simulationssoftware COMSOL Multiphysics. Diese Arbeit konnte hier auf eine bestehende Implementierung einer Helmholtzspule aufbauen. Hier wurden lediglich die folgenden Parameter für die Berechnung der Feldlinien gesetzt:
 \begin{itemize}
 	\setlength{\itemsep}{-1pt}
 	\singlespacing
-	\item Anzahl und Anordnung: 10, symmetrisch zur Z-Achse, Abstand entsprechend der Flussdichte
-	\item Beschränkung auf die X-Z-Ebene im Radius von 2m um die Spule
-	\item Qualitätseinstellungen auf Maximum gesetzt
+	\item Volumen für Begrenzung der Simulation: 2 Meter, maximale Granularität
+	\item 12 Feldlinien, Startpunkte der Simulation auf der X-Achse
+	\item Qualitätseinstellungen der Darstellung auf Maximum gesetzt
 \end{itemize}
+
 \textit{Export, Import, Datenformat}\\
-Das Ergebnis der Simulation ist eine Liste von Datenpunkten der Form \textbf{[}\textit{FeldlinienNr:} Int, \textit{Position:} Vector3, \textit{Betrag der Flussdichte:} float\textbf{]}. Dafür wurde ein CSV-Reader geschrieben, der die Daten zur Laufzeit der Applikation einliest, interpretiert und zum Rendering an GameObjects weitergibt. Folglich ließen sich weitere Simulationen vorberechnen und anzeigen.\\
+Das Ergebnis der Simulation ist eine Liste von Datenpunkten der Form \textbf{[}\textit{FeldlinienNr:} Int, \textit{Position:} Vector3, \textit{Betrag der Flussdichte:} float\textbf{]}. Dafür wurde ein CSV-Reader geschrieben, der die Daten zur Laufzeit der Applikation einliest, interpretiert und zum Rendering an GameObjects weitergibt. Folglich ließen sich weitere Simulationen vorberechnen und anzeigen. Einlesen der Daten erfolgt beim Startvorgang.\\
 
-\textit{Querschnitt}\\
-Zunächst ist nur eine Anordnung in der X-Z-Ebene aktiv. Da das Feld aber symmetrisch zur Z-Achse ist, kann mit diesem einen Datensatz bereits jeder Querschnitt durch die Z-Achse dargestellt werden. Bei einer anderen Ausrichtung, z.B. im 45° Winkel, würden jedoch Feldlinien durch den Tisch verlaufen, auf dem die Spule steht.\\
-
-\textit{Rendering}\\
-Die Darstellung erfolgt über Unity's Low-Level \textit{Graphics Library (GL)} mittels eines Line-Strips. Dieser ist vergleichbar mit dem von OpenGL, hat aber weniger Funktionen. Insbesondere lässt sich die Dicke der Linien nicht einstellen, sondern ist auf einen Pixel festgelegt. Der sonst in dieser Arbeit für Linien genutzte LineRenderer konnte hier nicht verwendet werden. Denn letzterer ermöglicht für eine Linie nur die Interpolation zwischen maximal 8 Farben. Eine besser Konfigurierbare Darstellung wäre über ein dynamisch generiertes Mesh möglich.\\
-
-\textit{Anzahl und Anordnung}\\
-Die Auswahl von 10 Feldlinien erfolgte aus praktischem Ermessen bezüglich der Sichtbarkeit aus 1,5 Metern Entfernung. Dabei wurde bewusst eine gerade Anzahl gewählt. Andernfalls entsteht eine Feldlinie, die genau auf der Z-Achse liegt und nicht geschlossen ist sondern von minus nach plus Unendlich verläuft. Dies wurde aus didaktischen Gründen vermieden.\\
-
-\textit{Farbe}\\
-Die Wahl der Farbskala fiel aus mehreren Gründen auf eine Rot-Grün-Skala. Die Linien zeigen die kontinuierliche Änderung der Flussdichte, die durch einen Farbverlauf weiter hervorgehoben werden soll. Dabei kommt es nicht auf das Ablesen der numerischen Werte an, weshalb auch keine Skala mit Farbe und den dazugehörigen Werten angezeigt wird. Es geht viel mehr um das qualitative Verständnis der Darstellung. Mit der gewählten Skala unterscheiden sich die drei wesentlichen Regionen durch ihre Farbe klar voneinander:
-\begin{itemize}
-	\setlength{\itemsep}{-1pt}
-	\singlespacing
-	\item Inhomogenes, schwaches Feld außen: Grün
-	\item Homogenes, mittel-starkes Feld innen: Gelb
-	\item Inhomogenes, starkes Feld unmittelbar am Rand der Spule: Rot
-\end{itemize}
-
-Darüber hinaus sprechen technische Gründe für eine solche Farbskala. Damit die Linien in Helligkeit und Transparenz nicht variieren, sollten sich die Farbanteile im RGB-Raum stets zu einem konstanten Wert addieren. Die Rot-Grün-Skala erfüllt diese Eigenschaft, da hier der Blauanteil stets null ist und Rot und Grün über $R = 1 - G$ zusammenhängen. Möglich wären hier auch eine Regenbogenskala, die nicht selten für Magnetfelder angewandt wird\footnote{Vgl. z.B. die Darstellungen in Kap. \ref{sec-2-2} und \ref{sec-2-3}}. Die Skala wird jedoch aufgrund der verzerrten Wahrnehmung nicht empfohlen und wurde hier daher nicht verwendet.
-
-\subsubsection{Stromfluss, Kompass und weitere Darstellungen}
-\label{sec-5-2-3}
-Nach den Erläuterungen zur Umsetzung der Magnetfelddarstellungen sollen auch die anderen Komponenten kurz beleuchtet werden.\\
+\textit{Filtering}\\
+Entfernen doppelter Linien, Minimum-Abstands-Kriterium, Ursprünglich ca. 12k Datenpunkte, Reduktion um ca. 90\% 
 
 \textbf{Stromfluss}
-\vspace{4px}
-\begin{center}
-	\fbox{
-		\parbox{0.9\linewidth}{
-			\vspace{4px}
-			\textit{Richtungsindikatoren}
-			\begin{itemize}[rightmargin=12px, topsep=-12px]
-				\setlength{\itemsep}{-1pt}
-				\singlespacing
-				\item Darstellung über breite 2D-Linien mit Unity's \textit{LineRenderer}, die an einem Ende zu einer Pfeilspitze zusammenlaufen
-				\item Liegen direkt auf der Spule auf und sind fest, richten sich also nicht zur Kamera aus
-				\item Es werden stets nur Pfeile angezeigt, die der Nutzer gerade sehen kann
-				\item Dazwischen werden die Pfeile kontinuierlich ein- bzw. ausgeblendet
-			\end{itemize}
-			\vspace{18px}
-	}}\\
-\end{center}
-\vspace{6px}
-
 Die Indikatoren werden dynamisch über ein Skript erzeugt und gesteuert. Hier können Parameter wie Richtung, Position, Radius und Bogenlänge festgelegt werden. Die Breite der Linien wurde auf 1cm gesetzt. Die Größe ist für die gewünschte Entfernung ausreichend und übersteigt die Dicke der Spulen nicht. Indem die Darstellung sich der Betrachtungsposition kontinuierlich anpasst wird der Nutzer zusätzlich in die Anwendung einbezogen.\\
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.6\textwidth]{images/current.jpg}
-	\caption{Stromfluss}
-	\label{img:current}
-\end{figure}
-
 \textit{Strom-Labels}\\
-Die Richtungspfeile werden durch die Information unterstützt, wie die Spule in die Schaltung eingebunden ist. Dazu werden die Anschlüsse mit Annotationen versehen.
-\begin{itemize}
-	\setlength{\itemsep}{-1pt}
-	\singlespacing
-	\item Plus- und Minus-Kennzeichner über Tooltip-Elemente des MRTK umgesetzt
-	\item Verbindungslinien farblich an die Farbe der Verbindungsstücke angepasst
-	\item Tooltips um Plus- und Minus-Icons ergänzt
-\end{itemize}
-
 Hier konnte auf ein vorgefertigtes Tooltip-Objekt des MRTK zurückgegriffen werden. Diese wurden um die entsprechenden Farben und Icons ergänzt. Die Icons basieren auf freien Icon-Packeten \footnote{https://icons8.com}, wurden jedoch angepasst. Da schwarze Strukturen vor transparentem Grund auf der HoloLens so nicht zu sehen sind, wurde der Hintergrund bzw. die Icon-Struktur zu weiß geändert.\\
 
 \textbf{Kompass}\\
-Der Kompass besteht aus einer virtuellen Skala und einer realen Magnetnadel in der Mitte. Die verschiedenen Linien wurden als gestrichelte, leicht transparente 2D-Linien umgesetzt.
-\vspace{4px}
-\begin{center}
-	\fbox{
-		\parbox{0.9\linewidth}{
-			\vspace{4px}
-			\textit{Linien}
-			\begin{itemize}[rightmargin=12px, topsep=-12px]
-				\setlength{\itemsep}{-1pt}
-				\singlespacing
-				\item Darstellungen über gestrichelte 2D-Linien mit Unity's LineRenderer
-				\item Gestrichelte Linie durch Textur mit weißem Kreis und transparentem Hintergrund, Skalierung auf die Länge der Linie mit Tiling
-				\item Billboard-Verhalten für Sichtbarkeit aus unterschiedlichen Winkeln
-				\item Grau als Farbe genutzt, leicht transparent, virtueller Kompass jedoch etwas heller und daher präsenter gestaltet
-				\item Magnetnadel von dunkelgrau zu weiß geändert für bessere Sichtbarkeit
-			\end{itemize}
-			\vspace{18px}
-	}}\\
-\end{center}
-\vspace{6px}
-
-Der Kompass liegt horizontal in einer Ebene durch den Spulenmittelpunkt. Die ringförmige Skala wurde mit einem Radius von 20 cm sehr eng um die Spulen herum gelegt, damit wenig zusätzliches Sichtfeld benötigt wird. Denn je größer der Raduis, desto eher wird das Element durch die Sichtfeldbegrenzung abgeschnitten. Neben den festen Gradzahlen im Abstand von 45° wird hier auch die theoretisch berechnete Gradzahl am Ende der zugehörigen Linie angezeigt.\\
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{images/compass.jpg}
-	\caption{Kompass}
-	\label{img:compass}
-\end{figure}
-
-Als Farbe wurde Grau gewählt, damit die Linien neutral und weniger dominant wirken. Dem dient auch die Wahl von gestrichelten anstelle durchgezogener Linien. Gleichzeitig wurde die zuvor dunkle Magnetnadel mit weißem Papier überklebt, damit sie zwischen den virtuellen Objekten besser zu sehen ist.\\
-
-In dieser Umsetzung wird zunächst keine Verdeckung durch die Magnetnadel berechnet. Diese ließe sich anhand der theoretischen Auslenkung berechnen. Allerdings unterliegt die reale Nadel Trägheit und Reibung, die in der Berechnung nicht berücksichtigt werden. Außerdem ist sie sehr schmal (etwa 5 mm breit), weshalb Abweichungen zwischen realem und virtuellem Modell stärker ins Gewicht fallen, als bei größeren Objekten. Daher verzichtet diese Lösung darauf, was sich jedoch negativ auf die Immersion des Anwenders auswirkt.\\
+2D-Linien mit Unity's LineRenderer. Gestrichelte Linie durch Textur mit weißem Kreis und transparentem Hintergrund, Skalierung auf die Länge der Linie mit Tiling. Eigenes Skript dafür.
 
 \textbf{Datenpanel und weitere Informationen}\\
-Nicht zuletzt wurden von den als optional eingestuften Informationen die ausgewählt, die im Zusammenhang mit den Echtzeitdaten stehen, und für diese eine textuelle Darstellung umgesetzt.
-\vspace{4px}
-\begin{center}
-	\fbox{
-		\parbox{0.9\linewidth}{
-			\vspace{4px}
-			\textit{Status Bar}
-			\begin{itemize}[rightmargin=12px, topsep=-12px]
-				\setlength{\itemsep}{-1pt}
-				\singlespacing
-				\item Listet gemessene und berechnete Echtzeitwerte auf: Stromstärke, Spannung, Flussdichte
-				\item 4 Replikas, Platzierung an unteren Balken zwischen den Spulen
-				\item Sichtbarkeit analog zu Strom-Pfeilen
-				\item Dunkelgrauer Hintergrund für bessere Lesbarkeit
-			\end{itemize}
-			\vspace{18px}
-	}}\\
-\end{center}
-\vspace{6px}
-Das Datenpanel listet die numerischen Werte für die genannten Größen zusammen mit ihren Einheiten auf. Der Hintergrund orientiert sich an dem des vorgefertigten Tooltips und wird einheitlich für alle Texte (abgesehen von den Buttons) verwendet. Die Objekte sind schräg gestellt (ca. 35°), so dass sie aus diesem typischen Winkel gut zu lesen sind.\\
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{images/status.jpg}
-	\caption{Statusbar}
-	\label{img:status}
-\end{figure}
-
-Durch ihre Platzierung unmittelbar über dem Untergrund würden Drop Shadows das Präsenzgefühl stärken. Diese lassen sich hier jedoch nicht direkt umsetzen, denn der Untergrund ist real und kann durch die HoloLens nicht weiter verdunkelt werden. Eine mögliche Lösung bestünde darin, die Schatten zu erzeugen, indem der Untergrund außerhalb des Schattens zusätzlich erhellt wird. Allerdings müssten hier wiederum die Schatten der realen Objekte mit einbezogen werden. Daher nimmt diese Lösung die fehlenden Schatten in Kauf.\\
-
 Die weiteren, optional einblendbaren Informationen wie Spulenabstand oder Windungszahl wurden aus zeitlichen Gründen nicht umgesetzt, da hier eine weitere Interaktionsmöglichkeit einzurichten wäre, um die Elemente ein- und auszublenden.
 
-\subsubsection{Weitere technische Komponenten}
-\label{sec-5-2-4}
-Die Implementierung der Darstellungen wird begleitet von weiteren technischen Lösungen, auf die dieser Abschnitt näher eingehen soll.
-\vspace{8px}
-\begin{center}
-	\fbox{
-		\parbox{0.9\linewidth}{
-			\vspace{4px}
-			\textit{Überblick}
-			\begin{itemize}[rightmargin=12px, topsep=-12px]
-				\setlength{\itemsep}{-1pt}
-				\singlespacing
-				\item Spule maßstabsgetreu für Verdeckungsberechnung modelliert mit ca. 2mm größerer Ausdehnung, Rendering ausschließlich in den Z-Puffer
-				\item Near Plane Fading verbirgt Objekte, die eine minimale Distanz zur Kamera unterschreiten
-				\item Progress Indikator informiert über Zustand länger laufender Vorgänge, z.B. Ladevorgang der Simulationsdaten oder Einlesen des Markers
-				\item Kantenglättung durch 2x MSAA
-			\end{itemize}
-			\vspace{18px}
-	}}\\
-\end{center}
-\vspace{6px}
 
 \textit{Occlusion Berechnung}\\
 Für die Verdeckungsberechnung wurde die Spule anhand gemessener Größen in Blender modelliert. Das Spatial Mapping der HoloLens ist hier zu ungenau, um eine glaubwürdige Verdeckung zu ermöglichen. In der Standard-Einstellung wird die Spule gar nicht erkannt, was wohl auch dem Material (Kupfer) geschuldet sein dürfte. Eine Darstellung des Spatial Mappings des Versuchsaufbaus ist in Abb. \ref{img:mesh-vs-model} zu sehen.
@@ -474,6 +188,45 @@ Der für die meisten Objekte genutzt MRTK Standard Shader bietet bereits einen k
 
 Diese Lösung geht jedoch zu Lasten der Performance, denn für die Transparenz werden alle betroffenen Objekte von hinten nach vorne (aus Sicht der Kamera) gerendert. Auch Pixel, die durch weiter vorne gelegene Objekte eingenommen werden, müssen mehrfach gezeichnet werden, da die dichteren Objekte ggf. transparent sind und durch die Farbe anderer Objekte beeinflusst werden. Dieser sogenannte Overdraw nimmt zusätzliche Rechenzeit in Anspruch. Eine Alternative bestünde darin, Objekte schwarz anstatt transparent werden zu lassen. Auf der HoloLens macht dies optisch zunächst keinen Unterschied, da Schwarz auf der Brille nicht dargestellt wird. Allerdings bliebe so die Verdeckung durch bereits verschwundenen Objekte bestehen, was zu Irritationen führen würde.\\
 
+\textit{Kantenglättung}\\
+Bei Darstellungen auf der HoloLens fällt der Kantenglättung eine besondere Bedeutung zu. Im Gegensatz zu anderen Anwendungen, bei denen der Nutzer die Kamera über herkömmliche Eingabegeräte steuert, ist bei der Brille die Kamera an die Kopfbewegungen des Trägers gebunden. Die Displays folgen daher den ständigen, feinen Vibrationen des Kopfes und die Kamera steht somit nie still. Deshalb können Treppeneffekte an Kanten besonders auffällig und störend wirken, da das resultierende Kantenflimmern stetig präsent ist.\\
+
+Unity unterstützt standardmäßig einige Anti-Aliasing Verfahren. Dazu gehört Multisample Anti-Aliasing (MSAA), das ohne weitere Maßnahmen für die Kamera aktiviert werden kann. Im Gegensatz dazu benötigen die anderen Methoden\footnote{Standardmäßig angeboten werden außerdem Fast Approximate AA und Temporal AA} Deferred Shading und würden eine Umstellung des Rendering Path bedeuten. Im Rahmen dieser Arbeit wurde deshalb nur MSAA in Betracht gezogen.\\
+
+Vor allem für die gewählte Visualisierung der Simulationsdaten über Linien ist eine Form des Anti-Aliasing relevant, da hier besonders viele Kanten entstehen. Deshalb wurde sich für Einsatz von zweifachem MSAA entschieden, obwohl damit erheblicher Rechenaufwand verbunden ist.\\
+
+\textit{Künstliche Beleuchtung}\\
+Beleuchtung bildet grob erwartete Lichtverhältnisse nach, keine Schatten
+\begin{itemize}
+	\item Virtuelle Beleuchtung von Oben bildet echte Lichtverhältnisse grob nach
+	\item Unterstützt die Einbettung der 3D Objekte im Raum
+\end{itemize}
+
+
+\subsection{Implementierung der Interaktion}
+\begin{itemize}[rightmargin=12px, topsep=-12px]
+	\setlength{\itemsep}{-1pt}
+	\singlespacing
+	\item Tracking mit Vuforia, nur zum Erkennen des Markers aktiv
+	\item Einstellungen werden als JSON-Datei im AppData Verzeichnis gespeichert
+	\item Menü übernimmt Steuerung der einzelnen Vorgänge, jederzeit aufrufbar
+	\item Startvorgang mit Intro-Sequenz lädt Daten und Einstellungen und initialisiert Komponenten
+\end{itemize}
+Die Interaktion erfolgt, wie in Kap. \ref{sec-4-4} beschrieben, durch Klicks. Sprachbefehle wurden aus Zeitgründen nur für Debugging-Funktionen implementiert. 
+Während des Hauptteils der Anwendung belaufen sich die möglichen Aktionen auf:
+
+\begin{itemize}
+	\setlength{\itemsep}{-1pt}
+	\singlespacing
+	\item Klick: Wechsel zwischen den beiden Echtzeitdarstellungen
+	\item Doppelklick: Wechsel zwischen Simulations- und Echtzeitdarstellungen
+	\item Hold-Klick: Aufrufen des Hauptmenüs
+\end{itemize}
+
+Für die letzteren beiden wurden entsprechende Skripte geschrieben, die diese Gesten erkennen. Zwar erkennt das MRTK bereits eine Hold-Geste, allerdings kann hier der Nutzer beliebig lange gedrückt halten und erst beim Loslassen feuert das entsprechende Event. Zum Aufrufen des Menüs ist jedoch ein Verhalten wünschenswert, bei dem nach kurzem Gedrückt-Halten das Menü erscheint. Daher wurde hier eine eigene Lösung entwickelt.\\
+
+Jeder Klick wird durch einen Klick-Sound begleitet, der als Feedback dient. Ist der Cursor aktiv, bietet dieser auch ein visuelles Feedback. Als Klick-Sound wurde ein Standard-Sound des MRTK verwendet, der auch von den Buttons genutzt wird.
+
 \textit{Progress Indikator}\\
 Um den Anwender über länger laufende Prozesse zu informieren, kommt eine Fortschrittsanzeige zum Einsatz. Hier kann auf den aus Mircosoft Windows bekannten Indikator zurückgegriffen werden, den das MRTK als vorgefertigtes Objekt anbietet. Das Mixed Reality Capture in Abb. \ref{img:pi-and-tracking} zeigt diesen beim Start der Anwendung.\\
 
@@ -487,42 +240,6 @@ Um den Anwender über länger laufende Prozesse zu informieren, kommt eine Forts
 \end{figure}
 
 Für die Kommunikation mit dem Nutzer ist bei dieser Anwendung vor allem wichtig, was das System tut. Längere Ladezeiten o.Ä. treten hier nicht auf, daher wird lediglich das Text-Element des Indikators verwendet, von der prozentualen Anzeige wird nicht Gebrauch gemacht. Komponenten, die den Indikator nutzen, stellen jedoch stets sicher, dass eine Nachricht lange genug sichtbar ist, um gelesen werden zu können. Länger laufende Operationen sind stets asynchron umgesetzt, die pro Frame nur einen Teil der Arbeit erledigen und so den Renderprozess nicht blockieren.\\
-
-\textit{Kantenglättung}\\
-Bei Darstellungen auf der HoloLens fällt der Kantenglättung eine besondere Bedeutung zu. Im Gegensatz zu anderen Anwendungen, bei denen der Nutzer die Kamera über herkömmliche Eingabegeräte steuert, ist bei der Brille die Kamera an die Kopfbewegungen des Trägers gebunden. Die Displays folgen daher den ständigen, feinen Vibrationen des Kopfes und die Kamera steht somit nie still. Deshalb können Treppeneffekte an Kanten besonders auffällig und störend wirken, da das resultierende Kantenflimmern stetig präsent ist.\\
-
-Unity unterstützt standardmäßig einige Anti-Aliasing Verfahren. Dazu gehört Multisample Anti-Aliasing (MSAA), das ohne weitere Maßnahmen für die Kamera aktiviert werden kann. Im Gegensatz dazu benötigen die anderen Methoden\footnote{Standardmäßig angeboten werden außerdem Fast Approximate AA und Temporal AA} Deferred Shading und würden eine Umstellung des Rendering Path bedeuten. Im Rahmen dieser Arbeit wurde deshalb nur MSAA in Betracht gezogen.\\
-
-Vor allem für die gewählte Visualisierung der Simulationsdaten über Linien ist eine Form des Anti-Aliasing relevant, da hier besonders viele Kanten entstehen. Deshalb wurde sich für Einsatz von zweifachem MSAA entschieden, obwohl damit erheblicher Rechenaufwand verbunden ist.\\
-
-\textit{Künstliche Beleuchtung}\\
-Beleuchtung bildet grob erwartete Lichtverhältnisse nach, keine Schatten\\
-\begin{itemize}
-\item Virtuelle Beleuchtung von Oben bildet echte Lichtverhältnisse grob nach
-\item Unterstützt die Einbettung der 3D Objekte im Raum
-\end{itemize}
-
-
-\subsection{Rahmen der Anwendung}
-\vspace{8px}
-\begin{center}
-	\fbox{
-		\parbox{0.9\linewidth}{
-			\vspace{4px}
-			\textit{Überblick}
-			\begin{itemize}[rightmargin=12px, topsep=-12px]
-				\setlength{\itemsep}{-1pt}
-				\singlespacing
-				\item Tracking mit Vuforia, nur zum Erkennen des Markers aktiv
-				\item Einstellungen werden als JSON-Datei im AppData Verzeichnis gespeichert
-				\item Menü übernimmt Steuerung der einzelnen Vorgänge, jederzeit aufrufbar
-				\item Startvorgang mit Intro-Sequenz lädt Daten und Einstellungen und initialisiert Komponenten
-			\end{itemize}
-			\vspace{18px}
-	}}\\
-\end{center}
-\vspace{6px}
-
 
 \textit{Tracking}\\
 Für das Erkennen der Markerposition kommt das Tracking Framework Vuforia zum Einsatz. Ein optischer Marker wird vor der Spule auf dem Untergrund platziert. Dieser wird dann über die Frontkamera der HoloLens durch das Framework erkannt und die Position und Ausrichtung bestimmt. Die Modelle werden entsprechend positioniert und ein World Anchor gesetzt. Damit ist die Positionierung abgeschlossen und der Marker kann entfernt werden. Da Vuforia nur während dieser Sequenz aktiviert ist, werden für den Rest der Anwendung Hardwareressourcen frei.\\
@@ -548,23 +265,6 @@ Die Umsetzung des Menüs ist in Abb. \ref{img:menu-and-settings} abgebildet. Die
 Es wurde eine Startsequenz entwickelt, die Aufgaben wie das Laden von Daten und Einstellungen und die Initialisierung der einzelnen Komponenten übernimmt. Hier wird ein Logo in Form eines größeren Schriftzuges und dazu der Progress Indikator angezeigt. Letzterer informiert über den Zustand des Ladevorgangs. Während des Vorgangs werden insbesondere die Einstellungen und  Simulationsdaten geladen.\\
 
 Diese Umsetzung erlaubt die notwendigen Ladevorgänge und ist für den Nutzer nachvollziehbar. Außerdem gibt das letzterem einige Sekunden Zeit, um sich auf die Anwendung einzustellen, bevor das Menü erscheint und eine Aktion vom Anwender verlangt.
-
-
-\subsection{Interaktion}
-Die Interaktion erfolgt, wie in Kap. \ref{sec-4-4} beschrieben, durch Klicks. Sprachbefehle wurden aus Zeitgründen nur für Debugging-Funktionen implementiert. 
-Während des Hauptteils der Anwendung belaufen sich die möglichen Aktionen auf:
-
-\begin{itemize}
-	\setlength{\itemsep}{-1pt}
-	\singlespacing
-	\item Klick: Wechsel zwischen den beiden Echtzeitdarstellungen
-	\item Doppelklick: Wechsel zwischen Simulations- und Echtzeitdarstellungen
-	\item Hold-Klick: Aufrufen des Hauptmenüs
-\end{itemize}
-
-Für die letzteren beiden wurden entsprechende Skripte geschrieben, die diese Gesten erkennen. Zwar erkennt das MRTK bereits eine Hold-Geste, allerdings kann hier der Nutzer beliebig lange gedrückt halten und erst beim Loslassen feuert das entsprechende Event. Zum Aufrufen des Menüs ist jedoch ein Verhalten wünschenswert, bei dem nach kurzem Gedrückt-Halten das Menü erscheint. Daher wurde hier eine eigene Lösung entwickelt.\\
-
-Jeder Klick wird durch einen Klick-Sound begleitet, der als Feedback dient. Ist der Cursor aktiv, bietet dieser auch ein visuelles Feedback. Als Klick-Sound wurde ein Standard-Sound des MRTK verwendet, der auch von den Buttons genutzt wird.
 
 \subsection{Performance}
 Zuletzt sollen einige Maßnahmen genannt werden, die zu einem geringeren Ressourcenverbrauch der Applikation beitragen. Zunächst ist festzuhalten, dass die durch das MRTK voreingestellten Qualitätseinstellungen genutzt wurden. Einzige Ausnahme stellt hier die Kantenglättung dar. Darüber hinaus wurden die folgenden Einstellungen angewandt:

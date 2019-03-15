@@ -14,7 +14,7 @@ Von Seiten der Physik teilen sich die Anforderungen nochmals in zwei Bereiche. Z
 Zum anderen bringt der Anwendungsfall auch Einschränkungen in Bezug darauf mit sich, wie die Darstellungen erfolgen sollen. Letztere müssen unter anderem für den Anwender hinsichtlich ihrer physikalischen Bedeutung interpretierbar sein und dürfen keine falschen Eindrücke erwecken.\\
 
 \textit{Relevante physikalische Zusammenhänge}\\
-Der Fokus dieser Arbeit liegt darin, zusätzliche Informationen zu physikalischen Zuständen anzuzeigen. Eine Unterstützung beim Aufbau oder der Durchführung des Versuches ist nicht vorgesehen. Ausgangspunkt dafür, welche Informationen zu visualisieren sind, stellen die Zusammenhänge dar, die vermittelt werden sollen. In Zusammenarbeit mit Experten wurden die folgenden Fragen als zentral für das Verständnis des Versuches festgehalten \autocite{Reinholz18}.
+Der Fokus dieser Arbeit liegt darin, zusätzliche Informationen zu physikalischen Zuständen anzuzeigen. Eine Unterstützung beim Aufbau oder der Durchführung des Versuches ist nicht vorgesehen. Die Anwendung zielt zunächst nur auf die Bestimmung der Stärke des Erdfeldes ab. Die in Kap. \ref{sec-2-3-3} genannten ersten beiden Schritte der Durchführung (Ausrichtung von Nadel und Spule) werden also vorausgesetzt. Ausgangspunkt dafür, welche Informationen zu visualisieren sind, stellen die zu vermittelnden Zusammenhänge dar. In Zusammenarbeit mit Experten wurden die folgenden Fragen als zentral für das Verständnis des Versuches festgehalten \autocite{Reinholz18}.
 
 \begin{itemize}
 	\setlength{\itemsep}{-3pt}
@@ -72,6 +72,9 @@ Der erste Punkt soll hier kurz näher beleuchtet werden. Dabei geht es nicht um 
 \subsubsection{Technische Seite}
 In Kapitel \ref{sec-2-1} wurde die HoloLens mit ihren technischen Möglichkeiten aber auch Einschränkungen vorgestellt sowie Auswirkungen auf das Anwendungsdesign aufgezeigt. Die genannten Probleme sollen möglichst vermieden werden, indem die Anwendung an die speziellen Gegebenheiten der HoloLens angepasst wird. Dementsprechend sollen auch von technischer Seite Anforderungen aufgestellt werden.\\
 
+\textit{Begrenzungen durch FOV und Auflösung}\\
+Die HoloLens hat ein mit 34° Grad (diagonal) ein vergleichsweise kleines Sichtfeld und  begrenzte Auflösung und Sichtfeld. Lösungsansatz verfolgt daher Strategie, visuellen Clutter zu vermeiden. \\
+
 Das Ziel von technischer Seite besteht darin, die AR-Technik der HoloLens zu nutzen und dabei Einschränkungen der Nutzererfahrung zu vermeiden. Um Letzteres zu erfüllen 
 
 Um Einschränkungen in der
@@ -86,11 +89,7 @@ Die inhaltlichen und technischen Anforderungen stecken den Rahmen ab, für den e
 \begin{itemize}
 	\setlength{\itemsep}{-5pt}
 	\item Was soll mit der HoloLens dargestellt werden?
-	\item Wie soll die Darstellung erfolgen?
-%	\begin{itemize}
-%		\item Visuelles Design
-%		\item Technische Realisierung
-%	\end{itemize}
+	\item Wie soll diese Darstellung erfolgen?
 	\item Und wie soll mit den dargestellten Informationen interagiert werden?
 \end{itemize}
 
@@ -98,9 +97,7 @@ Die inhaltlichen und technischen Anforderungen stecken den Rahmen ab, für den e
 Zunächst stellt sich die Frage, welche Objekte die HoloLens zusätzlich anzeigen soll. Aus den genannten physikalischen Zusammenhängen sind in Zusammenarbeit mit Experten wichtige Informationen abzuleiten, die repräsentiert werden sollen. Gegebenenfalls ist auch zu entscheiden, ob eine Darstellung durch die HoloLens erfolgen, oder die Information durch ein reales Objekt vermittelt werden soll. In letzterem Fall ist darauf zu achten, dass die Objekte durch virtuelle Darstellungen nur bedingt überblendet werden sollten.
 \par
 \noindent\hspace*{5mm}
-Das Ergebnis ist eine Liste von durch die Anwendung dargestellten Objekten.\\
-
-%Dazu kommen Elemente, die den Ablauf und die Interaktion mit der Anwendung betreffen. Das betrifft z.B. Feedback für Nutzeraktionen, den Cursor oder Statusinformationen.\\
+Im Ergebnis soll eine Liste von durch die Anwendung dargestellten Informationen und den dazugehörigen Objekten aufgestellt werden.\\
 
 \textbf{\textit{Wie soll es dargestellt werden?}}\\
 Die wohl umfassendste Frage besteht darin, wie die Informationen und Zusammenhänge visualisiert werden sollen. Für die erarbeiteten Elemente ist ein visuelles Design mit einer technischen Umsetzung zu erarbeiten. Was soll textuell, als 2D oder als 3D Geometrie mit der HoloLens dargestellt werden? Welche Objekte werden gewählt und wie angeordnet? Wie erfolgt die technische Realisierung?
@@ -112,4 +109,4 @@ Daraus resultiert eine Umsetzung für die anzuzeigenden Objekte, die im Ergebnis
 Nicht zuletzt ist ein Konzept für die Interaktion zu erstellen. Welche Eingabemethoden werden dem Nutzer angeboten und wie wird der Nutzer über diese informiert? Welche Aktionen soll die Anwendung zur Verfügung stellen?
 \par
 \noindent\hspace*{5mm}
-Als Resultat 
+Das Ergebnis ist ein Konzept für die Interaktion und den Ablauf der Applikation.

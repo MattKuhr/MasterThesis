@@ -24,9 +24,9 @@ Die Anwendung unterstützt die Vermittlung der physikalischen Zusammenhänge dur
 				\setlength{\itemsep}{-1pt}
 				\singlespacing
 				\item Visualisierung der Komponenten des Magnetfeldes in zwei Darstellungen und in Echtzeit
-				\item Darstellung einer vorberechneten, numerischen Lösung für eine ausgewählte Ebene des Feldes der Spule
-				\item Kennzeichnung des Stromflusses
-				\item Integration eines Kompass mit Hervorhebung wichtiger Zustände
+				\item Darstellung einer vorberechneten Lösung für eine ausgewählte Ebene des Feldes der Spule
+				\item Kennzeichnung der Stromrichtung
+				\item Integration einer virtuellen Kompass-Skala mit Hervorhebung wichtiger Zustände
 				\item Einbettung einer virtuellen Kompassnadel auf Basis theoretischer Werte
 				\item Numerische Darstellung gemessener und berechneter Echtzeitdaten
 			\end{itemize}
@@ -104,7 +104,7 @@ Im Hinblick auf die technischen Anforderungen wurde eine Liste von Qualitätskri
 
 Insgesamt erfüllt die Applikation die technischen Anforderungen fast vollständig bis vollständig. Eine Aufschlüsselung der einzelnen Kriterien bietet die unten stehende Tabelle \ref{tab:tech_results}. Die Hologramme wirken weitestgehend stabil und glaubhaft positioniert, sie bleiben im Rahmen der Komfortzone und passen sich dem Nutzer an. Die Interaktion erfolgt zum Großteil über Standardmechanismen. Auch im Bereich Performance bleibt die Anwendung im Rahmen und liefert konstant 60 Bilder pro Sekunde aus. Allerdings beansprucht die Kantenglättung massiv Ressourcen und lässt kaum Spielraum für weitere oder komplexere Darstellungen.\\
 
- Im Weiteren soll auf einzelne Aspekte kurz näher eingegangen werden.\\
+Im Weiteren soll auf einzelne Aspekte kurz näher eingegangen werden.\\
  
 %\textbf{Qualitätskriterien}
 %\begin{sidewaystable}[h!]
@@ -205,8 +205,15 @@ Die Bewertung wurde anhand von Tests unter für die Anwendung günstigen Bedingu
 \subsubsection{Feedback}
 Zur Bewertung der vorgestellten Lösung wurde die Anwendung außerdem unterschiedlichen Personen vorgestellt und zum Testen überlassen. Dabei handelt es sich um ca. 15 Personen mit unterschiedlichem Grad an Expertise. Das Spektrum umfasst ungefähr zu gleichen Teilen Akademiker, Lehrer und Studenten der Physik. Deren Feedback wurde für diese Arbeit qualitativ festgehalten und zusammengefasst. Die Nutzung der Anwendung beschränkte sich dabei auf den Hauptteil mit den physikalischen Darstellungen.\\
 
-Die Reaktionen lassen sich weitestgehend als positiv beschreiben. Besonders die Interaktivität und die Darstellung der Simulationsdaten wurden \\
+\textit{Inhaltliches Feedback}\\
+Die Reaktionen lassen sich weitestgehend als positiv beschreiben. Besonders die Interaktivität und die Darstellung der Simulationsdaten wurden positiv aufgenommen. Bezüglich letzterer wurde gelegentlich nach einer volumetrischen Darstellung gefragt. Die Erfahrung wurde ingesamt meistens als ''Cool'' oder ''Toll'' beschrieben (ohne das nach einer Beschreibung gefragt wurde). Da fast alle Nutzer keine oder fast keine vorangegangenen Erfahrungen mit dem Nutzererlebnis der HoloLens hatten, trägt der ''Wow-Effekt'' einer erstmaligen Nutzung zu den Reaktionen bei.\\
 
+Da viele der Tester Experten waren, gab es kaum Nachfragen zur inhaltlichen Bedeutung der Darstellungen. Typisch waren jedoch Nachfragen zu den Beschränkungen des Sichtfeldes (''Soll das so klein sein?''). Die Rückfrage, ob die Beschränkungen als störend wahrgenommen werden, wurde jedoch meist verneint. Auch die Stabilität wurde als gut wahrgenommen\footnote{Einige Tester wurden ausdrücklich gebeten, ihren Eindruck von der Stabilität zu beschreiben}. Auch zur damit verbundenen Positionierung gab es kein negatives Feedback (z.B. im Falle von nicht korrekt verdeckten Elementen). Negativ fiel hingegen das Kantenflimmern an den Textboxen auf.
+
+\textit{Feedback zur Interaktion und Nutzung}\\
+Die Interaktion über den Klicker erwies sich als elementar wichtig. Die Verwendung der Handgeste führte bei unsicheren Nutzern oft zu unerwartetem Verhalten der Anwendung, da die HoloLens Gesten erkannte, die nicht beabsichtigt waren. Weitere Schwierigkeiten betrafen vor allem das Aufsetzen der Brille. Denn wenn diese nicht richtig sitzt, ist das ohnehin schon kleine Sichtfeld nicht vollständig sichtbar. Hier schaffte jedoch eine kurze Erklärung dazu, wie die Brille sitzen sollte, Abhilfe\footnote{Das Feedback zu Sichtfeld, Tragekomfort und Interaktion ist konsistent mit dem Feedback was Microsoft dazu erhalten hat. Alle drei Aspekte wurden deshalb beim Nachfolgemodell massiv verbessert.}.\\
+
+Das Feedback ist nachfolgend noch einmal zusammengefasst.
 \vspace{8px}
 \begin{center}
 	\fbox{
@@ -216,29 +223,25 @@ Die Reaktionen lassen sich weitestgehend als positiv beschreiben. Besonders die 
 			\begin{itemize}[rightmargin=12px, topsep=-12px]
 				\setlength{\itemsep}{-1pt}
 				\singlespacing
-				\item Insgesamt positive Bewertung aller Nutzer
+				\item Insgesamt positive Bewertung durch alle Nutzer
 				\item Besonders viel positives Feedback zu: 
 				\begin{itemize}[topsep=-0.25em]
 					\setlength{\itemsep}{-0.25em}
-					\item Darstellung der numerischen Lösung 
+					\item Darstellung der Simulationsdaten 
 					\item Interaktivität in Echtzeit
 				\end{itemize}
 				\item Häufig gewählte Wörter zur Beschreibung der Nutzererfahrung: ''Toll'', ''Cool'' und ''Beeindruckend''
-				\item Fragen nach einer berechneten Darstellung für 3D
 				\item Keine negativen Äußerungen zur Stabilität und Positionierung
+				\item Fragen nach einer berechneten Darstellung für 3D			
+				\item Klicker wurde den Handgesten stets vorgezogen				
 				\item Anmerkungen zu hohem Aufwand und Praktikabilität
-				\item Viele wollten gern Fotos der Anwendung haben
+				\item Viele wollten Fotos der Anwendung haben
 				\item Kaum Feedback von Lernenden, fast allen Nutzern waren die physikalischen Zusammenhänge bereits zu großen Teilen oder vollständig bekannt
 			\end{itemize}
 			\vspace{18px}
 	}}\\
 \end{center}
 \vspace{6px}
-
-\textit{Erfahrungen zur praktischen Nutzung der HoloLens}\\
-Obwohl die meisten Tester keine oder kaum Erfahrung mit der HoloLens oder anderen HMDs hatten, beschränkten sich die Schwierigkeiten in der Nutzung auf ein Minimum. Diese betrafen vor allem das Aufsetzen der Brille. Denn wenn diese nicht richtig sitzt, ist das ohnehin schon kleine Sichtfeld nicht vollständig sichtbar. Hier schaffte jedoch eine kurze Erklärung dazu, wie die Brille sitzen sollte, Abhilfe. Außerdem war die Klick-Geste für viele Nutzer nicht auf Anhieb benutzbar, deshalb wurde meist der Klicker bevorzugt. Die Limitierung des Sichtfeldes wurde nur vereinzelt negativ angemerkt.\\
-
-Die Tatsache, dass größtenteils keine vorangegangenen Erfahrungen mit dem Nutzererlebnis der HoloLens bestanden, trägt natürlich nicht unwesentlich zu den oben genannten Reaktionen bei.\\
 
 \subsection{Diskussion}
 Wie die HoloLens im Falle des 
