@@ -13,7 +13,7 @@ Die HoloLens ist ein von Microsoft entwickeltes \textit{Head-Mounted Display} (H
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.6\textwidth]{images/papers/hololens.jpg}
-	\caption{Die HoloLens in der Developer Edition \cite{MRHL}.}
+	\caption{Die HoloLens in der Developer Edition \cite{MRDoc}.}
 	%https://www.microsoft.com/de-de/hololens
 	\label{img:hololens}
 \end{figure}
@@ -164,6 +164,18 @@ Das \textit{Mixed Reality Toolkit} (MRTK) ist ein quelloffenes Toolkit, das elem
 
 Für die Entwicklung mit dem Toolkit und der HoloLens existiert ein umfassendes Repertoire aus Dokumentation, Beispielen, Guidelines, Einführungen und Hinweisen.\\
 
+\textit{Aufnahmen von der HoloLens}\\
+Die HoloLens bietet außerdem die Möglichkeit, Fotos von Anwendungen zu machen, indem das gerenderte Bild mit dem der Kamera überlagert wird. Von dieser Funktion wird in der vorliegenden Arbeit Gebrauch gemacht, um einen Eindruck von der Nutzererfahrung wiederzugeben. Allerdings ist die Qualität dieser Aufnahmen deutlich eingeschränkt und weicht von der tatsächlichen Nutzererfahrung ab. Die wesentlichen Einschränkungen sind dabei: 
+\begin{itemize}
+	\setlength{\itemsep}{-1pt}
+	\singlespacing
+	\item Stark vergrößertes Sichtfeld
+	\item Andere Auflösung mit geringerer Pixeldichte
+	\item Verfälschte Farben und Transparenzen
+	\item Verfälschte Positionierung
+	\item Aufnahmen nicht möglich, wenn Kamera durch Anwendung genutzt wird
+\end{itemize}
+Die Umstände führen dazu, dass beispielsweise Text, der für den Nutzer gut lesbar ist, ggf. auf der Aufnahme stark verpixelt und daher gar nicht zu lesen ist. Dies gilt es bei der Einschätzung solcher Aufnahmen zu beachten, worauf an entsprechender Stelle jedoch nochmals hingewiesen wird. Eine detailliertere Beschreibung der Effekte findet sich im Anhang.
 
 \subsubsection{Implikationen für Anwendungsdesign}
 \label{sec-2-1-4}
@@ -173,34 +185,30 @@ Die technischen Eigenschaften der HoloLens haben Auswirkung auf Design und Nutzu
 Ein wichtiger Punkt ist, das Tracking nicht zu behindern, da die Darstellungen andernfalls nicht korrekt im Raum positioniert werden können. Für die Stereo- und Tiefenkamera sind sehr dunkle und transparente Materialien problematisch, da hier kaum (Infrarot-) Licht reflektiert wird und so entsprechende Gegenstände nicht erkannt werden. Spiegelnde Materialien sind daher ebenfalls ungünstig.\\
 
 \textit{Display}\\
-Die Displays sind, vergleichbar mit einem Beamer, in der Lage den Hintergrund zu überblenden, nicht jedoch ihn abzudunkeln. Dementsprechend ist kein Schwarz darstellbar. Wie transparent Objekte auf der HoloLens erscheinen, hängt folglich auch vom Hintergrund und der Umgebungshelligkeit ab. Ein sehr heller Hintergrund kann von der HoloLens nicht vollständig überblendet werden.
-\par
+Die Displays sind, vergleichbar mit einem Beamer, in der Lage den Hintergrund zu überblenden, nicht jedoch ihn abzudunkeln. Dementsprechend ist kein Schwarz darstellbar. Wie transparent Objekte auf der HoloLens erscheinen, hängt folglich auch vom Hintergrund und der Umgebungshelligkeit ab. Ein sehr heller Hintergrund kann von der HoloLens nicht vollständig überblendet werden.\\
 \noindent\hspace*{5mm}
 Außerdem hängt die Transparenz virtueller Objekten von ihrer Farbe ab. Ein blauer Pixel leuchtet nur in jedem dritten Frame auf, ein weißer hingegen in jedem Frame, da die Farben sequentiell dargestellt werden.\\
 
-Bedingt durch die Displaytechnik wirken Objekte scharf, wenn sich die Augen auf eine Distanz von zwei Metern einstellen (Akkommodation). Die Augen sind jedoch daran gewöhnt, dass nah liegende Objekte eine andere Akkommodation erfordern, als weiter entfernte. Dies kann vor allem bei sehr dicht liegenden Objekten dazu führen, dass Nutzer sich unwohl fühlen oder die Objekte nicht richtig erkennen können.
-
-\par
+Bedingt durch die Displaytechnik wirken Objekte scharf, wenn sich die Augen auf eine Distanz von zwei Metern einstellen (Akkommodation). Die Augen sind jedoch daran gewöhnt, dass nah liegende Objekte eine andere Akkommodation erfordern, als weiter entfernte. Dies kann vor allem bei sehr dicht liegenden Objekten dazu führen, dass Nutzer sich unwohl fühlen oder die Objekte nicht richtig erkennen können.\\
 \noindent\hspace*{5mm}
 Im Zusammenhang der Akkommodation spielt hier auch die Konvergenz der Augen eine Rolle. Darunter versteht man die Bewegung der Augen aufeinander zu, sodass der Punkt, in dem sich die Gesichtslinien treffen, näher kommt. Dieser Vorgang ist wichtig, damit Objekte nicht doppelt gesehen werden. Akkommodation und Konvergenz sind auf natürliche Weise gekoppelt: Um ein dicht liegendes Objekt zu betrachten laufen die Augen weiter zusammen und erhöhen ihre Brechkraft. Dieser Effekt wird auch Akkommodation-Konvergenz-Reflex genannt. Beim Tragen der HoloLens kann es jedoch dazu kommen, dass dieses Zusammenspiel aufgebrochen wird.
 \par
 \noindent\hspace*{5mm}
 Angenommen ein Nutzer fokussiert ein reales Objekt in einer Entfernung unter zwei Metern. Jetzt wird ein virtuelles Objekt räumlich vor dem realen Objekt positioniert. Jetzt müssen Akkommodation und Konvergenz gegenläufig arbeiten: Die Augen müssen sich aufeinander zu bewegen, die Brechkraft dabei jedoch abnehmen, da sie sich auf zwei Meter anpassen muss. Dies steht im Gegensatz zum Akkommodation-Konvergenz-Reflex und kann die Nutzererfahrung negativ beeinflussen.\\
-
+\noindent\hspace*{5mm}
 Sowohl für Akkommodation als auch Konvergenz gilt jedoch, dass die Unterschiede mit zunehmender Distanz kleiner werden und die Probleme deshalb vor allem bei kurzen Distanzen auftreten.\\
 
 \textit{Hardwareressourcen}\\
 Die Hardwareressourcen der HoloLens sind mit einer CPU und GPU mit jeweils 1 GHz und 1GB RAM stark limitiert. Anwendungen sollten daher möglichst ressourcenschonend sein. Auf rechenintensive Operationen wie z.B. Schattenberechnungen oder Kantenglättung muss meist verzichtet werden.\\
 
 \textit{Framerate}\\
-Dabei ist es von besonderer Bedeutung, dass die Anwendung möglichst konstant 60 Bilder pro Sekunde ausgibt. Um die Hologramme im Raum stabil und ohne Ruckler oder Zittern anzuzeigen, müssen selbst feinste Kopfbewegungen ausgeglichen werden. Dazu nutzt die HoloLens ein spezielles Verfahren:
-\par
+Dabei ist es von besonderer Bedeutung, dass die Anwendung möglichst konstant 60 Bilder pro Sekunde ausgibt. Um die Hologramme im Raum stabil und ohne Ruckler oder Zittern anzuzeigen, müssen selbst feinste Kopfbewegungen ausgeglichen werden. Dazu nutzt die HoloLens ein spezielles Verfahren:\\
 \noindent\hspace*{5mm}
 Bevor eine Szene in die Render-Pipeline geht, trifft die Brille anhand der Sensordaten eine Vorhersage darüber, in welcher Position und Ausrichtung sich die Brille befinden wird, wenn das zu errechnende Bild dargestellt wird. Anhand dieser Schätzung wird die Kamera-Position und -Ausrichtung für die Szene festgelegt und anschließend gerendert. Eine längere oder variierende Renderzeit bedeutet damit auch eine unzuverlässigere Schätzung. Das kann zu instabil wirkenden Darstellungen führen, z.B. in Form von Zittern oder Ruckeln. Deshalb empfiehlt Microsoft, die Framerate von 60 FPS stets aufrecht zu erhalten.
 
 \subsubsection{Empfehlungen zu Design und Umsetzung}
 \label{sec-2-1-5}
-Damit Einschränkungen umgangen und negative Auswirkungen vermieden werden können, gibt es bereits einige Designempfehlungen und Guide-Lines sowie Empfehlungen zur Implementierung. Die Dokumentation zu Windows Mixed Reality umfasst hier einige Kriterien, Vorschläge und Hinweise, von denen besonders relevante hier vorgestellt werden sollen.\\
+Damit Einschränkungen umgangen und negative Auswirkungen vermieden werden können, gibt es bereits einige Designempfehlungen und Richtlinien sowie Empfehlungen zur Implementierung. Die Dokumentation zu Windows Mixed Reality umfasst hier einige Kriterien, Vorschläge und Hinweise, von denen besonders relevante hier vorgestellt werden sollen.\\
 
 \textit{Qualitätskriterien}\\
 Als Referenz dafür, wie gut eine Anwendung technische Einschränkungen berücksichtigt, kann eine Liste von Qualitätskriterien dienen, anhand derer Anwendungen bewertet werden können \cite{MRDocQuality}. Diese deckt viele der zuvor erläuterten Probleme wie z.B. der Abstand zu Objekten ab. Jedes Kriterium ist mit einer Beschreibung versehen, unter welchen Umständen es als optimal erfüllt, erfüllt oder nicht erfüllt gilt. Eine Kurzfassung relevanter Kriterien ist in Tabelle \ref{tab:tech_criteria} zusammengestellt.\\
@@ -255,7 +263,7 @@ Weiterhin ist die Größe von Objekten von Bedeutung. Das gilt besonders dann, w
 Um Objekte wie z.B. Menus und Dialoge, die nicht fest im Raum verankert sind, anzupassen, stellt das Mixed Reality Toolkit verschiedene Funktionen wie z.B. Billboarding oder Tagalong zur Verfügung, die Abstand, Orientierung und Skalierung entsprechend der Nutzerbewegung automatisch anpassen.\\
 
 \textit{Stabilisierung}\\
-Die HoloLens maximiert die Stabilität von Hologrammen gegen eine ausgewählte Ebene, die von der Anwendung selbst dynamisch gesetzt werden kann. Hologramme sollten daher, sofern sie gerade betrachtet werden, möglichst nah an dieser Ebene liegen, um stabil zu wirken.\\
+Die HoloLens maximiert die Stabilität von Hologrammen gegen eine ausgewählte Ebene, die von der laufenden Anwendung dynamisch gesetzt werden kann. Hologramme sollten daher, sofern sie gerade betrachtet werden, möglichst nah an dieser Ebene liegen, um stabil zu wirken.\\
 
 \textit{Performance Optimierungen}\\
 Da die Framerate maßgeblichen Einfluss auf die Stabilität von Hologrammen hat und die Hardwareressourcen limitiert sind, gibt es eine Reihe von empfohlenen Optimierungen und Hinweisen, um die Performance einer Anwendung zu verbessern. Diese umfassen unter anderem:

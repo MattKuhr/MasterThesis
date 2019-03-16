@@ -35,7 +35,11 @@ Die Anwendung unterstützt die Vermittlung der physikalischen Zusammenhänge dur
 \end{center}
 \vspace{6px}
 
-Durch den gewählten Designansatz werden die physikalischen Eigenschaften in ihrem realen, räumlichen und zeitlichen Kontext dargestellt. Somit kann ein direkter Zusammenhang zwischen dem Verhalten der Objekte des Versuches und den physikalischen Modellen, Darstellungen und Messwerten hergestellt werden. Dabei unterstützt die Anwendung in erster Linie ein qualitatives Verständnis. Die durch die Applikation gestützten Zusammenhänge lassen sich wie folgt zusammenfassen:
+Durch den gewählten Designansatz werden die physikalischen Eigenschaften in ihrem realen, räumlichen und zeitlichen Kontext dargestellt. Somit kann ein direkter Zusammenhang zwischen dem Verhalten der Objekte des Versuches und den physikalischen Modellen, Darstellungen und Messwerten hergestellt werden. \\
+
+TODO...\\
+\begin{comment}
+Dabei unterstützt die Anwendung in erster Linie ein qualitatives Verständnis. Die durch die Applikation gestützten Zusammenhänge lassen sich wie folgt zusammenfassen:
 
 \vspace{8px}
 \begin{center}
@@ -74,9 +78,11 @@ Da das resultierende Feld über seine Komponenten dargestellt wird, lässt sich 
 Die reale Magnetnadel unterliegt den Einflüssen von Reibung und Trägheit. Durch die eingebettete, theoretische Ausrichtung wird der Unterschied zwischen der realen und einer von Störeinflüssen freien Nadel deutlich. Da die reale Nadel mit 12 cm Länge recht groß und träge ist, ist der Unterschied klar zu sehen.\\
 
 \textit{Zusammenfassung}\\
-Diese physikalischen Zusammenhänge sind am Versuchsaufbau allein so nicht ersichtlich und werden erst durch die Mixed-Reality Anwendung erkennbar. Die Anwendung integriert alle in den Anforderungen festgehaltenen Elemente, bis auf die als optional eingestuften, weiteren Parameter des Experimentes. Wie die Lösung sicherstellt, dass die notwendigen Informationen auch tatsächlich erkennbar sind, ist in den einzelnen Umsetzungen gezielt erörtert.\\
+Diese physikalischen Zusammenhänge sind am Versuchsaufbau allein so nicht ersichtlich und werden erst durch die AR-Anwendung erkennbar. Die Anwendung integriert alle in den Anforderungen festgehaltenen Elemente, bis auf die als optional eingestuften, weiteren Parameter des Experimentes. Wie die Lösung sicherstellt, dass die notwendigen Informationen auch tatsächlich erkennbar sind, ist in den einzelnen Umsetzungen gezielt erörtert.\\
 
 \textbf{Bewertung anhand der nicht-funktionalen Anforderungen}\\
+\end{comment}
+
 \textit{Korrektheit und Interpretierbarkeit}\\
 Die Korrektheit und Interpretierbarkeit wird weitestgehend über die Nutzung etablierter physikalischer Darstellungsmodelle gesichert. Dabei liegt der Fokus nicht auf möglichst exakten Darstellungen numerischer Werte, sondern auf einer zweckmäßigen Darstellung. Im Vordergrund steht das qualitative Verständnis.\\
 
@@ -95,9 +101,9 @@ Die betroffenen Eigenschaften lassen sich zwar erahnen oder indirekt ableiten, w
 \textit{Weitere Aspekte}\\
 Der Nutzer wird durch das Tragen der HoloLens nicht wesentlich in der Interaktion mit den Gerätschaften eingeschränkt. Alle wichtigen Elemente (Anschlüsse, Spannungsquelle, Kompassnadel, Messgeräte, Spule) bleiben sichtbar und werden wenn dann nur zu kleinen Teilen überblendet. Die Hände bleiben frei zum Einstellen der Geräte, dem Anfertigen von Notizen oder der Verwendung weiterer Lehrmittel wie z.B. Lehrbüchern oder Arbeitsblättern. Der Klicker hat eine kleine Schlaufe, so dass er nicht unbedingt festgehalten werden muss.\\
 
-Die Applikation ist auch für Anwender ohne Erfahrungen mit der HoloLens oder Mixed Reality im Allgemeinen nutzbar, es müssen keine Handgesten erlernt werden. Allerdings kann die Nutzererfahrung bei unerfahrenen Nutzern durch ungünstige (z.B. hektische) Kopfbewegungen beeinträchtigt werden. Außerdem wurden die vorhandenen Gerätschaften genutzt und nur geringfügig angepasst (Überkleben der Magnetnade).\\
+Die Applikation ist auch für Anwender ohne Erfahrungen mit der HoloLens oder Mixed Reality im Allgemeinen nutzbar, es müssen keine Handgesten erlernt werden. Allerdings kann die Nutzererfahrung bei unerfahrenen Nutzern durch ungünstige (z.B. hektische) Kopfbewegungen beeinträchtigt werden. Außerdem wurden die vorhandenen Gerätschaften genutzt und nur geringfügig angepasst (Überkleben der Magnetnadel).\\
 
-Nachdem die inhaltlichen Ergebnisse beleuchtet wurden, sollen nun die Ergebnisse aus technische Seite  vorgestellt werden.
+Nachdem die inhaltlichen Ergebnisse beleuchtet wurden, sollen nun die Resultate aus technische Seite beleuchtet werden.
 
 \subsubsection{Technische Umsetzung}
 Im Hinblick auf die technischen Anforderungen wurde eine Liste von Qualitätskriterien zugrunde gelegt. Die Bewertung der Lösung anhand dieses Maßstabes ist im Folgenden erörtert. Der Einschätzung liegen die zu jedem Kriterium genannten Hinweise zur Bewertung zu Grunde.\\
@@ -165,7 +171,8 @@ Die Performance hat maßgeblichen Einfluss auf die Stabilität der Hologramme ab
 
 Die Anwendung gibt konstant 60 Bilder pro Sekunde aus. Beide genannten Werkzeuge zeigen keine Einbrüche der Framerate. Der Profiler zeigt eine Renderdauer im Bereich von 11 bis 13 Millieskunden an, wie in Abbildung \ref{img:profiler}. Das liegt deutlich unter den 16,6 ms zwischen zwei Bildern bei einer Bildwiederholfrequenz 60 Hz. Die Lastverteilung zwischen CPU und GPU variiert dabei, je nach aktiver Darstellung. Die Simulationsdaten und das Tracking verlangen mehr CPU Leistung, während das Rendering der 3D-Objekte die GPU mehr in Anspruch nimmt.\\
 
-Einen Überblick über den Ressourcenverbrauch des Gesamtsystems gibt Abbildung \ref{img:performance}. Dabei ist jedoch die Auslastung relativ hoch.
+TODO...\\
+%Einen Überblick über den Ressourcenverbrauch des Gesamtsystems gibt Abbildung \ref{img:performance}. Dabei ist jedoch die Auslastung relativ hoch.
 
 \begin{figure}[h!]
 	\centering
@@ -194,10 +201,9 @@ Die Kantenglättung wirkt sich deutlich auf den Ressourcenverbrauch der Anwendun
 	\item Stromverbrauch unregelmäßig
 \end{itemize}
 
- Zwar liegen sowohl bei CPU als auch GPU noch Reserven, allerdings bestimmt das Zusammenspiel von CPU und GPU die Framerate.\\
 
-MSAA treibt Ressourcenverbrauch in die Höhe: ohne MSAA etwa 25\% GPU\\
-Rendering der Linien besonders CPU-intensiv. knapp 7 ms CPU-Zeit nur für die Linien, ohne Optimierungen etwa 45 ms\\
+%MSAA treibt Ressourcenverbrauch in die Höhe: ohne MSAA etwa 25\% GPU\\
+%Rendering der Linien besonders CPU-intensiv. knapp 7 ms CPU-Zeit nur für die Linien, ohne Optimierungen etwa 45 ms\\
 
 \textit{Testbedingungen}\\
 Die Bewertung wurde anhand von Tests unter für die Anwendung günstigen Bedingungen durchgeführt. Der Versuchsaufbau wurde so positioniert, dass die umliegenden Objekte gut für das Tracking der Brille geeignet sind. Außerdem wurde die HoloLens vorher öfter im Testraum verwendet und hatte daher bereits ein gutes Modell des Raums zur Orientierung. Weiterhin wurde die Brille auf den Tester kalibriert und ruckartige oder unnötige Kopfbewegungen vermieden. 
@@ -244,12 +250,15 @@ Das Feedback ist nachfolgend noch einmal zusammengefasst.
 \vspace{6px}
 
 \subsection{Diskussion}
-Wie die HoloLens im Falle des 
-Dazu soll zunächst die Fragestellung diskutiert werden.
+TODO...\\
+
+KRITISCH MIT DER EIGENEN ARBEIT AUSEINANDERSETZTEN!!\\
+
+Kantenflimmern unerwartetes Problem. Kantenglättung zu teuer und nicht ausreichend. Kanten anders glätten. Keine weißen Linien und Umrandungen verwenden.\\
 
 Einige Probleme konnten bereits im Design abgemildert oder umgangen werden. Das gilt z.B. für die Aspekte Komfortzone und FOV-Grenzen. Durch die platzsparende Anordnung der Elemente werden die Hologramme seltener abgeschnitten. Außerdem sind häufige Kopfbewegungen und Hinweise auf Elemente außerhalb des FOV so nicht notwendig. Und die Berücksichtigung einer geeigneten Distanz von Beginn an vermeidet bzw. verringert Probleme mit zu dicht positionierten Objekten.\\
 
-Die Umsetzung unterstützt bereits im Design verankerte Maßnahmen weiter. Hier wurde z.B. bei der Festsetzung von Anzahl und Größe von Objekten auf die Einschränkungen der HoloLens Rücksicht genommen. Viele Probleme werden auch durch die Nutzung von vorgefertigten Objekten und Verhaltensweisen vermieden. Hier sind z.B. der Progress Indikator, Standard-Button und Standard-Shader zu nennen.
+Hier wurde z.B. bei der Festsetzung von Anzahl und Größe von Objekten auf die Einschränkungen der HoloLens Rücksicht genommen. Viele Probleme werden auch durch die Nutzung von vorgefertigten Objekten und Verhaltensweisen vermieden. Hier sind z.B. der Progress Indikator, Standard-Button und Standard-Shader zu nennen.
 
 Frage: Wie HoloLens einsetzen?
 
@@ -272,36 +281,28 @@ Wie die HoloLens weiter im Kontext des gewählten Versuches verwendet werden kö
 \subsubsection{Erweiterbarkeit}
 Ein im Rahmen der Fragestellung wichtiger Aspekt besteht darin, wie die vorgestellte Lösung um weitere Inhalte erweitert werden könnte. Dies ist in mehreren Bereichen denkbar und soll im Folgenden diskutiert werden.\\
 
-Eine zuvor bereits angedeutete Erweiterung bestünde darin, mit Erklärungen durch die Anwendung und Durchführung des Experimentes zu führen. Dabei könnten die Darstellungsmodelle und physikalischen Zusammenhänge erläutert, aber auch Hinweise zur Nutzung gegeben werden. Auf diese Weise ließe sich beispielsweise kommunizieren, wie die Darstellungen zu interpretieren sind oder welche Interaktionsmöglichkeiten zur Verfügung stehen. Eine Umsetzung wäre beispielsweise mittels Animationen und eingesprochenen Texten denkbar.\\
+Eine zuvor bereits angedeutete Erweiterung bestünde darin, mit Erklärungen durch die Anwendung und Durchführung des Experimentes zu führen. Dabei könnten die Darstellungsmodelle und physikalischen Zusammenhänge erläutert, aber auch Hinweise zur Nutzung gegeben werden. Auf diese Weise ließe sich beispielsweise kommunizieren, wie die Darstellungen zu interpretieren sind oder welche Interaktionsmöglichkeiten zur Verfügung stehen. Eine Umsetzung wäre beispielsweise mittels Animationen und eingesprochenen Texten denkbar. Im Zuge einer solchen Erweiterung ließe sich die Anwendung auch gezielt auf ein konkretes Einsatzszenario wie z.B. den Einsatz in einer Unterrichtsstunde auslegen.\\
 
-Die in einer Simulation berechneten Feldlinien geben das Feld in einem 2D-Schnitt wieder. Diese Darstellung ließe sich zu einer 3D-Darstellung erweitern. Dafür müssten auf Seiten der HoloLens zunächst keine weiteren Anpassungen vorgenommen werden, sofern die Daten in einer Datei im entsprechenden Format bereitgestellt werden. Allerdings sind die knappen Ressourcen zu berücksichtigen. Eine größere Anzahl an Feldlinien könnte zu einem Einbruch der Framerate führen. Eine mögliche Lösung bestünde darin, die Anzahl und bzw. oder Granularität der Feldlinien anzupassen. Alternativ ließen sich auch Qualitätseinstellungen (z.B. MSAA, Auflösung) auf der HoloLens verändern, um den Ressourcenverbrauch einzuschränken.\\
+Die in der Simulation berechneten Feldlinien geben das Feld in einem 2D-Schnitt wieder. Diese Darstellung ließe sich zu einer 3D-Darstellung erweitern. Dafür müssten auf Seiten der HoloLens zunächst keine weiteren Anpassungen vorgenommen werden, sofern die Daten in einer Datei im entsprechenden Format bereitgestellt werden. Allerdings sind die knappen Ressourcen zu berücksichtigen. Eine größere Anzahl an Feldlinien könnte zu einem Einbruch der Framerate führen. Eine mögliche Lösung bestünde darin, die Anzahl und bzw. oder Granularität der Feldlinien anzupassen. Alternativ ließen sich auch Qualitätseinstellungen (z.B. MSAA, Auflösung) auf der HoloLens verändern, um den Ressourcenverbrauch einzuschränken.\\
 
 Außerdem wäre eine Variation der physikalischen Parameter umsetzbar. Dazu zählen unter anderem Radius, Windungszahl, elektrischer Widerstand und Materialeigenschaften. Die physikalischen Berechnungen sind parametrisiert und ließen sich zur Laufzeit anpassen. Dadurch könnten auch die Zusammenhänge zwischen diesen Parametern und dem entstehenden Magnetfeld beleuchtet werden.\\
 
-Grundsätzlich sind auch Erweiterungen um weitere Lerninhalte denkbar, die mit dem Versuch zusammenhängen. Beispielsweise wäre eine Erklärung des Zusammenhangs zwischen Stromrichtung, Flussrichtung der Elektronen und Richtung des entstehenden Magnetfeldes möglich.\\
-
-TODO...\\
-Im Falle der Helmholtz-Spule überlagern sich die Felder der beiden einzelnen Spulen zu einem Magnetfeld.
-Allerdings ist die Architektur der Applikation nicht auf weitere Szenarien ausgelegt. 
-Umsetzung für ein konkretes Einsatzszenario auslegen z.B. Schulunterricht
+Grundsätzlich sind auch Erweiterungen um weitere Lerninhalte denkbar, die mit dem Versuch zusammenhängen. Beispielsweise wäre eine explizite Erklärung des Zusammenhangs zwischen Stromrichtung, Flussrichtung der Elektronen und Richtung des entstehenden Magnetfeldes möglich. Dies ließe sich auch Erweitern auf eine Aufbereitung des Biot-Savart-Gesetzes, dass allgemein die Magnetfelder bewegter Ladungen im Raum beschreibt und auf dem auch die Feldgleichungen der Helmholtz-Spule beruhen. Allerdings ist die Architektur der Applikation nicht explizit auf weitere, eigenständige Szenarien ausgelegt.\\
 
 \subsubsection{Übertragbarkeit}
 Ansatz übertragen auf andere Versuche:
 
-Neben dem vorgestellten Experiment sind mit einer Helmholtz-Spule noch weitere Versuche möglich. Ein typisches Beispiel ist die Ablenkung eines Elektronenstrahls, der durch ein Gas sichtbar gemacht wird. Die Elektronen werden im Inneren der Spule durch das Magnetfeld entsprechend dessen Stärke abgelenkt. In dem Versuch ist letztere so einzustellen, dass die Elektronen auf eine Kreisbahn gezwungen werden. Das Foto in Abb. X. zeigt den Versuch in diesem Zustand.\\
+Neben dem vorgestellten Experiment sind mit einer Helmholtz-Spule noch weitere Versuche möglich. Ein typisches Beispiel ist die Ablenkung eines Elektronenstrahls, der durch ein Gas sichtbar gemacht wird. Die Elektronen werden im Inneren der Spule durch das Magnetfeld entsprechend dessen Stärke abgelenkt. In dem Versuch ist letztere so einzustellen, dass die Elektronen auf eine Kreisbahn gezwungen werden.\\
 
 Durch die vielen Gemeinsamkeiten mit dem in dieser Arbeit behandelten Versuch liegt eine Übertragung der Lösung auf diesen Anwendungsfall nahe. Das Magnetfeld, die Stromrichtung und die Echtzeitdaten könnten hier ebenfalls in den Versuch integriert werden. Dabei wären jedoch ggf. andere Anforderungen durch den geänderten Versuchsaufbau zu berücksichtigen.\\
 
-Eine Übertragung auf ähnliche Versuche denkbar. Beispiel Ablenkung eines Elektronenstrahls durch Plattenkondensator.
+Ebenfalls denkbar wäre eine Übertragung auf ähnliche Versuche. Hier käme beispielsweise die Ablenkung eines Elektronenstrahls durch Plattenkondensatoren in Frage. Diese erzeugen ein elektrisches Feld, durch das Elektronen abgelenkt werden\footnote{Eine interaktive Webanwendung zu diesem Versuch findet sich hier: \url{https://www.didaktik.physik.uni-muenchen.de/elektronenbahnen/e-feld/hypothesen/experiment.php}}. Die Felddarstellungen können auch für elektrische Felder genutzt werden und auch die Labels für Plus und Minus ließen sich übernehmen.\\
 
+Grundsätzlich ist die Übertragbarkeit jedoch eingeschränkt, da die Lösung stark auf den Anwendungsfall und dessen Eigenschaften zugeschnitten ist. Bei einem anderen Versuch lassen sich Darstellungen ggf. nicht auf die gleiche Weise einbetten. Wenn z.B. der Nutzer ständig mit realen Objekten direkt interagieren muss, an denen die virtuellen Objekte verankert sind, wird die Empfohlene Distanz zu den Darstellungen dauerhaft unterschritten. Außerdem schaffen bewegliche Objekte, deren Position verfolgt werden muss, zusätzliche Probleme. Ein fortlaufendes Tracking durch die HoloLens über optische Merkmale nimmt massiv Ressourcen in Anspruch und führt dazu, dass keine Aufnahmen der Anwendung von der HoloLens selbst gemacht werden können.\\
 
-\begin{itemize}
-	\item Annotationen und Echtzeitdaten auch bei anderen Versuchen denkbar
-	\item Unterstützung beim Aufbau eines Versuches möglich
-\end{itemize}
-	
-	
-	
+Die Probleme können durchaus sehr individuell sein. Im Falle des zuvor genannten Versuches mit der Ablenkung des Elektronenstrahls könnte beispielsweise ein Problem mit dem Tracking auftreten. Wenn nämlich das Licht ausgeschaltet werden muss, damit der Elektronenstrahl zu erkennen ist, verliert die HoloLens ggf. aufgrund der mangelnden optischen Merkmale die Orientierung. Experimente mit zu hellen Elementen sind jedoch auch problematisch, da dann die Hologramme schlechter sichtbar wären. Aber auch andere Quellen von Infrarotlicht sowie stark reflektierende oder transparente Materialien würden das Tracking stören. Nicht zuletzt spielt auch Sicherheitsausrüstung eine Rolle. Bei einem Experiment mit einem Laser ist ggf. eine Schutzbrille notwendig, die den Einsatz der HoloLens möglicherweise ausschließt.\\
+
+Für ein konkretes Experiment ist folglich individuell zu prüfen, in wie fern die technischen Voraussetzungen der eines Einsatzes der HoloLens gegeben sind.
 	
 	
 	
