@@ -2,29 +2,29 @@
 \label{sec-2-3}
 Welches Experiment unterstützt und welche physikalischen Zusammenhänge damit vermittelt werden sollen, bestimmt die inhaltlichen Aspekte einer Lösung. 
 
-Helmholtz-Spulen werden in der Physik an verschiedenen Stellen verwendet und spielen auch in der Ausbildung von Schülern und Studenten eine wichtige Rolle. Unter anderem werden sie in Schülerversuchen genutzt, um experimentell die Stärke des Erdmagnetfeldes zu bestimmen. Im Folgenden sollen die physikalischen Hintergründe kurz eingeführt sowie der Versuchsaufbau und -Ablauf erläutert werden.
+Helmholtz-Spulen werden sowohl in der Laborpraxis als auch in der schulischen und universitären Ausbildung verwendet. Beispielsweise wird mit ihnen in Schülerversuchen die Stärke des Erdmagnetfeldes bestimmt. Im Folgenden sollen die physikalischen Hintergründe kurz eingeführt sowie der Versuchsaufbau und -Ablauf erläutert werden.
 
 Zuvor soll jedoch kurz auf die Auswahl des vorgestellten Versuches eingegangen werden.
 
 \subsubsection{Auswahl des Experimentes}
 \label{sec-2-3-1}
-Das Experiment wurde aus mehreren Gründen für diese Arbeit ausgewählt. Zum einen ist Augmented Reality für die Darstellung von Magnetfeldern eine bekannte Methode. Bestehende Arbeiten auf dem Gebiet motivieren den Einsatz der Technik in diesem Kontext. Aus dieser Perspektive ist das Experiment mit der Helmholtz-Spule geeignet, da die entstehenden Magnetfelder dabei im Fokus stehen. Außerdem bietet der Anwendungsfall Potential zur Erweiterung auf andere Experimente mit einer Helmholtz-Spule. Aber auch weitere, teilweise komplexere Inhalte wie z.B. das Biot-Savart-Gesetz ließen sich daran anknüpfen.\\
+Das Experiment wurde aus mehreren Gründen für diese Arbeit ausgewählt. Zum einen ist Augmented Reality für die Darstellung von Magnetfeldern eine bekannte Methode. Die im vorangegangen Abschnitt vorgestellten Arbeiten auf dem Gebiet motivieren den Einsatz der Technik in diesem Kontext. Aus dieser Perspektive ist das Experiment mit der Helmholtz-Spule geeignet, da die entstehenden Magnetfelder dabei im Fokus stehen. Außerdem bietet der Anwendungsfall Potential zur Erweiterung auf andere Experimente mit einer Helmholtz-Spule. Aber auch weitere, teilweise komplexere Inhalte wie z.B. das Biot-Savart-Gesetz ließen sich daran anknüpfen.\\
 
 Neben diesen Motivationen wurde der Versuch auch aus technischen und praktischen Aspekten ausgewählt. Im Wesentlichen trugen dazu die folgenden Faktoren bei:
 \begin{itemize}
 	\singlespacing
-	\item Das Magnetfeld der Spule hat keine erkennbaren Auswirkungen auf die HoloLens (das Gerät nutzt ein Magnetometer). Tests im Vorfeld mit Flussdichten von über 100 Mikrotesla zeigten keine wahrnehmbaren Auswirkungen auf das Tracking und die Stabilität von Hologrammen
-	\item Die notwendigen Materialien (Spule, Messgeräte, Simulationslösung) standen für diese Arbeit zur Verfügung
-	\item Die gegebene Größe der Spule (R=15cm) eignet sich für das beschränkte Sichtfeld der HoloLens.
-	\item Das Experiment enthält keine sich schnell bewegenden Elemente und ist bis auf den Kompass statisch, es erfordert außerdem keine besondere Schutzausrüstung
-	\item Der physikalische Hintergrund des Versuches nicht so komplex, als dass eine Auseinandersetzung damit den Rahmen dieser Arbeit sprengen würde
+	\item Das Magnetfeld der Spule hat keine erkennbaren Auswirkungen auf die HoloLens (das Gerät nutzt ein Magnetometer). Bei im Vorfeld der Arbeit durchgeführten Versuchen mit Flussdichten von über 100 Mikrotesla konnten keine wahrnehmbaren Auswirkungen auf das Tracking und die Stabilität von Hologrammen festgestellt werden.
+	\item Die notwendigen Materialien (Spule, Messgeräte, Simulationslösung) standen für diese Arbeit zur Verfügung.
+	\item Die gegebene Größe der Spule (Radius von 15 cm) eignet sich für das beschränkte Sichtfeld der HoloLens.
+	\item Das Experiment enthält keine sich schnell bewegenden Elemente und ist bis auf den Kompass statisch. Es erfordert außerdem keine Schutzausrüstung.
+	\item Die physikalischen Hintergründe des Versuches sind nicht zu komplex für den Rahmen dieser Arbeit.
 \end{itemize}
 
 Einige dieser Umstände begünstigen einen Einsatz der Brille für diesen konkreten Anwendungsfall und sind ggf. bei anderen Szenarien so nicht gegeben.\\
 
 \subsubsection{Spulen und Magnetfelder}
 \label{sec-2-3-2}
-Ein Magnetfeld kann als dreidimensionales Vektorfeld aufgefasst werden. Die Stärke an einem Punkt lässt sich über den Feldstärkevektor $\boldsymbol{H}$ sowie die Flussdichte $\boldsymbol{B}$ angeben. Beide Größen hängen über eine Materialkonstante $\mu$ zusammen: $\boldsymbol{B} = \mu \cdot \boldsymbol{H}$.
+Ein Magnetfeld kann als dreidimensionales Vektorfeld aufgefasst werden. Die Stärke an einem Punkt lässt sich über den Feldstärkevektor $\boldsymbol{H}$ sowie die Flussdichte $\boldsymbol{B}$ angeben. Beide Größen hängen über eine die magnetische Feldkonstante $\mu_{0}$ zusammen: $\boldsymbol{B} = \mu_{0} \cdot \boldsymbol{H}$.
 \par
 \noindent\hspace*{5mm}
 Wird eine Leiterschleife von einem elektrischen Strom durchflossen, so induziert diese ein Magnetfeld. Dieses Feld verläuft sowohl durch das Innere als auch durch die Umgebung der Spule. Die Stärke des Feldes hängt dabei von der Windungszahl und dem Durchmesser der Spule sowie der anliegenden Stromstärke ab.
@@ -36,24 +36,24 @@ Zur Visualisierung von Magnetfeldern gibt es unterschiedliche Darstellungsmodell
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.65\textwidth]{images/papers/Magnetfeld-Helmholtzspule.jpg}
-	\caption{Magnetfeld einer Helmholtz-Spule in der X-Z-Ebene \cite{wiki:15}. Der Betrag der Vektoren wurde hier statt der Länge über die Farbe kodiert. Die Feldlinien sind für einen mittigen Ausschnitt der Spule gezeichnet. Im Inneren ist das Feld weitgehend homogen.} %\footnote{\url{https://de.wikipedia.org/wiki/Helmholtz-Spule}}}
+	\caption{Magnetfeld einer Helmholtz-Spule in der X-Z-Ebene \cite{wiki:15}. Statt über die Vektorlänge wurde der Betrag des Feldes hier mittels Farben visualisiert. Die Feldlinien sind für einen mittigen Ausschnitt der Spule gezeichnet. Im Inneren ist das Feld weitgehend homogen.} %\footnote{\url{https://de.wikipedia.org/wiki/Helmholtz-Spule}}}
 	\label{img:Magnetfeld-Helmholtzspule}
 \end{figure}
 
 \textit{Das Feldlinienmodell}\\
-Die Feldliniendarstellung ist wohl die häufiger anzutreffende Darstellungsform. Hier werden kontinuierliche Linien genutzt, um den magnetischen Fluss darzustellen. Die Richtung des Feldstärkevektors an einem Punkt auf einer Feldlinie entspricht der Tangente an diesem Punkt. Die Stärke des Feldes wird meist proportional zur Dichte der Feldlinien dargestellt \cite{Kilian03}.\\
+Die Feldliniendarstellung ist die in der Literatur am häufigsten anzutreffende Darstellungsform. Hier werden kontinuierliche Linien genutzt, um den magnetischen Fluss darzustellen. Die Richtung des Feldstärkevektors an einem Punkt auf einer Feldlinie entspricht der Tangente an diesem Punkt. Die Stärke des Feldes wird meist proportional zur Dichte der Feldlinien dargestellt \cite{Kilian03}.\\
 
 Diese Darstellung macht den Unterschied zwischen homogenen und inhomogenen Feldern besonders gut sichtbar, da bei einem homogenen Feld die Feldlinien parallel verlaufen, bei einem inhomogenen hingegen nicht. Außerdem ist die Darstellung über die Dichte der Feldlinien eng verbunden mit dem Konzept des magnetischen Flusses.\\
 
-Allerdings bedeutet diese Darstellungsform auch, dass um so stärker das Feld ist, desto mehr Feldlinien auf gleichem Raum dargestellt werden müssen. Außerdem ist bei sich ändernden Feldern schwer zu erkennen, ob sich nur die Beträge der Feldstärkevektoren ändern, oder auch deren Richtungen. Denn in beiden Fällen verändern sich Form und Abstand der Feldlinien.\\
+Allerdings bedeutet diese Darstellungsform auch, dass mit zunehmender Feldstärke mehr zunehmend Feldlinien auf gleichem Raum dargestellt werden müssen. Außerdem ist bei sich ändernden Feldern schwer zu erkennen, ob sich nur die Beträge der Feldstärkevektoren ändern, oder auch deren Richtungen. Denn in beiden Fällen verändern sich Form und Abstand der Feldlinien.\\
 
 \textit{Vektorfeld}\\
-Im Gegensatz dazu wird in der Vektor-Darstellung das Feld über einzelne Vektoren repräsentiert. Dabei geben Richtung und Betrag eines Vektors den Feldstärkevektor des Magnetfeldes für genau einen Punkt an.\\
+In der Vektor-Darstellung wird das Feld über einzelne Vektoren repräsentiert. Dabei geben Richtung und Betrag eines Vektors den Feldstärkevektor des Magnetfeldes für genau einen Punkt an.\\
 So lässt sich die Feldstärke an einem durch einen Vektor repräsentierten Punkt im Raum direkt ablesen. Wo ein Feld homogen ist lässt sich jedoch nur durch das Vergleichen von mehreren Vektoren in Länge und Richtung feststellen. Dieses Modell hat gegenüber dem Feldlinienmodell jedoch den Vorteil, dass mit zunehmender Feldstärke die Vektoren nur länger werden, ihre Anzahl jedoch gleich bleibt. Außerdem ist hier klar zu erkennen, ob bei einem sich ändernden Feld die Richtung der Vektoren konstant bleibt, oder nicht.
 
 \subsubsection{Helmholtz-Spule}
 \label{sec-2-3-3}
-Bei einer Helmholtz-Spule handelt es sich im Prinzip um zum zwei zusammengeschaltete solcher Spulen. Dabei werden zwei identische Spulen nebeneinander aufgestellt und verbunden, sodass der Abstand genau dem Radius der Spulen entspricht. Abbildung \ref{img:Helmholtz} zeigt eine solche Helmholtz-Spule.\\
+Bei einer Helmholtz-Spule handelt es sich im Prinzip um zum zwei zusammengeschaltete Spulen. Dabei werden zwei identische Spulen parallel nebeneinander aufgestellt, sodass der Abstand genau dem Radius der Spulen entspricht. Abbildung \ref{img:Helmholtz} zeigt eine solche Helmholtz-Spule.\\
 \begin{wrapfigure}{R}{0.4\textwidth}
 	\centering
 	\includegraphics[width=0.38\textwidth]{images/papers/Helmholtz.jpg}
@@ -71,9 +71,9 @@ Die magnetische Flussdichte einer Helmholtz-Spule im Mittelpunkt zwischen den Sp
 B = \mu_{0} \cdot \frac{8 \cdot I \cdot N}{\sqrt{125} \cdot R}
 \end{equation}
 
-Dabei entspricht $I$ der Stromstärke, $N$ der Anzahl Windungen, $R$ dem Radius und $\mu_{0}$ die magnetische Feldkonstante. Die Stromstärke tritt dabei in der Feldgleichung als linearer Faktor auf. Änderungen an der Stromstärke rufen eine dazu proportionale Änderung der Feldstärke hervor. Außerdem bedeutet dieser Umstand, dass die Richtung des Feldstärke- bzw. Flussdichtevektors nicht von der Stromstärke abhängt, sondern konstant bleibt.\\
+Dabei entspricht $I$ der Stromstärke, $N$ der Windungszahl, $R$ dem Radius und $\mu_{0}$ der magnetischen Feldkonstanten. Die Stromstärke tritt dabei in der Feldgleichung als linearer Faktor auf. Änderungen an der Stromstärke rufen eine dazu proportionale Änderung der Feldstärke hervor. Außerdem bedeutet dieser Umstand, dass die Richtung des Feldstärke- bzw. Flussdichtevektors nicht von der Stromstärke abhängt, sondern konstant bleibt.\\
 
-\subsubsection{Versuchsaufbau und Ablauf}
+\subsubsection{Versuchsaufbau und -Ablauf}
 \label{sec-2-3-4}
 Ziel des Versuches ist die Bestimmung des Erdmagnetfeldes. Genauer bedeutet das die experimentelle Bestimmung von Richtung und magnetischer Flussdichte des Feldes. Die Richtung kann dabei allein über den Kompass bestimmt werden. Die Flussdichte wird mittels Gleichung \ref{eq:mfield} aus der gemessenen Stromstärke ermittelt, bei der die Helmholtz-Spule ein gleich starkes, eigenes Magnetfeld erzeugt.\\
 
@@ -91,12 +91,12 @@ Der Versuchsaufbau ist in Abbildung \ref{img:experiment-devices} dargestellt und
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.8\textwidth]{images/papers/setup_labled.jpg}
-	\caption{Foto des Versuchsaufbaus. Die Helmholt-Spule besteht aus zwei parallel geschalteten Spulen. Der Widerstand passt den Bereich der einstellbaren Stromstärke an. Der weiß überklebte Kompass wurde nachträglich schwarz umrandet, damit er auf dem Foto besser zu sehen ist.}
+	\caption{Foto des Versuchsaufbaus. Die Helmholtz-Spule besteht aus zwei parallel geschalteten Spulen. Der Widerstand passt den Bereich der einstellbaren Stromstärke an. Der weiß überklebte Kompass wurde nachträglich schwarz umrandet, damit er auf dem Foto besser zu sehen ist.}
 	\label{img:experiment-devices}
 \end{figure}
 
 \textit{Ablauf}\\
-Der Versuch läuft in zwei Teilen ab. Zunächst wird die Ausrichtung des Erdmagnetfeldes bestimmt und im nächsten Schritt dann die Flussdichte. Der Ablauf lässt sich wie folgt zusammenfassen:
+Der Versuch läuft in zwei Teilen ab. Zunächst wird die Ausrichtung des Erdmagnetfeldes bestimmt und im nächsten Schritt dann der Betrag der Flussdichte. Der Ablauf lässt sich wie folgt zusammenfassen:
 \begin{enumerate}
 	\setlength{\itemsep}{-2pt}
 	\item Kompassnadel nach Norden ausrichten lassen

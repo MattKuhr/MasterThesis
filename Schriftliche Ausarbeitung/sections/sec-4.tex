@@ -1,33 +1,24 @@
 \section{Lösungsansatz}
 \label{sec-4}
 Nachdem in den vorangegangenen Kapiteln die Hintergründe erläutert und Probleme identifiziert wurden, beschreibt dieses Kapitel nun den gewählten Lösungsansatz. Der Abschnitt ist dazu wie folgt strukturiert:
-Zunächst verfeinert der folgende Abschnitt den prinzipiellen Lösungsansatz und beschreibt, wie die AR-Aspekte genutzt werden sollen. Danach werden die getroffenen Designentscheidungen bezüglich dessen vorgestellt, was angezeigt wird, wie es dargestellt wird und wie damit interagiert wird.\\
-
-TODO...\\
-Die Idee baut auf dem Ansatz von Strzys et. al. auf und soll zunächst in ihren Grundzügen dargestellt und konkretisiert werden.
+Zunächst verfeinert der folgende Abschnitt den prinzipiellen Lösungsansatz und beschreibt, wie die AR-Aspekte genutzt werden sollen. Danach werden die getroffenen Designentscheidungen bezüglich dessen vorgestellt, was angezeigt wird, wie es dargestellt wird und wie damit interagiert wird.
 
 \subsection{Design der AR-Umgebung}
 \label{sec-4-1}
-Im Kern besteht der Ansatz dieser Arbeit darin, die physikalischen Eigenschaften darzustellen, in ihren realen Kontext einzubetten und dadurch einen räumlichen und zeitlichen Zusammenhang zu schaffen. Die Versuchsaufbauten werden mit virtuellen Objekten angereichert und somit in eine gemeinsame Anwendung integriert. Die Nutzererfahrung entsteht also durch das Zusammenspiel von realen und virtuellen Objekten.
-
-%Die Idee baut auf dem Ansatz von Strzys et. al. auf.
-%\\
+Ziel ist es, die AR-Technologie der HoloLens zu nutzen, um physikalische Eigenschaften darzustellen, in ihren realen Kontext einzubetten und dadurch einen räumlichen und zeitlichen Zusammenhang zu schaffen. Um dies zu realisieren werden zusätzliche, virtuelle Objekte mit der HoloLens in die Versuchsaufbauten integriert und dazu in Beziehung gesetzt. Das Zusammenspiel von realen und virtuellen Objekten bestimmt dann die Nutzererfahrung.\\
 
 Um den räumlichen Zusammenhang herzustellen, sind die virtuellen Objekte in Relation zum Versuchsaufbau, vor allem zur Spule, zu platzieren. Dementsprechend muss die Position und Ausrichtung relevanter Geräte bestimmt und in das Koordinatensystem der Anwendung transformiert werden. Nachdem dies einmal erfolgt ist, muss der Vorgang im Laufe der Anwendung nicht wiederholt werden, denn der Aufbau wird im Laufe des Versuches nicht bewegt oder gedreht und die HoloLens verankert die Objekte an ihrer Position im Raum. Der Anwender kann sich dann frei um die Gerätschaften herum bewegen, sie aus verschiedenen Perspektiven betrachten und damit interagieren. Die Interaktion erfolgt dabei sowohl mit den realen als auch den virtuellen Objekten.\\
 
-Neben dem räumlichen Zusammenhang wird auch ein zeitlicher hergestellt. Dies geschieht, indem die Brille in Echtzeit Messwerte von Geräten des Versuches erhält. Diese werden dann verarbeitet und dazu in Zusammenhang stehende Darstellungen angepasst. Im Laufe des Experimentes ändert die durchführende Person die anliegende Spannung durch einen Regler an der Spannungsquelle. Dieser Ansatz bedeutet 
+Neben dem räumlichen Zusammenhang wird auch ein zeitlicher hergestellt. Dies geschieht, indem die Brille in Echtzeit Messwerte von den Geräten des Versuches erhält. Diese werden dann verarbeitet und dazu in Zusammenhang stehende Darstellungen angepasst. Im Laufe des Experimentes ändert die durchführende Person die anliegende Spannung durch einen Regler an der Spannungsquelle. Das bedeutet, dass der Nutzer beim Einstellen des Stromflusses die Änderungen an den physikalischen Eigenschaften gleichsam in der Realität als auch der virtuellen Realität in Echtzeit beobachten kann.\\
 
-Das bedeutet, dass der Nutzer beim Einstellen des Stromflusses an der Spannungsquelle die Änderungen an den physikalischen Eigenschaften gleichsam in der Realität als auch der virtuellen Realität in Echtzeit beobachten kann.\\
-
-%Das betrifft in erster Linie die Visualisierungen des Magnetfeldes der Spule, die sich automatisch an die gemessenen Werte anpassen. 
-Dieses Konzept macht von den zentralen Stärken der HoloLens Gebrauch. Als Head Mounted Display mit transparenter, stereoskopischer Anzeige und dem Raumverständnis sind solch immersive Anwendungsszenarien die Kernkompetenz der Brille. Dazu trägt auch die Bewegungsfreiheit sowie der Punkt, dass der Träger die Hände frei hat, bei.
+Dieses Konzept macht von den zentralen Stärken der HoloLens Gebrauch. Als Head Mounted Display mit transparenter, stereoskopischer Anzeige und dem Raumverständnis sind solch immersive Anwendungsszenarien die Kernkompetenz der Brille. 
 
 \vspace{8px}
 \begin{center}
 	\fbox{
 		\parbox{0.9\linewidth}{
 		\vspace{4px}
-		\textbf{Überblick}
+		\textbf{Zusammenfassung}
 		\begin{itemize}[rightmargin=12px, topsep=-12px]
 			\setlength{\itemsep}{-1pt}
 			\singlespacing
@@ -45,24 +36,19 @@ Dieses Konzept macht von den zentralen Stärken der HoloLens Gebrauch. Als Head 
 Unter diesem grundsätzlichen Ansatz soll die Lösung nun weiter konkretisiert werden.
 
 
-\subsection{Designentscheidungen bezogen auf Infos}
+\subsection{Dargestellte Informationen} % Inhaltliches Design
 Zunächst ist zu entscheiden, welche physikalischen Eigenschaften durch die HoloLens visualisiert werden sollen. Von besonderem Interesse sind hier vor allem Informationen, die für den Versuch zwar relevant, für den Nutzer jedoch nicht direkt beobachtbar sind.\\
 
 Das betrifft in erster Linie die beiden sich überlagernden Magnetfelder von Erde und Spule. Das Zusammenspiel beider Felder und deren Eigenschaften ist elementar für das Verständnis des Experimentes. Allerdings sind Magnetfelder nicht sichtbar und die Auswirkungen auf die Magnetnadel entstehen durch das überlagerte Feld, die einzelnen Komponenten des Feldes sind darin nicht mehr erkennbar. Deshalb sollen diese für den Anwender sichtbar gemacht werden. In Absprache mit Experten wurde entschieden, zunächst nur die Einzelfelder und nicht das resultierende Feld zu visualisieren \cite{Reinholz18}.\\
+\noindent\hspace*{5mm}
+Damit die Felder auch als solche interpretiert und ihre Eigenschaften erkannt werden können, wird auf die etablierten Darstellungsmodelle über Feldlinien bzw. Vektoren zurückgegriffen. Da die Modelle sowohl Vor- als auch Nachteile haben, sollen beide Darstellungen alternativ angeboten werden.\\
 
-Die Auslenkung des Kompass hängt von Richtung und Stärke der beiden Einzelfelder in unmittelbarer Nähe des Kompasses ab. Diese Eigenschaften der Felder sind damit für den Versuch ausschlaggebend und sollen deshalb dargestellt werden. Während die Stärke und Richtung des Erdmagnetfeldes an einem Ort als konstant angenommen werden kann, ändert sich das Feld der Spule mit der Stromstärke. Um diesen Zusammenhang sichtbar zu machen, soll die dargestellte Feldstärke (des Feldes der Spule) anhand von gemessenen Echtzeitdaten angepasst werden. Dafür soll die aktuell gemessene Stromstärke an die HoloLens übermittelt werden. Aus dieser lässt sich anhand der Formel in Abschnitt \ref{sec-2-3-3} die Feldstärke für den Mittelpunkt der Spule berechnen.\\
+Die Auslenkung des Kompass hängt von Richtung und Stärke der beiden Einzelfelder in unmittelbarer Nähe des Kompasses ab. Diese Eigenschaften der Felder sind damit für den Versuch ausschlaggebend und sollen deshalb dargestellt werden.\\
+Während die Stärke und Richtung des Erdmagnetfeldes an einem Ort als konstant angenommen werden kann, ändert sich das Feld der Spule mit der Stromstärke. Stärke und Richtung des Feldes hängen direkt von der anliegenden Stromstärke und der Richtung des Stromflusses ab. Um diesen Zusammenhang sichtbar zu machen, soll die dargestellte Feldstärke (des Feldes der Spule) anhand von gemessenen Echtzeitdaten angepasst werden. Dafür soll die aktuell gemessene Stromstärke an die HoloLens übermittelt werden. Aus dieser lässt sich anhand der Gleichung \ref{eq:mfield} in Abschnitt \ref{sec-2-3-3} die Feldstärke für den Mittelpunkt der Spule berechnen.\\
 
-Damit die Felder auch als solche interpretiert und ihre Eigenschaften erkannt werden können, wird auf die etablierten Darstellungsmodelle über Feldlinien bzw. Vektoren zurückgegriffen. Da beide sowohl Vor- als auch Nachteile haben, sollen beide Darstellungen alternativ angeboten werden.\\
-
-%\par
-%\noindent\hspace*{5mm}
 Für die Auslenkung der Nadel ist lediglich das Feld in unmittelbarer Nähe des Kompass ausschlaggebend. Deshalb beschränken sich die Repräsentationen der Felder zunächst auf das Innere der Spule. In diesem ist das Feld nahezu homogen, was ebenfalls erkennbar sein soll. Vor diesem Hintergrund und dem Ziel eines qualitativen Verständnisses kann die Feldstärke im Mittelpunkt für einen größeren Bereich im Inneren der Spule angenommen werden.\\
 
-Um unabhängig von der Durchführung des Experimentes auch einen Eindruck von der Struktur des Feldes der Spule über das Innere dieser hinaus zu vermitteln, soll eine eigene Darstellung von Simulationsdaten verwendet werden. Diese legt eine numerisch berechnete Lösung zu Grunde, die dieser dieser Arbeit zur Verfügung steht. Ziel dieser Darstellung ist es, die Homogenität im Inneren der Spule im Gegensatz zur Inhomogenität des restlichen Feldes sichtbar zu machen. Hier folgt das Design der Empfehlung von Experten, diese Eigenschaft ebenfalls sichtbar zu machen \autocite{Reinholz18}.\\
-
-Während die Stromstärke die Feldstärke beeinflusst, bedingt die Stromrichtung die Richtung des Feldstärkevektors. Deshalb soll auch diese angezeigt werden, sofern tatsächlich Strom fließt.
-
- Weitere, nicht direkt erkennbare Eigenschaften des Versuches sind außerdem die physikalischen Parameter des Versuchsaufbaus.\\
+Um unabhängig von der Durchführung des Experimentes auch einen Eindruck von der Struktur des gesamten, durch die Spule erzeugten Feldes zu vermitteln, wird eine Darstellung von Simulationsdaten verwendet. Diese legt eine numerisch berechnete Lösung zu Grunde, die dieser  Arbeit zur Verfügung steht. Ziel der Darstellung ist es, die Homogenität im Inneren der Spule im Gegensatz zur Inhomogenität des restlichen Feldes sichtbar zu machen. Hier folgt das Design der Empfehlung von Experten, diese Eigenschaft ebenfalls sichtbar zu machen \autocite{Reinholz18}. Denn auch wenn das Feld außerhalb der Spule keinen Einfluss auf die eigentliche Durchführung des Experimentes hat, so unterstützt es dennoch das Verständnis, warum der Kompass gerade in der Mitte der Spule aufgestellt wird.\\
 
 Ein weiterer interessanter Aspekt ist die Einbindung theoretischer Ergebnisse. Das ermöglicht dem Anwender, direkt am Versuchsaufbau sowohl gemessene, als auch berechnete Werte zu erfassen und beide miteinander zu vergleichen. Bei der Bestimmung des Erdmagnetfeldes betrifft das vor allem die Auslenkung des Kompasses, die sich in Abhängigkeit des Feldstärkevektors verändert. Die Magnetnadel des Kompass unterliegt dabei Faktoren wie Reibung und Trägheit, die zu Abweichungen führen können. Ein berechneter, virtueller Kompass unterliegt solchen Einschränkungen nicht und kann ergänzend zum realen Konterpart das angenommene Verhalten des Systems unter Idealbedingungen aufzeigen. Deshalb soll ein solcher durch die HoloLens integriert werden.\\
 
@@ -76,7 +62,7 @@ Zusammenfassend sollen also die folgenden Elemente visualisiert werden:
 		\item Homogenität
 	\end{itemize}
 	\item Das Feld der Spule soll außerdem gesondert auf Basis von Simulationsdaten für einen größeren Bereich auch außerhalb der Spule dargestellt werden. Dafür wird das Feldlinienmodell und eine bestehende Simulation genutzt.
-	\item Die Richtung des Stromflusses durch die Spule wird durch einen Indikator-Objekt angezeigt. Ergänzend dazu sollen Plus und Minus gekennzeichnet werden.
+	\item Die Richtung des Stromflusses durch die Spule wird durch einen Indikator. Ergänzend dazu sollen Plus und Minus gekennzeichnet werden.
 	\item Die berechnete Auslenkung einer theoretischen, idealen Magnetnadel ohne Störeinflüsse. 
 	\item Die gemessenen und berechneten Werte für Stromstärke und Flussdichte.
 \end{enumerate}
@@ -84,7 +70,7 @@ Zusammenfassend sollen also die folgenden Elemente visualisiert werden:
 
 Für diese Elemente gilt es nun ein visuelles Design zu konzipieren und eine technische Realisierung zu erarbeiten. Diese werden jedoch durch Designentscheidungen beeinflusst, die technische Eigenschaften der HoloLens adressieren, um eine komfortable Nutzung zu gewährleisten. Deshalb soll zunächst auf diese näher eingegangen werden.
 
-\subsection{Designentscheidungen bezogen auf HoloLens}
+\subsection{Designentscheidungen im Hinblick auf die HoloLens}
 \label{sec-4-2}
 Viele Darstellungen sollen am Versuchsaufbau, also vor allem an der Spule, verankert werden. Das bedeutet, dass der Anwender Abstand und Blickwinkel zu diesen Objekten durch seine Bewegungen und Blickrichtung selbst steuert. Um dennoch stets eine komfortable Nutzung zu ermöglichen, und die zuvor erläuterten Probleme im Hinblick auf Distanz und Blickrichtung zu vermeiden, werden mehrere Maßnahmen getroffen.\\
 
@@ -101,12 +87,22 @@ Die Farbe bestimmt auf der HoloLens nicht nur die Helligkeit, sondern auch die T
 
 Nach diesen allgemeinen Designentscheidungen, die alle Visualisierungen betreffen, kann nun das visuelle Design konkretisiert werden.
 
-\subsection{Wie erfolgt die Darstellung?}
+\subsection{Visuelles Design}
 
-\subsubsection{Das Magnetfeld - Echtzeitdarstellung}
-\label{sec-4-2-2}
-Die Darstellung des Magnetfeldes von Erde und Spule ist zentraler Bestandteil der Anwendung.
+Die Darstellung des Magnetfeldes von Erde und Spule ist zentraler Bestandteil der Anwendung.\\
 
+\textit{Visuelles Design}\\
+Die Darstellung des Feldes erfolgt über 3D-Pfeile bzw. -Pfeillinien. Diese werden schattiert, damit die Form und Ausrichtung im Raum besser erkennbar wird. Die Größe der Objekte wurde anhand von Erfahrungswerten angepasst. Durchmesser und Länge sind vergleichbar mit denen eines Kugelschreibers oder dickeren Stiftes. Als Farben wurden Hellblau und Orange für den Anteil der Spule bzw. der Erde gewählt. Blau wird oft für Magnetfeldlinien verwendet und wird daher auch hier gebraucht. Allerdings wird ein weniger gesättigtes, helleres Blau verwendet, damit die Deckkraft vor helleren Hintergründen nicht verloren geht. Das Orange weißt die selbe Helligkeit wie das Blau auf, damit sich die Objekte nicht in der Transparenz voneinander unterscheiden.\\
+
+\textit{Begrenzung der Darstellung}\\
+Die Visualisierung des Feldes erfordert die Festlegung eines darzustellenden Bereiches für die Flussdichte. Ein Intervall lässt sich in der Anwendung frei über die Einstellungen festlegen. Diese Einstellungsmöglichkeit ist für die praktische Nutzung wesentlich, da die gemessene Flussdichte des Erdmagnetfeldes in Abhängigkeit von der Umgebung variieren kann. Voreingestellt ist ein Bereich von $3\mu T$ bis $60\mu T$, die Flussdichte der Erde liegt mit $30 \mu T$ bis $40 \mu T$ im mittleren Bereich dieser Skala. Am unteren Ende des Bereiches werden die Objekte über Transparenz ausgeblendet.\\
+
+Nach oben hin ist keine Darstellung der Begrenzung vorgesehen. Der Bereich sollte so gewählt werden, dass die obere Grenze durch die maximal am Regler einstellbare Stromstärke nicht erreicht werden kann. Somit erfährt der Anwender die Limitierung der Darstellung auf natürliche Weise. Die Konfiguration der Schaltung kann hier über eingebaute Widerstände so an die Spannungsquelle angepasst werden, dass der erzeugte Stromfluss im gewünschten Bereich liegt.\\
+
+Weiterhin sind für alle Objekte, die in Abhängigkeit des sich ändernden Feldes stehen, Parameter für die Darstellung definiert. Diese legen für alle Elemente einen gemeinsamen Wertebereich fest, für den die Darstellung erfolgt. Außerdem werden ab dem minimalen Wert die Objekte über einen gewählten Bereich kontinuierlich eingeblendet. Dieses konsistente Verhalten dient dazu, das Verständnis der Darstellungen zu verbessern. Außerdem soll auf diese Weise transportiert werden, dass nur die Darstellungen verschwinden, nicht jedoch die physikalischen Sachverhalte, die repräsentiert werden.\\
+
+Einbettung durch Verdeckung\\
+Objekte verändern sich dynamisch anhand von Messwerten
 \vspace{4px}
 \begin{center}
 	\fbox{
@@ -128,18 +124,10 @@ Die Darstellung des Magnetfeldes von Erde und Spule ist zentraler Bestandteil de
 \end{center}
 \vspace{6px}
 
-\textit{Visuelles Design}\\
-Die Darstellung des Feldes erfolgt über 3D-Pfeile bzw. -Pfeillinien. Diese werden schattiert, damit die Form und Ausrichtung im Raum besser erkennbar wird. Die Größe der Objekte wurde anhand von Erfahrungswerten angepasst. Durchmesser und Länge sind vergleichbar mit denen eines Kugelschreibers oder dickeren Stiftes. Als Farben wurden Hellblau und Orange für den Anteil der Spule bzw. der Erde gewählt. Blau wird oft für Magnetfeldlinien verwendet und wird daher auch hier gebraucht. Allerdings wird ein weniger gesättigtes, helleres Blau verwendet, damit die Deckkraft vor helleren Hintergründen nicht verloren geht. Das Orange weißt die selbe Sättigung und Helligkeit auf wie das Blau, damit sich die Objekte nicht in der Transparenz voneinander unterscheiden.\\
 
-\textit{Begrenzung der Darstellung}\\
-Die Visualisierung des Feldes erfordert die Festlegung eines darzustellenden Bereiches für die Flussdichte. Ein Intervall lässt sich in der Anwendung frei über die Einstellungen festlegen. Diese Einstellungsmöglichkeit ist für die praktische Nutzung wesentlich, da die gemessene Flussdichte des Erdmagnetfeldes in Abhängigkeit von der Umgebung variieren kann. Voreingestellt ist ein Bereich von $3\mu T$ bis $60\mu T$, die Flussdichte der Erde liegt mit $30 \mu T$ bis $40 \mu T$ im mittleren Bereich dieser Skala. Am unteren Ende des Bereiches werden die Objekte über Transparenz ausgeblendet.\\
+\subsubsection{Feldliniendarstellung}
+\label{sec-4-4-1}
 
-Nach oben hin ist keine Darstellung der Begrenzung vorgesehen. Der Bereich sollte so gewählt werden, dass die obere Grenze durch die maximal am Regler einstellbare Stromstärke nicht erreicht werden kann. Somit erfährt der Anwender die Limitierung der Darstellung auf natürliche Weise. Die Konfiguration der Schaltung kann hier über eingebaute Widerstände so an die Spannungsquelle angepasst werden, dass der erzeugte Stromfluss im gewünschten Bereich liegt.\\
-
-Einbettung durch Verdeckung\\
-Objekte verändern sich dynamisch anhand von Messwerten
-
-\textbf{Feldlinien}\\
 Die Feldliniendarstellung ist in Abb. \ref{img:mfield-lines} gesondert dargestellt.
 \begin{figure}[H]
 	\centering
@@ -204,8 +192,8 @@ Dabei wurde sich bewusst für die Abbildung der Flussdichte auf den Abstand der 
 	}}\\
 \end{center}
 \vspace{6px}
-
-\textbf{Vektoren}\\
+\subsubsection{Vektordarstellung}
+\label{sec-4-4-2}
 \textit{Anordnung und Anzahl}\\
 In der Vektordarstellung werden mindestens acht Vektoren benötigt, damit die zuvor genannten Eigenschaften erkennbar werden. Dabei gelten die gleichen Gründe wie zuvor. Während jedoch eine Feldlinie das Feld in Richtung der Z-Achse kontinuierlich darstellt, sind hier wenigstens zwei Vektoren notwendig. Die Anordnung erfolgt in einem 3D-Gitter, bei dem die Anzahl und die Abstände pro Dimension parametrisiert sind. Auch hier gilt, dass mehr Objekte im homogenen Teil des Feldes keine weiteren Informationen transportieren. Daher wurde in Anbetracht des zur Verfügung stehenden Raumes in die Größe anstelle der Anzahl der Objekte investiert.\\
 
@@ -237,34 +225,22 @@ Im Gegensatz zu den Feldlinien ist eine Darstellung des inhomogenen Feldes über
 \end{center}
 \vspace{6px}
 
-\subsubsection{Magnetfeld - Simulationsdarstellung}
-\textbf{Simulation}\\
+\subsubsection{Darstellung der Simulationsdaten}
+\label{sec-4-4-3}
 Eine Visualisierung der Simulationsdaten ist in Abb. \ref{img:mfield-simulation} näher zu sehen.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{images/HL/simulation.jpg}
+	\includegraphics[width=0.8\textwidth]{images/unity/simulation.jpg}
 	\caption{Simulation}
 	\label{img:mfield-simulation}
 \end{figure}
 
 
-Die numerische Lösung der Feldgleichungen erfolgte mittels der Simulationssoftware COMSOL Multiphysics. Diese Arbeit konnte hier auf eine bestehende Implementierung einer Helmholtzspule aufbauen. Hier wurden lediglich die folgenden Parameter für die Berechnung der Feldlinien gesetzt:
-\begin{itemize}
-	\setlength{\itemsep}{-1pt}
-	\singlespacing
-	\item Anzahl und Anordnung: 10, symmetrisch zur Z-Achse, Abstand entsprechend der Flussdichte
-	\item Beschränkung auf die X-Z-Ebene im Radius von 2m um die Spule
-	\item Qualitätseinstellungen auf Maximum gesetzt
-\end{itemize}
-
 \textit{Querschnitt}\\
 Zunächst ist nur eine Anordnung in der X-Z-Ebene aktiv. Da das Feld aber symmetrisch zur Z-Achse ist, kann mit diesem einen Datensatz bereits jeder Querschnitt durch die Z-Achse dargestellt werden. Bei einer anderen Ausrichtung, z.B. im 45° Winkel, würden jedoch Feldlinien durch den Tisch verlaufen, auf dem die Spule steht.\\
 
-\textit{Rendering}\\
-Die Darstellung erfolgt über Unity's Low-Level \textit{Graphics Library (GL)} mittels eines Line-Strips. Dieser ist vergleichbar mit dem von OpenGL, hat aber weniger Funktionen. Insbesondere lässt sich die Dicke der Linien nicht einstellen, sondern ist auf einen Pixel festgelegt. Der sonst in dieser Arbeit für Linien genutzte LineRenderer konnte hier nicht verwendet werden. Denn letzterer ermöglicht für eine Linie nur die Interpolation zwischen maximal 8 Farben. Eine besser Konfigurierbare Darstellung wäre über ein dynamisch generiertes Mesh möglich.\\
-
 \textit{Anzahl und Anordnung}\\
-Die Auswahl von 10 Feldlinien erfolgte aus praktischem Ermessen bezüglich der Sichtbarkeit aus 1,5 Metern Entfernung. Dabei wurde bewusst eine gerade Anzahl gewählt. Andernfalls entsteht eine Feldlinie, die genau auf der Z-Achse liegt und nicht geschlossen ist sondern von minus nach plus Unendlich verläuft. Dies wurde aus didaktischen Gründen vermieden.\\
+Die Auswahl von 12 Feldlinien erfolgte aus praktischem Ermessen bezüglich der Sichtbarkeit aus 1,5 Metern Entfernung. Dabei wurde bewusst eine gerade Anzahl gewählt. Andernfalls entsteht eine Feldlinie, die genau auf der Z-Achse liegt und nicht geschlossen ist sondern von minus nach plus Unendlich verläuft. Dies wurde aus didaktischen Gründen vermieden.\\
 
 \textit{Farbe}\\
 Die Wahl der Farbskala fiel aus mehreren Gründen auf eine Rot-Grün-Skala. Die Linien zeigen die kontinuierliche Änderung der Flussdichte, die durch einen Farbverlauf weiter hervorgehoben werden soll. Dabei kommt es nicht auf das Ablesen der numerischen Werte an, weshalb auch keine Skala mit Farbe und den dazugehörigen Werten angezeigt wird. Es geht viel mehr um das qualitative Verständnis der Darstellung. Mit der gewählten Skala unterscheiden sich die drei wesentlichen Regionen durch ihre Farbe klar voneinander:
@@ -276,27 +252,7 @@ Die Wahl der Farbskala fiel aus mehreren Gründen auf eine Rot-Grün-Skala. Die 
 	\item Inhomogenes, starkes Feld unmittelbar am Rand der Spule: Rot
 \end{itemize}
 
-Darüber hinaus sprechen technische Gründe für eine solche Farbskala. Damit die Linien in Helligkeit und Transparenz nicht variieren, sollten sich die Farbanteile im RGB-Raum stets zu einem konstanten Wert addieren. Die Rot-Grün-Skala erfüllt diese Eigenschaft, da hier der Blauanteil stets null ist und Rot und Grün über $R = 1 - G$ zusammenhängen. Möglich wären hier auch eine Regenbogenskala, die nicht selten für Magnetfelder angewandt wird\footnote{Vgl. z.B. die Darstellungen in Kap. \ref{sec-2-2} und \ref{sec-2-3}}. Die Skala wird jedoch aufgrund der verzerrten Wahrnehmung nicht empfohlen und wurde hier daher nicht verwendet.
-
-\vspace{4px}
-\begin{center}
-	\fbox{
-		\parbox{0.9\linewidth}{
-			\vspace{4px}
-			\textit{Zusammenfassung}
-			\begin{itemize}[rightmargin=12px, topsep=-12px]
-				\setlength{\itemsep}{-1pt}
-				\singlespacing
-				
-				\item Simulation für einen beliebigen 2D-Querschnitt orthogonal zur X-Y-Ebene, da das Feld symmetrisch zur Z-Achse ist
-				\item Anzahl auf 10 Feldlinien festgelegt
-				\item Darstellung über 2D-Linien
-				\item Rot-Grün Farbskala genutzt
-			\end{itemize}
-			\vspace{18px}
-	}}\\
-\end{center}
-\vspace{6px}
+Darüber hinaus sprechen technische Gründe für eine solche Farbskala. Damit die Linien in Helligkeit und Transparenz nicht variieren, sollten sich die Farbanteile im RGB-Raum stets zu einem konstanten Wert addieren. Die Rot-Grün-Skala erfüllt diese Eigenschaft, da hier der Blauanteil stets null ist und Rot und Grün über $R = 1 - G$ zusammenhängen. Möglich wären hier auch eine Regenbogen- oder RGB-Skala, die nicht selten für Magnetfelder angewandt wird\footnote{Vgl. z.B. die Darstellungen in Kap. \ref{sec-2-2} und \ref{sec-2-3}}. Die Skala wird jedoch aufgrund der verzerrten Wahrnehmung nicht empfohlen und wurde hier daher nicht verwendet.
 
 \subsubsection{Der Stromfluss} 
 \label{sec-4-2-3}
@@ -304,7 +260,7 @@ Beim Stromfluss ist in erster Linie die Flussrichtung durch die Spulen von Inter
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.6\textwidth]{images/current.jpg}
+	\includegraphics[width=0.6\textwidth]{images/unity/current.jpg}
 	\caption{Stromfluss}
 	\label{img:current}
 \end{figure}
@@ -342,7 +298,7 @@ Der Kompass bildet sich aus dem Zusammenspiel einer realen Magnetnadel, einer vi
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{images/compass.jpg}
+	\includegraphics[width=0.8\textwidth]{images/unity/compass.jpg}
 	\caption{Kompass}
 	\label{img:compass}
 \end{figure}
@@ -397,12 +353,9 @@ Diese Lösung setzt jedoch auf eine genaue Positionsbestimmung der Spule sowie e
 \label{sec-4-2-5}
 Für die Darstellung weiterer Informationen sind zwei Lösungen vorgesehen: Ein Datenpanel zur Darstellung numerischer Werte in Textform sowie optional aktivierbare Labels am Versuchsaufbau.
 
-Beides ist in Abbildung \ref{img:info-design} skizziert.
-
-
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{images/status.jpg}
+\includegraphics[width=0.8\textwidth]{images/unity/status.jpg}
 \caption{Statusbar}
 \label{img:status}
 \end{figure}
@@ -426,9 +379,7 @@ Beides ist in Abbildung \ref{img:info-design} skizziert.
 \end{center}
 \vspace{6px}
 
-\begin{itemize}[rightmargin=12px, topsep=-12px]
-	\setlength{\itemsep}{-1pt}
-	\singlespacing
+\begin{itemize}
 	\item Listet gemessene und berechnete Echtzeitwerte auf: Stromstärke, Spannung, Flussdichte
 	\item 4 Replikas, Platzierung an unteren Balken zwischen den Spulen
 	\item Sichtbarkeit analog zu Strom-Pfeilen
@@ -502,22 +453,21 @@ Die Lösung baut hier auf den vorhandenen Elementen des MRTK auf und nutzt vorge
 
 \subsection{Implementierung}
 \label{sec-4-3}
-Die Lösung sieht neben den inhaltlichen Darstellungen weitere Komponenten vor, die der Nutzbarkeit der Anwendung dienen. Das betrifft drei Bereiche: Die Steuerung des Ablaufes, die Bestimmung von Position und Ausrichtung der Spule sowie Einstellungen.
+Die Lösung sieht neben den inhaltlichen Darstellungen weitere Komponenten vor, die der Nutzbarkeit der Anwendung dienen. Das betrifft drei Bereiche: Die Steuerung des Ablaufes, die Bestimmung von Position und Ausrichtung der Spule sowie Einstellungen.\\
 
-\textit{Das Menü}\\
+\textit{Menü}\\
 Über ein Menü kann der Ablauf der Anwendung gesteuert werden. Hier kann der eigentliche Versuch gestartet, die Positionsbestimmung (erneut) angestoßen oder die Einstellungen aufgerufen werden. Die Umsetzung erfolgt über Buttons, die sich automatisch der Kamera anpassen, so dass der Anwender keine Probleme hat, sie zu finden.\\
 
-\textit{Die Einstellungen}\\
+\textit{Einstellungen}\\
 Die Einstellungen bieten die Konfiguration wichtiger Parameter an. Das betrifft vor allem die gemessene Flussdichte des Erdmagnetfeldes, da sich diese von Ort zu Ort unterscheiden kann. Aber auch der gewählte Widerstand lässt sich einstellen, da hier ein Austausch in der Schaltung leicht möglich und beim Wechsel auf eine andere Spannungsquelle unter Umständen sogar nötig ist. Auch die Einstellung der Adresse des Servers, von dem die Messwerte abgefragt werden, wird angeboten. Die Eingabe der Werte erfolgt dabei über die vom Mixed Reality Toolkit zur Verfügung gestellte, virtuelle Tastatur.\\
 
 Damit die Einstellungen nicht nach jedem Neustart der Anwendung vorgenommen werden müssen, sieht die Lösung eine Speicherung auf dem lokalen Speicher der HoloLens vor. Bei der erstmaligen Verwendung werden Default-Werte geladen, auf die die Applikation auch wieder zurückgesetzt werden kann. Die Einstellungen tragen somit wesentlich zur Nutzbarkeit der Anwendung bei. Ohne diese Optionen müsste die App für jede Änderung in diesen Parametern mit der geänderten Konfiguration neu deployt werden. Insbesondere bei der Adresse des Servers wäre dies problematisch, da diese, je nach technischer Umsetzung, ggf. zum Zeitpunkt des Deployments noch gar nicht bekannt ist.\\
 
-\textit{Das Tracking}\\
+\textit{Tracking}\\
 Nicht zuletzt soll die Anwendung den Nutzer durch den Prozess der Positionsbestimmung der Spule führen. Die Bestimmung erfolgt über einen optischen Marker, der über die integrierte Kamera eingelesen wird. Die Verwendung eines hinreichend großen Markers erlaubt die Genauigkeit im Bereich weniger Millimeter, die von der Anwendung benötigt wird. Letztere instruiert den Nutzer dabei und informiert über den Fortschritt des Vorgangs.\\
 \noindent\hspace*{5mm}
 Die Idee dahinter besteht darin, diesen, hier als ''Tracking'' bezeichneten Vorgang, nur einmalig erfolgen zu lassen. Wurden Position und Ausrichtung einmal ermittelt, werden diese gespeichert und verwendet. Hier bietet die HoloLens den sogenannten \textit{World Anchor Store} an, in dem die Position von Objekten in Relation zum Raumverständnis dauerhaft gespeichert werden kann. Dieser Speicher ist persistent und kann die Position über mehrere Anwendungssessions hinweg speichern.\\
  
-
 Das Design nutzt hier gezielt die Funktionalitäten der HoloLens sowie den Umstand aus, dass Spule und Magnetnadel, nachdem sie einmal aufgestellt wurden, nicht weiter bewegt werden müssen. Allerdings bedeutet dieser Ansatz auch, dass die Qualität der Positionierung über mehrere Sessions hinweg abhängig vom Raumverständnis der HoloLens ist. Deshalb lässt sich das Tracking jederzeit manuell neu anstoßen, wenn die Überlagerung als nicht gut genug empfunden wird.\\
 
 Solange also der Versuchsaufbau nicht bewegt wird, kann die einmalig gespeicherte Position verwendet werden. Die Anwendung erkennt automatisch, ob die gespeicherten Daten vorliegen. Dadurch verkürzt sich die Setup-Zeit und es trägt dazu bei, dass auch unerfahrene Nutzer die Applikation verwenden können.
@@ -542,10 +492,12 @@ Solange also der Versuchsaufbau nicht bewegt wird, kann die einmalig gespeichert
 \end{center}
 \vspace{6px}
 
+\begin{comment}
 \subsection{Zusammenfassung Design}
 \label{sec-4-5}
 TODO...\\
 Die vorgestellte Lösung zielt darauf ab, die physikalischen Zusammenhänge erkennbar zu machen, indem die Möglichkeiten der HoloLens genutzt, technische Einschränkungen berücksichtigt und Designempfehlungen eingearbeitet werden. Dazu wird, wenn möglich, auf bestehende, bereits für die HoloLens designete Objekte und Verhaltensweisen zurückgegriffen. Durch die räumliche und zeitliche Integration der Hologramme in den Versuchsaufbau werden die physikalischen Eigenschaften des Systems direkt in ihrem tatsächlichen Kontext dargestellt. Dabei hat der Nutzer die Kontrolle über das Verhalten des Systems, wodurch es auf natürliche Weise erforschbar wird.\\
+\end{comment}
 
 Das folgende Kapitel erläutert nun die Details der Implementierung dieses Designs.
 

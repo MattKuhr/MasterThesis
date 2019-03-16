@@ -1,16 +1,18 @@
 \section{Umsetzung}
 \label{sec-5}
 
-Im folgenden soll erläutert werden, wie der zuvor erarbeitete Lösungsansatz umgesetzt wurde. Dazu gibt das Kapitel zunächst einen Überblick über das System und die Architektur der Anwendung. Danach geht das Kapitel genauer auf die Implementierung der Darstellungen und der Interaktion ein. Abschließend werden Details zur Performance genannt.
+Im folgenden soll erläutert werden, wie der zuvor erarbeitete Lösungsansatz umgesetzt wurde. Dazu gibt das Kapitel zunächst einen Überblick über das System und dessen physikalischen Parameter sowie die Architektur der Anwendung. Danach geht das Kapitel genauer auf die Implementierung der Darstellungen und der Interaktion ein. Abschließend werden Details zur Performance genannt.
 
 \subsection{Aufbau des Systems}
 \label{sec-5-1}
-Das System ist als Client-Server-Architektur realisiert. Ein Server erfasst und verarbeitet die in der Schaltung gemessenen Werte für die Stromstärke. Diese stammen von einem Arduino, der in den Stromkreislauf eingekoppelt ist. Die Applikation auf der HoloLens tritt als Client auf und erfragt die aktuellen Werte vom Server. Einen Überblick über die Kommunikation gibt das Schema in Abbildung \ref{img:communication-schema}. 
+Für die Umsetzung konnten zur Verfügung stehende Gerätschaften verwendet werden. Die Spule hat einen Radius von $R = 15 cm$ und 248 Windungen. Dazu kommt ein Arduino, der in den Aufbau integriert wird, um die anliegende Stromstärke zu messen und an einen Server weiterzugeben. Die Messung erfolgt, indem der Spannungsabfall über einen Widerstand gemessen wird. Der Arduino sendet die gemessenen Werte dann per USB an einen Computer. Die Schaltung ist in Abbildung \ref{img:schaltung} veranschaulicht. \\
+
+Das System ist als Client-Server-Architektur realisiert. Ein Server erfasst und verarbeitet die in der Schaltung gemessenen Werte für die Stromstärke. Die Applikation auf der HoloLens tritt als Client auf und erfragt die aktuellen Werte vom Server. Einen Überblick über die Kommunikation gibt das Schema in Abbildung . 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
-	\caption{Schema Kommunikation Schaltung Arduino Server HoloLens}
-	\label{img:communication-schema}
+	\includegraphics[width=0.7\textwidth]{images/schema/schaltung.jpg}
+	\caption{Schaltungszeichnung des Experimentes. Die Spulen haben einen Radius und Abstand von 15 cm. Die Widerstände betragen $R1 = 25 \Omega$ und $R2 = 51 \Omega$.}
+	\label{img:schaltung}
 \end{figure}
 
 \subsubsection{Client-Server Datenübertragung}
@@ -19,7 +21,7 @@ Die Übertragung der Messwerte vom Arduino zur Anwendung ist so konzipiert, dass
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{images/schema/Sequenzdiagramm.png}
+	\includegraphics[width=0.7\textwidth]{images/schema/Sequenzdiagramm.png}
 	\caption{Sequenzdiagramm Kommunikation}
 	\label{img:Sequenzdiagramm}
 \end{figure}
@@ -35,22 +37,16 @@ Damit die Kommunikation erfolgen kann, müssen erstmalig einige Einstellungen vo
 
 \subsubsection{Architektur der HoloLens-Anwendung}
 \label{sec-5-1-2}
-Der Hauptteil des Systems besteht in der auf der HoloLens laufenden Applikation. Die Anwendung basiert auf der Unity Engine und wird als UWP App bereitgestellt. Das Schema in Abb. \ref{img:components-schema} gibt einen Überblick über die verschiedenen Komponenten der Anwendung. Deren Aufgaben sind in der darunter zu findenden Tabelle kurz zusammengefasst.
+Der Hauptteil des Systems besteht in der auf der HoloLens laufenden Applikation. Die Anwendung basiert auf der Unity Engine und wird als UWP App bereitgestellt. Die Anwendung besteht aus drei Arten von Komponenten: Container-Objekte, Skript-Objekte und Interaktive Komponenten. Erstere gruppieren zusammenhängende Darstellungen und steuern deren Verhalten. Skript-Objekte enthalten keine visuellen Objekte und dienen ausschließlich zur Umsetzung von Verhalten. Interaktive Komponenten steuern die direkte Interaktion über visuelle Elemente wie z.B das Menü und die Einstellungen. Das Schema in Abbildung \ref{img:components-schema} gibt einen Überblick über die verschiedenen Komponenten der Anwendung. Deren Aufgaben sind in der darunter zu findenden Tabelle kurz zusammengefasst.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
+	\includegraphics[width=0.45\textwidth]{images/schema/components.jpg}
 	\caption{Schema Komponenten}
 	\label{img:components-schema}
 \end{figure}
 
 
-\vspace{8px}
-\begin{center}
-	\fbox{
-		\parbox{0.9\linewidth}{
-			\vspace{4px}
-			\textbf{Überblick}	
 \bgroup
 \setlength\extrarowheight{-2pt}
 \def\arraystretch{2}
@@ -64,7 +60,7 @@ Der Hauptteil des Systems besteht in der auf der HoloLens laufenden Applikation.
 		\hline
 		Settings & Lädt und Speichert Einstellungen, bietet Zugang zu den Werten für andere Komponenten und steuert die Einstellungs-Oberfläche\\
 		\hline
-		Physics & Übernimmt alle physikalischen Berechnungen. Alle relevanten physikalischen Parameter lassen sich konfigurieren.\\
+		Physics & Übernimmt alle physikalischen Berechnungen. Die physikalischen Parameter lassen sich konfigurieren.\\
 		\hline
 		Tracking & Führt durch den Prozess der Positionsbestimmung und setzt den World Anchor\\
 		\hline
@@ -76,10 +72,6 @@ Der Hauptteil des Systems besteht in der auf der HoloLens laufenden Applikation.
 	\end{tabular}\caption{\label{tab:components-details} Aufgaben der einzelnen Komponenten}
 \end{table}
 \egroup
-%\vspace{18px}
-}}\\
-\end{center}
-\vspace{6px}
 
 Eine Komponente besteht aus einer Hierarchie von Unity's GameObjects, die mit entsprechenden Skripten versehen sind. Die Komponenten kommunizieren auf unterschiedliche Weise miteinander. Die Behandlung von Events z.B. aufgrund von Nutzereingaben oder neuen Messwerten erfolgt über Callbacks. Manche Komponenten sind auch Singletons, auf die direkt zugegriffen werden kann wie z.B. die Einstellungen.
 
@@ -119,6 +111,9 @@ Das Ergebnis der Simulation ist eine Liste von Datenpunkten der Form \textbf{[}\
 \textit{Filtering}\\
 Aufgrund der hohen Qualitätseinstellungen liefert die Simulationssoftware eine große Menge an Datenpunkten. Die verwendete Berechnung enthält knapp 12,000 Datenpunkte, die im Rahmen der limitierten Ressourcen nicht alle dargestellt werden können\footnote{Ein Test mit knapp 9,000 Punkten führte zu einer CPU-Zeit von ca. 45 ms pro Frame und einer Framerate von ca. 20 FPS.}. Daher wird ein Filter angewandt, der beim Einlesen eines Exportes nur Datenpunkte behält, die einen räumlichen Mindestabstand zum vorangegangenen Wert einhalten. Außerdem werden doppelt gezogene Linien erkannt und entfernt. Durch dieses Vorgehen reduziert sich die Datenmenge auf ca. 1,600 Datenpunkte. Dabei entsteht jedoch kein wahrnehmbarer Qualitätsverlust der Darstellung.\\
 
+\textit{Rendering}\\
+Die Darstellung erfolgt über Unity's Low-Level \textit{Graphics Library (GL)} mittels eines Line-Strips. Dieser ist vergleichbar mit dem von OpenGL, hat aber weniger Funktionen. Insbesondere lässt sich die Dicke der Linien nicht einstellen, sondern ist auf einen Pixel festgelegt. Der sonst in dieser Arbeit für Linien genutzte LineRenderer konnte hier nicht verwendet werden. Denn letzterer ermöglicht für eine Linie nur die Interpolation zwischen maximal 8 Farben. Eine besser Konfigurierbare Darstellung wäre z.B. über eine 3D-Geometrie möglich.\\
+
 \textbf{Der Stromfluss}\\
 Die Indikatoren werden mit Unity's LineRenderer dargestellt und sind bezüglich ihrer Größe, Positionierung und Ausrichtung parametrisiert. Bei der Annotationen der Anschlüsse konnte auf ein vorgefertigtes Tooltip-Objekt des MRTK zurückgegriffen werden. Dies wurde um die entsprechenden Farben und Icons ergänzt. Die Icons basieren auf freien Icon-Packeten \footnote{https://icons8.com}, wurden jedoch angepasst. Da schwarze Strukturen vor transparentem Grund auf der HoloLens so nicht zu sehen sind, wurde der Hintergrund bzw. die Icon-Struktur zu weiß geändert.\\
 
@@ -153,7 +148,7 @@ Bei Darstellungen auf der HoloLens fällt der Kantenglättung eine besondere Bed
 
 Unity unterstützt standardmäßig einige Anti-Aliasing Verfahren. Dazu gehört Multisample Anti-Aliasing (MSAA), das ohne weitere Maßnahmen für die Kamera aktiviert werden kann. Im Gegensatz dazu benötigen die anderen Methoden Deferred Shading und würden eine Umstellung des Rendering Path bedeuten\footnote{Standardmäßig angeboten werden außerdem Fast Approximate AA und Temporal AA}. Im Rahmen dieser Arbeit wurde deshalb nur MSAA in Betracht gezogen.\\
 
-Vor allem für die gewählte Visualisierung der Simulationsdaten über Linien ist eine Form des Anti-Aliasing relevant, da hier besonders viele Kanten entstehen. Deshalb wurde sich für Einsatz von zweifachem MSAA entschieden, obwohl damit erheblicher Rechenaufwand verbunden ist.\\
+Vor allem für die gewählte Visualisierung der Simulationsdaten über Linien ist eine Form des Anti-Aliasing relevant, da hier besonders viele Kanten entstehen. Deshalb wurde sich für Einsatz von zweifachem MSAA entschieden, obwohl damit erheblicher Rechenaufwand verbunden ist.
 
 \subsubsection{Implementierung der Interaktion}
 
