@@ -1,13 +1,12 @@
 \section{Umsetzung}
 \label{sec-5}
-
-Im folgenden soll erläutert werden, wie der zuvor erarbeitete Lösungsansatz umgesetzt wurde. Dazu gibt das Kapitel zunächst einen Überblick über das System und dessen physikalischen Parameter sowie die Architektur der Anwendung. Danach geht das Kapitel genauer auf die Implementierung der Darstellungen und der Interaktion ein. Abschließend werden Details zur Performance genannt.
+Im Folgenden soll erläutert werden, wie der zuvor erarbeitete Lösungsansatz umgesetzt wurde. Dazu gibt das Kapitel zunächst einen Überblick über das System und dessen physikalischen Parameter sowie die Architektur der Anwendung. Danach geht das Kapitel genauer auf die Implementierung der Darstellungen und der Interaktion ein. Abschließend werden Details zur Performance genannt.
 
 \subsection{Aufbau des Systems}
 \label{sec-5-1}
 Für die Umsetzung konnten zur Verfügung stehende Gerätschaften verwendet werden. Die Spule hat einen Radius von $R = 15 cm$ und 248 Windungen. Dazu kommt ein Arduino, der in den Aufbau integriert wird, um die anliegende Stromstärke zu messen und an einen Server weiterzugeben. Die Messung erfolgt, indem der Spannungsabfall über einen Widerstand gemessen wird. Der Arduino sendet die gemessenen Werte dann per USB an einen Computer. Die Schaltung ist in Abbildung \ref{img:schaltung} veranschaulicht. \\
 
-Das System ist als Client-Server-Architektur realisiert. Ein Server erfasst und verarbeitet die in der Schaltung gemessenen Werte für die Stromstärke. Die Applikation auf der HoloLens tritt als Client auf und erfragt die aktuellen Werte vom Server. Einen Überblick über die Kommunikation gibt das Schema in Abbildung . 
+Das System ist als Client-Server-Architektur realisiert. Ein Server erfasst und verarbeitet die in der Schaltung gemessenen Werte für die Stromstärke. Die Applikation auf der HoloLens tritt als Client auf und erfragt die aktuellen Werte vom Server. Einen Überblick über die Kommunikation gibt das Schema in Abbildung \ref{img:schaltung}. 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{images/schema/schaltung.jpg}
@@ -33,11 +32,11 @@ Der Server besteht aus zwei miteinander kommunizierenden Threads. Ein Thread üb
 Der Client stellt durch die Nutzung von asynchronen Anfragen sicher, dass die Anfragen nicht blockieren. Unity bietet nur einen Thread, synchrone Anfragen würden daher zu einer Blockierung des Renderprozesses führen und so die Framerate beeinträchtigen. Da die Framerate bei 60 Hz gedeckelt ist und eine Antwort frühestens im nächsten Frame bearbeitet werden kann, beträgt die minimale Antwortzeit ca. 17 ms. Das ist ausreichend, um keine wahrnehmbare Verzögerung aufkommen zu lassen, da die Paketlaufzeit in einem lokalen Netzwerk typischerweise im einstelligen Millisekundenbereich liegt. Eine zusätzliche Wartezeit zwischen Requests kann außerdem eingestellt werden.\\
 
 \textit{Setup}\\
-Damit die Kommunikation erfolgen kann, müssen erstmalig einige Einstellungen vorgenommen werden. Auf Seiten des Servers ist die IP-Adresse des Servers und der COM-Port des Arduinos in eine Config-Datei einzutragen. Außerdem muss die IP-Adresse des Servers auf der HoloLens angegeben werden. Dies geschieht über die Einstellungen.
+Damit die Kommunikation erfolgen kann, müssen initial einige Einstellungen vorgenommen werden. Auf Seiten des Servers ist dessen IP-Adresse und der COM-Port des Arduinos in eine Konfigurationsdatei einzutragen. Außerdem muss die IP-Adresse des Servers auf der HoloLens angegeben werden. Dies geschieht über die Einstellungen.
 
 \subsubsection{Architektur der HoloLens-Anwendung}
 \label{sec-5-1-2}
-Der Hauptteil des Systems besteht in der auf der HoloLens laufenden Applikation. Die Anwendung basiert auf der Unity Engine und wird als UWP App bereitgestellt. Die Anwendung besteht aus drei Arten von Komponenten: Container-Objekte, Skript-Objekte und Interaktive Komponenten. Erstere gruppieren zusammenhängende Darstellungen und steuern deren Verhalten. Skript-Objekte enthalten keine visuellen Objekte und dienen ausschließlich zur Umsetzung von Verhalten. Interaktive Komponenten steuern die direkte Interaktion über visuelle Elemente wie z.B das Menü und die Einstellungen. Das Schema in Abbildung \ref{img:components-schema} gibt einen Überblick über die verschiedenen Komponenten der Anwendung. Deren Aufgaben sind in der darunter zu findenden Tabelle kurz zusammengefasst.
+Der Hauptteil des Systems besteht in der auf der HoloLens laufenden Applikation. Die Anwendung basiert auf der Unity Engine und wird als UWP App bereitgestellt. Die Anwendung besteht aus drei Arten von Komponenten: Container-Objekte, Skript-Objekte und interaktive Komponenten. Erstere gruppieren zusammenhängende Darstellungen und steuern deren Verhalten. Skript-Objekte enthalten keine visuellen Objekte und dienen ausschließlich zur Umsetzung von Verhalten. Interaktive Komponenten steuern die direkte Interaktion über visuelle Elemente wie z.B das Menü und die Einstellungen. Das Schema in Abbildung \ref{img:components-schema} gibt einen Überblick über die verschiedenen Komponenten der Anwendung. Deren Aufgaben sind in der darunter zu findenden Tabelle kurz zusammengefasst.
 
 \begin{figure}[H]
 	\centering
@@ -58,7 +57,7 @@ Der Hauptteil des Systems besteht in der auf der HoloLens laufenden Applikation.
 		\hline
 		Menu & Hauptmenü, steuert den Ablauf der Anwendung\\
 		\hline
-		Settings & Lädt und Speichert Einstellungen, bietet Zugang zu den Werten für andere Komponenten und steuert die Einstellungs-Oberfläche\\
+		Settings & Lädt und speichert Einstellungen, bietet Zugang zu den Werten für andere Komponenten und steuert die Einstellungs-Oberfläche\\
 		\hline
 		Physics & Übernimmt alle physikalischen Berechnungen. Die physikalischen Parameter lassen sich konfigurieren.\\
 		\hline
@@ -73,15 +72,15 @@ Der Hauptteil des Systems besteht in der auf der HoloLens laufenden Applikation.
 \end{table}
 \egroup
 
-Eine Komponente besteht aus einer Hierarchie von Unity's GameObjects, die mit entsprechenden Skripten versehen sind. Die Komponenten kommunizieren auf unterschiedliche Weise miteinander. Die Behandlung von Events z.B. aufgrund von Nutzereingaben oder neuen Messwerten erfolgt über Callbacks. Manche Komponenten sind auch Singletons, auf die direkt zugegriffen werden kann wie z.B. die Einstellungen.
+Eine Komponente besteht aus einer Hierarchie von Unity's GameObjects, die mit entsprechenden Skripten versehen sind. Die Komponenten kommunizieren auf unterschiedliche Weise miteinander. Die Behandlung von Events z.B. aufgrund von Nutzereingaben oder neuen Messwerten erfolgt über Callbacks. Manche Komponenten sind auch Singletons, auf die direkt zugegriffen werden kann, wie z.B. die Einstellungen.
 
 \subsection{Implementierung}
 \label{sec-5-2}
-Die Umsetzung erfolgte mit Unity 2017.4.18f1, dem Mixed Reality Toolkit 4.3.0 sowie Version 10.0.17134.0 des Windows SDK. Im Folgenden soll die Umsetzung der Darstellung und darauf folgend die der Interaktion beschrieben werden.
+Die Umsetzung erfolgte mit Unity 2017.4.18f1, dem Mixed Reality Toolkit 4.3.0 sowie Version 10.0.17134.0 des Windows SDK. Im Folgenden soll die Umsetzung der Darstellung und anschließend die der Interaktion beschrieben werden.
 
 \subsubsection{Implementierung der Darstellungen}
 \label{sec-5-2-2}
-Die Darstellungen sind in einer Hirarchie unterhalb eines Anker-Objektes angeordnet. Dynamische Elemente wie z.B. die Felddarstellungen werden zur Laufzeit in dafür vorgesehenen Container-Objekten erzeugt und gesteuert. Dazu gehört z.B. das Ein- und Ausblenden sowie die Anpassung an aktuelle Messwerte. Einen Ausschnitt dieser Hierarchie stellt Abbildung \ref{img:hirarch} dar.\\
+Die Darstellungen sind hierarchisch unterhalb eines Anker-Objektes angeordnet. Dynamische Elemente, wie z.B. die Felddarstellungen werden zur Laufzeit in dafür vorgesehenen Container-Objekten erzeugt und gesteuert. Dazu gehört z.B. das Ein- und Ausblenden sowie die Anpassung an aktuelle Messwerte. Einen Ausschnitt dieser Hierarchie stellt Abbildung \ref{img:hirarch} dar.\\
 
 \begin{wrapfigure}{r}{0.5\textwidth}
 	\centering
@@ -109,16 +108,16 @@ Die Einstellung der maximal möglichen Qualität liegt darin begründet, Artefak
 Das Ergebnis der Simulation ist eine Liste von Datenpunkten der Form \textbf{[}\textit{FeldlinienNr:} Int, \textit{Position:} Vector3, \textit{Betrag der Flussdichte:} float\textbf{]}. Dafür wurde ein CSV-Reader geschrieben, der die Daten zur Laufzeit der Applikation einliest, interpretiert und zum Rendering an GameObjects weitergibt. Folglich ließen sich weitere Simulationen vorberechnen und anzeigen. Das Einlesen der Daten erfolgt beim Startvorgang.\\
 
 \textit{Filtering}\\
-Aufgrund der hohen Qualitätseinstellungen liefert die Simulationssoftware eine große Menge an Datenpunkten. Die verwendete Berechnung enthält knapp 12,000 Datenpunkte, die im Rahmen der limitierten Ressourcen nicht alle dargestellt werden können\footnote{Ein Test mit knapp 9,000 Punkten führte zu einer CPU-Zeit von ca. 45 ms pro Frame und einer Framerate von ca. 20 FPS.}. Daher wird ein Filter angewandt, der beim Einlesen eines Exportes nur Datenpunkte behält, die einen räumlichen Mindestabstand zum vorangegangenen Wert einhalten. Außerdem werden doppelt gezogene Linien erkannt und entfernt. Durch dieses Vorgehen reduziert sich die Datenmenge auf ca. 1,600 Datenpunkte. Dabei entsteht jedoch kein wahrnehmbarer Qualitätsverlust der Darstellung.\\
+Aufgrund der hohen Qualitätseinstellungen liefert die Simulationssoftware eine große Menge an Datenpunkten. Die verwendete Berechnung enthält knapp 12.000 Datenpunkte, die im Rahmen der limitierten Ressourcen nicht alle dargestellt werden können\footnote{Ein Test mit knapp 9.000 Punkten führte zu einer CPU-Zeit von ca. 45 ms pro Frame und einer Framerate von ca. 20 FPS.}. Daher wird ein Filter angewandt, der beim Einlesen eines Exportes nur Datenpunkte behält, die einen räumlichen Mindestabstand zum vorangegangenen Wert einhalten. Außerdem werden doppelt gezogene Linien erkannt und entfernt. Durch dieses Vorgehen reduziert sich die Datenmenge auf ca. 1.600 Datenpunkte. Dabei entsteht jedoch kein wahrnehmbarer Qualitätsverlust der Darstellung.\\
 
 \textit{Rendering}\\
-Die Darstellung erfolgt über Unity's Low-Level \textit{Graphics Library (GL)} mittels eines Line-Strips. Dieser ist vergleichbar mit dem von OpenGL, hat aber weniger Funktionen. Insbesondere lässt sich die Dicke der Linien nicht einstellen, sondern ist auf einen Pixel festgelegt. Der sonst in dieser Arbeit für Linien genutzte LineRenderer konnte hier nicht verwendet werden. Denn letzterer ermöglicht für eine Linie nur die Interpolation zwischen maximal 8 Farben. Eine besser Konfigurierbare Darstellung wäre z.B. über eine 3D-Geometrie möglich.\\
+Die Darstellung erfolgt über Unity's Low-Level \textit{Graphics Library (GL)} mittels eines Line-Strips. Dieser ist vergleichbar mit dem von OpenGL, hat aber weniger Funktionen. Insbesondere lässt sich die Dicke der Linien nicht einstellen, sondern ist auf einen Pixel festgelegt. Der sonst in dieser Arbeit für Linien genutzte LineRenderer konnte hier nicht verwendet werden, denn letzterer ermöglicht für eine Linie nur die Interpolation zwischen maximal 8 Farben. Eine besser Konfigurierbare Darstellung wäre z.B. über eine 3D-Geometrie möglich.\\
 
 \textbf{Der Stromfluss}\\
 Die Indikatoren werden mit Unity's LineRenderer dargestellt und sind bezüglich ihrer Größe, Positionierung und Ausrichtung parametrisiert. Bei der Annotationen der Anschlüsse konnte auf ein vorgefertigtes Tooltip-Objekt des MRTK zurückgegriffen werden. Dies wurde um die entsprechenden Farben und Icons ergänzt. Die Icons basieren auf freien Icon-Packeten \footnote{https://icons8.com}, wurden jedoch angepasst. Da schwarze Strukturen vor transparentem Grund auf der HoloLens so nicht zu sehen sind, wurde der Hintergrund bzw. die Icon-Struktur zu weiß geändert.\\
 
 \textbf{Kompass}\\
-Die verschiedenen des Kompasses werden ebenfalls durch einen LineRenderer gezeichnet. Um eine gestrichelte Linie zu erhalten, wird eine Textur mit weißem Kreis vor transparentem Hintergrund auf die Länge der Linie mittels Tiling skaliert. Ein dazu angefertigtes Skript übernimmt diesen Vorgang automatisch.\\
+Die verschiedenen Kompasslinien werden ebenfalls durch einen LineRenderer gezeichnet. Um eine gestrichelte Linie zu erhalten, wird eine Textur mit weißem Kreis vor transparentem Hintergrund auf die Länge der Linie mittels Tiling skaliert. Ein dazu angefertigtes Skript übernimmt diesen Vorgang automatisch.\\
 
 \textbf{Berechnung der Verdeckung}\\
 Für die Verdeckungsberechnung wurde die Spule anhand gemessener Größen in Blender manuell nachmodelliert. Das Spatial Mapping der HoloLens ist hier zu ungenau, um eine glaubwürdige Verdeckung zu ermöglichen. In der Standard-Einstellung wird die Spule gar nicht erkannt, was wohl auch dem Material (Kupfer) geschuldet sein dürfte. Eine Darstellung des Spatial Mappings des Versuchsaufbaus ist in Abb. \ref{img:mesh-vs-model} zu sehen.
@@ -132,9 +131,9 @@ Die Geometrie wird ausschließlich in den Tiefenpuffer gerendert\footnote{Der en
 
 
 \textbf{Near Plane Fading}\\
-Anstelle auf Basis der Clippingebene werden zu nahe Objekte über Skripte bzw. Shader kontinuierlich ausgeblendet. Dieses Verhalten ist für den Nutzer angenehmer als ein plötzliches Aufpoppen bzw. Verschwinden von Objekten in unmittelbarer Nähe.\\
+Statt auf Basis der Clippingebene werden zu nahe Objekte über Skripte bzw. Shader kontinuierlich ausgeblendet. Dieses Verhalten ist für den Nutzer angenehmer als ein plötzliches Aufpoppen bzw. Verschwinden von Objekten in unmittelbarer Nähe.\\
 
-Der für die meisten Objekte genutzt MRTK Standard Shader bietet bereits einen konfigurierbaren Bereich, über den Objekte ausgeblendet werden. Für andere Elemente wird die Transparenz über ein Skript geregelt. Hier werden für Anfang und Ende des Bereiches, über den zur Transparenz übergegangen wird, die empfohlenen Werte von 85cm und 50cm genutzt. Lediglich die Linien des Kompasses werden 10 cm ''später'' ausgeblendet, damit die Ausrichtung der Nadel entlang der Linien auch aus geringerem Abstand und damit etwas besser erfasst werden kann. Insgesamt ergibt sich die Transparenz (Alpha-Wert) eines Objektes dann aus dem Minimum der Werte durch die verschiedenen Effekte.\\
+Der für die meisten Objekte genutzt MRTK Standard Shader bietet bereits einen konfigurierbaren Bereich, über den Objekte ausgeblendet werden. Für andere Elemente wird die Transparenz über ein Skript geregelt. Hier werden für die Grenzen des Bereiches, über den zur Transparenz übergegangen wird, die empfohlenen Werte von 85 cm und 50 cm genutzt. Lediglich die Linien des Kompasses werden von 75 cm bis 40 cm ausgeblendet, damit die Ausrichtung der Nadel entlang der Linien auch aus geringerem Abstand erfasst werden kann. Insgesamt ergibt sich die Transparenz (Alpha-Wert) eines Objektes dann aus dem Minimum der Werte durch die verschiedenen Effekte.\\
 
 Diese Lösung geht jedoch zu Lasten der Performance, denn für die Transparenz werden alle betroffenen Objekte von hinten nach vorne (aus Sicht der Kamera) gerendert. Auch Pixel, die durch weiter vorne gelegene Objekte eingenommen werden, müssen mehrfach gezeichnet werden, da die dichteren Objekte ggf. transparent sind und durch die Farbe anderer Objekte beeinflusst werden. Dieser sogenannte Overdraw nimmt zusätzliche Rechenzeit in Anspruch. Eine Alternative bestünde darin, Objekte schwarz anstatt transparent werden zu lassen. Auf der HoloLens macht dies optisch zunächst keinen Unterschied, da Schwarz auf der Brille nicht dargestellt wird. Allerdings bliebe so die Verdeckung durch bereits verschwundenen Objekte bestehen, was zu Irritationen führen würde.\\
 
@@ -144,7 +143,7 @@ Aus Zeitgründen wurde das Fading für das Datenpanel, die Konnektoren der Toolt
 Die virtuellen 3D-Objekte werden durch eine Lichtquelle oberhalb der Spule beleuchtet. Eine Schattenberechnung erfolgt nicht. Tests mit realen Gegenständen ähnlicher Größe ergaben, dass die Objekte bei typischen Lichtverhältnissen keine erkennbaren Schatten werfen würden.\\
 
 \textbf{Kantenglättung}\\
-Bei Darstellungen auf der HoloLens fällt der Kantenglättung eine besondere Bedeutung zu. Im Gegensatz zu anderen Anwendungen, bei denen der Nutzer die Kamera über herkömmliche Eingabegeräte steuert, ist bei der Brille die Kamera an die Kopfbewegungen des Trägers gebunden. Die Displays folgen daher den ständigen, feinen Vibrationen des Kopfes und die Kamera steht somit nie still. Deshalb können Treppeneffekte an Kanten besonders auffällig und störend wirken, da das resultierende Kantenflimmern stetig präsent ist.\\
+Bei Darstellungen auf der HoloLens fällt der Kantenglättung eine besondere Bedeutung zu. Im Gegensatz zu anderen Anwendungen, bei denen der Nutzer die Kamera über herkömmliche Eingabegeräte steuert, ist bei der Brille die Kamera an die Kopfbewegungen des Trägers gebunden. Die Displays folgen daher den ständigen, feinen Vibrationen des Kopfes und die Kamera steht somit nie still. Deshalb können Treppeneffekte an Kanten besonders auffällig und störend wirken, da das resultierende Kantenflimmern dauerhaft präsent ist.\\
 
 Unity unterstützt standardmäßig einige Anti-Aliasing Verfahren. Dazu gehört Multisample Anti-Aliasing (MSAA), das ohne weitere Maßnahmen für die Kamera aktiviert werden kann. Im Gegensatz dazu benötigen die anderen Methoden Deferred Shading und würden eine Umstellung des Rendering Path bedeuten\footnote{Standardmäßig angeboten werden außerdem Fast Approximate AA und Temporal AA}. Im Rahmen dieser Arbeit wurde deshalb nur MSAA in Betracht gezogen.\\
 
@@ -168,26 +167,24 @@ Für die letzteren beiden wurden entsprechende Skripte geschrieben, die diese Ge
 Jeder Klick wird durch einen Klick-Sound begleitet, der als Feedback dient. Ist der Cursor aktiv, bietet dieser auch ein visuelles Feedback. Als Klick-Sound wurde ein Standard-Sound des MRTK verwendet, der auch von den Buttons genutzt wird.\\
 
 \textit{Progress Indikator}\\
-Um den Anwender über länger laufende Prozesse zu informieren, kommt eine Fortschrittsanzeige zum Einsatz. Hier kann auf den aus Mircosoft Windows bekannten Indikator zurückgegriffen werden, den das MRTK als vorgefertigtes Objekt anbietet. Das Mixed Reality Capture in Abb. \ref{img:pi-and-tracking} zeigt diesen beim Start der Anwendung.\\
+Um den Anwender über länger laufende Prozesse zu informieren, kommt eine Fortschrittsanzeige zum Einsatz. Hier kann auf den aus Mircosoft Windows bekannten Indikator zurückgegriffen werden, den das MRTK als vorgefertigtes Objekt anbietet. Abbildung \ref{img:pi-load} zeigt diesen beim Start der Anwendung.\\
 
-\begin{figure}[H]
+\begin{wrapfigure}{r}{0.5\textwidth}
 	\centering
-	\includegraphics[width=0.45\textwidth]{images/loading.jpg}
-	\hspace{0.05cm}	
 	\includegraphics[width=0.45\textwidth]{images/tracking.jpg}
-	\caption{Progress Indikator Laden und Tracking}
-	\label{img:pi-and-tracking}
-\end{figure}
+	\caption{Logo und Progress Indikator beim Startvorgang der Anwendung}
+	\label{img:pi-load}
+\end{wrapfigure}
 
 Für die Kommunikation mit dem Nutzer ist bei dieser Anwendung vor allem wichtig, was das System tut. Längere Ladezeiten o.Ä. treten hier nicht auf, daher wird lediglich das Text-Element des Indikators verwendet, von der prozentualen Anzeige wird nicht Gebrauch gemacht. Komponenten, die den Indikator nutzen, stellen jedoch stets sicher, dass eine Nachricht lange genug sichtbar ist, um gelesen werden zu können. Länger laufende Operationen sind stets asynchron umgesetzt, die pro Frame nur einen Teil der Arbeit erledigen und so den Renderprozess nicht blockieren.\\
 
 \textit{Tracking}\\
-Für das Erkennen der Markerposition kommt das Tracking Framework Vuforia zum Einsatz. Ein optischer Marker wird vor der Spule auf dem Untergrund platziert. Dieser wird dann über die Frontkamera der HoloLens durch das Framework erkannt und die Position und Ausrichtung bestimmt. Die Modelle werden entsprechend positioniert und ein World Anchor gesetzt. Damit ist die Positionierung abgeschlossen und der Marker kann entfernt werden. Da Vuforia nur während dieser Sequenz aktiviert ist, werden für den Rest der Anwendung Hardwareressourcen frei.\\
+Für das Erkennen der Markerposition kommt das Tracking Framework Vuforia zum Einsatz. Ein optischer Marker wird vor der Spule auf dem Untergrund platziert. Dieser wird dann über die Frontkamera der HoloLens durch das Framework erkannt und die Position und Ausrichtung bestimmt. Die Modelle werden entsprechend positioniert und ein World Anchor gesetzt. Damit ist die Positionierung abgeschlossen und der Marker kann entfernt werden. Da Vuforia nur während dieser Sequenz aktiviert ist, werden für den Rest der Anwendung Hardwareressourcen frei. Allerdings muss der Nutzer für die Erkennung den Marker fokussieren und im Sichtfeld der Kamera behalten. Kopfbewegungen sollten dabei vermieden werden, um die Erkennung nicht zu beeinträchtigen.\\
 
-Dieser Vorgang lässt sich über das Menü jederzeit neu anstoßen und die einzelnen Schritte werden über den Progress Indikator dem Nutzer kommuniziert. Die Steuerung des Prozesses erfolgt durch den \textit{Tracking Manager}. Dieser startet und stoppt das Framework, reagiert auf Änderungen im Tracking und informiert den Anwender über den Fortschritt. In der aktuellen Version funktioniert das nochmalige Anstoßen des Tracking-Vorgangs nur in der Entwicklungsumgebung und noch nicht auf der HoloLens.\\
+Dieser Vorgang lässt sich über das Menü jederzeit neu anstoßen und die einzelnen Schritte werden über den Progress Indikator dem Nutzer kommuniziert. Die Steuerung des Prozesses erfolgt durch den \textit{Tracking Manager}. Dieser startet und stoppt das Framework, reagiert auf Änderungen im Tracking und informiert den Anwender über den Fortschritt. In der aktuellen Version funktioniert das nochmalige Anstoßen des Tracking-Vorgangs jedoch nur in der Entwicklungsumgebung und noch nicht auf der HoloLens.\\
 
 \textit{Einstellungen}\\
-Die Einstellungen sind über ein dem Daten-Panel ähnliches Objekt realisiert, das in Abbildung \ref{img:menu-and-settings} zu sehen ist. Ein Klick auf eines der Input-Felder ruft die virtuelle Tastatur hervor, beide werden durch das MRTK bereitgestellt und wurden hier für numerische Eingaben konfiguriert. Die Werte werden als JSON formatiert und in das AppData-Verzeichnis der Anwendung gespeichert. Damit stehen sie auch nach einem Neustart oder Update der App noch zur Verfügung. Die Applikation sucht beim Start automatisch nach gespeicherten Einstellungen und lädt entweder diese oder die Default-Werte. Andere Komponenten werden durch ein Event über sich ändernde Einstellungen benachrichtigt und passen sich entsprechend an. Für die Formatierung als JSON wurde eine vorhandene Implementierung genutzt \cite{Goebel17}.\\
+Die Einstellungen sind über ein dem Daten-Panel ähnlichen Objekt realisiert, das in Abbildung \ref{img:menu-and-settings} zu sehen ist. Ein Klick auf eines der Input-Felder ruft die virtuelle Tastatur hervor, beide werden durch das MRTK bereitgestellt und wurden hier für numerische Eingaben konfiguriert. Die Werte werden als JSON formatiert und in das AppData-Verzeichnis der Anwendung gespeichert. Damit stehen sie auch nach einem Neustart oder Update der App noch zur Verfügung. Die Applikation sucht beim Start automatisch nach gespeicherten Einstellungen und lädt entweder diese oder die Default-Werte. Andere Komponenten werden durch ein Event über sich ändernde Einstellungen benachrichtigt und passen sich entsprechend an. Für die Formatierung als JSON wurde eine vorhandene Implementierung genutzt \cite{Goebel17}.\\
 
 \begin{figure}[H]
 	\centering

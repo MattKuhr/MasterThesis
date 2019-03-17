@@ -1,17 +1,17 @@
 \section{Ergebnisse und Diskussion}
 \label{sec-6}
 
-Ziel dieser Arbeit war es, zu untersuchen, wie ein konkretes physikalisches Experiment durch eine Anwendung mit der HoloLens unterstützt werden kann. Dafür wurde ein Versuch aus der Elektrodynamik ausgewählt, Probleme identifiziert und eine Lösung erarbeitet. Diese soll nun im Hinblick auf die in der Problemstellung festgehaltenen Anforderungen bewertet werden. Die Ergebnisse werden dann im breiteren Kontext der Fragestellung diskutiert.
+Ziel dieser Arbeit war es, zu untersuchen, wie ein konkretes physikalisches Experiment durch eine Anwendung mit der HoloLens unterstützt werden kann. Dafür wurde ein Versuch aus der Elektrodynamik ausgewählt, wurden Probleme identifiziert und eine Lösung erarbeitet. Diese Lösung soll nun im Hinblick auf die in der Problemstellung festgehaltenen Anforderungen bewertet werden. Die Ergebnisse werden dann im breiteren Kontext der Fragestellung diskutiert.
 
 \subsection{Ergebnisse}
- Die Lösung integriert virtuelle Elemente in das Experiment, die relevante, physikalische Zusammenhänge abbilden. Dazu gehören interaktive Darstellungen des Magnetfeldes sowie Messwerte, der Stromfluss und ein Kompass. Durch eine dreidimensionale Einbettung in den tatsächlichen Versuchsaufbau wird ein direkter Zusammenhang zwischen dem Verhalten der Objekte des Versuches und den physikalischen Modellen hergestellt.\\
- \noindent\hspace*{5mm}
- Gleichzeitig berücksichtigt das Design die besonderen technischen Modalitäten der HoloLens. Auf der einen Seite wird von den verschiedenen technischen Möglichkeiten Gebrauch gemacht (Tracking, World Anchor, stereoskopisches see-through Display, Gestenerkennung, etc.). Auf der andern Seite werden technisch bedingte Anforderungen an das Design von Anwendungen berücksichtigt (Abstand, Größe, Farbe, Positionierung, Performance, etc.).\\
- \noindent\hspace*{5mm}
- Im Weiteren sollen die Ergebnisse zunächst aus anwendungsorientierter Sicht näher vorgestellt werden, bevor auf die Resultate aus technischer Sicht eingegangen wird.
+Die Lösung integriert virtuelle Elemente in das Experiment, die relevante, physikalische Zusammenhänge abbilden. Dazu gehören interaktive Darstellungen des Magnetfeldes sowie Messwerte, der Stromfluss und ein Kompass. Durch eine dreidimensionale Einbettung in den tatsächlichen Versuchsaufbau wird ein direkter Zusammenhang zwischen dem Verhalten der Versuchsobjekte und den physikalischen Modellen hergestellt.\\
+\noindent\hspace*{5mm}
+Gleichzeitig berücksichtigt das Design die besonderen technischen Modalitäten der HoloLens. Auf der einen Seite wird von den verschiedenen technischen Möglichkeiten Gebrauch gemacht (Tracking, World Anchor, stereoskopisches see-through Display, Gestenerkennung, etc.). Auf der andern Seite werden technisch bedingte Anforderungen an das Design von Anwendungen berücksichtigt (Abstand, Größe, Farbe, Positionierung, Performance, etc.).\\
+\noindent\hspace*{5mm}
+Im Weiteren sollen die Ergebnisse zunächst aus anwendungsorientierter Sicht näher vorgestellt werden, bevor auf die Resultate aus technischer Sicht eingegangen wird.
  
 \subsubsection{Unterstützung des Experimentes}
-Die Anwendung unterstützt die Vermittlung der physikalischen Zusammenhänge durch die Integration der entsprechenden Modelle und Darstellungen in den Versuchsaufbau und -Ablauf. Im Wesentlichen umfasst die Lösung diesbezüglich folgende, inhaltliche Funktionen:
+Die Anwendung unterstützt die Vermittlung der physikalischen Zusammenhänge durch die Integration der entsprechenden Modelle und Darstellungen in den Versuchsaufbau und -ablauf. Diese Zusammenhänge sind am Versuchsaufbau allein so nicht ersichtlich und werden erst durch die AR-Anwendung erkennbar. Im Wesentlichen umfasst die Lösung diesbezüglich folgende, inhaltliche Funktionen:
 \vspace{8px}
 \begin{center}
 	\fbox{
@@ -33,80 +33,33 @@ Die Anwendung unterstützt die Vermittlung der physikalischen Zusammenhänge dur
 \end{center}
 \vspace{6px}
 
-Durch den gewählten Designansatz werden die physikalischen Eigenschaften in ihrem realen, räumlichen und zeitlichen Kontext dargestellt. Somit kann ein direkter Zusammenhang zwischen dem Verhalten der Objekte des Versuches und den physikalischen Modellen, Darstellungen und Messwerten hergestellt werden. \\
-
-TODO...\\
-\begin{comment}
-Dabei unterstützt die Anwendung in erster Linie ein qualitatives Verständnis. Die durch die Applikation gestützten Zusammenhänge lassen sich wie folgt zusammenfassen:
-
-\vspace{8px}
-\begin{center}
-	\fbox{
-		\parbox{0.9\linewidth}{
-			\vspace{4px}
-			\textit{Physikalische Zusammenhänge}
-			\begin{itemize}[rightmargin=12px, topsep=-12px]
-				\setlength{\itemsep}{-1pt}
-				\singlespacing
-				\item Räumliches Verständnis des Feldes der Spule
-				\item Zusammenhang zwischen Stromstärke und Flussdichte
-				\item Gemeinsamkeiten und Unterschiede der beiden Darstellungsmodelle
-				\item Zusammenspiel der Einzelfelder von Erde und Spule
-				\item Auswirkungen des entstehenden Feldes auf die Magnetnadel
-				\item Einfluss von Störfaktoren wie Reibung und Trägheit auf die Nadel
-			\end{itemize}
-			\vspace{18px}
-	}}\\
-\end{center}
-\vspace{6px}
+Durch den gewählten Designansatz werden die physikalischen Eigenschaften in ihrem realen, räumlichen und zeitlichen Kontext dargestellt. Somit kann ein direkter Zusammenhang zwischen dem Verhalten der Objekte des Versuches und den physikalischen Modellen, Darstellungen und Messwerten hergestellt werden.\\
 
 \textit{Feld der Spule}\\
-Die verschiedenen Darstellungen geben zusammen einen Einblick in die Struktur des dreidimensionalen Feldes der Spule. Die Richtung, Stärke und Homogenität des Feldes werden für das Innere der Spule in Echtzeit dargestellt. In der Vektordarstellung wird auch das dreidimensionale, inhomogene Feld angedeutet. Einen Eindruck von der Struktur des gesamten Feldes gibt die Darstellung der numerischen Lösung. Hier ist zwar zunächst nur eine Ebene dargestellt, allerdings ist diese repräsentativ für den gesamten Raum, da das Feld symmetrisch ist.\\
+Die verschiedenen Darstellungen geben einen Einblick in die Struktur des dreidimensionalen Feldes der Spule. Die Richtung, Stärke und Homogenität des Feldes werden für das Innere der Spule in Echtzeit dargestellt. In der Vektordarstellung wird auch das dreidimensionale, inhomogene Feld angedeutet. Einen Eindruck von der Struktur des gesamten Feldes gibt die Darstellung der numerischen Lösung. Hier ist zwar zunächst nur eine Ebene dargestellt, allerdings ist diese repräsentativ für den gesamten Raum, da das Feld symmetrisch ist.\\
 
 \textit{Stromstärke und Flussdichte}\\
-Die lineare Abhängigkeit zwischen Stromstärke und Flussdichte wird durch die Interaktion mit der Spannungsquelle deutlich. Eine gleichmäßige Änderung des Reglers hat eine gleichmäßige Änderung der Darstellungen zu Folge, ohne wahrnehmbare zeitliche Verzögerung. Der Nutzer kann hier folglich selbstständig das System mit beiden Darstellungsmodellen erforschen und den Zusammenhang erfahren.\\
-
-\textit{Darstellungsmodelle}\\
-Der Nutzer hat die Freiheit zwischen den Darstellungen des Magnetfeldes zu wechseln. In Zusammenhang mit der Möglichkeit, das zugrundeliegende Feld zu verändern, können so die unterschiedlichen Eigenschaften der Modelle erforscht werden.\\
+Die lineare Abhängigkeit zwischen Stromstärke und Flussdichte wird durch die Interaktion mit der Spannungsquelle deutlich. Eine gleichmäßige Änderung des Reglers hat eine gleichmäßige Änderung der Darstellungen ohne wahrnehmbare zeitliche Verzögerung zu Folge. Der Nutzer kann selbstständig das System mit beiden Darstellungsmodellen erforschen und den Zusammenhang erfahren. Auf diese Weise können außerdem die unterschiedlichen Eigenschaften der beiden Modelle erforscht werden.\\
 
 \textit{Zusammenspiel der Einzelfelder und Auswirkung auf die Nadel}\\
-Da das resultierende Feld über seine Komponenten dargestellt wird, lässt sich deren Zusammenspiel bei sich ändernder Feldstärke beobachten. Hier wird ersichtlich, dass ausschließlich die Komponente des Feldstärkevektors in Richtung der Spulenachse variiert. Die Auswirkungen eines sich ändernden Feldes sind anhand der theoretischen Nadel direkt und an der realen Nadel verzögert zu sehen.\\
-
-\textit{Einfluss von Störfaktoren}\\
-Die reale Magnetnadel unterliegt den Einflüssen von Reibung und Trägheit. Durch die eingebettete, theoretische Ausrichtung wird der Unterschied zwischen der realen und einer von Störeinflüssen freien Nadel deutlich. Da die reale Nadel mit 12 cm Länge recht groß und träge ist, ist der Unterschied klar zu sehen.\\
-
-\textit{Zusammenfassung}\\
-Diese physikalischen Zusammenhänge sind am Versuchsaufbau allein so nicht ersichtlich und werden erst durch die AR-Anwendung erkennbar. Die Anwendung integriert alle in den Anforderungen festgehaltenen Elemente, bis auf die als optional eingestuften, weiteren Parameter des Experimentes. Wie die Lösung sicherstellt, dass die notwendigen Informationen auch tatsächlich erkennbar sind, ist in den einzelnen Umsetzungen gezielt erörtert.\\
-
-\textbf{Bewertung anhand der nicht-funktionalen Anforderungen}\\
-\end{comment}
+Da das resultierende Feld über seine Komponenten dargestellt wird, lässt sich deren Zusammenspiel bei sich ändernder Feldstärke beobachten. Hier wird ersichtlich, dass ausschließlich die Komponente des Feldstärkevektors in Richtung der Spulenachse variiert. Die Auswirkungen eines sich ändernden Feldes sind anhand der theoretischen Nadel direkt und an der realen Nadel verzögert zu sehen. Durch die eingebettete, theoretische Ausrichtung wird der Unterschied zwischen der realen und einer von Störeinflüssen freien Nadel deutlich. Da die reale Nadel mit 12 cm Länge recht groß und träge ist, ist der Unterschied klar zu sehen.\\
 
 \textit{Korrektheit und Interpretierbarkeit}\\
 Die Korrektheit und Interpretierbarkeit wird weitestgehend über die Nutzung etablierter physikalischer Darstellungsmodelle gesichert. Dabei liegt der Fokus nicht auf möglichst exakten Darstellungen numerischer Werte, sondern auf einer zweckmäßigen Darstellung. Im Vordergrund steht das qualitative Verständnis.\\
 
-Die Anwendung ist jedoch nicht vollständig selbsterklärend, sondern bedarf einer Anleitung durch eine fachkundige Person. Das betrifft auch den Bereich Interpretierbarkeit in den Punkten:
-\begin{itemize}
-	\setlength{\itemsep}{-1pt}
-	\singlespacing
-	\item Räumliche Begrenzungen aller Felddarstellungen
-	\item Einordnung der berechneten Vektoren und Feldlinien als Komponenten des resultierenden Feldes
-	\item Einordnung der Simulationsdarstellung als unabhängig, vorberechnet und nur für die Spule allein zutreffend (ohne Feld der Erde)
-	\item Einordnung der Darstellungen als approximativ
-\end{itemize}
-
-Die betroffenen Eigenschaften lassen sich zwar erahnen oder indirekt ableiten, werden jedoch nicht direkt durch die Applikation kommuniziert. Dafür könnte die Anwendung um eine Einführung z.B. durch einen eingesprochenen Text mit einer eigenen Sequenz entwickelt werden.\\
+Die Anwendung ist jedoch nicht selbsterklärend, sondern bedarf einer Anleitung durch eine fachkundige Person. Was die dargestellten Elemente repräsentieren wird nicht durch die Anwendung selbst kommuniziert. Außerdem werden die räumlichen Begrenzungen der Felddarstellungen nicht gekennzeichnet und nicht auf die Unabhängigkeit der Simulationsdarstellung von der anliegenden Stromstärke hingewiesen. Dafür könnte die Anwendung um eine Einführung z.B. durch einen eingesprochenen Text mit einer eigenen Sequenz erweitert werden.\\
 
 \textit{Weitere Aspekte}\\
 Der Nutzer wird durch das Tragen der HoloLens nicht wesentlich in der Interaktion mit den Gerätschaften eingeschränkt. Alle wichtigen Elemente (Anschlüsse, Spannungsquelle, Kompassnadel, Messgeräte, Spule) bleiben sichtbar und werden wenn dann nur zu kleinen Teilen überblendet. Die Hände bleiben frei zum Einstellen der Geräte, dem Anfertigen von Notizen oder der Verwendung weiterer Lehrmittel wie z.B. Lehrbüchern oder Arbeitsblättern. Der Klicker hat eine kleine Schlaufe, so dass er nicht unbedingt festgehalten werden muss.\\
 
 Die Applikation ist auch für Anwender ohne Erfahrungen mit der HoloLens oder Mixed Reality im Allgemeinen nutzbar, es müssen keine Handgesten erlernt werden. Allerdings kann die Nutzererfahrung bei unerfahrenen Nutzern durch ungünstige (z.B. hektische) Kopfbewegungen beeinträchtigt werden. Außerdem wurden die vorhandenen Gerätschaften genutzt und nur geringfügig angepasst (Überkleben der Magnetnadel).\\
 
-Nachdem die inhaltlichen Ergebnisse beleuchtet wurden, sollen nun die Resultate aus technische Seite beleuchtet werden.
+Nachdem die inhaltlichen Ergebnisse beleuchtet wurden, sollen nun die Resultate von technischer Seite aus beleuchtet werden.
 
 \subsubsection{Technische Umsetzung}
 Im Hinblick auf die technischen Anforderungen wurde eine Liste von Qualitätskriterien zugrunde gelegt. Die Bewertung der Lösung anhand dieses Maßstabes ist im Folgenden erörtert. Der Einschätzung liegen die zu jedem Kriterium genannten Hinweise zur Bewertung zu Grunde.\\
 
-Insgesamt erfüllt die Applikation die technischen Anforderungen fast vollständig bis vollständig. Eine Aufschlüsselung der einzelnen Kriterien bietet die unten stehende Tabelle \ref{tab:tech_results}. Die Hologramme wirken weitestgehend stabil und glaubhaft positioniert, sie bleiben im Rahmen der Komfortzone und passen sich dem Nutzer an. Die Interaktion erfolgt zum Großteil über Standardmechanismen. Auch im Bereich Performance bleibt die Anwendung im Rahmen und liefert konstant 60 Bilder pro Sekunde aus. Allerdings beansprucht die Kantenglättung massiv Ressourcen und lässt kaum Spielraum für weitere oder komplexere Darstellungen.\\
+Insgesamt erfüllt die Applikation die technischen Anforderungen fast vollständig bis vollständig. Eine Aufschlüsselung der einzelnen Kriterien bietet die unten stehende Tabelle \ref{tab:tech_results}. Die Hologramme wirken weitestgehend stabil und glaubhaft positioniert, sie bleiben im Rahmen der Komfortzone und passen sich dem Nutzer an. Die Interaktion erfolgt zum Großteil über Standardmechanismen. Auch im Bereich Performance bleibt die Anwendung im Rahmen und liefert konstant 60 Bilder pro Sekunde aus. Allerdings beansprucht die Kantenglättung massiv Ressourcen und lässt kaum Spielraum für weitere oder komplexere Darstellungen. Gleichzeitig reicht die Maßnahme nicht aus, um Kantenflimmern auf der Brille zu verhindern.\\
 
 Im Weiteren soll auf einzelne Aspekte näher eingegangen werden.\\
  
@@ -130,7 +83,7 @@ Im Weiteren soll auf einzelne Aspekte näher eingegangen werden.\\
 			\hline
 			Komfortzone & Elemente liegen in Komfortzone (Winkel und Distanz), sofern eine geeignete Unterlage vorhanden ist. Design begünstigt den gewünschten Abstand. Minimale Distanz wird über Fading sichergestellt. & Optimal\\
 			\hline
-			Fokuswechsel & Kaum Neufokussierungen notwendig. Nur bei Ablesen des Kompass und der Stromrichtung. & Fast optimal\\
+			Fokuswechsel & Kaum Neufokussierungen notwendig. Nur bei Ablesen des Kompasses und der Stromrichtung. & Fast optimal\\
 			\hline
 			FOV-Grenzen & Darstellungen passen bei empfohlener Distanz vollständig in FOV mit etwas Spielraum für Bewegungen. Durch Verankerung am realen Objekt verliert Nutzer den Kontext nicht. & Optimal\\
 			\hline
@@ -162,31 +115,28 @@ Allerdings hängt die Stabilität nicht unwesentlich von den Randbedingungen ab.
 Einen Eindruck von der Güte der Positionierung lässt sich anhand von Abb. \ref{img:model-overlay} gewinnen. Das normalerweise nur in den Tiefenpuffer gerenderte Mesh der virtuellen Spule wird hier durch einen Standard-Shader sichtbar dargestellt. Die reale Spule ist dadurch fast gar nicht zu sehen. Zwar sind Abweichungen zwischen den beiden Objekten aus unterschiedlichen Winkeln unterschiedlich stark sichtbar, das gewählte Foto gibt jedoch einen guten Anhaltspunkt für die tatsächliche Nutzererfahrung wieder.\\
 
 \textit{Interaction Clarity}\\
-In Puncto Interaction Clarity kann die Lösung nicht als optimal eingestuft werden. Denn das Kriterium verlangt ausdrücklich, dass eine Anwendung die ihr zu Grunde liegenden Interaktionsmöglichkeiten erklärt, sofern sie über Gewohntes hinausgehen. Das ist bei der Steuerung außerhalb des Menüs nicht der Fall. Die Lösung setzt eine Anleitung durch eine begleitende Person voraus, die den Anwender über die möglichen Aktionen informiert. Die anderen Punkte des Kriteriums werden jedoch erfüllt.\\
+In puncto Interaction Clarity kann die Lösung nicht als optimal eingestuft werden. Denn das Kriterium verlangt ausdrücklich, dass eine Anwendung die ihr zu Grunde liegenden Interaktionsmöglichkeiten erklärt, sofern sie über Gewohntes hinausgehen. Das ist bei der Steuerung außerhalb des Menüs nicht der Fall. Die Lösung setzt eine Anleitung durch eine begleitende Person voraus, die den Anwender über die möglichen Aktionen informiert. Die anderen Punkte des Kriteriums werden jedoch erfüllt.\\
 
 \textit{Performance}\\
 Die Performance hat maßgeblichen Einfluss auf die Stabilität der Hologramme aber auch der Erweiterbarkeit der Applikation und ist daher von besonderer Bedeutung. Deshalb soll hier der Ressourcenverbrauch etwas ausführlicher beleuchtet werden. Dazu wurde die Anwendung mit Hilfe von Unity's Profiler sowie des Performance Monitores der HoloLens-Weboberfläche analysiert. Der Profiler zeigt unter anderem an, wie lange einzelne Tasks auf Seiten von CPU und GPU benötigen. Der Performance Monitor hingegen zeigt den Ressourcenverbrauch des Gesamtsystems an.\\
 
-Die Anwendung gibt konstant 60 Bilder pro Sekunde aus. Beide genannten Werkzeuge zeigen keine Einbrüche der Framerate. Der Profiler zeigt eine Renderdauer im Bereich von 13 Millieskunden an, wie in Abbildung \ref{img:profiler}. Das liegt noch unter den 16,6 ms zwischen zwei Bildern bei einer Bildwiederholfrequenz 60 Hz. Die Lastverteilung zwischen CPU und GPU variiert dabei, je nach aktiver Darstellung. Die Simulationsdaten und das Tracking verlangen mehr CPU Leistung, während das Rendering der 3D-Objekte die GPU mehr in Anspruch nimmt.\\
-
-TODO...\\
-%Einen Überblick über den Ressourcenverbrauch des Gesamtsystems gibt Abbildung \ref{img:performance}. Dabei ist jedoch die Auslastung relativ hoch.
-
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=\textwidth]{images/performance/profiler.png}
-	\caption{}
+	\includegraphics[width=\textwidth]{images/performance/profile_MSAA_on_cut.jpg}
+	\caption{Profiler mit Details zur Renderdauer auf CPU und GPU mit aktiviertem MSAA. Letzteres nimmt auf der GPU ca. 3 ms in Anspruch. Die 16 ms GPU-Zeit entstehen durch die Synchronisation mit dem Display. Aus der Darstellung der CPU-Zeiten wurde diese herausgenommen.}
 	\label{img:profiler}
 \end{figure}
 
-Die Kantenglättung wirkt sich deutlich auf den Ressourcenverbrauch der Anwendung aus. Eine Gegenüberstellung der Systemleistungen bei aktiviertem bzw. deaktiviertem Multisampling ist Abbildung \ref{img:msaa-vs-off} zu entnehmen. Unter gleichen Bedingungen steigt die Auslastung der GPU durch 2x MSAA von ca. 40 auf ca. 70 Prozent. Das wirkt sich auch auf den Stromverbrauch aus, der dadurch höher ausfällt, aber noch im akzeptablen Bereich liegt.\\
+Die Anwendung gibt konstant 60 Bilder pro Sekunde aus. Beide genannten Werkzeuge zeigen keine Einbrüche der Framerate. Messungen mit dem Profiler ergaben eine Renderdauer von 13 Millieskunden. Das liegt noch unter den 16,6 ms zwischen zwei Bildern bei einer Bildwiederholfrequenz 60 Hz. Die Lastverteilung zwischen CPU und GPU variiert dabei, je nach aktiver Darstellung. Die Simulationsdaten und das Tracking verlangen mehr CPU Leistung, während das Rendering der 3D-Objekte die GPU mehr in Anspruch nimmt. Der Screenshot in Abbildung \ref{img:profiler} zeigt die Dauer einzelner Vorgänge des Renderings für die Echtzeitdarstellung des Feldes mit aktiviertem MSAA.\\
+
+Die Kantenglättung wirkt sich deutlich auf den Ressourcenverbrauch der Anwendung aus. Eine Gegenüberstellung der Systemleistungen bei aktiviertem bzw. deaktiviertem Multisampling ist Abbildung \ref{img:msaa-vs-off} zu entnehmen. Unter gleichen Bedingungen steigt die Auslastung der GPU durch 2x MSAA von ca. 35 auf ca. 70 Prozent. Das wirkt sich auch auf den Stromverbrauch aus, der dadurch höher ausfällt, aber noch im akzeptablen Bereich liegt.\\
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.45\textwidth]{images/performance/perf_msaa_on.png}
-	\hspace{0.05cm}
-	\includegraphics[width=0.45\textwidth]{images/performance/perf_msaa_off.png}
-	\caption{Unterschied durch Aktivierung von 2x MSAA. Links ist die Technik aktiviert, rechts nicht, bei sonst gleichen Bedingungen. Die GPU wird ohne MSAA um etwa ein Drittel weniger ausgelastet.}
+	\includegraphics[width=0.48\textwidth]{images/performance/perf_msaa_on_cut.png}
+	\hspace{-0.05cm}
+	\includegraphics[width=0.48\textwidth]{images/performance/perf_msaa_off_cut.png}
+	\caption{Unterschied durch Aktivierung von 2x MSAA. Links ist die Technik aktiviert, rechts nicht, bei sonst gleichen Bedingungen. Die GPU wird ohne MSAA um mehr als ein Drittel weniger ausgelastet. In beiden Fällen hält die Applikation jedoch konstant 60 FPS. Unter Power SoC wird der kombinierte Stromverbrauch von CPU, GPU und RAM angezeigt. Die Auslastung sollte nicht dauerhaft im roten Bereich liegen. Zum Vergleich findet sich im Anhang ein Angabe der Auslastung im Idle-Zustand.}
 	\label{img:msaa-vs-off}
 \end{figure}
 
@@ -198,9 +148,9 @@ Die Bewertung wurde anhand von Tests unter für die Anwendung günstigen Bedingu
 Zur Bewertung der vorgestellten Lösung wurde die Anwendung außerdem unterschiedlichen Personen vorgestellt und zum Testen überlassen. Dabei handelt es sich um ca. 15 Personen mit unterschiedlichem Grad an Expertise. Das Spektrum umfasst ungefähr zu gleichen Teilen Akademiker, Lehrer und Studenten der Physik. Deren Feedback wurde für diese Arbeit qualitativ festgehalten und zusammengefasst. Die Nutzung der Anwendung beschränkte sich dabei auf den Hauptteil mit den physikalischen Darstellungen.\\
 
 \textit{Inhaltliches Feedback}\\
-Die Reaktionen lassen sich weitestgehend als positiv beschreiben. Besonders die Interaktivität und die Darstellung der Simulationsdaten wurden positiv aufgenommen. Bezüglich letzterer wurde gelegentlich nach einer volumetrischen Darstellung gefragt. Die Erfahrung wurde ingesamt meistens als ''Cool'' oder ''Toll'' beschrieben (ohne das nach einer Beschreibung gefragt wurde). Da fast alle Nutzer keine oder fast keine vorangegangenen Erfahrungen mit dem Nutzererlebnis der HoloLens hatten, trägt der ''Wow-Effekt'' einer erstmaligen Nutzung zu den Reaktionen bei.\\
+Die Reaktionen lassen sich weitestgehend als positiv beschreiben. Die meisten Tester äußerten sich von sich aus während der Nutzung und kommentierten ihre Erfahrung. Dafür wurden häufig die Begriffe ''Cool'' und ''Toll'' verwendet (z.B. ''Ich sehe jetzt hier das Magnetfeld, das ist cool''). Zu diesen Reaktionen trägt auch der Umstand bei, dass das Nutzererlebnis einer solchen Brille für die meisten Personen neu war. Besonders die Interaktivität und die Darstellung der Simulationsdaten wurden positiv aufgenommen. Bezüglich letzterer wurde gelegentlich nach einer volumetrischen Darstellung gefragt. Insgesamt war das Interesse der beteiligten Personen hoch, einige Nutzer fragten von sich aus, ob sie die Anwendung testen dürfen.\\
 
-Da viele der Tester Experten waren, gab es kaum Nachfragen zur inhaltlichen Bedeutung der Darstellungen. Typisch waren jedoch Nachfragen zu den Beschränkungen des Sichtfeldes (''Soll das so klein sein?''). Die Rückfrage, ob die Beschränkungen als störend wahrgenommen werden, wurde jedoch meist verneint. Auch die Stabilität wurde als gut wahrgenommen\footnote{Einige Tester wurden ausdrücklich gebeten, ihren Eindruck von der Stabilität zu beschreiben}. Auch zur damit verbundenen Positionierung gab es kein negatives Feedback (z.B. im Falle von nicht korrekt verdeckten Elementen). Negativ fiel hingegen das Kantenflimmern an den Textboxen auf.
+Da viele der Tester Experten waren, gab es kaum Nachfragen zur inhaltlichen Bedeutung der Darstellungen. Typisch waren jedoch Nachfragen zu den Beschränkungen des Sichtfeldes (''Soll das so klein sein?''). Die Rückfrage, ob die Beschränkungen als störend wahrgenommen werden, wurde jedoch meist verneint. Auch die Stabilität wurde als gut wahrgenommen\footnote{Einige Tester wurden ausdrücklich gebeten, ihren Eindruck von der Stabilität zu beschreiben}. Auch zur damit verbundenen Positionierung gab es kein negatives Feedback (z.B. im Falle von nicht korrekt verdeckten Elementen). Negativ fiel hingegen das Kantenflimmern an den Textboxen auf.\\
 
 \textit{Feedback zur Interaktion und Nutzung}\\
 Die Interaktion über den Klicker erwies sich als elementar wichtig. Die Verwendung der Handgeste führte bei unsicheren Nutzern oft zu unerwartetem Verhalten der Anwendung, da die HoloLens Gesten erkannte, die nicht beabsichtigt waren. Weitere Schwierigkeiten betrafen vor allem das Aufsetzen der Brille. Denn wenn diese nicht richtig sitzt, ist das ohnehin schon kleine Sichtfeld nicht vollständig sichtbar. Hier schaffte jedoch eine kurze Erklärung dazu, wie die Brille sitzen sollte, Abhilfe\footnote{Das Feedback zu Sichtfeld, Tragekomfort und Interaktion ist konsistent mit dem Feedback was Microsoft dazu erhalten hat. Alle drei Aspekte wurden deshalb beim Nachfolgemodell massiv verbessert.}.\\
@@ -236,8 +186,10 @@ Das Feedback ist nachfolgend noch einmal zusammengefasst.
 \vspace{6px}
 
 \subsection{Diskussion}
-TODO...\\
 
+
+
+\begin{comment}
 KRITISCH MIT DER EIGENEN ARBEIT AUSEINANDERSETZTEN!!\\
 
 Kantenflimmern unerwartetes Problem. Kantenglättung zu teuer und nicht ausreichend. Kanten anders glätten. Keine weißen Linien und Umrandungen verwenden.\\
@@ -264,7 +216,8 @@ Frage: Wie HoloLens einsetzen?
 	\item Anpassbarkeit
 \end{itemize}
 
-Wie die HoloLens weiter im Kontext des gewählten Versuches verwendet werden könnte.
+%Wie die HoloLens weiter im Kontext des gewählten Versuches verwendet werden könnte.
+\end{comment}
 
 \subsubsection{Erweiterbarkeit}
 Ein im Rahmen der Fragestellung wichtiger Aspekt besteht darin, wie die vorgestellte Lösung um weitere Inhalte erweitert werden könnte. Dies ist in mehreren Bereichen denkbar und soll im Folgenden diskutiert werden.\\
