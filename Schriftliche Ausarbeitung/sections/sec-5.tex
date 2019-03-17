@@ -81,7 +81,7 @@ Die Umsetzung erfolgte mit Unity 2017.4.18f1, dem Mixed Reality Toolkit 4.3.0 so
 
 \subsubsection{Implementierung der Darstellungen}
 \label{sec-5-2-2}
-Die Darstellungen sind in einer Hirarchie unterhalb eines Anker-Objektes angeordnet. Dynamische Elemente wie z.B. die Felddarstellungen werden zur Laufzeit in dafür vorgesehenen Container-Objekten erzeugt und gesteuert. Dazu gehört z.B. das Ein- und Ausblenden sowie die Anpassung an aktuelle Messwerte.\\
+Die Darstellungen sind in einer Hirarchie unterhalb eines Anker-Objektes angeordnet. Dynamische Elemente wie z.B. die Felddarstellungen werden zur Laufzeit in dafür vorgesehenen Container-Objekten erzeugt und gesteuert. Dazu gehört z.B. das Ein- und Ausblenden sowie die Anpassung an aktuelle Messwerte. Einen Ausschnitt dieser Hierarchie stellt Abbildung \ref{img:hirarch} dar.\\
 
 \begin{wrapfigure}{r}{0.5\textwidth}
 	\centering
@@ -120,7 +120,7 @@ Die Indikatoren werden mit Unity's LineRenderer dargestellt und sind bezüglich 
 \textbf{Kompass}\\
 Die verschiedenen des Kompasses werden ebenfalls durch einen LineRenderer gezeichnet. Um eine gestrichelte Linie zu erhalten, wird eine Textur mit weißem Kreis vor transparentem Hintergrund auf die Länge der Linie mittels Tiling skaliert. Ein dazu angefertigtes Skript übernimmt diesen Vorgang automatisch.\\
 
-\textbf{Occlusion Berechnung}\\
+\textbf{Berechnung der Verdeckung}\\
 Für die Verdeckungsberechnung wurde die Spule anhand gemessener Größen in Blender manuell nachmodelliert. Das Spatial Mapping der HoloLens ist hier zu ungenau, um eine glaubwürdige Verdeckung zu ermöglichen. In der Standard-Einstellung wird die Spule gar nicht erkannt, was wohl auch dem Material (Kupfer) geschuldet sein dürfte. Eine Darstellung des Spatial Mappings des Versuchsaufbaus ist in Abb. \ref{img:mesh-vs-model} zu sehen.
 \begin{figure}[h!]
 	\centering

@@ -268,12 +268,12 @@ Die virtuelle Skala wurde als Ring unmittelbar um die Spule herum designet, um k
 \noindent\hspace*{5mm}
 Um die wichtigen Auslenkungen erkennbar zu machen, werden dafür Hilfslinien gezeichnet. Das betrifft Auslenkungen von 0 und 45 Grad. Denn Ziel des Versuches ist es, die Nadel von 0 auf 45° auszulenken. Die theoretisch berechnete Auslenkung ist ebenfalls über eine solche Linie realisiert. Der Screenshot in Abbildung \ref{img:compass} zeigt die erarbeitete Lösung.
 
-\begin{figure}[h!]
+\begin{wrapfigure}{R}{0.5\textwidth}
 	\centering
 	\includegraphics[width=0.45\textwidth]{images/unity/compass.jpg}
 	\caption{Virtuelle Elemente des Kompass. Die theoretische Nadel ist hier um 50° ausgelenkt.}
 	\label{img:compass}
-\end{figure}
+\end{wrapfigure}
 
 Der Fokus dieses Designs liegt nicht darin, die Auslenkung des Kompasses möglichst genau ablesen zu können. Vielmehr geht es darum, die besonders wichtigen Auslenkungen einstellen zu können. Zwischen diesen Werten genügt eine grobe Orientierung. Das gewählte Design erlaubt es dem Betrachter genau festzustellen, ob die Linie der Nadel durch eine der virtuellen Linien fortgesetzt wird. Außerdem entsteht so die Vergleichbarkeit mit der theoretischen Nadel, da diese entweder stärker, schwächer oder genauso stark ausgelenkt ist. Für letztere wird außerdem die Gradzahl als Text angegeben.\\
 \noindent\hspace*{5mm}
@@ -308,12 +308,13 @@ Für die Darstellung der gemessenen und berechneten Werte soll eine textuelle Re
 \noindent\hspace*{5mm}
 Die Werte werden mit ihren Einheiten in einer Text-Box mit grauem Hintergrund angezeigt. Letzterer dient der besseren Lesbarkeit. Die Umsetzung ist in Abbildung \ref{img:status} festgehalten.
 
-\begin{figure}[h!]
-\centering
-\includegraphics[width=0.4\textwidth]{images/unity/status.jpg}
-\caption{Statusbar}
-\label{img:status}
-\end{figure}
+\begin{wrapfigure}{R}{0.5\textwidth}
+	\centering
+	\includegraphics[width=0.4\textwidth]{images/unity/status.jpg}
+	\caption{Darstellung der numerischen Werte.}
+	\label{img:status}
+\end{wrapfigure}
+
 Die Positionierung an den Verbindungsstücken liegt, wie auch bei den Indikatoren für die Stromrichtung, im Ausnutzen von Platz begründet. Die Objekte sind schräg gestellt (ca. 35°), so dass sie aus diesem typischen Winkel gut zu lesen sind.\\
 
 Durch ihre Platzierung unmittelbar über dem Untergrund würden Drop Shadows das Präsenzgefühl stärken. Diese lassen sich hier jedoch nicht direkt umsetzen, denn der Untergrund ist real und kann durch die HoloLens nicht weiter verdunkelt werden. Eine mögliche Lösung bestünde darin, die Schatten zu erzeugen, indem der Untergrund außerhalb des Schattens zusätzlich erhellt wird. Allerdings müssten hier wiederum die Schatten der realen Objekte mit einbezogen werden. Daher nimmt diese Lösung die fehlenden Schatten in Kauf.\\
