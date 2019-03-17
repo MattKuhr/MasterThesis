@@ -108,7 +108,7 @@ Im Hinblick auf die technischen Anforderungen wurde eine Liste von Qualitätskri
 
 Insgesamt erfüllt die Applikation die technischen Anforderungen fast vollständig bis vollständig. Eine Aufschlüsselung der einzelnen Kriterien bietet die unten stehende Tabelle \ref{tab:tech_results}. Die Hologramme wirken weitestgehend stabil und glaubhaft positioniert, sie bleiben im Rahmen der Komfortzone und passen sich dem Nutzer an. Die Interaktion erfolgt zum Großteil über Standardmechanismen. Auch im Bereich Performance bleibt die Anwendung im Rahmen und liefert konstant 60 Bilder pro Sekunde aus. Allerdings beansprucht die Kantenglättung massiv Ressourcen und lässt kaum Spielraum für weitere oder komplexere Darstellungen.\\
 
-Im Weiteren soll auf einzelne Aspekte kurz näher eingegangen werden.\\
+Im Weiteren soll auf einzelne Aspekte näher eingegangen werden.\\
  
 %\textbf{Qualitätskriterien}
 %\begin{sidewaystable}[h!]
@@ -167,7 +167,7 @@ In Puncto Interaction Clarity kann die Lösung nicht als optimal eingestuft werd
 \textit{Performance}\\
 Die Performance hat maßgeblichen Einfluss auf die Stabilität der Hologramme aber auch der Erweiterbarkeit der Applikation und ist daher von besonderer Bedeutung. Deshalb soll hier der Ressourcenverbrauch etwas ausführlicher beleuchtet werden. Dazu wurde die Anwendung mit Hilfe von Unity's Profiler sowie des Performance Monitores der HoloLens-Weboberfläche analysiert. Der Profiler zeigt unter anderem an, wie lange einzelne Tasks auf Seiten von CPU und GPU benötigen. Der Performance Monitor hingegen zeigt den Ressourcenverbrauch des Gesamtsystems an.\\
 
-Die Anwendung gibt konstant 60 Bilder pro Sekunde aus. Beide genannten Werkzeuge zeigen keine Einbrüche der Framerate. Der Profiler zeigt eine Renderdauer im Bereich von 11 bis 13 Millieskunden an, wie in Abbildung \ref{img:profiler}. Das liegt deutlich unter den 16,6 ms zwischen zwei Bildern bei einer Bildwiederholfrequenz 60 Hz. Die Lastverteilung zwischen CPU und GPU variiert dabei, je nach aktiver Darstellung. Die Simulationsdaten und das Tracking verlangen mehr CPU Leistung, während das Rendering der 3D-Objekte die GPU mehr in Anspruch nimmt.\\
+Die Anwendung gibt konstant 60 Bilder pro Sekunde aus. Beide genannten Werkzeuge zeigen keine Einbrüche der Framerate. Der Profiler zeigt eine Renderdauer im Bereich von 13 Millieskunden an, wie in Abbildung \ref{img:profiler}. Das liegt noch unter den 16,6 ms zwischen zwei Bildern bei einer Bildwiederholfrequenz 60 Hz. Die Lastverteilung zwischen CPU und GPU variiert dabei, je nach aktiver Darstellung. Die Simulationsdaten und das Tracking verlangen mehr CPU Leistung, während das Rendering der 3D-Objekte die GPU mehr in Anspruch nimmt.\\
 
 TODO...\\
 %Einen Überblick über den Ressourcenverbrauch des Gesamtsystems gibt Abbildung \ref{img:performance}. Dabei ist jedoch die Auslastung relativ hoch.
@@ -190,18 +190,6 @@ Die Kantenglättung wirkt sich deutlich auf den Ressourcenverbrauch der Anwendun
 	\label{img:msaa-vs-off}
 \end{figure}
 
-\begin{itemize}
-	\setlength{\itemsep}{-1pt}
-	\singlespacing
-	\item Konstante Framerate von 60 FPS
-	\item CPU: 60-30\% Auslastung
-	\item GPU: 40-50\% Auslastung
-	\item Stromverbrauch unregelmäßig
-\end{itemize}
-
-
-%MSAA treibt Ressourcenverbrauch in die Höhe: ohne MSAA etwa 25\% GPU\\
-%Rendering der Linien besonders CPU-intensiv. knapp 7 ms CPU-Zeit nur für die Linien, ohne Optimierungen etwa 45 ms\\
 
 \textit{Testbedingungen}\\
 Die Bewertung wurde anhand von Tests unter für die Anwendung günstigen Bedingungen durchgeführt. Der Versuchsaufbau wurde so positioniert, dass die umliegenden Objekte gut für das Tracking der Brille geeignet sind. Außerdem wurde die HoloLens vorher öfter im Testraum verwendet und hatte daher bereits ein gutes Modell des Raums zur Orientierung. Weiterhin wurde die Brille auf den Tester kalibriert und ruckartige oder unnötige Kopfbewegungen vermieden. 
@@ -256,7 +244,9 @@ Kantenflimmern unerwartetes Problem. Kantenglättung zu teuer und nicht ausreich
 
 Einige Probleme konnten bereits im Design abgemildert oder umgangen werden. Das gilt z.B. für die Aspekte Komfortzone und FOV-Grenzen. Durch die platzsparende Anordnung der Elemente werden die Hologramme seltener abgeschnitten. Außerdem sind häufige Kopfbewegungen und Hinweise auf Elemente außerhalb des FOV so nicht notwendig. Und die Berücksichtigung einer geeigneten Distanz von Beginn an vermeidet bzw. verringert Probleme mit zu dicht positionierten Objekten.\\
 
-Hier wurde z.B. bei der Festsetzung von Anzahl und Größe von Objekten auf die Einschränkungen der HoloLens Rücksicht genommen. Viele Probleme werden auch durch die Nutzung von vorgefertigten Objekten und Verhaltensweisen vermieden. Hier sind z.B. der Progress Indikator, Standard-Button und Standard-Shader zu nennen.
+Hier wurde z.B. bei der Festsetzung von Anzahl und Größe von Objekten auf die Einschränkungen der HoloLens Rücksicht genommen. Viele Probleme werden auch durch die Nutzung von vorgefertigten Objekten und Verhaltensweisen vermieden. Hier sind z.B. der Progress Indikator, Standard-Button und Standard-Shader zu nennen.\\
+
+Nicht für alles muss eine softwareseitige Lösung her, siehe z.B. Begrenzung der Darst. und aufgehellte Magnetnadel.\\
 
 Frage: Wie HoloLens einsetzen?
 

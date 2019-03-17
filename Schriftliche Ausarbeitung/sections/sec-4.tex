@@ -36,14 +36,15 @@ Dieses Konzept macht von den zentralen Stärken der HoloLens Gebrauch. Als Head 
 Unter diesem grundsätzlichen Ansatz soll die Lösung nun weiter konkretisiert werden.
 
 
-\subsection{Dargestellte Informationen} % Inhaltliches Design
+\subsection{Inhaltliches Design} %Dargestellte Informationen
 Zunächst ist zu entscheiden, welche physikalischen Eigenschaften durch die HoloLens visualisiert werden sollen. Von besonderem Interesse sind hier vor allem Informationen, die für den Versuch zwar relevant, für den Nutzer jedoch nicht direkt beobachtbar sind.\\
 
-Das betrifft in erster Linie die beiden sich überlagernden Magnetfelder von Erde und Spule. Das Zusammenspiel beider Felder und deren Eigenschaften ist elementar für das Verständnis des Experimentes. Allerdings sind Magnetfelder nicht sichtbar und die Auswirkungen auf die Magnetnadel entstehen durch das überlagerte Feld, die einzelnen Komponenten des Feldes sind darin nicht mehr erkennbar. Deshalb sollen diese für den Anwender sichtbar gemacht werden. In Absprache mit Experten wurde entschieden, zunächst nur die Einzelfelder und nicht das resultierende Feld zu visualisieren \cite{Reinholz18}.\\
+Das betrifft in erster Linie die beiden sich überlagernden Magnetfelder von Erde und Spule. Das Zusammenspiel beider Felder und deren Eigenschaften ist elementar für das Verständnis des Experimentes. Allerdings sind Magnetfelder nicht sichtbar und die Auswirkungen auf die Magnetnadel entstehen durch das überlagerte Feld, die einzelnen Komponenten des Feldes sind darin nicht mehr erkennbar. Deshalb sollen diese für den Anwender sichtbar gemacht werden. In Absprache mit Experten wurde entschieden, zunächst nur die Einzelfelder und nicht das resultierende Feld zu visualisieren \autocite{Reinholz18}.\\
 \noindent\hspace*{5mm}
 Damit die Felder auch als solche interpretiert und ihre Eigenschaften erkannt werden können, wird auf die etablierten Darstellungsmodelle über Feldlinien bzw. Vektoren zurückgegriffen. Da die Modelle sowohl Vor- als auch Nachteile haben, sollen beide Darstellungen alternativ angeboten werden.\\
 
 Die Auslenkung des Kompass hängt von Richtung und Stärke der beiden Einzelfelder in unmittelbarer Nähe des Kompasses ab. Diese Eigenschaften der Felder sind damit für den Versuch ausschlaggebend und sollen deshalb dargestellt werden.\\
+\noindent\hspace*{5mm}
 Während die Stärke und Richtung des Erdmagnetfeldes an einem Ort als konstant angenommen werden kann, ändert sich das Feld der Spule mit der Stromstärke. Stärke und Richtung des Feldes hängen direkt von der anliegenden Stromstärke und der Richtung des Stromflusses ab. Um diesen Zusammenhang sichtbar zu machen, soll die dargestellte Feldstärke (des Feldes der Spule) anhand von gemessenen Echtzeitdaten angepasst werden. Dafür soll die aktuell gemessene Stromstärke an die HoloLens übermittelt werden. Aus dieser lässt sich anhand der Gleichung \ref{eq:mfield} in Abschnitt \ref{sec-2-3-3} die Feldstärke für den Mittelpunkt der Spule berechnen.\\
 
 Für die Auslenkung der Nadel ist lediglich das Feld in unmittelbarer Nähe des Kompass ausschlaggebend. Deshalb beschränken sich die Repräsentationen der Felder zunächst auf das Innere der Spule. In diesem ist das Feld nahezu homogen, was ebenfalls erkennbar sein soll. Vor diesem Hintergrund und dem Ziel eines qualitativen Verständnisses kann die Feldstärke im Mittelpunkt für einen größeren Bereich im Inneren der Spule angenommen werden.\\
@@ -68,6 +69,7 @@ Zusammenfassend sollen also die folgenden Elemente visualisiert werden:
 \end{enumerate}
 \vspace{6px}
 
+%Diese Entscheidungen wurden in Zusammenarbeit mit Experten validiert.
 Für diese Elemente gilt es nun ein visuelles Design zu konzipieren und eine technische Realisierung zu erarbeiten. Diese werden jedoch durch Designentscheidungen beeinflusst, die technische Eigenschaften der HoloLens adressieren, um eine komfortable Nutzung zu gewährleisten. Deshalb soll zunächst auf diese näher eingegangen werden.
 
 \subsection{Designentscheidungen im Hinblick auf die HoloLens}
@@ -88,137 +90,97 @@ Die Farbe bestimmt auf der HoloLens nicht nur die Helligkeit, sondern auch die T
 Nach diesen allgemeinen Designentscheidungen, die alle Visualisierungen betreffen, kann nun das visuelle Design konkretisiert werden.
 
 \subsection{Visuelles Design}
-
-Die Darstellung des Magnetfeldes von Erde und Spule ist zentraler Bestandteil der Anwendung.\\
-
-\textit{Visuelles Design}\\
-Die Darstellung des Feldes erfolgt über 3D-Pfeile bzw. -Pfeillinien. Diese werden schattiert, damit die Form und Ausrichtung im Raum besser erkennbar wird. Die Größe der Objekte wurde anhand von Erfahrungswerten angepasst. Durchmesser und Länge sind vergleichbar mit denen eines Kugelschreibers oder dickeren Stiftes. Als Farben wurden Hellblau und Orange für den Anteil der Spule bzw. der Erde gewählt. Blau wird oft für Magnetfeldlinien verwendet und wird daher auch hier gebraucht. Allerdings wird ein weniger gesättigtes, helleres Blau verwendet, damit die Deckkraft vor helleren Hintergründen nicht verloren geht. Das Orange weißt die selbe Helligkeit wie das Blau auf, damit sich die Objekte nicht in der Transparenz voneinander unterscheiden.\\
-
-\textit{Begrenzung der Darstellung}\\
-Die Visualisierung des Feldes erfordert die Festlegung eines darzustellenden Bereiches für die Flussdichte. Ein Intervall lässt sich in der Anwendung frei über die Einstellungen festlegen. Diese Einstellungsmöglichkeit ist für die praktische Nutzung wesentlich, da die gemessene Flussdichte des Erdmagnetfeldes in Abhängigkeit von der Umgebung variieren kann. Voreingestellt ist ein Bereich von $3\mu T$ bis $60\mu T$, die Flussdichte der Erde liegt mit $30 \mu T$ bis $40 \mu T$ im mittleren Bereich dieser Skala. Am unteren Ende des Bereiches werden die Objekte über Transparenz ausgeblendet.\\
-
-Nach oben hin ist keine Darstellung der Begrenzung vorgesehen. Der Bereich sollte so gewählt werden, dass die obere Grenze durch die maximal am Regler einstellbare Stromstärke nicht erreicht werden kann. Somit erfährt der Anwender die Limitierung der Darstellung auf natürliche Weise. Die Konfiguration der Schaltung kann hier über eingebaute Widerstände so an die Spannungsquelle angepasst werden, dass der erzeugte Stromfluss im gewünschten Bereich liegt.\\
-
-Weiterhin sind für alle Objekte, die in Abhängigkeit des sich ändernden Feldes stehen, Parameter für die Darstellung definiert. Diese legen für alle Elemente einen gemeinsamen Wertebereich fest, für den die Darstellung erfolgt. Außerdem werden ab dem minimalen Wert die Objekte über einen gewählten Bereich kontinuierlich eingeblendet. Dieses konsistente Verhalten dient dazu, das Verständnis der Darstellungen zu verbessern. Außerdem soll auf diese Weise transportiert werden, dass nur die Darstellungen verschwinden, nicht jedoch die physikalischen Sachverhalte, die repräsentiert werden.\\
-
-Einbettung durch Verdeckung\\
-Objekte verändern sich dynamisch anhand von Messwerten
-\vspace{4px}
-\begin{center}
-	\fbox{
-		\parbox{0.9\linewidth}{
-			\vspace{4px}
-			\textit{Allgemeines}
-			\begin{itemize}[rightmargin=12px, topsep=-12px]
-				\setlength{\itemsep}{-1pt}
-				\singlespacing
-				\item Komponenten des Feldes (Erde, Spule) werden mit verschiedenen Farben dargestellt
-				\item Feld der Erde ist fest und wird exemplarisch, mittig in der Spule mit der minimal notwendigen Anzahl Elemente gezeigt
-				\item Feldlinien / Vektoren als Pfeillinien / Pfeile modelliert
-				\item Form wird durch Schattierung betont
-				\item Anordnung, Minimum und Maximum (von Abstand bzw. Länge) der Darstellungen sind im Code parametrisiert 
-				\item Darstellungsgrenzen über Transparenz (Minimum) und Hardware-Limitierung (Maximum)
-			\end{itemize}
-			\vspace{18px}
-	}}\\
-\end{center}
-\vspace{6px}
-
+Für die im vorangegangenen Abschnitt \ref{sec-4-2} erarbeiteten Elemente sollen nun konkrete Darstellungen konzipiert werden.\\
 
 \subsubsection{Feldliniendarstellung}
 \label{sec-4-4-1}
+Im Inneren der Spule sollen die Komponenten des Magnetfeldes über dynamische Feldlinien dargestellt werden. Dies geschieht, indem 3D-Objekte räumlich in der Spule positioniert werden. Diese Einbettung wird unterstützt, indem eine Verdeckungsberechnung erfolgt, so dass räumlich hinter Teilen der Spule positionierte durch diese überdeckt werden. Außerdem werden die Objekte schattiert, damit die Form und Ausrichtung im Raum erkennbar wird. Dieses Vorgehen dient dazu, die gewünschte räumliche Einbettung zu erzielen.\\
 
-Die Feldliniendarstellung ist in Abb. \ref{img:mfield-lines} gesondert dargestellt.
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{images/HL/fieldlines.jpg}
-	\caption{Feldlinien}
-	\label{img:mfield-lines}
-\end{figure}
+\textit{Form, Größe und Farbe}\\
+Die Form orientiert sich an dem etablierten Darstellungsmodell und besteht daher aus einem länglichen Zylinder mit integrierten Pfeilköpfen. Die Größe der Objekte wurde anhand von Erfahrungswerten angepasst. Durchmesser und Länge sind vergleichbar mit denen eines Kugelschreibers oder dickeren Stiftes. Um die Felder von Erde und Spule unterscheiden zu können, wurden mit Hellblau und Orange unterschiedliche Farben für die Objekte gewählt. Blau wird oft für Magnetfeldlinien verwendet und daher auch hier gebraucht. Allerdings wird ein weniger gesättigtes, helleres Blau verwendet, damit die Deckkraft vor helleren Hintergründen nicht verloren geht. Das Orange weißt die selbe Helligkeit wie das Blau auf, damit sich die Objekte nicht in der Transparenz voneinander unterscheiden.\\
+\noindent\hspace*{5mm}
+Die folgenden Erörterungen beziehen sich zunächst auf der Feld der Spule.\\
 
 \textit{Anordnung}\\
-Die Feldlinien der Spule verlaufen orthogonal zur X-Y-Ebene, also in Richtung der Z-Achse. Damit die gewünschten Eigenschaften (Stärke, Homogenität und Richtung) des dreidimensionalen Feldes anhand des Feldlinienmodells erkennbar sind, bedarf es mindestens vier Linien. In einer 2x2 Anordnung um den Mittelpunkt der X-Y-Ebene ist so der Abstand in beiden Dimensionen sichtbar und die Linien sind symmetrisch zur Z-Achse. Anhand der Parallelität lässt sich die Homogenität erkennen und anhand des Abstandes (in der horizontalen oder vertikalen, beide sind gleich groß) die Stärke. Die Flussrichtung ist über eingebaute Pfeilspitzen abgebildet. Als Darstellungsvolumen wurde ein zylindrischer Ausschnitt der Spule gewählt, da diese den Raum besser ausfüllt, als beispielsweise ein kubischer Ausschnitt.\\
+Die Feldlinien der Spule verlaufen orthogonal zur X-Y-Ebene, also in Richtung der Z-Achse. Damit die gewünschten Eigenschaften (Stärke, Homogenität und Richtung) des dreidimensionalen Feldes anhand des Feldlinienmodells erkennbar sind, bedarf es mindestens vier Linien. In einer 2x2 Anordnung um den Mittelpunkt der X-Y-Ebene ist so der Abstand in beiden Dimensionen sichtbar und die Linien sind symmetrisch zur Z-Achse. Anhand der Parallelität lässt sich die Homogenität erkennen und anhand des Abstandes (in der horizontalen oder vertikalen, beide sind gleich groß) die Stärke. Die Flussrichtung ist über die eingebauten Pfeilspitzen abgebildet. Als Darstellungsvolumen wurde ein zylindrischer Ausschnitt der Spule gewählt, da diese den Raum besser ausfüllt, als beispielsweise ein kubischer Ausschnitt.\\
 
 \textit{Anzahl}\\
 Bei einem festen, für die Darstellungen zur Verfügung stehenden Volumen und kleiner werdenden Abständen müssen zunehmend mehr Linien gezeichnet werden. Zu viele Objekte würden jedoch die Sichtbarkeit anderer Elemente wie Magnetnadel und Kompass beeinträchtigen. Außerdem transportieren zusätzliche Feldlinien keine zusätzlichen Informationen (im Fall eines homogenen Feldes). Allerdings unterstützt die Beobachtung, dass mit zunehmender Flussdichte die Anzahl der Feldlinien steigt, das Verständnis des Feldlinienmodells. Daher wurde für die Umsetzung das Intervall von minimalem und maximalem Abstand so gewählt, dass mindestens 4 und höchstens 16 Linien dargestellt werden. Beim Ein- und Austreten der Objekte in das bzw. aus dem Darstellungsvolumen werden sie kontinuierlich ein bzw. ausgeblendet.\\
 
-\begin{figure}[H]
+\textit{Feld der Erde}\\
+Um das Feld der Erde darstellen zu können, wird ein fester Wert für dessen Flussdichte angenommen. Da das Feld statisch ist, wird es über die minimal notwendige Anzahl an Feldlinien repräsentiert. Zusätzliche Linien würden aufgrund der Homogenität keine weiteren Informationen transportieren. Einen Eindruck der Feldlinien und deren Transparenz beim Ein- bzw. Austritt in den Darstellungsbereich vermittelt Abbildung \ref{img:mfield-lines}.
+
+\begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.45\textwidth]{images/todo.jpg}
-	\caption{Feldlinien Skalierung Abstand}
-	\label{img:mfield-lines-scaling}
+	\includegraphics[width=0.8\textwidth]{images/unity/fieldlines.jpg}
+	\caption{Feldlinien}
+	\label{img:mfield-lines}
 \end{figure}
 
 \textit{Skalierung}\\
-Dabei wurde sich bewusst für die Abbildung der Flussdichte auf den Abstand der Feldlinien entschieden. Das bedeutet, Letzterer ändert sich proportional mit der Flussdichte. Oft wird statt des Abstandes die Anzahl der Feldlinien durch eine Einheitsfläche proportional zur Flussdichte gewählt. Das bedeutet bei einer symmetrischen Darstellung eines quadratischen Ausschnittes jedoch, dass die Anzahl in diskreten Stufen $n \geq 1$ mit $4^{n}$ steigt. Werden diese Stufen durch eine kontinuierliche Kontraktion der Linien zum Zentrum hin interpoliert, dann skaliert der Abstand $d$ der Feldlinien mit $1/(3n)$. Die Grafik \ref{img:mfield-lines-scaling} illustriert diesen Zusammenhang. Da für den Anwender in erster Linie jedoch der Abstand die sichtbare, sich ändernde Größe ist, könnte dies den falschen Eindruck erwecken, die Flussdichte ändere sich nicht linear mit der Stromstärke. Außerdem werden nur zwei Stufen dargestellt, daher wurde sich für die proportionale Änderung des Abstandes entschieden.\\
+Bei der Repräsentation der Flussdichte wurde sich bewusst für die Abbildung auf den Abstand der Feldlinien entschieden. Oft wird statt des Abstandes die Anzahl der durch eine Einheitsfläche verlaufenden Feldlinien proportional zur Flussdichte gewählt. Da für den Anwender in erster Linie jedoch der Abstand die sichtbare, sich ändernde Größe ist, würde dies den falschen Eindruck erwecken, die Flussdichte ändere sich nicht linear mit der Stromstärke. Daher wurde sich für die proportionale Änderung des Abstandes entschieden.\\
+
+\textit{Begrenzung der Darstellung}\\
+Die Visualisierung des Feldes erfordert die Festlegung eines darzustellenden Bereiches für die Flussdichte. Voreingestellt ist ein Bereich von $5 \mu T$ bis $60 \mu T$, die Flussdichte der Erde liegt mit $30 \mu T$ bis $40 \mu T$ im mittleren Bereich dieser Skala. Am unteren Ende des Bereiches werden die Objekte über Transparenz ausgeblendet. Auf diese Weise soll angedeutet werden, dass nur die Darstellungen verschwinden, nicht jedoch die physikalischen Sachverhalte, die repräsentiert werden.\\
+\noindent\hspace*{5mm}
+Nach oben hin ist keine Darstellung der Begrenzung vorgesehen. Der Bereich sollte so gewählt werden, dass die obere Grenze durch die maximal am Regler einstellbare Stromstärke nicht erreicht werden kann. Somit erfährt der Anwender die Limitierung der Darstellung auf natürliche Weise. Die Konfiguration der Schaltung kann hier über eingebaute Widerstände so an die Spannungsquelle angepasst werden, dass der erzeugte Stromfluss im gewünschten Bereich liegt. Diese Begrenzung gilt nicht nur für die Feldlinien, sondern alle an die Flussdichte bzw. Stromstärke gekoppelten Elemente, sodass ein konsistentes Verhalten entsteht.
 
 \vspace{4px}
 \begin{center}
 	\fbox{
 		\parbox{0.9\linewidth}{
 			\vspace{4px}
-			\textit{Überblick}
+			\textit{Zusammenfassung}
 			\begin{itemize}[rightmargin=12px, topsep=-12px]
 				\setlength{\itemsep}{-1pt}
 				\singlespacing
-				\item Pfeillinien repräsentieren Feldlinien über Abstand und Ausrichtung
-				\item 4 bis 16 Feldlinien im Gitter angeordnet, orthogonal zur Z-Achse
-				\item Anordnung im 3D-Gitter mit konfigurierbaren Parametern (Abstand, Anzahl pro Dimension)
-				\item Änderung des Abstandes über Kontraktion zum Mittelpunkt in X-Y-Ebene, Linien werden über Transparenz an der Darstellungsgrenze ein- bzw. ausgeblendet
+				\item 3D-Pfeillinien repräsentieren Feldlinien über Abstand und Ausrichtung
+				\item Räumlich Einbettung in die Spule durch Positionierung und Verdeckung
+				\item Unterscheidung der Komponenten über verschiedene Farben
+				\item Änderung des Abstandes proportional zur Feldstärke über Kontraktion zur Z-Achse
+				\item Linien werden über Transparenz an den Darstellungsgrenzen ein- bzw. ausgeblendet
 			\end{itemize}
 			\vspace{18px}
 	}}\\
 \end{center}
-\vspace{6px}
+%\vspace{6px}
 
-\vspace{8px}
-\begin{center}
-	\fbox{
-		\parbox{0.9\linewidth}{
-			\vspace{4px}
-			\textbf{Überblick}
-			\begin{itemize}[rightmargin=12px, topsep=-12px]
-				\setlength{\itemsep}{-1pt}
-				\singlespacing
-				\item Magnetfeld von Erde und Spule über 3D-Geometrie darstellen und räumlich in die Spule einbetten
-				\item Einbettung durch Verdeckungsberechnung von realer Spule und virtueller Geometrie verbessern	
-				\item Komponenten des Feldes (Erde, Spule) mit verschiedenen Farben darstellen anstelle des tatsächlichen, kombinierten Feldes
-				\item Sowohl die Darstellung über Feldlinien als auch die über Vektoren anbieten, Nutzer kann zwischen den Varianten umschalten
-				\item Darstellung beschränkt sich auf einen zylindrischen Ausschnitt der Spule	
-				\item Objekte verändern sich dynamisch anhand von Messwerten
-				\item Eine davon unabhängige, eigene Darstellung von Simulationsdaten zeigt eine numerische Lösung für das Feld sowohl innerhalb als auch außerhalb der Spule für eine ausgewählte Ebene
-			\end{itemize}
-			\vspace{18px}
-	}}\\
-\end{center}
-\vspace{6px}
 \subsubsection{Vektordarstellung}
 \label{sec-4-4-2}
-\textit{Anordnung und Anzahl}\\
-In der Vektordarstellung werden mindestens acht Vektoren benötigt, damit die zuvor genannten Eigenschaften erkennbar werden. Dabei gelten die gleichen Gründe wie zuvor. Während jedoch eine Feldlinie das Feld in Richtung der Z-Achse kontinuierlich darstellt, sind hier wenigstens zwei Vektoren notwendig. Die Anordnung erfolgt in einem 3D-Gitter, bei dem die Anzahl und die Abstände pro Dimension parametrisiert sind. Auch hier gilt, dass mehr Objekte im homogenen Teil des Feldes keine weiteren Informationen transportieren. Daher wurde in Anbetracht des zur Verfügung stehenden Raumes in die Größe anstelle der Anzahl der Objekte investiert.\\
+Neben der dynamischen Feldliniendarstellung soll das Feld auch über Vektoren repräsentiert werden. Die Realisierung erfolgt dabei ebenfalls über 3D-Objekte, die sich nur in der Form von denen der Feldlinien unterscheiden. Damit die Vektoren als solche erkennbar sind, wurde eine Repräsentation als 3D-Pfeil gewählt.
+ 
+\textit{Anordnung, Anzahl und Skalierung}\\
+In der Vektordarstellung werden mindestens acht Vektoren benötigt, jeweils zwei pro Raumrichtung, damit die gewünschten Eigenschaften des Feldes erkennbar werden. Die Anordnung erfolgt in einem 3D-Gitter, bei dem die Anzahl und die Abstände pro Dimension parametrisiert sind. Auch hier gilt, dass mehr Objekte im homogenen Teil des Feldes keine weiteren Informationen transportieren. Deshalb wurde die minimal notwendige Anzahl von acht Vektoren gewählt.\\
+\noindent\hspace*{5mm}
+Die Flussdichte wird im Fall der Pfeile über deren Länge ausgedrückt. Die Form der Objekte soll mit einer sich ändernden Länge nicht verzerrt werden. Eine einfache Skalierung der Pfeillänge würde jedoch dazu führen, dass auch die Pfeilspitze in die Länge gezogen wird. Daher wird die Geometrie zur Laufzeit angepasst und nur ein Teil in der Mitte verändert. Das Design ist in Abbildung \ref{img:mfield-vectors} abgebildet.\\
 
-\textit{Skalierung}\\
-Die Flussdichte wird im Fall der Pfeile über deren Länge und Richtung ausgedrückt. Die Form der Objekte soll mit einer sich ändernden Länge nicht verzerrt werden. Eine einfache Skalierung der Pfeillänge würde jedoch dazu führen, dass auch die Pfeilspitze in die Länge gezogen wird. Daher wird die Geometrie zur Laufzeit angepasst und nur ein Teil in der Mitte verändert.\\
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{images/unity/vector.jpg}
+	\caption{Feldlinien}
+	\label{img:mfield-vectors}
+\end{figure}
 
 \textit{Bezugspunkt}\\
-Welcher Punkt dem Vektor als Ankerpunkt dient ist dabei nicht entscheidend, denn ein Pfeil repräsentiert jeden Punkt des homogenen Feldes. Eine explizite Darstellung ist daher nicht erforderlich. Allerdings wird die Verankerung im Mittelpunkt dadurch deutlich, dass die Position bei variierender Länge gleich bleibt.\\
+Welcher Punkt dem Vektor als Ankerpunkt dient ist dabei nicht entscheidend, denn ein Pfeil repräsentiert jeden Punkt des homogenen Feldes. Eine explizite Darstellung ist daher nicht vorgesehen. Allerdings wird die Verankerung im Mittelpunkt dadurch deutlich, dass die Position des Pfeils bei variierender Länge gleich bleibt.\\
 
 \textit{Inhomogener Anteil}\\
 Im Gegensatz zu den Feldlinien ist eine Darstellung des inhomogenen Feldes über Vektoren auch ohne aufwendige Echtzeit-Berechnungen möglich (siehe Kap. \ref{sec-2-3-2}). Die Anwendung nutzt diese Eigenschaft, um in dieser Darstellung auch das inhomogene Feld anzudeuten. Dies geschieht, indem das Raster so gewählt wird, dass vor und hinter der Spule (im Sinne der Z-Achse) jeweils eine Reihe Vektoren positioniert ist. Diese sind hier im Vergleich deutlich kürzer und nicht parallel, sondern nach innen bzw. nach außen gerichtet. So wird erkennbar, dass das Feld hier schwächer und inhomogen ist. Da die Darstellungen erst ab einem minimalen Wert eingeblendet werden, wird der inhomogene Teil nach dem homogenen Teil eingeblendet.\\
+\noindent\hspace*{5mm}
+Ziel dieser Maßnahme ist es, den Unterschied zwischen dem homogenen Feld im Inneren und dem inhomogenen Feld im Äußeren der Spule deutlich zu machen. Die dargestellte Richtung und Stärke der äußeren Vektoren entspricht deshalb nicht genau den tatsächlichen physikalischen Werten. Stattdessen wurden Werte gewählt, die den Unterschied besser erkennen lassen.
 
 \vspace{4px}
 \begin{center}
 	\fbox{
 		\parbox{0.9\linewidth}{
 			\vspace{4px}
-			\textit{Überblick}
+			\textit{Zusammenfassung}
 			\begin{itemize}[rightmargin=12px, topsep=-12px]
 				\setlength{\itemsep}{-1pt}
 				\singlespacing
-				\item Pfeile repräsentieren Feldstärkevektor über Länge und Ausrichtung
-				\item 8 Pfeile für homogenes Feld, weitere 8 für Andeutung inhomogenes Feld
+				\item 3D-Pfeile repräsentieren Feldstärkevektoren über Länge und Ausrichtung
+				\item 8 Pfeile für homogenes Feld, weitere 8 für Andeutung inhomogenes Feld außerhalb der Spule
 				\item Anordnung im 3D-Gitter mit konfigurierbaren Parametern (Abstand und Anzahl, jeweils pro Raumrichtung)
-				\item Ankerpunkt mittig im Pfeil
 			\end{itemize}
 			\vspace{18px}
 	}}\\
@@ -227,52 +189,54 @@ Im Gegensatz zu den Feldlinien ist eine Darstellung des inhomogenen Feldes über
 
 \subsubsection{Darstellung der Simulationsdaten}
 \label{sec-4-4-3}
-Eine Visualisierung der Simulationsdaten ist in Abb. \ref{img:mfield-simulation} näher zu sehen.
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{images/unity/simulation.jpg}
-	\caption{Simulation}
-	\label{img:mfield-simulation}
-\end{figure}
-
-
-\textit{Querschnitt}\\
-Zunächst ist nur eine Anordnung in der X-Z-Ebene aktiv. Da das Feld aber symmetrisch zur Z-Achse ist, kann mit diesem einen Datensatz bereits jeder Querschnitt durch die Z-Achse dargestellt werden. Bei einer anderen Ausrichtung, z.B. im 45° Winkel, würden jedoch Feldlinien durch den Tisch verlaufen, auf dem die Spule steht.\\
+Nicht zuletzt soll das Magnetfeld der Spule über eine Darstellung vorberechneter Simulationsdaten erfolgen. Dafür steht der Arbeit eine Simulationssoftware zur Verfügung, bei der lediglich die Parameter für die Visualisierung der Feldlinien zu setzen sind.\\
 
 \textit{Anzahl und Anordnung}\\
 Die Auswahl von 12 Feldlinien erfolgte aus praktischem Ermessen bezüglich der Sichtbarkeit aus 1,5 Metern Entfernung. Dabei wurde bewusst eine gerade Anzahl gewählt. Andernfalls entsteht eine Feldlinie, die genau auf der Z-Achse liegt und nicht geschlossen ist sondern von minus nach plus Unendlich verläuft. Dies wurde aus didaktischen Gründen vermieden.\\
+\noindent\hspace*{5mm}
+Die Visualisierung der Simulationsdaten ist in Abbildung \ref{img:mfield-simulation} näher zu sehen, die die selben Daten mit zwei verschiedenen Farbskalen visualisiert darstellt.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.45\textwidth]{images/unity/simulation_rgb.jpg}
+	\hspace{0.03\textwidth}
+	\includegraphics[width=0.45\textwidth]{images/unity/simulation.jpg}
+	\caption{Darstellung der Simulationsdaten. Links mittels der RGB- und rechts mittels der RG-Farbskala.}
+	\label{img:mfield-simulation}
+\end{figure}
 
 \textit{Farbe}\\
-Die Wahl der Farbskala fiel aus mehreren Gründen auf eine Rot-Grün-Skala. Die Linien zeigen die kontinuierliche Änderung der Flussdichte, die durch einen Farbverlauf weiter hervorgehoben werden soll. Dabei kommt es nicht auf das Ablesen der numerischen Werte an, weshalb auch keine Skala mit Farbe und den dazugehörigen Werten angezeigt wird. Es geht viel mehr um das qualitative Verständnis der Darstellung. Mit der gewählten Skala unterscheiden sich die drei wesentlichen Regionen durch ihre Farbe klar voneinander:
+Die Wahl der Farbskala fiel aus mehreren Gründen auf eine RGB-Skala. Die Linien zeigen die kontinuierliche Änderung der Flussdichte, die durch einen kontinuierlichen Farbverlauf weiter hervorgehoben werden soll. Dabei kommt es nicht auf eine unverfälschte Repräsentation oder das Ablesen der numerischen Werte an, weshalb auch keine Skala mit Farbe und den dazugehörigen Werten angezeigt wird. Es geht viel mehr um das qualitative Verständnis der Darstellung. Mit der gewählten Skala unterscheiden sich die drei wesentlichen Regionen durch ihre Farbe klar voneinander:
 \begin{itemize}
 	\setlength{\itemsep}{-1pt}
 	\singlespacing
-	\item Inhomogenes, schwaches Feld außen: Grün
-	\item Homogenes, mittel-starkes Feld innen: Gelb
+	\item Inhomogenes, schwaches Feld außen: Blau
+	\item Homogenes, mittel-starkes Feld innen: Grün
 	\item Inhomogenes, starkes Feld unmittelbar am Rand der Spule: Rot
 \end{itemize}
 
-Darüber hinaus sprechen technische Gründe für eine solche Farbskala. Damit die Linien in Helligkeit und Transparenz nicht variieren, sollten sich die Farbanteile im RGB-Raum stets zu einem konstanten Wert addieren. Die Rot-Grün-Skala erfüllt diese Eigenschaft, da hier der Blauanteil stets null ist und Rot und Grün über $R = 1 - G$ zusammenhängen. Möglich wären hier auch eine Regenbogen- oder RGB-Skala, die nicht selten für Magnetfelder angewandt wird\footnote{Vgl. z.B. die Darstellungen in Kap. \ref{sec-2-2} und \ref{sec-2-3}}. Die Skala wird jedoch aufgrund der verzerrten Wahrnehmung nicht empfohlen und wurde hier daher nicht verwendet.
+Darüber hinaus sprechen technische Gründe für eine solche Farbskala. Damit die Linien in Helligkeit und Transparenz nicht variieren, sollten sich die Farbanteile im RGB-Raum stets zu einem konstanten Wert addieren. Die gewählte Skala erfüllt diese Eigenschaft. Gleiches gilt jedoch beispielsweise auch für die ebenfalls umgesetzte Rot-Grün-Skala.\\
+\noindent\hspace*{5mm}
+Entscheidend ist hier der Umstand, dass die RGB-Skala und sehr ähnliche Skalen (z.B. Regenbogen) typisch für die Feldliniendarstellung in der Physik sind (vgl. z.B. die Abb. in Kap. \ref{sec-2-2-2}) und daher in diesem fachlichen Kontext interpretierbar sind.
 
 \subsubsection{Der Stromfluss} 
 \label{sec-4-2-3}
-Beim Stromfluss ist in erster Linie die Flussrichtung durch die Spulen von Interesse, denn hiervon hängt die Ausrichtung des entstehenden Magnetfeldes ab. Diese wird über pfeil-ähnliche Indikatoren an den Spulen angezeigt. Außerdem werden die Anschlüsse mit Labels versehen, die Plus und Minus kennzeichnen.
+Beim Stromfluss ist in erster Linie die Flussrichtung durch die Spulen von Interesse, denn hiervon hängt die Ausrichtung des entstehenden Magnetfeldes ab. Diese wird über an der Spule anliegende Indikatoren in Form von 2D-Pfeilen angezeigt. Abbildung \ref{img:current} verdeutlicht diesen Ansatz.\\
+\noindent\hspace*{5mm}
+Die Positionierung direkt auf bzw. an den Spulen führt dazu, dass kein zusätzlicher Screenspace, der für die Felddarstellung genutzt wird, in Anspruch genommen werden muss, da das Feld hier ohnehin von den Spulen verdeckt wird. Die Spulen bleiben weiterhin gut sichtbar, da nur ein Teil und nur eine Seite überdeckt wird. Hier haushaltet die Anwendung also mit dem ihr zur Verfügung stehenden Platz.\\
 
-\begin{figure}[H]
+\begin{wrapfigure}{R}{0.5\textwidth}
 	\centering
-	\includegraphics[width=0.6\textwidth]{images/unity/current.jpg}
-	\caption{Stromfluss}
+	\includegraphics[width=0.45\textwidth]{images/unity/current.jpg}
+	\caption{Kennzeichnung des Stromflusses an der Spule über grüne Indikator-Pfeile und Beschriftung der Anschlüsse. Aufgrund des Kamerawinkels sind die seitlich angebrachten Indikatoren fast ausgeblendet, während der frontal positionierte Indikator vollständig eingeblendet ist.}
 	\label{img:current}
-\end{figure}
+\end{wrapfigure}
 
+Damit die Indikatoren aus verschiedenen Winkeln sichtbar sind, werden diese abhängig von Position und Blickwinkel des Betrachters angezeigt, wie in der Abbildung zu sehen. Bewegt sich der Nutzer um den die Spule herum, werden die Pfeile durch kontinuierlichen Übergang ein- und ausgeblendet.\\
 
-\textit{Positionierung und Ausrichtung}\\
-Die Indikatoren werden abhängig von Position und Blickwinkel des Betrachters angezeigt, wie in der Abbildung zu sehen. Auf diese Weise ist die Richtung aus allen Perspektiven zu erkennen. Beim Wechsel der Darstellungen gibt es einen kontinuierlichen Übergang. In dieser Umsetzung ist die 2D-Geometrie ausreichend. Die Positionierung direkt auf bzw. an den Spulen führt dazu, dass kein zusätzlicher Screenspace, der für die Felddarstellung genutzt wird, in Anspruch genommen werden muss, da das Feld hier ohnehin von den Spulen verdeckt wird. Die Spulen bleiben weiterhin gut sichtbar, da nur ein Teil und nur eine Seite überdeckt wird. Hier haushaltet die Anwendung also mit dem ihr zur Verfügung stehenden Platz.\\
-
-Ein Nachteil dieser Lösung ist jedoch, dass das zuvor erläuterte Problem mit der Akkommodation auftritt. Die Kante zwischen virtuellem Pfeil und realer Spule kann bei einer Entfernung unter 2m zu Irritationen führen, da sich das Auge auf eine Akkommodation festlegen muss und dementsprechend das andere Objekt nicht als scharf wahrnimmt. Allerdings stehen beide Objekte selten im Fokus und die Spule muss nicht detailreich betrachtet werden, deshalb überwiegen hier die Vorteile dieser Lösung.\\
+Ein Nachteil dieser Lösung ist jedoch, dass das zuvor erläuterte Problem mit der Akkommodation auftritt. Die Kante zwischen virtuellem Pfeil und realer Spule kann bei einer Entfernung unter 2m zu Irritationen führen, da sich das Auge auf eine Akkommodation festlegen muss und dementsprechend das andere Objekt nicht als scharf wahrnimmt, obwohl beide gleich weit entfernt sind. Allerdings stehen beide Objekte selten im Fokus und die Spule muss nicht detailreich betrachtet werden, deshalb überwiegen hier die Vorteile dieser Lösung.\\
 
 \textit{Annotationen der Anschlüsse}\\
-Damit die Stromrichtung auch als technische Stromrichtung interpretiert und in die Schaltung eingeordnet werden kann, sind die Konnektoren mit Labels in Form von Tooltips mit Bezeichnung, entsprechender Farbe und Icon ausgestattet. Die Lables orientieren sich dabei an der Kamera, damit sie aus allen Winkeln lesbar sind.\\
+Damit die Stromrichtung auch als technische Stromrichtung interpretiert und in die Schaltung eingeordnet werden kann, sind die Konnektoren mit Labels in Form von Tooltips mit Bezeichnung, entsprechender Farbe und Icon ausgestattet. Die Lables orientieren sich dabei zur Kamera hin, damit sie aus verschiedenen Winkeln lesbar bleiben.\\
 
 \vspace{8px}
 \begin{center}
@@ -294,35 +258,41 @@ Damit die Stromrichtung auch als technische Stromrichtung interpretiert und in d
 
 \subsubsection{Der Kompass} 
 \label{sec-4-2-4}
-Der Kompass bildet sich aus dem Zusammenspiel einer realen Magnetnadel, einer virtuellen Skala sowie virtuellen Hilfslinien. 
+Um theoretisch berechnete mit praktisch bestimmten Werten vergleichen zu können, wird ein virtueller Kompass in den Versuch integriert. Um dies zu realisieren wählt diese Lösung einen umfassenderen Ansatz: Der Kompass bildet sich aus einem Zusammenspiel der realen Magnetnadel und einer virtuellen Skala. Die Auslenkung der realen Nadel wird also anhand einer eingebetteten, virtuellen Skala abgelesen.\\
 
-\begin{figure}[H]
+Dieses Vorgehen hat vor allem zwei Gründe. Erstens wäre eine herkömmliche, unter der Nadel angebrachte Skala nur schwer lesbar. Das liegt an der gewünschten Entfernung, aus der die Nutzung erfolgen soll, da hierfür die Skalen oft zu klein sind. Dazu kommt der flache angestrebte Blickwinkel. Letzterer ist viel geringer als die steilen Winkel, die normalerweise zum Ablesen der Richtung benötigt werden.\\
+\noindent\hspace*{5mm}
+Zweitens würde eine ausreichend große Skala Platz im inneren der Spule einnehmen. Dieser Platz wird jedoch für die Felddarstellungen benötigt. Eine virtuelle Skala hingegen lässt sich entsprechend dieser Bedürfnisse konzipieren. Außerdem lässt sich darin direkt eine weitere, theoretisch berechnete Auslenkung markieren. Gleichzeitig bleibt die reale Nadel nutzbar. Diese ist mit $12 cm$ Länge bewusst groß genug gewählt, damit sie gut zu sehen ist. Außerdem wurde die zuvor schwarze Nadel weiß überklebt, damit sie zwischen den Hologrammen besser zu sehen ist.\\
+
+Die virtuelle Skala wurde als Ring unmittelbar um die Spule herum designet, um keinen zusätzlichen Platz im Inneren der Spule zu beanspruchen und gleichzeitig möglichst wenig zusätzliches Sichtfeld in Anspruch zu nehmen. Denn je größer ein Objekt, desto eher wird es an den Grenzen des Sichtfeldes abgeschnitten.\\
+\noindent\hspace*{5mm}
+Um die wichtigen Auslenkungen erkennbar zu machen, werden dafür Hilfslinien gezeichnet. Das betrifft Auslenkungen von 0 und 45 Grad. Denn Ziel des Versuches ist es, die Nadel von 0 auf 45° auszulenken. Die theoretisch berechnete Auslenkung ist ebenfalls über eine solche Linie realisiert. Der Screenshot in Abbildung \ref{img:compass} zeigt die erarbeitete Lösung.
+
+\begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.8\textwidth]{images/unity/compass.jpg}
-	\caption{Kompass}
+	\includegraphics[width=0.45\textwidth]{images/unity/compass.jpg}
+	\caption{Virtuelle Elemente des Kompass. Die theoretische Nadel ist hier um 50° ausgelenkt.}
 	\label{img:compass}
 \end{figure}
 
+Der Fokus dieses Designs liegt nicht darin, die Auslenkung des Kompasses möglichst genau ablesen zu können. Vielmehr geht es darum, die besonders wichtigen Auslenkungen einstellen zu können. Zwischen diesen Werten genügt eine grobe Orientierung. Das gewählte Design erlaubt es dem Betrachter genau festzustellen, ob die Linie der Nadel durch eine der virtuellen Linien fortgesetzt wird. Außerdem entsteht so die Vergleichbarkeit mit der theoretischen Nadel, da diese entweder stärker, schwächer oder genauso stark ausgelenkt ist. Für letztere wird außerdem die Gradzahl als Text angegeben.\\
+\noindent\hspace*{5mm}
+Als Farbe wurde Grau gewählt, damit die Linien neutral und weniger dominant wirken. Dem dient auch die Wahl von gestrichelten anstelle durchgezogener Linien. Die ersten beiden werden außerdem etwas abgeschwächt, indem ihre Transparenz erhöht wird. Alle drei sind jedoch in der Mitte ausgeschnitten, um die Kompassnadel nicht zu überblenden.\\
+
+In dieser Umsetzung wird zunächst keine Verdeckung durch die Magnetnadel berechnet. Diese ließe sich anhand der theoretischen Auslenkung berechnen. Allerdings unterliegt die reale Nadel Trägheit und Reibung, die in der Berechnung nicht berücksichtigt werden. Außerdem ist sie sehr schmal (etwa 5 mm breit), weshalb Abweichungen zwischen realem und virtuellem Modell stärker ins Gewicht fallen, als bei größeren Objekten. Daher verzichtet diese Lösung darauf, was sich jedoch zu Irritationen bei der Wahrnehmung führen kann. Diese Lösung setzt außerdem auf eine genaue Positionsbestimmung der Spule sowie eine hohe Stabilität der Hologramme. Wenn das Modell verrutscht oder zittert schränkt das die Nutzung des Kompasses ein.
 
 \vspace{8px}
 \begin{center}
 	\fbox{
 		\parbox{0.9\linewidth}{
 			\vspace{4px}
-			\textbf{Überblick}
+			\textbf{Zusammenfassung}
 			\begin{itemize}[rightmargin=12px, topsep=-12px]
 				\setlength{\itemsep}{-1pt}
 				\singlespacing
 				\item Kompass entsteht aus Kombination von realer Magnetnadel und virtueller Skala
-				\item Reale Nadel wird mittig in der Spule aufgestellt
 				\item Virtueller Ring mit Markierungen im 45° Abstand um die Spule herum dient als Skala	
-				\item Virtuelle Kreissehnen durch den Mittelpunkt mit Ausschnitt im Mittelpunkt für den Kompass 
-				\begin{itemize}[topsep=0px, label=\textbullet]
-					\setlength{\itemsep}{-1pt}
-					\item Feste Nord-Süd Linie
-					\item Feste 45° Linie
-					\item Virtueller Kompass, der die theoretisch berechnete Auslenkung eines idealen Kompasses anzeigt
-				\end{itemize}
+				\item Virtuelle Kreissehnen durch den Mittelpunkt mit Ausschnitt im Mittelpunkt für den Kompass markieren wichtige Auslenkungen
 				\item Gradzahl der theoretischen Nadel wird am Kreis angezeigt
 				\item Grau als Farbe genutzt, leicht transparent, virtueller Kompass jedoch etwas heller und daher präsenter gestaltet
 				\item Magnetnadel von dunkelgrau zu weiß geändert für bessere Sichtbarkeit
@@ -332,71 +302,72 @@ Der Kompass bildet sich aus dem Zusammenspiel einer realen Magnetnadel, einer vi
 \end{center}
 \vspace{6px}
 
-Als Farbe wurde Grau gewählt, damit die Linien neutral und weniger dominant wirken. Dem dient auch die Wahl von gestrichelten anstelle durchgezogener Linien. Gleichzeitig wurde die zuvor dunkle Magnetnadel mit weißem Papier überklebt, damit sie zwischen den virtuellen Objekten besser zu sehen ist.\\
-
-Der Kompass liegt horizontal in einer Ebene durch den Spulenmittelpunkt. Die ringförmige Skala wurde mit einem Radius von 20 cm sehr eng um die Spulen herum gelegt, damit wenig zusätzliches Sichtfeld benötigt wird. Denn je größer der Raduis, desto eher wird das Element durch die Sichtfeldbegrenzung abgeschnitten. Neben den festen Gradzahlen im Abstand von 45° wird hier auch die theoretisch berechnete Gradzahl am Ende der zugehörigen Linie angezeigt.\\
-
-In dieser Umsetzung wird zunächst keine Verdeckung durch die Magnetnadel berechnet. Diese ließe sich anhand der theoretischen Auslenkung berechnen. Allerdings unterliegt die reale Nadel Trägheit und Reibung, die in der Berechnung nicht berücksichtigt werden. Außerdem ist sie sehr schmal (etwa 5 mm breit), weshalb Abweichungen zwischen realem und virtuellem Modell stärker ins Gewicht fallen, als bei größeren Objekten. Daher verzichtet diese Lösung darauf, was sich jedoch negativ auf die Immersion des Anwenders auswirkt.\\
-
-
-Der Fokus dieses Designs liegt nicht darin, die Auslenkung des Kompasses möglichst genau ablesen zu können. Vielmehr geht es darum die besonders wichtigen Auslenkungen, nämlich 0° und 45°, sichtbar zu machen. Denn Ziel des Versuches ist es, die Nadel von 0° auf 45° auszulenken. Zwischen diesen Werten genügt eine grobe Orientierung. Außerdem sollen die theoretischen Werte mit in den Kompass integriert werden.\\
-
-Die Nutzung einer virtuellen Skala erlaubt letzteres auf natürliche Weise. Dazu kommen zwei weitere, wesentliche Gründe, warum nicht eine reale Skala zum Einsatz kommt. Erstens wäre eine herkömmliche, unter der Nadel angebrachte Skala nur schwer lesbar. Das liegt an der gewünschten Entfernung, da hierfür die Skalen oft zu klein sind, aber auch am Blickwinkel. Letzterer ist viel geringer als die steilen Winkel, die normalerweise zum Ablesen der Richtung benötigt werden. Die Nadel hingegen ist mit $12 cm$ Länge bewusst groß genug gewählt, damit sie gut zu sehen ist. Zweitens würde sie Platz im inneren der Spule einnehmen. Dieser Platz wird jedoch für die Felddarstellungen benötigt.\\
-
-Die virtuelle Skala umgeht dieses Problem, da sie als Ring unmittelbar außerhalb der Spule umgesetzt ist. Lediglich die Hilfslinien bei 0° und 45° sowie die Linie des virtuellen Kompasses kommen zusätzlich in den Bereich der Felddarstellung. Die ersten beiden werden außerdem etwas abgeschwächt, indem ihre Transparenz erhöht wird. Alle drei sind jedoch in der Mitte ausgeschnitten, um die Kompassnadel nicht zu überblenden.\\
-
-Dieses Design erlaubt es dem Betrachter genau festzustellen, ob die Linie der Nadel durch eine der virtuellen Linien fortgesetzt wird. Außerdem entsteht so die Vergleichbarkeit mit der theoretischen Nadel, da diese entweder stärker, schwächer oder genauso stark ausgelenkt ist. Für letztere wird außerdem die Gradzahl als Text angegeben.\\
-
-Diese Lösung setzt jedoch auf eine genaue Positionsbestimmung der Spule sowie eine hohe Stabilität der Hologramme. Wenn das Modell verrutscht oder zittert schränkt das die Nutzung des Kompasses ein.
-
-\subsubsection{Das Datenpanel} 
+\subsubsection{Das Datenpanel}
 \label{sec-4-2-5}
-Für die Darstellung weiterer Informationen sind zwei Lösungen vorgesehen: Ein Datenpanel zur Darstellung numerischer Werte in Textform sowie optional aktivierbare Labels am Versuchsaufbau.
+Für die Darstellung der gemessenen und berechneten Werte soll eine textuelle Repräsentation angeboten werden. Im Fall der berechneten Flussdichte kann so die Flussdichte des Erdmagnetfeldes bei erfolgreicher Auslenkung der Magnetnadel auf 45° direkt abgelesen werden. Im Fall der Stromstärke ist die Darstellung dazu geeignet, die notwendigen Kopfbewegungen hin zum Amperemeter zu reduzieren, was aus Sicht des beschränkten Sichtfeldes von Vorteil ist.\\
+\noindent\hspace*{5mm}
+Die Werte werden mit ihren Einheiten in einer Text-Box mit grauem Hintergrund angezeigt. Letzterer dient der besseren Lesbarkeit. Die Umsetzung ist in Abbildung \ref{img:status} festgehalten.
 
-\begin{figure}[H]
+\begin{figure}[h!]
 \centering
-\includegraphics[width=0.8\textwidth]{images/unity/status.jpg}
+\includegraphics[width=0.4\textwidth]{images/unity/status.jpg}
 \caption{Statusbar}
 \label{img:status}
 \end{figure}
+Die Positionierung an den Verbindungsstücken liegt, wie auch bei den Indikatoren für die Stromrichtung, im Ausnutzen von Platz begründet. Die Objekte sind schräg gestellt (ca. 35°), so dass sie aus diesem typischen Winkel gut zu lesen sind.\\
 
+Durch ihre Platzierung unmittelbar über dem Untergrund würden Drop Shadows das Präsenzgefühl stärken. Diese lassen sich hier jedoch nicht direkt umsetzen, denn der Untergrund ist real und kann durch die HoloLens nicht weiter verdunkelt werden. Eine mögliche Lösung bestünde darin, die Schatten zu erzeugen, indem der Untergrund außerhalb des Schattens zusätzlich erhellt wird. Allerdings müssten hier wiederum die Schatten der realen Objekte mit einbezogen werden. Daher nimmt diese Lösung die fehlenden Schatten in Kauf.\\
+
+Man könnte auch eine Lösung über UI-Elemente in Erwägung ziehen, da es sich um numerische Werte ohne einen natürlichen Ankerpunkt in der Szene handelt. Allerdings sind solche Lösungen aus verschiedenen Gründen auf der HoloLens ungünstig. Fest im Bild positionierte Elemente wären aufgrund der Vibrationen des Kopfes kaum bis gar nicht lesbar. Eine Stabilisierung auch über Kopfbewegungen hinweg nimmt wiederum Platz in Anspruch. Außerdem würde eine solche Realisierungen zusätzliche Fokuswechsel nach sich ziehen. Deshalb rät die Dokumentation explizit vom Gebrauch solcher Elemente ab und hier die Variante eines fest stehenden Objektes gewählt.\\
 
 \vspace{8px}
 \begin{center}
 	\fbox{
 		\parbox{0.9\linewidth}{
 			\vspace{4px}
-			\textbf{Überblick}
+			\textbf{Zusammenfassung}
 			\begin{itemize}[rightmargin=12px, topsep=-12px]
 				\setlength{\itemsep}{-1pt}
 				\singlespacing
 				\item Stromstärke (gemessen) und Flussdichte (berechnet) werden auf einem Datenpanel dargestellt
-				\item Panel hat einen dunklen Hintergrund, damit der Text besser lesbar ist
-				\item Weitere physikalische Parameter werden über Labels an die entsprechenden Elemente angehängt (Windungszahl, Radius und Abstand der Spulen, Widerstand etc.)
+				\item Platzierung an unteren Balken zwischen den Spulen nutzt das Sichtfeld aus
+				\item Sichtbarkeit analog zu Strom-Pfeilen
+				\item Dunkelgrauer Hintergrund für bessere Lesbarkeit
 			\end{itemize}
 			\vspace{18px}
 	}}\\
 \end{center}
 \vspace{6px}
 
-\begin{itemize}
-	\item Listet gemessene und berechnete Echtzeitwerte auf: Stromstärke, Spannung, Flussdichte
-	\item 4 Replikas, Platzierung an unteren Balken zwischen den Spulen
-	\item Sichtbarkeit analog zu Strom-Pfeilen
-	\item Dunkelgrauer Hintergrund für bessere Lesbarkeit
-\end{itemize}
+\subsubsection{Zusammenfassung}
+Nachdem in den vorangegangenen Abschnitten die einzelnen Elemente vorgestellt wurden soll das visuelle Design anhand von Fotos von der HoloLens zusammengefasst werden. Bei der Bewertung der Abbildungen ist jedoch die eingeschränkte Qualität zu beachten. Die tatsächliche Darstellungsqualität auf der HoloLens entspricht den zuvor gezeigten Screenshots aus der Entwicklungsumgebung. Einen ersten Eindruck der zusammengesetzten Darstellungen auf der HoloLens gibt Abbildung \ref{img:hl_ss_intro}.\\
 
-Das Datenpanel dient als Informationsboard für die Echtzeitdaten. Der graue Hintergrund stellt dabei sicher, dass die Schrift gut zu lesen ist. Die Positionierung an den Verbindungsstücken liegt, wie auch bei den Indikatoren für die Stromrichtung, im Ausnutzen von Platz begründet. Hier ist die ständige Sichtbarkeit jedoch sekundär.\\
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.39\textwidth]{images/HL/fieldlines.jpg}
+	\hspace{0.01\textwidth}
+	\includegraphics[width=0.55\textwidth]{images/HL/Vektoren.jpg}
+	\caption{Aufnahmen der beiden Echtzeitdarstellungen von der HoloLens }
+	\label{img:hl_ss_intro}
+\end{figure}
 
-Der Hintergrund orientiert sich an dem des vorgefertigten Tooltips und wird einheitlich für alle Texte (abgesehen von den Buttons) verwendet. Die Objekte sind schräg gestellt (ca. 35°), so dass sie aus diesem typischen Winkel gut zu lesen sind.\\
+TODO...\\
 
-Durch ihre Platzierung unmittelbar über dem Untergrund würden Drop Shadows das Präsenzgefühl stärken. Diese lassen sich hier jedoch nicht direkt umsetzen, denn der Untergrund ist real und kann durch die HoloLens nicht weiter verdunkelt werden. Eine mögliche Lösung bestünde darin, die Schatten zu erzeugen, indem der Untergrund außerhalb des Schattens zusätzlich erhellt wird. Allerdings müssten hier wiederum die Schatten der realen Objekte mit einbezogen werden. Daher nimmt diese Lösung die fehlenden Schatten in Kauf.\\
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.37\textwidth]{images/HL/45DegCut.jpg}
+	\hspace{0.01\textwidth}
+	\includegraphics[width=0.57\textwidth]{images/HL/compass.jpg}
+	
+	\vspace{0.01\textwidth}
+	
+	\includegraphics[width=0.48\textwidth]{images/HL/simulation.jpg}
+	\hspace{0.01\textwidth}
+	\includegraphics[width=0.48\textwidth]{images/HL/simu2.jpg}
+	\caption{Oben: Auslenkung der Magnetnadel im Vergleich zur 45° Linie und zur theoretischen Auslenkung. Unten: Simulationsdarstellung.}
+	\label{img:hl_ss}
+\end{figure}
 
-Man könnte auch eine Lösung über ein Heads-Up Display in Erwägung ziehen, da es sich um numerische Werte handelt, ohne einen natürlichen Ankerpunkt in der Szene. Allerdings sind HUDs aus verschiedenen Gründen auf der HoloLens ungünstig. Deshalb rät die Dokumentation explizit vom Gebrauch solcher ab. Daher wurde hier die Variante eines fest stehenden Objektes gewählt.\\
-
-Schließlich lassen sich verschiedene weitere Parameter des Versuches anzeigen. Diese müssen nicht immer sichtbar sein und können deshalb optional eingeblendet werden. Die Umsetzung erfolgt wie bei den Markierungen für Plus und Minus im Tooltip-Stil.\\
-
-Weiterhin sind für alle Objekte, die in Abhängigkeit des sich ändernden Feldes stehen, Parameter für die Darstellung definiert. Diese legen für alle Elemente einen gemeinsamen Wertebereich fest, für den die Darstellung erfolgt. Außerdem werden ab dem minimalen Wert die Objekte über einen gewählten Bereich kontinuierlich eingeblendet. Dieses konsistente Verhalten dient dazu, das Verständnis der Darstellungen zu verbessern. Außerdem soll auf diese Weise transportiert werden, dass nur die Darstellungen verschwinden, nicht jedoch die physikalischen Sachverhalte, die repräsentiert werden.\\
 
 \subsection{Interaktion}
 \label{sec-4-4}
@@ -413,7 +384,6 @@ Die dazu korrespondierende Handgeste ist der AirTap, der auf der HoloLens als Kl
 
 Die Lösung stellt dem Anwender die drei Eingabemethoden frei zur Verfügung. Das bedeutet, der Nutzer kann selbst entscheiden, auf welche Methoden er zurückgreift. Jede Interaktionsmöglichkeit kann jederzeit genutzt werden. Anwender, die keine Erfahrung mit der HoloLens haben, sind nicht gezwungen, zunächst die Gestensteuerung der HoloLens zu erlernen. Außerdem ist die Interaktion so auf natürliche Weise konsistent: Ein Klick mit dem Klicker ist äquivalent zu einem Klick durch die AirTap-Geste.\\
 
-%\textit{Hauptteil der Anwendung - Durchführung des Versuches}\\
 Während der Durchführung des Versuches sind drei Aktionen möglich:
 \begin{enumerate}[topsep=-2px]
 	\setlength{\itemsep}{-5pt}
@@ -451,7 +421,7 @@ Die Lösung baut hier auf den vorhandenen Elementen des MRTK auf und nutzt vorge
 \vspace{6px}
 \end{comment}
 
-\subsection{Implementierung}
+\subsection{Designentscheidungen im Hinblick auf die Implementierung}
 \label{sec-4-3}
 Die Lösung sieht neben den inhaltlichen Darstellungen weitere Komponenten vor, die der Nutzbarkeit der Anwendung dienen. Das betrifft drei Bereiche: Die Steuerung des Ablaufes, die Bestimmung von Position und Ausrichtung der Spule sowie Einstellungen.\\
 
@@ -492,12 +462,5 @@ Solange also der Versuchsaufbau nicht bewegt wird, kann die einmalig gespeichert
 \end{center}
 \vspace{6px}
 
-\begin{comment}
-\subsection{Zusammenfassung Design}
-\label{sec-4-5}
-TODO...\\
-Die vorgestellte Lösung zielt darauf ab, die physikalischen Zusammenhänge erkennbar zu machen, indem die Möglichkeiten der HoloLens genutzt, technische Einschränkungen berücksichtigt und Designempfehlungen eingearbeitet werden. Dazu wird, wenn möglich, auf bestehende, bereits für die HoloLens designete Objekte und Verhaltensweisen zurückgegriffen. Durch die räumliche und zeitliche Integration der Hologramme in den Versuchsaufbau werden die physikalischen Eigenschaften des Systems direkt in ihrem tatsächlichen Kontext dargestellt. Dabei hat der Nutzer die Kontrolle über das Verhalten des Systems, wodurch es auf natürliche Weise erforschbar wird.\\
-\end{comment}
-
-Das folgende Kapitel erläutert nun die Details der Implementierung dieses Designs.
+Das folgende Kapitel erläutert nun die Details der Umsetzung dieser Lösung.
 
