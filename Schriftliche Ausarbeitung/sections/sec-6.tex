@@ -91,10 +91,10 @@ Im Weiteren soll auf einzelne Aspekte näher eingegangen werden.\\
 			\hline
 			Input Interaction Clarity & Vorhandene, einfache Standard-Interaktionsmechanismen genutzt und geringfügig erweitert. Konsistentes, akustisches Feedback. Jedoch keine Erklärung der möglichen Aktionen durch die Anwendung selbst. & Erfüllt\\
 			\hline
-			Interaktive Objekte & Vorhandene Buttons, Felder und Cursor genutzt. & Optimal\\
+			Interaktive Objekte & Vorhandene Objekte genutzt: Buttons, Felder, Tastatur und Cursor. & Optimal\\
 			\hline
 			Ladevorgänge & Vorhandenen, animierten Progress Indikator verwendet. Lesbarkeit des Textes wird abgesichert. Vorgänge sind kurz, keine Angabe einer erwarteten Dauer notwendig. & Optimal\\
-		\end{tabular}\caption{\label{tab:tech_results} Bewertung der Umsetzung anhand der in Kap. \ref{sec-2-1-4} vorgestellten Qualitätskriterien. Die detaillierten Kriterien finden sich in \cite{MRDocQuality}. Die Einstufung erfolgt anhand der drei vorgegebenen Stufen optimal, erfüllt und nicht erfüllt.}
+		\end{tabular}\caption{\label{tab:tech_results} Bewertung der Umsetzung anhand der in Kap. \ref{sec-2-1-4} vorgestellten Qualitätskriterien. Die detaillierten Kriterien finden sich in \cite{MRDoc}. Die Einstufung erfolgt anhand der drei vorgegebenen Stufen optimal, erfüllt und nicht erfüllt.}
 	\end{table}
 	\egroup
 %\end{sidewaystable}
@@ -186,39 +186,16 @@ Das Feedback ist nachfolgend noch einmal zusammengefasst.
 \vspace{6px}
 
 \subsection{Diskussion}
+Die Ergebnisse können sowohl aus inhaltlicher als auch aus technischer Sicht als zufriedenstellend beschrieben werden. Alle in Zusammenarbeit mit Experten als wichtig herausgearbeitete Informationen konnten dargestellt werden. Gleichzeitig konnten die technischen Anforderungen fast vollständig erfüllt werden. Das Feedback aus ersten Demonstrationen der Lösung viel außerdem auch im Hinblick auf die technischen Kriterien positiv aus.\\ % und motiviert gleichzeitig Erweiterungen und weitere Untersuchungen.\\
+
+Einige der technischen Probleme konnten bereits im Design abgemildert oder umgangen werden, indem entsprechende Anforderungen von vornherein berücksichtigt wurden. Die in Kapitel \ref{sec-4-2} getroffenen Designentscheidungen bezüglich Größe, Positionierung und Farbe von virtuellen Objekten begünstigen eine Nutzung in den empfohlenen Bereichen und vermeiden unerwünschte Effekte durch zu dichte Objekte. Außerdem wurden die Grenzen des Sichtfeldes bereits beim Design berücksichtigt, um abgeschnittene Objekte zu vermeiden.\\
+\noindent\hspace*{5mm}
+Besonders bei der Umsetzung der Interaktion greift die Lösung außerdem auf vorgefertigte Objekte des Mixed Reality Toolkits zurück. Diese sind für die HoloLens designet und bringen die gewünschten Eigenschaften und Verhaltensweisen bereits mit. Hier sind unter anderem der Progress Indikator, Standard-Button und Standard-Shader zu nennen.\\
+
+Als nicht zufriedenstellend ist aus technischer Sicht vor allem das Kantenflimmern zu bewerten, das durch das verwendete Multisampling nicht ausreichend reduziert werden kann. Vor allem an den weißen Kanten der Texthintergründe fällt der Effekt störend auf, denn hier ist das Flackern besonders hell. Aufgrund des hohen Rechenaufwandes kann das Problem nicht durch eine Erhöhung auf vier- oder achtfaches Multisampling adressiert werden. Deshalb sollten harte Kanten, insbesondere bei hellen Objekten, vermieden und stattdessen weiche Kanten genutzt werden.\\
 
 
-
-\begin{comment}
-KRITISCH MIT DER EIGENEN ARBEIT AUSEINANDERSETZTEN!!\\
-
-Kantenflimmern unerwartetes Problem. Kantenglättung zu teuer und nicht ausreichend. Kanten anders glätten. Keine weißen Linien und Umrandungen verwenden.\\
-
-Einige Probleme konnten bereits im Design abgemildert oder umgangen werden. Das gilt z.B. für die Aspekte Komfortzone und FOV-Grenzen. Durch die platzsparende Anordnung der Elemente werden die Hologramme seltener abgeschnitten. Außerdem sind häufige Kopfbewegungen und Hinweise auf Elemente außerhalb des FOV so nicht notwendig. Und die Berücksichtigung einer geeigneten Distanz von Beginn an vermeidet bzw. verringert Probleme mit zu dicht positionierten Objekten.\\
-
-Hier wurde z.B. bei der Festsetzung von Anzahl und Größe von Objekten auf die Einschränkungen der HoloLens Rücksicht genommen. Viele Probleme werden auch durch die Nutzung von vorgefertigten Objekten und Verhaltensweisen vermieden. Hier sind z.B. der Progress Indikator, Standard-Button und Standard-Shader zu nennen.\\
-
-Nicht für alles muss eine softwareseitige Lösung her, siehe z.B. Begrenzung der Darst. und aufgehellte Magnetnadel.\\
-
-Frage: Wie HoloLens einsetzen?
-
-\begin{itemize}
-	\item Über 3D-Darstellungen Felder im Raum anzeigen, profitiert von stereoskopischer Wahrnehmung und See-Through-Displays
-	\item Empfohlene Verhaltensweisen durch Nutzung von vorgefertigten Elementen einbinden
-	\item Interaktion einfach halten, z.B. durch Klicker
-	\item Zusammenspiel von realen und virtuellen Objekten nutzen, nicht für alles muss eine softwareseitige Lösung geschaffen werden
-	\item Virtuelle Objekte an Versuchsaufbau verankern, dadurch verliert Nutzer sie nicht
-	\item Tracking der HoloLens nutzen, um Objekte zu positionieren, anstelle eines dauerhaft sichtbaren Markers, Stabilität ausreichend, dabei aber mögliche Störfaktoren beachten...
-	\item ... Stabilität bei diesem Ansatz wichtig, daher Performance sehr wichtig, unbedingt beachten und Optimierungen vornehmen
-	\item World Anchor kann für grobe Positionierung genutzt werden, um Setup-Zeit zu verringern
-	\item Anwendung ist hochgradig zugeschnitten auf die konkreten Eigenschaften des Experimentes
-	\item Einsatz per Streaming denkbar, dann jedoch weitere perf. Opt. notwendig oder Deaktivieren von MSAA
-	\item Anpassbarkeit
-\end{itemize}
-
-%Wie die HoloLens weiter im Kontext des gewählten Versuches verwendet werden könnte.
-\end{comment}
-
+%KRITISCH MIT DER EIGENEN ARBEIT AUSEINANDERSETZTEN!!\\
 \subsubsection{Erweiterbarkeit}
 Ein im Rahmen der Fragestellung wichtiger Aspekt besteht darin, wie die vorgestellte Lösung um weitere Inhalte erweitert werden könnte. Dies ist in mehreren Bereichen denkbar und soll im Folgenden diskutiert werden.\\
 
@@ -233,7 +210,14 @@ Grundsätzlich sind auch Erweiterungen um weitere Lerninhalte denkbar, die mit d
 \subsubsection{Übertragbarkeit}
 Ansatz übertragen auf andere Versuche:
 
-Neben dem vorgestellten Experiment sind mit einer Helmholtz-Spule noch weitere Versuche möglich. Ein typisches Beispiel ist die Ablenkung eines Elektronenstrahls, der durch ein Gas sichtbar gemacht wird. Die Elektronen werden im Inneren der Spule durch das Magnetfeld entsprechend dessen Stärke abgelenkt. In dem Versuch ist letztere so einzustellen, dass die Elektronen auf eine Kreisbahn gezwungen werden.\\
+Neben dem vorgestellten Experiment sind mit einer Helmholtz-Spule noch weitere Versuche möglich. Ein typisches Beispiel ist die Ablenkung eines Elektronenstrahls, der durch ein Gas sichtbar gemacht wird. Die Elektronen werden im Inneren der Spule durch das Magnetfeld entsprechend dessen Stärke abgelenkt. In dem Versuch ist letztere so einzustellen, dass die Elektronen auf eine Kreisbahn gezwungen werden. Das Foto in Abbildung \ref{img:beam} zeigt den Versuch in diesem Zustand.\\
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+	\centering
+	\includegraphics[width=0.48\textwidth]{images/papers/beam.jpg}
+	\caption{Ablenkung von Elektronen durch das Magnetfeld einer Helmholt-Spule \cite{Bader15}. Der Elektronenstrahl regt ein Gas zum Leuchten an und wird dadurch sichtbar.}
+	\label{img:beam}
+\end{wrapfigure}
 
 Durch die vielen Gemeinsamkeiten mit dem in dieser Arbeit behandelten Versuch liegt eine Übertragung der Lösung auf diesen Anwendungsfall nahe. Das Magnetfeld, die Stromrichtung und die Echtzeitdaten könnten hier ebenfalls in den Versuch integriert werden. Dabei wären jedoch ggf. andere Anforderungen durch den geänderten Versuchsaufbau zu berücksichtigen.\\
 

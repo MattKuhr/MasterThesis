@@ -9,12 +9,11 @@ Die Anforderungen an eine Umsetzung teilen sich in zwei Bereiche: Inhaltliche An
 \subsubsection{Physikalische Seite}
 \label{sec-3-1-1}
 Von Seiten der Physik teilen sich die Anforderungen nochmals in zwei Bereiche. Zum einen sind inhaltliche Kriterien an die Anwendung zu stellen. Der Versuch dient dazu, Lernenden bestimmte physikalische Konzepte und Zusammenhänge zu vermitteln. An diesen muss sich eine Lösung orientieren und ableiten, welche Informationen mit der HoloLens darzustellen sind.
-\par
 \noindent\hspace*{5mm}
 Zum anderen bringt der Anwendungsfall auch Einschränkungen in Bezug darauf mit sich, wie die Darstellungen erfolgen sollen. Letztere müssen unter anderem für den Anwender hinsichtlich ihrer physikalischen Bedeutung interpretierbar sein und dürfen keine falschen Eindrücke erwecken.\\
 
 \textit{Relevante physikalische Zusammenhänge}\\
-Der Fokus dieser Arbeit liegt darin, zusätzliche Informationen zu physikalischen Zuständen anzuzeigen. Eine Unterstützung beim Aufbau oder der Durchführung des Versuches ist nicht vorgesehen. Die Anwendung zielt zunächst nur auf die Bestimmung der Stärke des Erdfeldes ab. Die in Kap. \ref{sec-2-3-3} genannten ersten beiden Schritte der Durchführung (Ausrichtung von Nadel und Spule) werden also vorausgesetzt. Ausgangspunkt dafür, welche Informationen zu visualisieren sind, stellen die zu vermittelnden Zusammenhänge dar. In Zusammenarbeit mit Experten wurden die folgenden Fragen als zentral für das Verständnis des Versuches festgehalten \autocite{Reinholz18}.
+Der Fokus dieser Arbeit liegt darin, zusätzliche Informationen zu physikalischen Zuständen anzuzeigen. Eine Unterstützung beim Aufbau oder der Durchführung des Versuches ist nicht vorgesehen. Die Anwendung zielt zunächst nur auf die Bestimmung der Stärke des Erdfeldes ab. Die in Kap. \ref{sec-2-3-3} genannten ersten beiden Schritte der Durchführung (Ausrichtung von Nadel und Spule) werden also vorausgesetzt. Ausgangspunkt dafür, welche Informationen zu visualisieren sind, stellen die zu vermittelnden Zusammenhänge dar. In Zusammenarbeit mit Experten wurden die folgenden Fragen als zentral für das Verständnis des Versuches festgehalten \cite{Reinholz18}.
 
 \begin{itemize}
 	\setlength{\itemsep}{-3pt}
@@ -30,11 +29,9 @@ Das Verständnis dieser Sachverhalte soll im Rahmen der zu erarbeitenden Lösung
 \textit{Anforderungen an die Umsetzung}\\
 Neben den Voraussetzungen bezüglich dessen, was dargestellt wird, sind auch Anforderungen daran zu stellen, wie dies erfolgt. Ziel des Versuches ist ein qualitatives Verständnis der zuvor genannten Eigenschaften und Zusammenhänge. Darstellungen sollten also auf in erster Linie einen qualitativen Eindruck vermitteln.\\
 
-Damit die dargestellten physikalischen Zustände auch als solche interpretierbar sind, sollte auf etablierte Modelle zurückgegriffen werden. Andernfalls müsste ein Nutzer neben den eigentlichen Sachverhalten zunächst die Bedeutung der virtuellen Elemente verstehen. Darüber hinaus dürfen durch die angezeigten Objekte keine falschen Eindrücke entstehen, da diese dem eigentlichen Ziel entgegen stünden. 
-\par
+Damit die dargestellten physikalischen Zustände auch als solche interpretierbar sind, sollte auf etablierte Modelle zurückgegriffen werden. Andernfalls müsste ein Nutzer neben den eigentlichen Sachverhalten zunächst die Bedeutung der virtuellen Elemente verstehen. Darüber hinaus dürfen durch die angezeigten Objekte keine falschen Eindrücke entstehen, da diese dem eigentlichen Ziel entgegen stünden.\\
 \noindent\hspace*{5mm}
-Sofern Zusammenhänge direkt repräsentiert werden, sollen diese physikalisch korrekt wiedergegeben werden. Um außerdem eine natürliche und sichere Nutzung der Gerätschaften zu gewährleisten, soll der Nutzer nicht in seiner Interaktion mit dem Versuchsaufbau und relevanten Materialien eingeschränkt werden.
-\par
+Sofern Zusammenhänge direkt repräsentiert werden, sollen diese physikalisch korrekt wiedergegeben werden. Um außerdem eine natürliche und sichere Nutzung der Gerätschaften zu gewährleisten, soll der Nutzer nicht in seiner Interaktion mit dem Versuchsaufbau und relevanten Materialien eingeschränkt werden.\\
 \noindent\hspace*{5mm}
 Um den Einsatz eines Prototypen auch für Nutzer ohne Erfahrung mit der HoloLens zu ermöglichen, sollte die Lösung keine Vorkenntnisse zu dem Gerät voraussetzen. Um schließlich die praktische Umsetzung zu gewährleisten, sollen die vorhandenen Gerätschaften und Lehrmittel genutzt werden.\\
 
@@ -60,27 +57,11 @@ Diese aufgestellten Rahmenbedingungen fasst Tabelle \ref{tab:req} noch einmal zu
 \end{table}
 \egroup
 
-\begin{comment}
-Diese Anforderung verlangen dabei nicht notwendigerweise (rein) virtuelle Repräsentationen für die genannten Elemente. Auch wenn der Fokus auf über die HoloLens visualisierten Daten liegt, so könnte es für manche Elemente sinnvoller sein, auf andere Optionen zurückzugreifen. Das können reale statt virtueller Objekte sein aber auch akustische Informationen, die über die integrierten Lautsprecher der HoloLens wiedergegeben werden. Die Frage, was visualisiert und auch was nicht visualisiert wird, ist also durch ein Design zu beantworten.\\
-
-Neben diesen inhaltlichen Anforderungen sind von Seiten der Physik auch Anforderungen an die Anwendung zu stellen. Hier wurden die Folgenden herausgearbeitet:\\[4px]
-
-\vspace{6px}
-Der erste Punkt soll hier kurz näher beleuchtet werden. Dabei geht es nicht um möglichst exakte Werte und Darstellungen. Vielmehr sollen sie physikalisch interpretierbar sein, indem auf etablierte Modelle zurückgegriffen wird. Außerdem sollen sie keine falschen Eindrücke vermitteln und die physikalischen Zusammenhänge korrekt widerspiegeln.\\
-\end{comment}
-
 \subsubsection{Technische Seite}
 \label{sec-3-1-2}
 In Kapitel \ref{sec-2-1} wurde die HoloLens mit ihren technischen Möglichkeiten aber auch Einschränkungen vorgestellt sowie Auswirkungen auf das Anwendungsdesign aufgezeigt. Die genannten Probleme sollen möglichst vermieden werden, indem die Anwendung an die speziellen Gegebenheiten der HoloLens angepasst wird. Dementsprechend sollen auch von technischer Seite Anforderungen aufgestellt werden.\\
 
-%\textit{Begrenzungen durch FOV und Auflösung}\\
-%Die HoloLens hat ein mit 34° Grad (diagonal) ein vergleichsweise kleines Sichtfeld und  begrenzte Auflösung und Sichtfeld. Lösungsansatz verfolgt daher Strategie, visuellen Clutter zu vermeiden. \\
 
-%Das Ziel von technischer Seite besteht darin, die AR-Technik der HoloLens zu nutzen und dabei Einschränkungen der Nutzererfahrung zu vermeiden. Um Letzteres zu erfüllen 
-
-TODO.....
-
-%An diesen Kriterien soll sich die Lösung orientieren und diese bereits im Design berücksichtigen. Dafür sollen die genannten Hinweise und Empfehlungen zum Design mit einbezogen und darauf aufgebaut werden.\\
 
 \subsection{Präzisierung der Problemstellung}
 \label{sec-3-2}
