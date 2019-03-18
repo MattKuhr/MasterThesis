@@ -2,25 +2,15 @@
 \label{sec-1}
 Augmented Reality (AR) hat in den letzten Jahren immer mehr an Bedeutung gewonnen. Nicht zuletzt durch Fortschritte im Bereich der künstlichen Intelligenz und immer leistungsfähiger werdender Hardware eröffnen sich neue Möglichkeiten, um die Realität digital zu erweitern und durch virtuelle Objekte anzureichern. Ein Gerät, mit dem solche Anwendungen möglich sind, ist die 2015 durch Microsoft vorgestellte HoloLens. Dabei handelt es sich um ein wie eine Brille getragenes Device, das in der Lage ist, virtuelle Objekte in der Umgebung des Nutzers zu platzieren und anzuzeigen. Das geschieht, indem die Objekte über transparente Displays in das Sichtfeld des Nutzers projiziert werden. Dabei wird der Nutzer nicht von seiner Umgebung isoliert, sondern kann diese weiterhin wahrnehmen. Da das Gerät ein Display pro Auge nutzt, erscheinen die Objekte dreidimensional im Raum platziert. Die HoloLens ist dabei in der Lage, die Objekte fest im Raum zu positionieren.\\
 \noindent\hspace*{5mm}
-Durch die Eigenschaften des Gerätes ist es für
-\cite{Pollalis17}
+Die Technik ermöglicht im Vergleich zu anderen AR-Lösungen wie z.B. mittels Smartphones oder Webcams neue Anwendungsszenarien und wird daher bereits an unterschiedlichen Stellen eingesetzt. Auch erste Forschungsarbeiten untersuchen Einsatzszenarien mit der Brille wie z.B. den Einsatz in einem Museum \cite{Pollalis17}, der Visualisierung von Bienenwanderung \cite{Nguyen17} oder dem Erlernen einer Herz-Lungen-Wiederbelebung \cite{Javaheri18A}. Auch im Bereich der Lehre setzen einige Arbeiten an und untersuchen beispielsweise die Anwendung in der Mathematik \cite{Khan18} und auch der Physik \cite{Amiraslanov18, Strzys18, Javaheri18}.\\
 
-Ein wichtiger Anwendungsbereich für AR-Technologie sind Ausbildung und Training. Daher gibt es in der Forschung ein zunehmendes Maß an Untersuchungen zum Einsatz von Augmented Reality in diesen Bereichen \cite{Bacca14}. Die Forschungen zeigen meist positive Auswirkungen auf die Lernleistung und Motivation durch AR-gestützte Lernanwendungen. Auch in der Physik existieren einige Arbeiten in verschiedenen Gebieten. Augmented Reality eignet sich hier auf natürliche Weise, um nicht sichtbare physikalische Eigenschaften wie z.B. magnetische oder elektrische Felder sichtbar zu machen. Deshalb gibt es insbesondere zur Darstellung von Magnetfeldern mit AR-Techniken einige Forschungsarbeiten \cite{Buchau09, Mannuss11, Matsutomo13}.\\
+Ausbildung und Training sind ein wichtiger Anwendungsbereich für AR-Technologie. Daher gibt es in der Forschung ein zunehmendes Maß an Untersuchungen zum Einsatz von Augmented Reality in diesen Bereichen \cite{Bacca14}. Die Forschungen zeigen meist positive Auswirkungen auf die Lernleistung und Motivation durch AR-gestützte Lernanwendungen. Auch in der Physik existieren einige Arbeiten in verschiedenen Gebieten. Augmented Reality eignet sich hier auf natürliche Weise, um nicht sichtbare physikalische Eigenschaften wie z.B. magnetische oder elektrische Felder sichtbar zu machen. Deshalb gibt es insbesondere zur Darstellung von Magnetfeldern mit AR-Techniken einige Forschungsarbeiten \cite{Buchau09, Mannuss11, Matsutomo13}.\\
 \noindent\hspace*{5mm}
-Die bestehenden Ansätze bauen dafür meist auf Lösungen mit Webcams oder Mobilgeräten auf. Mit immersiven AR-Techniken wie der HoloLens bestehen neue Möglichkeiten
+Die bestehenden Ansätze bauen dafür meist auf Lösungen mit Webcams oder Mobilgeräten auf. Mit immersiven AR-Techniken wie der HoloLens bestehen jedoch neue Möglichkeiten der Einbettung von und Interaktion mit virtuellen Objekten. Besonders bei Laborversuchen ist diese Integration interessant, da dadurch physikalische Eigenschaften über Modelle sichtbar gemacht und in Beziehung zu ihren realen Objekten gesetzt werden können. Erste Ansätze verfolgen diese Idee bereits.\\
+\noindent\hspace*{5mm}
+So stellen Strzys et. al. eine Anwendung mit der HoloLens im Bereich der Thermodynamik vor, bei der das gemessene Wärmeprofil eines erhitzten Metallstabes virtuell mit Hilfe der HoloLens über den Stab gelegt wird \cite{Strzys17}. Und Amiraslanov, Javaheri, Bian und Lukowicz stellen eine Laborumgebung vor, in der die grundlegenden Konzepte elektrischer Schaltung mit der HoloLens erlernt werden können. Die Ergebnisse beider Arbeiten sind positiv und motivieren weitere Forschungen zum Einsatz der Brille im Bereich Physik.\\
 
-So stellen Strzys et. al. eine Anwendung mit der HoloLens im Bereich der Thermodynamik vor, bei der das gemessene Wärmeprofil eines erhitzten Metallstabes virtuell mit Hilfe der HoloLens über den Stab gelegt wird \cite{Strzys17}
-
-Physikalische Experimente durch virtuelle Darstellungen anzureichern und so besser und intuitiver verständlich zu machen, ist kein völlig neuer Ansatz. 
-
-\cite{Amiraslanov18}.  \cite{Javaheri18}
-
-Motivation z.B. Einbinden von Informationen zu Versuchsaufbau, Visualisierung nicht sichtbarer physikalischer Größen und Vorgänge z.B. Magnetfeld und Stromfluss
-
-%Augmenting Microsoft's HoloLens with vuforia tracking for neuronavigation \cite{Frantz18}
-%HoloMuse: Enhancing Engagement with Archaeological Artifacts Through Gesture-Based Interaction with Holograms \cite{Pollalis17}
-
-%HoloCPR: Designing and Evaluating a Mixed Reality Interface for Time-Critical Emergencies \cite{Johnson18}
+Deshalb verfolgt diese Arbeit die Ansätze weiter und untersucht, wie die HoloLens im Kontext eines konkreten physikalischen Experimentes eingesetzt werden kann. Um Beeinträchtigungen durch technische Limitierungen vorzubeugen, berücksichtigt die Arbeit dazu die Einschränkungen durch die Technik der HoloLens. Als Anwendungsfall wurde dafür ein Versuch mit einer Helmholtz-Spule gewählt, bei dem Richtung und Stärke des Erdmagnetfeldes experimentell bestimmt werden.
 
 \subsection{Fragestellung und prinzipieller Lösungsansatz}
 \label{sec-1-2}
