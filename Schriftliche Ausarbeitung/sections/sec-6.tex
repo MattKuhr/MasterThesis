@@ -105,14 +105,15 @@ Die Stabilität der Objekte beeinflusst die Nutzererfahrung wesentlich, da durch
 
 Allerdings hängt die Stabilität nicht unwesentlich von den Randbedingungen ab. Die weiter unten genannten Umstände des Tests erleichtern das Tracking und die Stabilisation. Unter weniger geeigneten Bedingungen kann die Stabilität und damit auch die Positionierung der Hologramme beeinträchtigt werden. Insbesondere kann es bei unerfahrenen Nutzern durch ungünstige Aktionen wie z.B. ruckartige Kopfbewegungen zu negativen Auswirkungen auf die Stabilität kommen.\\
 
-\textit{Positionierung}
-\begin{wrapfigure}{r}{0.5\textwidth}
+\textit{Positionierung}\\
+Einen Eindruck von der Güte der Positionierung lässt sich anhand von Abb. \ref{img:model-overlay} gewinnen. Das normalerweise nur in den Tiefenpuffer gerenderte Mesh der virtuellen Spule wird hier durch einen Standard-Shader sichtbar dargestellt. Die reale Spule ist dadurch fast gar nicht zu sehen. Zwar sind Abweichungen zwischen den beiden Objekten aus unterschiedlichen Winkeln unterschiedlich stark sichtbar, das gewählte Foto gibt jedoch einen guten Anhaltspunkt für die tatsächliche Nutzererfahrung wieder.\\
+
+\begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.48\textwidth]{images/HL/model-overlay.jpg}
+	\includegraphics[width=0.8\textwidth]{images/HL/model-overlay.jpg}
 	\caption{Überlagerung des virtuellen Modells und der realen Spule. Das virtuelle Modell deckt sich zum großen Teil mit dem realen Objekt. An den Kanten sind jedoch kleine Abweichungen zu erkennen.}
 	\label{img:model-overlay}
-\end{wrapfigure}
-Einen Eindruck von der Güte der Positionierung lässt sich anhand von Abb. \ref{img:model-overlay} gewinnen. Das normalerweise nur in den Tiefenpuffer gerenderte Mesh der virtuellen Spule wird hier durch einen Standard-Shader sichtbar dargestellt. Die reale Spule ist dadurch fast gar nicht zu sehen. Zwar sind Abweichungen zwischen den beiden Objekten aus unterschiedlichen Winkeln unterschiedlich stark sichtbar, das gewählte Foto gibt jedoch einen guten Anhaltspunkt für die tatsächliche Nutzererfahrung wieder.\\
+\end{figure}
 
 \textit{Interaction Clarity}\\
 In puncto Interaction Clarity kann die Lösung nicht als optimal eingestuft werden. Denn das Kriterium verlangt ausdrücklich, dass eine Anwendung die ihr zu Grunde liegenden Interaktionsmöglichkeiten erklärt, sofern sie über Gewohntes hinausgehen. Das ist bei der Steuerung außerhalb des Menüs nicht der Fall. Die Lösung setzt eine Anleitung durch eine begleitende Person voraus, die den Anwender über die möglichen Aktionen informiert. Die anderen Punkte des Kriteriums werden jedoch erfüllt.\\
@@ -148,9 +149,11 @@ Die Bewertung wurde anhand von Tests unter für die Anwendung günstigen Bedingu
 Zur Bewertung der vorgestellten Lösung wurde die Anwendung außerdem unterschiedlichen Personen vorgestellt und zum Testen überlassen. Dabei handelt es sich um ca. 15 Personen mit unterschiedlichem Grad an Expertise. Das Spektrum umfasst ungefähr zu gleichen Teilen Akademiker, Lehrer und Studenten der Physik. Deren Feedback wurde für diese Arbeit qualitativ festgehalten und zusammengefasst. Die Nutzung der Anwendung beschränkte sich dabei auf den Hauptteil mit den physikalischen Darstellungen.\\
 
 \textit{Inhaltliches Feedback}\\
-Die Reaktionen lassen sich weitestgehend als positiv beschreiben. Die meisten Tester äußerten sich von sich aus während der Nutzung und kommentierten ihre Erfahrung. Dafür wurden häufig die Begriffe ''Cool'' und ''Toll'' verwendet (z.B. ''Ich sehe jetzt hier das Magnetfeld, das ist cool''). Zu diesen Reaktionen trägt auch der Umstand bei, dass das Nutzererlebnis einer solchen Brille für die meisten Personen neu war. Besonders die Interaktivität und die Darstellung der Simulationsdaten wurden positiv aufgenommen. Bezüglich letzterer wurde gelegentlich nach einer volumetrischen Darstellung gefragt. Insgesamt war das Interesse der beteiligten Personen hoch, einige Nutzer fragten von sich aus, ob sie die Anwendung testen dürfen.\\
+Die Reaktionen lassen sich weitestgehend als positiv beschreiben. Die meisten Tester äußerten sich von sich aus während der Nutzung und kommentierten ihre Erfahrung. Dafür wurden häufig die Begriffe ''Cool'' und ''Toll'' verwendet (z.B. ''Ich sehe jetzt hier das Magnetfeld, das ist cool''). Zu diesen Reaktionen trägt auch der Umstand bei, dass das Nutzererlebnis einer solchen Brille für die meisten Personen neu war.\\
 
-Da viele der Tester Experten waren, gab es kaum Nachfragen zur inhaltlichen Bedeutung der Darstellungen. Typisch waren jedoch Nachfragen zu den Beschränkungen des Sichtfeldes (''Soll das so klein sein?''). Die Rückfrage, ob die Beschränkungen als störend wahrgenommen werden, wurde jedoch meist verneint. Auch die Stabilität wurde als gut wahrgenommen\footnote{Einige Tester wurden ausdrücklich gebeten, ihren Eindruck von der Stabilität zu beschreiben}. Auch zur damit verbundenen Positionierung gab es kein negatives Feedback (z.B. im Falle von nicht korrekt verdeckten Elementen). Negativ fiel hingegen das Kantenflimmern an den Textboxen auf.\\
+Besonders die Interaktivität und die Darstellung der Simulationsdaten wurden positiv aufgenommen. Bezüglich letzterer wurde gelegentlich nach einer volumetrischen Darstellung gefragt. Insgesamt war das Interesse der beteiligten Personen hoch, einige Nutzer fragten von sich aus, ob sie die Anwendung testen dürfen.\\
+\noindent\hspace*{5mm}
+Da viele der Tester Experten waren, gab es kaum Nachfragen zur inhaltlichen Bedeutung der Darstellungen. Typisch waren jedoch Nachfragen zu den Beschränkungen des Sichtfeldes (''Soll das so klein sein?''). Die Rückfrage, ob die Beschränkungen als störend wahrgenommen werden, wurde jedoch meist verneint. Auch die Stabilität wurde als gut wahrgenommen\footnote{Einige Tester wurden ausdrücklich gebeten, ihren Eindruck von der Stabilität zu beschreiben.}. Auch zur damit verbundenen Positionierung gab es kein negatives Feedback (z.B. im Falle von nicht korrekt verdeckten Elementen). Negativ fiel hingegen das Kantenflimmern an den Textboxen auf.\\
 
 \textit{Feedback zur Interaktion und Nutzung}\\
 Die Interaktion über den Klicker erwies sich als elementar wichtig. Die Verwendung der Handgeste führte bei unsicheren Nutzern oft zu unerwartetem Verhalten der Anwendung, da die HoloLens Gesten erkannte, die nicht beabsichtigt waren. Weitere Schwierigkeiten betrafen vor allem das Aufsetzen der Brille. Denn wenn diese nicht richtig sitzt, ist das ohnehin schon kleine Sichtfeld nicht vollständig sichtbar. Hier schaffte jedoch eine kurze Erklärung dazu, wie die Brille sitzen sollte, Abhilfe\footnote{Das Feedback zu Sichtfeld, Tragekomfort und Interaktion ist konsistent mit dem Feedback was Microsoft dazu erhalten hat. Alle drei Aspekte wurden deshalb beim Nachfolgemodell massiv verbessert.}.\\
@@ -192,10 +195,14 @@ Einige der technischen Probleme konnten bereits im Design abgemildert oder umgan
 \noindent\hspace*{5mm}
 Besonders bei der Umsetzung der Interaktion greift die Lösung außerdem auf vorgefertigte Objekte des Mixed Reality Toolkits zurück. Diese sind für die HoloLens designet und bringen die gewünschten Eigenschaften und Verhaltensweisen bereits mit. Hier sind unter anderem der Progress Indikator, Standard-Button und Standard-Shader zu nennen.\\
 
+Manche Probleme wurden auch statt durch softwareseitige Lösungen über Anpassungen der realen Objekte gelöst. Das betrifft z.B. die Begrenzung der maximal darstellbaren Flussdichte durch geeignete Widerstände, die Anpassung des Blickwinkels durch einen höheren Tisch und die farbliche Anpassung der Magnetnadel, um dessen Sichtbarkeit zu verbessern. Auf diese Weise wurde der Design-Spielraum beider Welten ausgenutzt, um eine Lösung zu schaffen.\\
+
 Als nicht zufriedenstellend ist aus technischer Sicht vor allem das Kantenflimmern zu bewerten, das durch das verwendete Multisampling nicht ausreichend reduziert werden kann. Vor allem an den weißen Kanten der Texthintergründe fällt der Effekt störend auf, denn hier ist das Flackern besonders hell. Aufgrund des hohen Rechenaufwandes kann das Problem nicht durch eine Erhöhung auf vier- oder achtfaches Multisampling adressiert werden. Deshalb sollten harte Kanten, insbesondere bei hellen Objekten, vermieden und stattdessen weiche Kanten genutzt werden.\\
 
+Außerdem bietet die Anwendung für sich genommen zunächst nur Experten verständliche Informationen. Da die Bedeutung der einzelnen Elemente nicht erläutert wird, kann diese nur anhand der Kenntnisse der physikalischen Modelle und Zusammenhänge des Versuchen abgeleitet werden.\\
 
-%KRITISCH MIT DER EIGENEN ARBEIT AUSEINANDERSETZTEN!!\\
+Anhand der gewonnenen Erkenntnisse soll die Fragestellung, wie die HoloLens im Kontext von Laborversuchen eingesetzt werden kann, nun über die für diese Arbeit gesteckten Grenzen des Experimentes hinaus diskutiert werden. Dies geschieht in zwei Schritten. Zunächst werden mögliche Erweiterungen betrachtet, bevor auf die Übertragbarkeit auf andere Versuche eingegangen wird.
+
 \subsubsection{Erweiterbarkeit}
 Ein im Rahmen der Fragestellung wichtiger Aspekt besteht darin, wie die vorgestellte Lösung um weitere Inhalte erweitert werden könnte. Dies ist in mehreren Bereichen denkbar und soll im Folgenden diskutiert werden.\\
 

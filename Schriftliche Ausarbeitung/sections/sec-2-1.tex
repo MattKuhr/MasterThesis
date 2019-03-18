@@ -8,12 +8,14 @@ Auf Basis der beiden vorangegangenen Abschnitte stellt schließlich Kap. \ref{se
 
 \subsection{HoloLens}
 \label{sec-2-1}
-Die HoloLens ist ein von Microsoft entwickeltes \textit{Head-Mounted Display} (HMD), das seit 2016 auf dem Markt ist. Das Gerät ist in der Lage, virtuelle Darstellungen in der Umgebung des Trägers zu verankern und anzuzeigen. Anders als bei anderen Geräten wird dabei die Umgebung nicht durch eine Kamera wahrgenommen, wie z.B. bei einer Anwendung mit einem Smartphone, sondern ist direkt mittels durchsichtiger Displays sichtbar. Einen Eindruck von dem Gerät vermittelt Abbildung \ref{img:hololens}. Kurz vor der Fertigstellung dieser Arbeit wurde das Nachfolgemodell ''HoloLens 2'' vorgestellt. Gegenstand dieser Untersuchung ist deshalb die erste Generation. Bevor näher auf die technischen Eigenschaften dieser Lösung eingegangen wird, soll zunächst eine kurze Einordnung der Gerätes erfolgen.
+Die HoloLens ist ein von Microsoft entwickeltes \textit{Head-Mounted Display} (HMD), das seit 2016 auf dem Markt ist. Das Gerät ist in der Lage, virtuelle Darstellungen in der Umgebung des Trägers zu verankern und anzuzeigen. Anders als bei anderen Geräten wird dabei die Umgebung nicht durch eine Kamera wahrgenommen, wie z.B. bei einer Anwendung mit einem Smartphone, sondern ist direkt mittels durchsichtiger Displays sichtbar. Einen Eindruck von dem Gerät vermittelt Abbildung \ref{img:hololens}.\\
+\noindent\hspace*{5mm}
+Dabei handelt es sich um die erste Generation des Gerätes. Das kurz vor der Fertigstellung dieser Arbeit vorgestellte Nachfolgemodell ''HoloLens 2'' stand zu diesem Zeitpunkt noch nicht zur Verfügung. Bevor näher auf die technischen Eigenschaften der HoloLens eingegangen wird, soll zunächst eine kurze Einordnung des Gerätes erfolgen.
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.6\textwidth]{images/papers/hololens.jpg}
-	\caption{Die HoloLens in der Developer Edition \cite{MRDoc}.}
+	\caption{Die HoloLens in der Developer Edition (erste Generation) \cite{MRDoc}.}
 	%https://www.microsoft.com/de-de/hololens
 	\label{img:hololens}
 \end{figure}
@@ -49,7 +51,7 @@ Da diese Arbeit sich am MR Begriff von Milgram orientiert und mit der HoloLens u
 
 Die HoloLens deckt mit ihren technischen Möglichkeiten vor allem den linken Bereich des Spektrums ab. Viele Anwendungen liegen deshalb im Teilbereich Augmented Reality. Das trifft auch auf diese Arbeit zu. Deshalb, und im Sinne einer konsistenten Bezeichnung, verwendet die Arbeit im Weiteren stets den AR-Begriff.\\
 
-Die technischen Eigenschaften und genutzten Techniken des HMDs bringen verschiedene Implikationen und Einschränkungen für Anwendungen auf der HoloLens mit sich. Daher soll nun auf die technischen Aspekte näher eingegangen werden.\\
+Die technischen Eigenschaften und genutzten Techniken des HMDs bringen verschiedene Implikationen und Einschränkungen für Anwendungen auf der HoloLens mit sich. Daher soll nun auf die technischen Aspekte näher eingegangen werden.
 
 \subsubsection{Die Hardware}
 \label{sec-2-1-2}
@@ -57,14 +59,13 @@ Bei dem Device handelt es sich um einen eigenständigen Computer, auf dem eine s
 
 \vspace{4px}
 \textit{Das Display}\\
-Kernstück des Gerätes ist das durchsichtige, stereoskopische Display, mit dem die virtuellen 3D-Objekte angezeigt werden. Durchsichtig bedeutet, dass das Display für Licht von außen durchlässig ist und der Nutzer somit wie durch eine Brille seine Umgebung sehen kann. Virtuelle Objekte werden zusätzlich dazu angezeigt, indem Licht über optische Wellenleiter in das Display geleitet wird, welches das Licht dann auf die Augen reflektiert. Bei der Anzeige handelt es sich jedoch um ein \textit{Color Sequential Display}, bei dem die drei Farben Rot, Grün und Blau nacheinander dargestellt werden. Dabei werden 60 Bilder pro Sekunde dargestellt.\\
-
-Es handelt sich dabei um ein stereoskopisches Display, bei dem pro Auge separat ein Bild dargestellt wird. So ermöglicht die HoloLens dem Träger die stereoskopische Wahrnehmung dreidimensionaler Objekte. Die beiden Bilder werden in einem festen Abstand von 22 mm zueinander dargestellt. Außerdem beträgt die Distanz, auf die sich die Augen einstellen müssen, damit Bilder als scharf wahrgenommen werden (Akkommodation), etwa zwei Meter und ist ebenfalls fest.\\
+Kernstück des Gerätes ist das durchsichtige, stereoskopische Display, mit dem die virtuellen 3D-Objekte angezeigt werden. Durchsichtig bedeutet, dass das Display für Licht von außen durchlässig ist und der Nutzer somit wie durch eine Brille seine Umgebung sehen kann. Virtuelle Objekte werden zusätzlich dazu angezeigt, indem Licht über optische Wellenleiter in das Display geleitet wird, welches das Licht dann auf die Augen reflektiert. Bei der Anzeige handelt es sich um ein \textit{Color Sequential Display}, bei dem die drei Farben Rot, Grün und Blau nacheinander dargestellt werden. Dabei werden 60 Bilder pro Sekunde gezeigt.\\
+\noindent\hspace*{5mm}
+Beim Display handelt es sich außerdem um ein stereoskopisches Display, bei dem pro Auge separat ein Bild dargestellt wird. So ermöglicht die HoloLens dem Träger die stereoskopische Wahrnehmung dreidimensionaler Objekte. Die beiden Bilder werden in einem festen Abstand von 22 mm zueinander dargestellt. Außerdem beträgt die Distanz, auf die sich die Augen einstellen müssen, damit Bilder als scharf wahrgenommen werden (Akkommodation), etwa zwei Meter und ist ebenfalls fest.\\
 
 \vspace{4px}
 \textit{Das Tracking}\\
-Um die Hologramme im Raum verankern zu können, benötigt die HoloLens Informationen über ihre exakte Position und Orientierung im Raum. Beides erarbeitet das Gerät allein aus einem Zusammenspiel der verschiedenen internen Sensoren und ist nicht auf externe Markierungen angewiesen, es handelt sich um sogenanntes \textit{Inside-Out Tracking}. Das Vorgehen basiert dabei auf zwei Strategien.
-\par
+Um die Hologramme im Raum verankern zu können, benötigt die HoloLens Informationen über ihre exakte Position und Orientierung im Raum. Beides erarbeitet das Gerät allein aus einem Zusammenspiel der verschiedenen internen Sensoren und ist nicht auf externe Markierungen angewiesen, es handelt sich um sogenanntes \textit{Inside-Out Tracking}. Das Vorgehen basiert dabei auf zwei Strategien.\\
 \noindent\hspace*{5mm}
 Zum einen erfasst die HoloLens die Oberflächenstruktur der Umgebung über Tiefen- und Stereokameras. Während der Nutzer sich durch den Raum bewegt, wird dies immer weiter vervollständigt und verbessert. Dieses Vorgehen wird \textit{Spatial Mapping} genannt und kann auch von Anwendungen genutzt werden, um mit Objekten der realen Welt zu interagieren. Eine Darstellung der optischen Sensoren ist in Abb. \ref{img:hololens_tech} enthalten.
 \par
@@ -78,7 +79,7 @@ Zum anderen kommt eine inertiale Messeinheit zum Einsatz. Über die Beschleunigu
 	\label{img:hololens_tech}
 \end{figure}
 
-Einen Überblick über die verwendete Hardware gibt Tabelle \ref{tab:hololens_tech_details}.
+Einen Überblick über die Spezifikation der Hardware gibt Tabelle \ref{tab:hololens_tech_details}.
 
 \bgroup
 \setlength\extrarowheight{0pt}
@@ -98,7 +99,6 @@ Einen Überblick über die verwendete Hardware gibt Tabelle \ref{tab:hololens_te
 		Grafik & Microsoft Holographic Processing Unit (HPU)\\
 		\hline
 		Arbeitsspeicher & 2 GB RAM\\
-		& 1 GB HPU RAM\\
 		\hline
 		Speicher & 64 GB Flash Speicher\\
 		\hline
@@ -127,7 +127,7 @@ Einen Überblick über die verwendete Hardware gibt Tabelle \ref{tab:hololens_te
 
 \subsubsection{Die Software und Interaktion}
 \label{sec-2-1-3}
-Auf der HoloLens läuft eine spezielle Version von Windows 10. Diese benötigt weniger Resourcen im Vergleich zu einem herkömmlichen PC und hat daher auch einen eingeschränkten Funktionsumfang. Anwendungen werden in Form von UWP Apps bereitgestellt. Hier unterstützt Microsoft die Entwicklung mit Unity und stellt entsprechende Toolkits zur Verfügung.\\
+Auf der HoloLens läuft eine spezielle Version von Windows 10. Diese benötigt weniger Resourcen im Vergleich zu einer herkömmlichen Windowsversion und hat daher auch einen eingeschränkten Funktionsumfang. Anwendungen werden in Form von UWP Apps bereitgestellt. Hier unterstützt Microsoft die Entwicklung mit Unity und stellt entsprechende Toolkits zur Verfügung.\\
 
 Die Steuerung durch den Nutzer erfolgt auf vier verschiedene Arten:
 \begin{itemize}[topsep=-2px]
@@ -142,7 +142,7 @@ Die Steuerung durch den Nutzer erfolgt auf vier verschiedene Arten:
 
 Handgesten werden von der HoloLens automatisch erkannt und an die Anwendung in Form von Events weitergegeben, auf welche dann reagiert werden kann. Hier sind aktuell verschiedene Klick-Gesten zu nennen, durch die bekannte Mausfunktionen wie Klick, Click-and-Hold, Doppelklick und Drag-and-Drop abgebildet werden. Der Cursor orientiert sich dabei an der aktuellen Blickrichtung: Es wird automatisch das Objekt angeklickt, das als erstes von einer zentralen, vorwärts gerichteten Linie getroffen würde. Außerdem gibt es eine spezifische Handgeste zum aufrufen des Hauptmenüs.\\
 
-Darüber hinaus nimmt die HoloLens englische Wörter als Sprachbefehle an, die sich auch kombinieren lassen. So kann eine Anwendung die Phrase ''Hello World'' als Keyword registrieren und dann darauf reagieren. Über Bluetooth lassen sich weitere Eingabegeräte anschließen: Den mit der HoloLens mitgelieferten Klicker, der die Klick-Geste ersetzen kann, aber auch eine Tastatur oder ein Controller lassen sich nutzen.\\
+Darüber hinaus nimmt die HoloLens englische Wörter als Sprachbefehle entgegen, die sich auch kombinieren lassen. So kann eine Anwendung die Phrase ''Hello World'' als Keyword registrieren und dann darauf reagieren. Über Bluetooth lassen sich weitere Eingabegeräte anschließen: Den mit der HoloLens mitgelieferten Klicker, der die Klick-Geste ersetzen kann, aber auch eine Tastatur oder ein Controller lassen sich nutzen.\\
 
 \vspace{4px}
 \textit{Das Mixed Reality Toolkit}\\
@@ -247,7 +247,7 @@ Zur Anordnung von Objekten gibt es einige Design-Guidelines, von denen ausgewäh
 \begin{itemize}
 	\setlength{\itemsep}{-1pt}
 	\singlespacing
-	\item Distanz zur Kamera optimal bei 2m, Komfortzone 1-5m, Blickwinkel zwischen 0° und 35°
+	\item Distanz zur Kamera optimal bei 2 Metern, Komfortzone zwischen 1 und 5 Metern Blickwinkel zwischen 0° und 35° unterhalb der Horizontlinie
 	\item Größe für interaktive Objekte min. 1,5° - 3° Grad in der Vertikalen
 	\item Positionierung möglichst nah an Spatial Anchors und der Stabilization Plane
 \end{itemize}
@@ -285,7 +285,7 @@ Aus ihren Erfahrungen und dem Nutzerfeedback aus mehreren HoloLens-Applikationen
 	\setlength{\itemsep}{-1pt}
 	\singlespacing
 	\item Einen sichtbaren Cursor in der Mitte des Blickfeldes für die Auswahl bzw. das Anklicken von Objekten nutzen
-	\item Begrenzungen des Field-of-View (FOV) beachten: Wenn möglich Objektegröße so anpassen, dass diese ganz dargestellt werden können, da andernfalls Objekte weniger präsent wirken
+	\item Begrenzungen des Field-of-View (FOV) beachten: Wenn möglich Objektgröße so anpassen, dass diese ganz dargestellt werden können, da andernfalls Objekte weniger präsent wirken
 	\item Die Einbettung von Objekten kann durch visuelle Anhaltspunkte wie Verdeckung oder Schatten unterstützt werden
 	\item Spatial Mesh für grobe Verdeckung nutzbar, für genauere Verdeckung können reale Objekte nachmodelliert werden 
 	\item Alternative Interaktionsmöglichkeiten (z.B. Klicker) können hilfreich sein, wenn Nutzer Probleme mit Gesten oder der Sprachsteuerung haben

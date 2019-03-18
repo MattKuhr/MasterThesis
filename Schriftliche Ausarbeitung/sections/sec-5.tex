@@ -21,7 +21,7 @@ Die Übertragung der Messwerte vom Arduino zur Anwendung ist so konzipiert, dass
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\textwidth]{images/schema/Sequenzdiagramm.png}
-	\caption{Sequenzdiagramm Kommunikation}
+	\caption{Sequenzdiagramm der Kommunikation zwischen Arduino, Server und HoloLens.}
 	\label{img:Sequenzdiagramm}
 \end{figure}
 
@@ -41,7 +41,7 @@ Der Hauptteil des Systems besteht in der auf der HoloLens laufenden Applikation.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.45\textwidth]{images/schema/components.jpg}
-	\caption{Schema Komponenten}
+	\caption{Schematische Darstellung der einzelnen Komponenten. Die beigen Elemente sind Skript-Objekte und enthalten keine Darstellungen. Das Menü steuert den Ablauf der Anwendung, startet den Hauptteil, das Tracking und die Einstellungen. Dafür wird die Kontrolle an das jeweilige Objekt übergeben. Die Verbindungen bedeuten eine Kommunikation über zur Laufzeit registrierte Callbacks.}
 	\label{img:components-schema}
 \end{figure}
 
@@ -203,14 +203,24 @@ Es wurde eine Startsequenz entwickelt, die Aufgaben wie das Laden von Daten und 
 
 Diese Umsetzung erlaubt die notwendigen Ladevorgänge und ist für den Nutzer nachvollziehbar. Außerdem gibt das letzterem einige Sekunden Zeit, um sich auf die Anwendung einzustellen, bevor das Menü erscheint und eine Aktion vom Anwender verlangt.
 
-\begin{itemize}[rightmargin=12px, topsep=-12px]
-	\setlength{\itemsep}{-1pt}
-	\singlespacing
-	\item Tracking mit Vuforia, nur zum Erkennen des Markers aktiv
-	\item Einstellungen werden als JSON-Datei im AppData Verzeichnis gespeichert
-	\item Menü übernimmt Steuerung der einzelnen Vorgänge, jederzeit aufrufbar
-	\item Startvorgang mit Intro-Sequenz lädt Daten und Einstellungen und initialisiert Komponenten
-\end{itemize}
+\vspace{8px}
+\begin{center}
+	\fbox{
+		\parbox{0.9\linewidth}{
+			\vspace{4px}
+			\textbf{Zusammenfassung}
+			\begin{itemize}[rightmargin=12px, topsep=-12px]
+				\setlength{\itemsep}{-1pt}
+				\singlespacing
+				\item Tracking mit Vuforia, nur zum Erkennen des Markers aktiv
+				\item Einstellungen werden als JSON-Datei im AppData Verzeichnis gespeichert
+				\item Menü übernimmt Steuerung der einzelnen Vorgänge, jederzeit aufrufbar
+				\item Startvorgang mit Intro-Sequenz lädt Daten und Einstellungen und initialisiert Komponenten
+			\end{itemize}
+			\vspace{18px}
+	}}\\
+\end{center}
+\vspace{6px}
 
 \subsubsection{Performance-Optimierungen}
 Zuletzt sollen einige Maßnahmen genannt werden, die zu einem geringeren Ressourcenverbrauch der Applikation beitragen. Zunächst ist festzuhalten, dass die durch das MRTK voreingestellten Qualitätseinstellungen genutzt wurden. Einzige Ausnahme stellt hier die Kantenglättung dar. Darüber hinaus wurden die folgenden Einstellungen angewandt:
