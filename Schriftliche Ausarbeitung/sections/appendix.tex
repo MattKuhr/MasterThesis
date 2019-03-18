@@ -16,7 +16,14 @@ Mit dem Mixed Reality Capture lassen sich Screenshots und Screen-Videos aufnehme
 	\item MRC nicht möglich, wenn Kamera durch Anwendung genutzt wird
 \end{itemize}
 
-Bei einem MRC-Foto ändert sich die Auflösung von 1268x720 (720p) zu 1408x792. Obwohl die Auflösung steigt ist damit dennoch ein wesentlicher Qualitätsverlust verbunden, da die höhere Auflösung des Einzelbildes nicht mit einer höheren Pixeldichte einhergeht, sondern mit einem überproportional größeren Sichtfeld. Ein Foto repräsentiert daher nicht die tatsächlichen Begrenzungen des FOV. Außerdem sinkt die Pixeldichte.\\
+Bei einem MRC-Foto ändert sich die Auflösung von 1268x720 (720p) zu 1408x792. Obwohl die Auflösung steigt ist damit dennoch ein wesentlicher Qualitätsverlust verbunden, da die höhere Auflösung des Einzelbildes nicht mit einer höheren Pixeldichte einhergeht, sondern mit einem überproportional größeren Sichtfeld. Ein Foto repräsentiert daher nicht die tatsächlichen Begrenzungen des FOV. Einen Vergleich mit dem tatsächlichen Sichtfeld zeigt Abbildung \ref{img:fov_comp}.\\
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\textwidth]{images/papers/fov.jpg}
+	\caption{Aufnahme von der HoloLens mit Kennzeichnung des dem Nutzer zur Verfügung stehenden Sichtfeldes \cite{Nguyen17}.}
+	\label{img:fov_comp}
+\end{figure}
 
 Dazu kommt die Transparenz von virtuellen Objekten. Diese hängt stark von deren Farbe sowie der Hintergrundhelligkeit ab und entspricht nicht immer der Wahrnehmung des Nutzers. Farbige Objekte erscheinen auf Fotos stets etwas transparent, auch wenn sie den Hintergrund aus Sicht des Nutzers vollständig überdecken. Nicht zuletzt ist auch für Fotos die Reduktion der Bildwiederholrate auf 30Hz relevant. Denn dadurch werden die Objekte nicht so gut stabilisiert und es kann zu leichten Verschiebungen auf den Fotos kommen.\\
 

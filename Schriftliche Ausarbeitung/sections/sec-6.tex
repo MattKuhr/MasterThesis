@@ -59,9 +59,10 @@ Nachdem die inhaltlichen Ergebnisse beleuchtet wurden, sollen nun die Resultate 
 \subsubsection{Technische Umsetzung}
 Im Hinblick auf die technischen Anforderungen wurde eine Liste von Qualitätskriterien zugrunde gelegt. Die Bewertung der Lösung anhand dieses Maßstabes ist im Folgenden erörtert. Der Einschätzung liegen die zu jedem Kriterium genannten Hinweise zur Bewertung zu Grunde.\\
 
-Insgesamt erfüllt die Applikation die technischen Anforderungen fast vollständig bis vollständig. Eine Aufschlüsselung der einzelnen Kriterien bietet die unten stehende Tabelle \ref{tab:tech_results}. Die Hologramme wirken weitestgehend stabil und glaubhaft positioniert, sie bleiben im Rahmen der Komfortzone und passen sich dem Nutzer an. Die Interaktion erfolgt zum Großteil über Standardmechanismen. Auch im Bereich Performance bleibt die Anwendung im Rahmen und liefert konstant 60 Bilder pro Sekunde aus. Allerdings beansprucht die Kantenglättung massiv Ressourcen und lässt kaum Spielraum für weitere oder komplexere Darstellungen. Gleichzeitig reicht die Maßnahme nicht aus, um Kantenflimmern auf der Brille zu verhindern.\\
+Insgesamt erfüllt die Applikation die technischen Anforderungen fast vollständig bis vollständig. Eine Aufschlüsselung der einzelnen Kriterien bietet die unten stehende Tabelle \ref{tab:tech_results}. Die Hologramme wirken weitestgehend stabil und glaubhaft positioniert, sie bleiben im Rahmen der Komfortzone und passen sich dem Nutzer an. Die Interaktion erfolgt zum Großteil über Standardmechanismen. Auch im Bereich Performance bleibt die Anwendung im Rahmen und liefert konstant 60 Bilder pro Sekunde aus. Allerdings beansprucht die Kantenglättung massiv Ressourcen und lässt kaum Spielraum für weitere oder komplexere Darstellungen. Gleichzeitig reicht die Maßnahme nicht aus, um Kantenflimmern auf der Brille zu verhindern. Im Weiteren soll auf einzelne Aspekte näher eingegangen werden.\\
 
-Im Weiteren soll auf einzelne Aspekte näher eingegangen werden.\\
+\textit{Stabilität}\\
+Die Stabilität der Objekte beeinflusst die Nutzererfahrung wesentlich, da durch die Einbettung in die Spule selbst geringe Abweichungen negativ auffallen. Bei einer umsichtigen Nutzung treten diesbezüglich wenige bis keine Probleme auf, die Elemente wirken stabil. Lediglich die sehr nah an der Spule positionierten Daten-Panels und Tooltips können bei Bewegungen einen leichten Drift aufweisen. Selten sind kleinere Sprünge oder Vibrationen festzustellen. Und die Darstellung der Feldlinien wippt bei vertikalen Kopfbewegungen leicht um den Mittelpunkt. Das ist der Tatsache geschuldet, dass die Feldlinien steil auf der Stabilisations-Ebene stehen und sich von dieser bis zu 1,2 Meter ausbreiten. Der Effekt ist jedoch gering und nur auffällig, wenn er provoziert wird.\\
  
 %\textbf{Qualitätskriterien}
 %\begin{sidewaystable}[h!]
@@ -100,9 +101,6 @@ Im Weiteren soll auf einzelne Aspekte näher eingegangen werden.\\
 %\end{sidewaystable}
 \end{landscape}
 
-\textit{Stabilität}\\
-Die Stabilität der Objekte beeinflusst die Nutzererfahrung wesentlich, da durch die Einbettung in die Spule selbst geringe Abweichungen negativ auffallen. Bei einer umsichtigen Nutzung treten diesbezüglich wenige bis keine Probleme auf, die Elemente wirken stabil. Lediglich die sehr nah an der Spule positionierten Daten-Panels und Tooltips können bei Bewegungen einen leichten Drift aufweisen. Selten sind kleinere Sprünge oder Vibrationen festzustellen. Und die Darstellung der Feldlinien wippt bei vertikalen Kopfbewegungen leicht um den Mittelpunkt. Das ist der Tatsache geschuldet, dass die Feldlinien steil auf der Stabilisations-Ebene stehen und sich von dieser bis zu 1,2 Meter ausbreiten. Der Effekt ist jedoch gering und nur auffällig, wenn er provoziert wird.\\
-
 Allerdings hängt die Stabilität nicht unwesentlich von den Randbedingungen ab. Die weiter unten genannten Umstände des Tests erleichtern das Tracking und die Stabilisation. Unter weniger geeigneten Bedingungen kann die Stabilität und damit auch die Positionierung der Hologramme beeinträchtigt werden. Insbesondere kann es bei unerfahrenen Nutzern durch ungünstige Aktionen wie z.B. ruckartige Kopfbewegungen zu negativen Auswirkungen auf die Stabilität kommen.\\
 
 \textit{Positionierung}\\
@@ -123,7 +121,7 @@ Die Performance hat maßgeblichen Einfluss auf die Stabilität der Hologramme ab
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=\textwidth]{images/performance/profile_MSAA_on_cut.jpg}
+	\includegraphics[width=0.8\textwidth]{images/performance/profile_MSAA_on_cut.jpg}
 	\caption{Profiler mit Details zur Renderdauer auf CPU und GPU mit aktiviertem MSAA. Letzteres nimmt auf der GPU ca. 3 ms in Anspruch. Die 16 ms GPU-Zeit entstehen durch die Synchronisation mit dem Display. Aus der Darstellung der CPU-Zeiten wurde diese herausgenommen.}
 	\label{img:profiler}
 \end{figure}
@@ -222,7 +220,7 @@ Neben dem vorgestellten Experiment sind mit einer Helmholtz-Spule noch weitere V
 \begin{wrapfigure}{r}{0.5\textwidth}
 	\centering
 	\includegraphics[width=0.48\textwidth]{images/papers/beam.jpg}
-	\caption{Ablenkung von Elektronen durch das Magnetfeld einer Helmholt-Spule \cite{Bader15}. Der Elektronenstrahl regt ein Gas zum Leuchten an und wird dadurch sichtbar.}
+	\caption{Ablenkung von Elektronen durch das Magnetfeld einer Helmholtz-Spule \cite{Bader15}. Der Elektronenstrahl regt ein Gas zum Leuchten an und wird dadurch sichtbar.}
 	\label{img:beam}
 \end{wrapfigure}
 
@@ -232,7 +230,7 @@ Ebenfalls denkbar wäre eine Übertragung auf ähnliche Versuche. Hier käme bei
 
 Grundsätzlich ist die Übertragbarkeit jedoch eingeschränkt, da die Lösung stark auf den Anwendungsfall und dessen Eigenschaften zugeschnitten ist. Bei einem anderen Versuch lassen sich Darstellungen ggf. nicht auf die gleiche Weise einbetten. Wenn z.B. der Nutzer ständig mit realen Objekten direkt interagieren muss, an denen die virtuellen Objekte verankert sind, wird die Empfohlene Distanz zu den Darstellungen dauerhaft unterschritten. Außerdem schaffen bewegliche Objekte, deren Position verfolgt werden muss, zusätzliche Probleme. Ein fortlaufendes Tracking durch die HoloLens über optische Merkmale nimmt massiv Ressourcen in Anspruch und führt dazu, dass keine Aufnahmen der Anwendung von der HoloLens selbst gemacht werden können.\\
 
-Die Probleme können durchaus sehr individuell sein. Im Falle des zuvor genannten Versuches mit der Ablenkung des Elektronenstrahls könnte beispielsweise ein Problem mit dem Tracking auftreten. Wenn nämlich das Licht ausgeschaltet werden muss, damit der Elektronenstrahl zu erkennen ist, verliert die HoloLens ggf. aufgrund der mangelnden optischen Merkmale die Orientierung. Experimente mit zu hellen Elementen sind jedoch auch problematisch, da dann die Hologramme schlechter sichtbar wären. Aber auch andere Quellen von Infrarotlicht sowie stark reflektierende oder transparente Materialien würden das Tracking stören. Nicht zuletzt spielt auch Sicherheitsausrüstung eine Rolle. Bei einem Experiment mit einem Laser ist ggf. eine Schutzbrille notwendig, die den Einsatz der HoloLens möglicherweise ausschließt.\\
+Die Probleme können durchaus sehr individuell sein. Im Falle des zuvor genannten Versuches mit der Ablenkung des Elektronenstrahls könnte beispielsweise ein Problem mit dem Tracking auftreten. Wenn nämlich das Licht ausgeschaltet werden muss, damit der Elektronenstrahl zu erkennen ist, verliert die HoloLens ggf. aufgrund der mangelnden optischen Merkmale die Orientierung\footnote{Daher ist das Bild in Abbildung \ref{img:beam} so dunkel.}. Experimente mit zu hellen Elementen sind jedoch auch problematisch, da dann die Hologramme schlechter sichtbar wären. Aber auch andere Quellen von Infrarotlicht sowie stark reflektierende oder transparente Materialien würden das Tracking stören. Nicht zuletzt spielt auch Sicherheitsausrüstung eine Rolle. Bei einem Experiment mit einem Laser ist ggf. eine Schutzbrille notwendig, die den Einsatz der HoloLens möglicherweise ausschließt.\\
 
 Für ein konkretes Experiment ist folglich individuell zu prüfen, in wie fern die technischen Voraussetzungen der eines Einsatzes der HoloLens gegeben sind.
 	

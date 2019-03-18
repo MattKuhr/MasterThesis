@@ -54,15 +54,22 @@ So lässt sich die Feldstärke an einem durch einen Vektor repräsentierten Punk
 \subsubsection{Helmholtz-Spule}
 \label{sec-2-3-3}
 Bei einer Helmholtz-Spule handelt es sich im Prinzip um zum zwei zusammengeschaltete Spulen. Dabei werden zwei identische Spulen parallel nebeneinander aufgestellt, sodass der Abstand genau dem Radius der Spulen entspricht. Abbildung \ref{img:Helmholtz} zeigt eine solche Helmholtz-Spule.\\
-\begin{wrapfigure}{R}{0.4\textwidth}
+\begin{wrapfigure}{r}{0.4\textwidth}
 	\centering
 	\includegraphics[width=0.38\textwidth]{images/papers/Helmholtz.jpg}
-	\caption{Foto der verwendeten Helmholtz-Spule. Radius und Abstand betragen 15 cm und jede Teilspule hat 124 Windungen. Quelle: 3B Scientific.}
+	\caption{Foto der verwendeten Helmholtz-Spule. Radius und Abstand betragen 15 cm und jede Teilspule hat 124 Windungen \cite{3BS}.}
 	\label{img:Helmholtz}
 \end{wrapfigure}
 
+Durch diese spezielle Eigenschaft des Aufbaus überlagern sich die beiden, durch die einzelnen Spulen entstehenden Magnetfelder genau so, dass im Raum zwischen den Spulen ebenfalls ein (nahezu) homogenes Magnetfeld entsteht. Lediglich am Rand und in unmittelbarer Nähe zu den Spulen wird das Feld zunehmend inhomogen. Die Zeichnung in Abbildung \ref{img:hh-mfeld} zeigt diesen Zusammenhang für die Spulenachse. Detailliertere Informationen dazu finden sich beispielsweise in \cite{Demtroder13}.\\
 
-Durch diese spezielle Eigenschaft des Aufbaus überlagern sich die beiden, durch die einzelnen Spulen entstehenden Magnetfelder genau so, dass im Raum zwischen den Spulen ebenfalls ein (nahezu) homogenes Magnetfeld entsteht. Abbildung \ref{img:Magnetfeld-Helmholtzspule} zeigt das Feld für die X-Z-Ebene in der Draufsicht von oben auf eine Helmholtz-Spule. Dabei ist zu erkennen, dass das Feld in weiten Teilen des durch die zwei Spulen aufgespannten Zylinders homogen ist. Lediglich am Rand und in unmittelbarer Nähe zu den Spulen wird das Feld zunehmend inhomogen. Detailliertere Informationen dazu finden sich beispielsweise in \cite{Demtroder13}.\\
+\begin{wrapfigure}{r}{0.5\textwidth}
+	\centering
+	\includegraphics[width=0.48\textwidth]{images/papers/BiotSavart.jpg}
+	\caption{Oben: Skizze des Spulenpaars. Unten: Betrag der Flussdichte des entstehenden Feldes entlang der Z-Achse. Zwischen den Spulen ist das Feld nahezu homogen \cite{Demtroder13}.}
+	\label{img:hh-mfeld}
+\end{wrapfigure}
+
 
 Das Feld wird durch elliptische Integrale beschrieben, die nur numerisch zu lösen sind. Im Mittelpunkt zwischen den Spulen vereinfacht sich die Feldgleichung jedoch zu folgender Gleichung:
 \begin{equation}
