@@ -1,0 +1,7 @@
+Augmented Reality (AR) hat in den letzten Jahren durch die Verfügbarkeit entsprechender Hard- und Software an Bedeutung gewonnen. Ein Beispiel dafür ist die HoloLens, ein Head Mounted Display, das virtuelle Objekte in die Realität einbetten und anzeigen kann.
+Ein wichtiges Anwendungsfeld für AR-Anwendungen ist der Ausbildungsbereich und auch in der physikalischen Ausbildung wurde AR bereits erfolgreich eingesetzt.
+Auf Basis der HoloLens existieren jedoch kaum Arbeiten. Diese Arbeit untersucht daher den Einsatz des Gerätes im Kontext eines physikalischen Experimentes. 
+Es wird eine AR-Lösung vorgestellt, die ein Experiment mit einer Helmholtz-Spule um virtuelle Elemente erweitert und dabei Rücksicht auf die besonderen technischen Eigenschaften der HoloLens nimmt. Anhand von Positions- und Echtzeitdaten wird eine Magnetfelddarstellung in den Versuchsaufbau eingebettet.
+Außerdem werden theoretische Ergebnisse und zusätzliche Informationen (z.B. Stromrichtung) angezeigt. Dadurch werden andernfalls nicht sichtbare physikalische Eigenschaften und Zusammenhänge für den Nutzer sichtbar.
+Gleichzeitig vermeidet die Lösung Probleme durch die Technik des Gerätes. Die Hologramme weisen eine gute Stabilität auf, liegen in einer geeigneten Entfernung und werden durch das begrenzte Field of View der HoloLens kaum beeinträchtigt. In ersten Reaktionen bewerteten Nutzer die Erfahrung durchgehend positiv.
+Die Ergebnisse motivieren eine Ausweitung und Übertragung des Ansatzes auf weitere Inhalte und Anwendungsfälle sowie eine empirische Evaluation der Ergebnisse.
