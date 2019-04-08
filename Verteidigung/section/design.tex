@@ -24,14 +24,14 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{}
+\begin{frame}[fragile]{Design}
 	\vspace{-10px}
 	\begin{minipage}{0.25\textwidth}
 		{\setstretch{1.0}
 			\begin{itemize}[itemsep=1mm]
 				\item Feldlinien
-				\item Kompass-Skala
-				\item Virtuelle Nadel
+				\item Skala
+				\item Auslenkung
 				\item Stromrichtung
 				\item Plus \& Minus
 				\item Messwerte
@@ -43,6 +43,34 @@
 		\includegraphics[width=0.95\textwidth]{images/unity/overview.jpg}\\
 		\scriptsize Darstellungen in der Entwicklungsumgebung (Unity). Auflösung und Qualitätseinstellungen entsprechen den Werten auf der HoloLens.
 	\end{minipage}
+\end{frame}
+
+\begin{frame}[fragile]{Design}
+\vspace{-10px}
+\begin{minipage}[t]{\textwidth}
+	{\setstretch{1.0}
+		\begin{itemize}[itemsep=1mm]
+			\item Platzsparendes Design, um Screenspace zu nutzen und in FoV-Grenzen zu bleiben, außerdem günstig für Stabilisation
+			\item Minimal notwendige Anzahl Feldlinien bzw. Vektoren
+			\item Nutzung konzipiert für: 1,3 m Abstand und $0^\circ$ bis -$35^\circ$ Winkel (vertikal)
+		\end{itemize}
+	}
+\end{minipage}
+
+
+\begin{minipage}{0.6\textwidth}
+	{\setstretch{1.0}
+	\begin{itemize}[itemsep=1mm]
+		\item Begrenzungen über Transparenz
+		\item Objekte orientieren sich an Nutzerposition
+		\item Bekannte Darstellungsmodelle
+	\end{itemize}
+	}
+\end{minipage}
+\begin{minipage}{0.35\textwidth}
+	\centering
+	\includegraphics[width=0.95\textwidth]{images/unity/overview.jpg}\\
+\end{minipage}
 \end{frame}
 
 \begin{frame}[fragile]{}
@@ -59,101 +87,25 @@
 	\vspace{-10px}
 	\centering
 	\includegraphics[width=0.85\textwidth]{images/HL/Vektoren.jpg}\\
+	\vspace{0.3cm}	
 	\scriptsize Screenshot von der HoloLens mit Vektordarstellung.
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{}
+\begin{figure}
+	\vspace{-10px}
+	\centering
+	\includegraphics[width=0.95\textwidth]{images/HL/simulation.jpg}\\
+	\vspace{0.3cm}
+	\scriptsize Screenshot von der HoloLens mit Darstellung von Simulationsdaten.
 \end{figure}
 \end{frame}
 
 \begin{frame}[fragile]{Near Plane Fading}
 \begin{figure}
-	\includegraphics[width=0.8\textwidth]{images/HL/compass.jpg}
+	\includegraphics[width=0.8\textwidth]{images/HL/compass.jpg}\\
+	\vspace{0.3cm}
+	\scriptsize Dicht liegende Objekte werden ausgeblendet. Kompassnadel ist weiß überklebt, damit sie besser zu erkennen ist.
 \end{figure}
-\end{frame}
-
-\begin{frame}[fragile]{Design}
-\begin{itemize}
-	\item Nutzung etablierter Darstellungsmodelle
-	\pause
-	\item Anwendung für Nutzung im Abstand von ca. 1,3 m designet, zu nah liegende Objekte werden ausgeblendet
-	\begin{itemize}
-		\item Hologramme passen ins Sichtfeld, sind nicht zu dicht positioniert, nutzen Screenspace aus, Komfortable Nutzung möglich
-	\end{itemize}
-	\pause
-	\item 
-	\pause
-	\item Umsetzung empfohlener Maßnahmen zur Verbesserung der Performance
-\end{itemize}
-\end{frame}
-
-
-\part{Ergebnisse}
-\label{part:results}
-\begin{frame}[fragile]{Dargestellte Informationen}
-\begin{itemize}
-	\item Visualisierung der Komponenten des Magnetfeldes in zwei Darstellungen und in Echtzeit
-	\item Darstellung einer vorberechneten Lösung für eine ausgewählte Ebene des Feldes der Spule
-	\item Kennzeichnung der Stromrichtung
-	\item Integration einer virtuellen Kompass-Skala mit Hervorhebung wichtiger Zustände
-	\item Einbettung einer virtuellen Kompassnadel auf Basis theoretischer Werte
-	\item Numerische Darstellung gemessener und berechneter Echtzeitdaten
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Technische Bewertung}
-
-\setlength\extrarowheight{1pt}
-\def\arraystretch{1.1}
-\begin{table}
-	\centering
-	\begin{tabular}{l{5cm}|l}
-		Kriterium & Bewertung \\
-		\hline
-		\hline
-		Framerate & Optimal\\
-		\hline
-		Stabilität & Fast optimal\\
-		\hline
-		Positionierung & Fast optimal\\
-		\hline
-		Komfortzone & Optimal\\
-		\hline
-		Tiefen Wechsel & Fast optimal\\
-		\hline
-		FoV-Grenzen & Optimal\\
-		\hline
-		Input Interaction Clarity & Erfüllt\\
-		\hline
-		Anpassung an Nutzerposition & Optimal\\
-	\end{tabular}
-\end{table}
-\scriptsize Bewertung anhand von Qualitätskriterien der Dokumentation. Stufen: ''Optimal'', ''Erfüllt'' und ''Nicht erfüllt''.
-\end{frame}
-
-
-\part{Ausblick}
-\label{part:future}
-\begin{frame}[fragile]{Erweiterungen}
-\usebeamerfont{frametitle}\textcolor{blue}{Inhaltlich:} \usebeamerfont{text}\textit{Weitere Lerninhalte integrieren}
-\begin{itemize}
-	\item Weitere Inhalte, z.B. Rechte-Hand-Regel
-	\item Weitere Experimente, z.B. Ablenkung eines Elektronenstrahles
-\end{itemize}
-\pause
-\vskip 1em
-\usebeamerfont{frametitle}\textcolor{blue}{Technisch:} \usebeamerfont{text}\textit{Portierung für HoloLens 2}
-\begin{itemize}
-	\item Auflösung x4 pro Auge, Sichtfeld x2 (Fläche)
-	\item Tragekomfort und Interaktion verbessert
-\end{itemize}
-
-\vspace{50px}
-\end{frame}
-
-
-
-\part{Diskussion}
-\begin{frame}[fragile]{}
-Vielen Dank für Ihre Aufmerksamkeit!
-
-\vspace{1em}
-\hspace{1em} Fragen?
 \end{frame}
