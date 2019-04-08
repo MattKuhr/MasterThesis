@@ -19,6 +19,7 @@
 \part{HoloLens}
 \label{part:hololens}
 \begin{frame}[fragile]{}
+\vspace{-5px}
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\textwidth]{images/papers/hololens.jpg}
@@ -26,14 +27,17 @@
 \begin{itemize}
 	\item Projeziert virtuelle Objekte in das Sichtfeld des Nutzers
 	\item Nutzer bewegt sich simultan durch reale und virtuelle Szene
+	\pause
 	\item Genaue Bestimmung von Position und Ausrichtung im Raum durch Sensoren: \textit{Inside-Out-Tracking}
-	\item Interaktion über Gesten und Sprache, vorgefertigte Objekte und Funktionen
+	\item Interaktion über Gesten und Sprache, Toolkit mit vorgefertigten Objekten und Funktionen
+	\pause
 	\item Ermöglicht \textit{Augmented Reality} Anwendungen
 \end{itemize}	
 \end{frame}
 
 \begin{frame}[fragile]{Technische Aspekte}
 		\begin{itemize}
+			\pause
 			\item \textit{See-Through Display}, Zwei 16:9 HD Bilder, 32\degree FoV (diagonal)
 			\begin{itemize}[topsep=-5px]
 				\setlength{\itemsep}{-5px}
@@ -45,6 +49,7 @@
 				\setlength{\itemsep}{-5px}
 				\item Einfluss auf Distanz
 			\end{itemize}
+			\pause
 			\item \textit{Inside-Out Tracking} über Tiefenkamera, Stereo-Kameras und IMU
 			\begin{itemize}[topsep=-5px]
 				\setlength{\itemsep}{-5px}
@@ -56,6 +61,7 @@
 				\setlength{\itemsep}{-5px}
 				\item Einfluss auf Performance
 			\end{itemize}
+		\pause
 			\item Optimiert Stabilität der Objekte für ausgewählte Ebene
 			\begin{itemize}[topsep=-5px]
 				\setlength{\itemsep}{-5px}
@@ -68,6 +74,7 @@
 \label{part:sota}
 \begin{frame}[fragile]{HoloLens in der Physik}
 \vspace{0.1cm}
+\pause
 \begin{figure}
 	\includegraphics[width=0.42\textwidth]{images/papers/Amiraslanov18.png}
 	\includegraphics[width=0.42\textwidth]{images/papers/Javaheri18.png}
@@ -81,6 +88,7 @@
 \end{frame}
 
 \begin{frame}[fragile]{Augmented Reality in der Physik}
+\pause
 	\vspace{0.1cm}
 \begin{figure}
 	\includegraphics[width=0.32\textwidth]{images/papers/Buchau09.jpg}
@@ -99,24 +107,6 @@
 
 \part{Anwendungsfall: Helmholtz-Spulen}
 \label{part:physics}
-\begin{frame}[fragile]{Physikalischer Hintergrund}
-\begin{minipage}{0.5\textwidth}
-	{\setstretch{1.0}
-		\begin{itemize}[itemsep=1mm]
-			\item Magnetfeld ist 3D-Vektorfeld, Flussdichte $\vec{B}$ in Tesla
-			\item Stromfluss durch Spule erzeugt ein Magnetfeld, abhängig von Stromstärke
-			\item Helmholtz-Spule: Feld im Inneren weitgehend \textit{homogen}
-			\item Feldlinien und Vektormodell sind etablierte Darstellungsmodelle
-		\end{itemize}
-	}
-\end{minipage}
-\begin{minipage}{0.45\textwidth}
-	\centering
-	\includegraphics[width=0.9\textwidth]{images/papers/hh_mfield_nocol.png}\\
-	\small Darstellung des Magnetfeldes einer Helmholtz-Spule mittels Feldlinien für eine Ebene.
-\end{minipage}
-\end{frame}
-
 \begin{frame}[fragile]{Experiment: Bestimmung des Erdmagnetfeldes}
 \begin{minipage}{0.5\textwidth}
 	{\setstretch{1.0}
@@ -132,5 +122,23 @@
 	\centering
 	\includegraphics[width=0.9\textwidth]{images/papers/setup_labled.jpg}\\
 	\small Foto des Versuchsaufbaus mit Bezeichnung der Elemente.
+\end{minipage}
+\end{frame}
+
+\begin{frame}[fragile]{Physikalischer Hintergrund}
+\begin{minipage}{0.5\textwidth}
+	{\setstretch{1.0}
+		\begin{itemize}[itemsep=1mm]
+			\item Magnetfeld ist 3D-Vektorfeld, Flussdichte $\vec{B}$ in Tesla
+			\item Stromfluss durch Spule erzeugt ein Magnetfeld, abhängig von Stromstärke
+			\item Helmholtz-Spule: Feld im Inneren weitgehend \textit{homogen}
+			\item Feldlinien und Vektormodell sind etablierte Darstellungsmodelle
+		\end{itemize}
+	}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+	\centering
+	\includegraphics[width=0.9\textwidth]{images/papers/hh_mfield_nocol.png}\\
+	\small Darstellung des Magnetfeldes einer Helmholtz-Spule mittels Feldlinien für eine Ebene.
 \end{minipage}
 \end{frame}

@@ -4,17 +4,19 @@
 	{\setstretch{1.0}
 		\begin{itemize}[itemsep=1mm]
 			\item Unity, Vuforia, C\# und Python
-			\item Server mit Pyhton auf Basis von 2 Threads
-			\item Steuerung über Menu und Einstellungen
+			\item Positionierung initial über optischen Marker, danach über Spatial Mapping			
+			\item Server mit Pyhton auf Basis von zwei kommunizierenden Threads
+			\item Steuerung über Menu und Einstellungen via Cursor
+			\item Verdeckung anhand nachmodellierter Spule
 		\end{itemize}
 	}
 \end{minipage}
 \begin{minipage}{0.45\textwidth}
 	\centering
+	\includegraphics[width=0.8\textwidth]{images/HL/mesh.JPG}\\
+	\scriptsize Spatial Mapping des Versuchsaufbaus.
 	\includegraphics[width=0.8\textwidth]{images/HL/settings_c.jpg}\\
 	\scriptsize Einstellungen mit aktiver Tastatur.
-	\includegraphics[width=0.8\textwidth]{images/HL/mesh.JPG}\\
-	\scriptsize Einstellungen mit aktiver Tastatur.	
 \end{minipage}
 \end{frame}
 
@@ -32,14 +34,15 @@
 \end{frame}
 
 \begin{frame}[fragile]{Technische Bewertung}
-
+\begin{minipage}{0.62\textwidth}
+%\centering
+\bgroup
 \setlength\extrarowheight{1pt}
 \def\arraystretch{1.1}
 \begin{table}
 	\centering
-	\begin{tabular}{m{5.0cm}|l}
+	\begin{tabular}{m{4.1cm}|l}
 		Kriterium & Bewertung \\
-		\hline
 		\hline
 		Framerate & Optimal\\
 		\hline
@@ -58,7 +61,19 @@
 		Anpassung an Nutzerposition & Optimal\\
 	\end{tabular}
 \end{table}
-\scriptsize Bewertung anhand von Qualitätskriterien der Dokumentation. Stufen: ''Optimal'', ''Erfüllt'' und ''Nicht erfüllt''.
+\setlength\extrarowheight{0pt}
+\def\arraystretch{1}
+\egroup
+\end{minipage}
+\begin{minipage}{0.35\textwidth}
+	%	\centering
+	\includegraphics[width=0.98\textwidth]{images/unity/fov.JPG}\\
+	
+	\includegraphics[width=0.98\textwidth]{images/HL/model-overlay.jpg}
+\end{minipage}
+% \vspace{-17px} \scriptsize \singlespacing
+%Tabelle: Bewertung anhand von Qualitätskriterien. Oben: Sichtfeld bei 1,5 m Abstand. Unten: Überlagerung von Modell und Realität.
+%\scriptsize Links Oben: Sichtfeld bei 1,5 m Entfernung. Links Unten: Überlagerung von Modell und Realität. Rechts: Bewertung anhand von Qualitätskriterien der Dokumentation. Stufen: ''Optimal'', ''Erfüllt'' und ''Nicht erfüllt''.
 \end{frame}
 
 \begin{frame}[fragile]{Performance}
