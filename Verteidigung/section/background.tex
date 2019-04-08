@@ -1,18 +1,19 @@
 \part{Hintergrund und Motivation}
 \label{part:intro}
 
-\begin{frame}[fragile]{}
+\begin{frame}[fragile]{Motivation}
+\vspace{10px}
+\usebeamerfont{frametitle}\textcolor{blue}{Frage:} \usebeamerfont{text}
+\end{frame}
+
+\begin{frame}[fragile]{Struktur des Vortrages}
 \begin{itemize}
-	\item HoloLens wie einsetzen?
-	\pause
-	\item Physik! Physikalische Experimente erweitern
-	\pause
-	\item Konkretes Experiment als Beispiel nehmen
-	\item Anforderungen und Probleme identifizieren und lösen
-	\pause
-	\item Arbeit schneidet viele Themenbereiche: Computergrafik, MR/AR, Physik, Education, Design, menschliche Wahrnehmung, ... 
+	\item Hintergründe zur HoloLens, deren Einsatz in der Physik und zum gewählten Experiment
+	\item Probleme \& Anforderungen
+	\item Lösungsansatz
+	\item Umsetzung \& Ergebnisse
+	\item Diskussion
 \end{itemize}
- 
 \end{frame}
 
 \part{HoloLens}
@@ -23,64 +24,70 @@
 	\includegraphics[width=0.7\textwidth]{images/papers/hololens.jpg}
 \end{figure}
 \begin{itemize}
-	\pause
-	\item \textit{Augmented Reality} Device
-	\pause
 	\item Projeziert virtuelle Objekte in das Sichtfeld des Nutzers
-	\pause
 	\item Nutzer bewegt sich simultan durch reale und virtuelle Szene
-	\pause
 	\item Genaue Bestimmung von Position und Ausrichtung im Raum durch Sensoren: \textit{Inside-Out-Tracking}
-	\pause
 	\item Interaktion über Gesten und Sprache
+	\item Ermöglicht \textit{Augmented Reality} Anwendungen
 \end{itemize}	
 \end{frame}
 
-\begin{frame}[fragile]{}
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.5\textwidth]{images/papers/hololens.jpg}
-\end{figure}
-\begin{itemize}
-	\pause
-	\item \textit{See-Through, Color Sequential} Display, stereoskopisch, Zwei 16:9 HD Bilder, 32\degree Field of View, 60 Hz Bildwiederholrate hochskaliert auf 240 Hz, Akkomodation der Augen fest bei 2 m
-	\pause
-	\item \textit{Inside-Out Tracking} über Tiefenkamera (Infrarot), Stereo-Kameras und Inertialmesssystem (IMU)
-	\pause
-	\item Stand-Alone Device, 1 GHz CPU, 1 GHz HPU, 2 GB RAM, 1 GB HPU RAM, passiv gekühlt, Bluetooth, WiFi
-	\pause
-	\item Interaktion über Handgesten und englische Sprachkommandos, Cursor = vorwärtsgerichteter Raycast im Zentrum des Sichtfeldes
-\end{itemize}	
+\begin{frame}[fragile]{Technische Aspekte}
+		\begin{itemize}
+			\item \textit{See-Through Display}, Zwei 16:9 HD Bilder, 32\degree FoV (diagonal)
+			\begin{itemize}[topsep=-5px]
+				\setlength{\itemsep}{-5px}
+				\item Einfluss auf Größe und Farbe von Objekten
+			\end{itemize}
+			\pause
+			\item Akkomodation der Augen fest bei 2 m
+			\begin{itemize}[topsep=-5px]
+				\setlength{\itemsep}{-5px}
+				\item Einfluss auf Distanz
+			\end{itemize}
+			\item \textit{Inside-Out Tracking} über Tiefenkamera, Stereo-Kameras und IMU
+			\begin{itemize}[topsep=-5px]
+				\setlength{\itemsep}{-5px}
+				\item Einfluss auf Positionierung und Stabilität
+			\end{itemize}
+			\pause
+			\item Stand-Alone Device, 1 GHz CPU/HPU, 2 GB RAM
+			\begin{itemize}[topsep=-5px]
+				\setlength{\itemsep}{-5px}
+				\item Einfluss auf Performance
+			\end{itemize}
+		\end{itemize}
 \end{frame}
 
 \part{State of the Art}
 \label{part:sota}
 \begin{frame}[fragile]{HoloLens in der Physik}
+\vspace{0.1cm}
 \begin{figure}
-	\includegraphics[width=0.43\textwidth]{images/papers/Amiraslanov18.png}
-	\includegraphics[width=0.43\textwidth]{images/papers/Javaheri18.png}
+	\includegraphics[width=0.42\textwidth]{images/papers/Amiraslanov18.png}
+	\includegraphics[width=0.42\textwidth]{images/papers/Javaheri18.png}
 	\begin{center}
-	\vspace{0.05cm}
-	\includegraphics[width=0.87\textwidth]{images/papers/Strzys18.png}	
+	\vspace{0.03cm}
+	\includegraphics[width=0.85\textwidth]{images/papers/Strzys18.png}	
 	\end{center}
 	\setlength{\abovecaptionskip}{7pt plus 5pt minus 2pt}
-	\caption*{Oben Links: Amiraslanov (2018), Oben Rechts: Javaheri (2018), Unten: Strzys (2017)}
+	\caption*{Oben Links: Amiraslanov (2018), Oben Rechts: Javaheri (2018), Unten: Strzys (2018)}
 \end{figure}
 \end{frame}
 
 \begin{frame}[fragile]{Augmented Reality in der Physik}
-
+	\vspace{0.1cm}
 \begin{figure}
-	\includegraphics[width=0.35\textwidth]{images/papers/Buchau09.jpg}
+	\includegraphics[width=0.32\textwidth]{images/papers/Buchau09.jpg}
 	\hspace{0.05cm}
-	\includegraphics[width=0.35\textwidth]{images/papers/Matsutomo13.jpg}
+	\includegraphics[width=0.32\textwidth]{images/papers/Matsutomo13.jpg}
 
 %	\centering
-	\includegraphics[width=0.35\textwidth]{images/papers/Buchau09_Magnet.jpg}
+	\includegraphics[width=0.32\textwidth]{images/papers/Buchau09_Magnet.jpg}
 	\hspace{0.05cm}
-	\includegraphics[width=0.35\textwidth]{images/papers/Ibanez14.jpg}
+	\includegraphics[width=0.32\textwidth]{images/papers/Ibanez14.jpg}
 
-	\setlength{\abovecaptionskip}{5pt plus 5pt minus 2pt}
+	\setlength{\abovecaptionskip}{7pt plus 5pt minus 2pt}
 	\caption*{Links: Buchau (2009), Rechts Oben: Matsutomo (2013), Rechts Unten: Ibanez (2014)}
 \end{figure}
 \end{frame}
@@ -100,7 +107,7 @@
 \end{minipage}
 \begin{minipage}{0.45\textwidth}
 	\centering
-	\includegraphics[width=0.9\textwidth]{images/papers/hh_mfield.png}\\
+	\includegraphics[width=0.9\textwidth]{images/papers/hh_mfield_nocol.png}\\
 	\small Darstellung des Magnetfeldes einer Helmholtz-Spule mittels Feldlinien für eine Ebene.
 \end{minipage}
 \end{frame}

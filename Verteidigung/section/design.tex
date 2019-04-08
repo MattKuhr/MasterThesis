@@ -4,7 +4,13 @@
 	\textit{Erweiternde Darstellungen erstellen und räumlich wie zeitlich in den Versuch integrieren}
 	\pause
 	\begin{itemize}
-		\item Magnetfelder, deren Eigenschaften, Stromfluss und Auswirkung auf die Nadel anzeigen
+		\item Nicht sichtbare, physikalische Eigenschaften im Raum darstellen
+		\begin{itemize}[topsep=-5px]
+			\setlength{\itemsep}{-5px}
+			\item Magnetfelder durch Feldlinien und Vektoren
+			\item Stromfluss, Messwerte und ideale Kompassnadel 
+		\end{itemize}
+		\pause
 		\item Positionierung und Stabilisierung der HoloLens nutzen		
 		\item Echtzeitdaten (Messwerte) an die HoloLens übermitteln und darstellen
 		\item Technische Einschränkungen beim Design berücksichtigen
@@ -18,12 +24,25 @@
 	\end{itemize}
 \end{frame}
 
-\part{Lösung}
 \begin{frame}[fragile]{}
 	\vspace{-10px}
-	\centering
-	\includegraphics[width=0.75\textwidth]{images/unity/overview.jpg}\\
-	\scriptsize Darstellungen in der Entwicklungsumgebung (Unity). Auflösung und Qualitätseinstellungen entsprechen den Werten auf der HoloLens.
+	\begin{minipage}{0.25\textwidth}
+		{\setstretch{1.0}
+			\begin{itemize}[itemsep=1mm]
+				\item Feldlinien
+				\item Kompass-Skala
+				\item Virtuelle Nadel
+				\item Stromrichtung
+				\item Plus \& Minus
+				\item Messwerte
+			\end{itemize}
+		}
+	\end{minipage}
+	\begin{minipage}{0.7\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{images/unity/overview.jpg}\\
+		\scriptsize Darstellungen in der Entwicklungsumgebung (Unity). Auflösung und Qualitätseinstellungen entsprechen den Werten auf der HoloLens.
+	\end{minipage}
 \end{frame}
 
 \begin{frame}[fragile]{}
@@ -68,7 +87,7 @@
 
 \part{Ergebnisse}
 \label{part:results}
-\begin{frame}[fragile]{Erweiterungen}
+\begin{frame}[fragile]{Dargestellte Informationen}
 \begin{itemize}
 	\item Visualisierung der Komponenten des Magnetfeldes in zwei Darstellungen und in Echtzeit
 	\item Darstellung einer vorberechneten Lösung für eine ausgewählte Ebene des Feldes der Spule
@@ -77,6 +96,36 @@
 	\item Einbettung einer virtuellen Kompassnadel auf Basis theoretischer Werte
 	\item Numerische Darstellung gemessener und berechneter Echtzeitdaten
 \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Technische Bewertung}
+
+\setlength\extrarowheight{1pt}
+\def\arraystretch{1.1}
+\begin{table}
+	\centering
+	\begin{tabular}{l{5cm}|l}
+		Kriterium & Bewertung \\
+		\hline
+		\hline
+		Framerate & Optimal\\
+		\hline
+		Stabilität & Fast optimal\\
+		\hline
+		Positionierung & Fast optimal\\
+		\hline
+		Komfortzone & Optimal\\
+		\hline
+		Tiefen Wechsel & Fast optimal\\
+		\hline
+		FoV-Grenzen & Optimal\\
+		\hline
+		Input Interaction Clarity & Erfüllt\\
+		\hline
+		Anpassung an Nutzerposition & Optimal\\
+	\end{tabular}
+\end{table}
+\scriptsize Bewertung anhand von Qualitätskriterien der Dokumentation. Stufen: ''Optimal'', ''Erfüllt'' und ''Nicht erfüllt''.
 \end{frame}
 
 
@@ -90,7 +139,7 @@
 \end{itemize}
 \pause
 \vskip 1em
-\usebeamerfont{frametitle}\textcolor{blue}{Technische:} \usebeamerfont{text}\textit{Portierung für HoloLens 2}
+\usebeamerfont{frametitle}\textcolor{blue}{Technisch:} \usebeamerfont{text}\textit{Portierung für HoloLens 2}
 \begin{itemize}
 	\item Auflösung x4 pro Auge, Sichtfeld x2 (Fläche)
 	\item Tragekomfort und Interaktion verbessert
