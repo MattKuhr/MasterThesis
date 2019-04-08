@@ -1,7 +1,7 @@
-\part{Einleitung}
+\part{Hintergrund und Motivation}
 \label{part:intro}
 
-\begin{frame}[fragile]{Hintergrund und Motivation der Arbeit}
+\begin{frame}[fragile]{}
 \begin{itemize}
 	\item HoloLens wie einsetzen?
 	\pause
@@ -24,7 +24,7 @@
 \end{figure}
 \begin{itemize}
 	\pause
-	\item \textit{Mixed Reality} Device
+	\item \textit{Augmented Reality} Device
 	\pause
 	\item Projeziert virtuelle Objekte in das Sichtfeld des Nutzers
 	\pause
@@ -64,11 +64,11 @@
 	\includegraphics[width=0.87\textwidth]{images/papers/Strzys18.png}	
 	\end{center}
 	\setlength{\abovecaptionskip}{7pt plus 5pt minus 2pt}
-	\caption*{Oben Links: \citep{Amiraslanov18}, Oben Rechts: \cite{Javaheri18}, Unten: \cite{Strzys18}}
+	\caption*{Oben Links: Amiraslanov (2018), Oben Rechts: Javaheri (2018), Unten: Strzys (2017)}
 \end{figure}
 \end{frame}
 
-\begin{frame}[fragile]{Mixed Reality in der Physik}
+\begin{frame}[fragile]{Augmented Reality in der Physik}
 
 \begin{figure}
 	\includegraphics[width=0.35\textwidth]{images/papers/Buchau09.jpg}
@@ -81,26 +81,43 @@
 	\includegraphics[width=0.35\textwidth]{images/papers/Ibanez14.jpg}
 
 	\setlength{\abovecaptionskip}{5pt plus 5pt minus 2pt}
-	\caption*{Links: \citep{Buchau09}, Rechts Oben: \cite{Matsutomo13}, Rechts Unten: \cite{Ibanez14}}
+	\caption*{Links: Buchau (2009), Rechts Oben: Matsutomo (2013), Rechts Unten: Ibanez (2014)}
 \end{figure}
 \end{frame}
 
 \part{Anwendungsfall: Helmholtz-Spulen}
 \label{part:physics}
+\begin{frame}[fragile]{Physikalischer Hintergrund}
+\begin{minipage}{0.5\textwidth}
+	{\setstretch{1.0}
+		\begin{itemize}[itemsep=1mm]
+			\item Magnetfeld ist 3D-Vektorfeld, Flussdichte $\vec{B}$ in Tesla
+			\item Stromfluss durch Spule erzeugt ein Magnetfeld, abhängig von Stromstärke
+			\item Helmholtz-Spule: Feld im Inneren weitgehend \textit{homogen}
+			\item Feldlinien und Vektormodell sind etablierte Darstellungsmodelle
+		\end{itemize}
+	}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+	\centering
+	\includegraphics[width=0.9\textwidth]{images/papers/hh_mfield.png}\\
+	\small Darstellung des Magnetfeldes einer Helmholtz-Spule mittels Feldlinien für eine Ebene.
+\end{minipage}
+\end{frame}
 \begin{frame}[fragile]{Experiment: Bestimmung des Erdmagnetfeldes}
 \begin{minipage}{0.5\textwidth}
 	{\setstretch{1.0}
 \begin{itemize}[itemsep=1mm]
 	\item[$1.$] Kompass ausrichten lassen
 	\item[$2.$] Spule orthogonal zur Nord-Süd-Achse aufstellen
-	\item[$3.$] Stromfluss erhöhen, bis Kompassnadel um 45\degree ausgelenkt ist
+	\item[$3.$] Spannungsquelle einschalten und Stromfluss erhöhen, bis Kompassnadel um 45\degree ausgelenkt ist
 	\item[$4.$] Flussdichte mit Formel aus Stromstärke und Spuleneigenschaften berechnen
 \end{itemize}
 }
 \end{minipage}
-\begin{minipage}{0.48\textwidth}
+\begin{minipage}{0.45\textwidth}
 	\centering
-%	\includegraphics[width=\textwidth]{images/Magnetfeld-Helmholtzspule.jpg}
-	\tiny Magnetfeld einer Helmholtz-Spule in der X-Z-Ebene. Überlagerte Darstellung von Vektorfeld und Feldlinien. Quelle: Wikipedia.
+	\includegraphics[width=0.9\textwidth]{images/papers/setup_labled.jpg}\\
+	\small Foto des Versuchsaufbaus mit Bezeichnung der Elemente.
 \end{minipage}
 \end{frame}

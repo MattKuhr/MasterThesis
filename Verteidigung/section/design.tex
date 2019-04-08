@@ -1,9 +1,103 @@
 \part{Lösungsansatz}
 \label{part:solution}
+\begin{frame}[fragile]{}
+	\textit{Erweiternde Darstellungen erstellen und räumlich wie zeitlich in den Versuch integrieren}
+	\pause
+	\begin{itemize}
+		\item Magnetfelder, deren Eigenschaften, Stromfluss und Auswirkung auf die Nadel anzeigen
+		\item Positionierung und Stabilisierung der HoloLens nutzen		
+		\item Echtzeitdaten (Messwerte) an die HoloLens übermitteln und darstellen
+		\item Technische Einschränkungen beim Design berücksichtigen
+	%	\begin{itemize}[topsep=-5px]
+	%		\setlength{\itemsep}{-5px}
+	%		\item Maßnahmen zur Vermeidung von Problemen anwenden
+	%		\item Angepasstes Design
+	%		\item Vorgefertigte Objekte nutzen
+	%	\end{itemize}
+		\item Anpassung von realen Objekten, um Integration mit der Anwendung zu verbessern
+	\end{itemize}
+\end{frame}
+
+\part{Lösung}
+\begin{frame}[fragile]{}
+	\vspace{-10px}
+	\centering
+	\includegraphics[width=0.75\textwidth]{images/unity/overview.jpg}\\
+	\scriptsize Darstellungen in der Entwicklungsumgebung (Unity). Auflösung und Qualitätseinstellungen entsprechen den Werten auf der HoloLens.
+\end{frame}
+
+\begin{frame}[fragile]{}
+\begin{figure}
+	\vspace{-10px}
+	\centering
+	\includegraphics[width=0.7\textwidth]{images/HL/fieldlines_cut.jpg}\\
+	\scriptsize Screenshot von der HoloLens mit Feldliniendarstellung.
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{}
+\begin{figure}
+	\vspace{-10px}
+	\centering
+	\includegraphics[width=0.85\textwidth]{images/HL/Vektoren.jpg}\\
+	\scriptsize Screenshot von der HoloLens mit Vektordarstellung.
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{Near Plane Fading}
+\begin{figure}
+	\includegraphics[width=0.8\textwidth]{images/HL/compass.jpg}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{Design}
+\begin{itemize}
+	\item Nutzung etablierter Darstellungsmodelle
+	\pause
+	\item Anwendung für Nutzung im Abstand von ca. 1,3 m designet, zu nah liegende Objekte werden ausgeblendet
+	\begin{itemize}
+		\item Hologramme passen ins Sichtfeld, sind nicht zu dicht positioniert, nutzen Screenspace aus, Komfortable Nutzung möglich
+	\end{itemize}
+	\pause
+	\item 
+	\pause
+	\item Umsetzung empfohlener Maßnahmen zur Verbesserung der Performance
+\end{itemize}
+\end{frame}
 
 
 \part{Ergebnisse}
 \label{part:results}
+\begin{frame}[fragile]{Erweiterungen}
+\begin{itemize}
+	\item Visualisierung der Komponenten des Magnetfeldes in zwei Darstellungen und in Echtzeit
+	\item Darstellung einer vorberechneten Lösung für eine ausgewählte Ebene des Feldes der Spule
+	\item Kennzeichnung der Stromrichtung
+	\item Integration einer virtuellen Kompass-Skala mit Hervorhebung wichtiger Zustände
+	\item Einbettung einer virtuellen Kompassnadel auf Basis theoretischer Werte
+	\item Numerische Darstellung gemessener und berechneter Echtzeitdaten
+\end{itemize}
+\end{frame}
+
+
+\part{Ausblick}
+\label{part:future}
+\begin{frame}[fragile]{Erweiterungen}
+\usebeamerfont{frametitle}\textcolor{blue}{Inhaltlich:} \usebeamerfont{text}\textit{Weitere Lerninhalte integrieren}
+\begin{itemize}
+	\item Weitere Inhalte, z.B. Rechte-Hand-Regel
+	\item Weitere Experimente, z.B. Ablenkung eines Elektronenstrahles
+\end{itemize}
+\pause
+\vskip 1em
+\usebeamerfont{frametitle}\textcolor{blue}{Technische:} \usebeamerfont{text}\textit{Portierung für HoloLens 2}
+\begin{itemize}
+	\item Auflösung x4 pro Auge, Sichtfeld x2 (Fläche)
+	\item Tragekomfort und Interaktion verbessert
+\end{itemize}
+
+\vspace{50px}
+\end{frame}
 
 
 
