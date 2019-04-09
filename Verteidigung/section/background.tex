@@ -3,13 +3,13 @@
 
 \begin{frame}[fragile]{Motivation}
 \vspace{10px}
-\usebeamerfont{frametitle}\textcolor{blue}{Frage:} \usebeamerfont{text}
+\usebeamerfont{frametitle}\textcolor{blue}{Idee:} \usebeamerfont{text} HoloLens für Experimente in der Physik nutzen.
 \end{frame}
 
 \begin{frame}[fragile]{Struktur des Vortrages}
 \begin{itemize}
 	\item Hintergründe zur HoloLens, deren Einsatz in der Physik und zum gewählten Experiment
-	\item Probleme \& Anforderungen
+	\item Problemstellung
 	\item Lösungsansatz
 	\item Umsetzung \& Ergebnisse
 	\item Diskussion
@@ -24,6 +24,7 @@
 	\centering
 	\includegraphics[width=0.7\textwidth]{images/papers/hololens.jpg}
 \end{figure}
+\pause
 \begin{itemize}
 	\item Projeziert virtuelle Objekte in das Sichtfeld des Nutzers
 	\item Nutzer bewegt sich simultan durch reale und virtuelle Szene
@@ -108,20 +109,21 @@
 \part{Anwendungsfall: Helmholtz-Spulen}
 \label{part:physics}
 \begin{frame}[fragile]{Experiment: Bestimmung des Erdmagnetfeldes}
-\begin{minipage}{0.5\textwidth}
-	{\setstretch{1.0}
-\begin{itemize}[itemsep=1mm]
-	\item[$1.$] Kompass ausrichten lassen
-	\item[$2.$] Spule orthogonal zur Nord-Süd-Achse aufstellen
-	\item[$3.$] Spannungsquelle einschalten und Stromfluss erhöhen, bis Kompassnadel um 45\degree ausgelenkt ist
-	\item[$4.$] Flussdichte mit Formel aus Stromstärke und Spuleneigenschaften berechnen
-\end{itemize}
-}
-\end{minipage}
 \begin{minipage}{0.45\textwidth}
 	\centering
 	\includegraphics[width=0.9\textwidth]{images/papers/setup_labled.jpg}\\
 	\small Foto des Versuchsaufbaus mit Bezeichnung der Elemente.
+\end{minipage}
+\pause
+\begin{minipage}{0.5\textwidth}
+	{\setstretch{1.0}
+		\begin{itemize}[itemsep=1mm]
+			\item[$1.$] Kompass ausrichten lassen
+			\item[$2.$] Spule orthogonal zur Nord-Süd-Achse aufstellen
+			\item[$3.$] Spannungsquelle einschalten und Stromfluss erhöhen, bis Kompassnadel um 45\degree ausgelenkt ist
+			\item[$4.$] Flussdichte mit Formel aus Stromstärke und Spuleneigenschaften berechnen
+		\end{itemize}
+	}
 \end{minipage}
 \end{frame}
 
@@ -136,6 +138,7 @@
 		\end{itemize}
 	}
 \end{minipage}
+\pause
 \begin{minipage}{0.45\textwidth}
 	\centering
 	\includegraphics[width=0.9\textwidth]{images/papers/hh_mfield_nocol.png}\\
